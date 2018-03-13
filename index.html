@@ -14,6 +14,26 @@
     <link rel="stylesheet" href="css/framework7.css">
     <link rel="stylesheet" href="css/framework7-icons.css">
     <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+      *.italicYellowBg {
+        font-style: italic;
+        background-color: yellow;
+      }
+
+      *.boldRed {
+        font-weight: bold;
+        color: red;
+      }
+
+      img.boldRed {
+        border: solid red 3px;
+      }
+
+      a.pinkLink {
+        color: #f66;
+        font-size: 1.2em;
+      }
+    </style>
   </head>
 
   <body>
@@ -43,16 +63,12 @@
                 <!-- 工具栏标签 -->
                 <span class="tabbar-label">感想</span>
               </a>
-              <a href="#" class="tab-link an-button popup-open" data-popup=".popup-about" id="button1">
-                <i class="icon f7-icons ios-only">help_fill
-                </i>
-                </i>
+              <a href="#" class="tab-link an-button popup-open no-fastclick" id="button1">
+                <i class="icon f7-icons ios-only">help_fill</i>
                 <span class="tabbar-label">质疑</span>
               </a>
               <a href="#" class="tab-link an-button popup-open" data-popup=".popup-about" id="button2">
-                <i class="icon f7-icons ios-only">heart_fill
-                </i>
-                </i>
+                <i class="icon f7-icons ios-only">heart_fill</i>
                 <span class="tabbar-label">联想</span>
               </a>
               <a href="#" class="tab-link an-button popup-open" data-popup=".popup-about" id="button3">
@@ -119,6 +135,8 @@
     <script src="js/framework7.js"></script>
     <!-- Path to your app js-->
     <script src="js/app.js"></script>
+    <script src="http://lezuse.github.io/rangy/lib/rangy-core.js"></script>
+    <script src="http://lezuse.github.io/rangy/lib/rangy-classapplier.js"></script>
     <script>
       function buttonClick() {
         var userSelection;
@@ -132,10 +150,78 @@
         }
       }
 
-      var oBtn0 = $$("#button0");
-      oBtn0.on('click', function () {
+      $$("#button0").click(function () {
         buttonClick();
       });
+
+    </script>
+    <script>
+
+      function gEBI(id) {
+        return document.getElementById(id);
+      }
+
+      var italicYellowBgApplier, boldRedApplier, pinkLinkApplier;
+
+      function toggleItalicYellowBg() {
+        italicYellowBgApplier.toggleSelection();
+      }
+
+      function toggleBoldRed() {
+        boldRedApplier.toggleSelection();
+      }
+
+      function togglePinkLink() {
+        pinkLinkApplier.toggleSelection();
+      }
+
+      window.onload = function () {
+        rangy.init();
+
+        // Enable buttons
+        var classApplierModule = rangy.modules.ClassApplier;
+
+        // Next line is pure paranoia: it will only return false if the browser has no support for ranges,
+        // selections or TextRanges. Even IE 5 would pass this test.
+        if (rangy.supported && classApplierModule && classApplierModule.supported) {
+          boldRedApplier = rangy.createClassApplier("boldRed", {
+            tagNames: ["span", "img"]
+          });
+
+          italicYellowBgApplier = rangy.createClassApplier("italicYellowBg", {
+            tagNames: ["span", "a", "b", "img"]
+          });
+
+          pinkLinkApplier = rangy.createClassApplier("pinkLink", {
+            elementTagName: "a",
+            elementProperties: {
+              href: "http://code.google.com/p/rangy",
+              title: "Rangy home page"
+            }
+          });
+
+          var toggleBoldRedButton = gEBI("button1");
+          toggleBoldRedButton.ontouchstart = toggleBoldRedButton.onmousedown = function () {
+            toggleBoldRed();
+            return false;
+          };
+
+          var toggleItalicYellowBgButton = gEBI("toggleItalicYellowBgButton");
+          toggleItalicYellowBgButton.disabled = false;
+          toggleItalicYellowBgButton.ontouchstart = toggleItalicYellowBgButton.onmousedown = function () {
+            toggleItalicYellowBg();
+            return false;
+          };
+
+          var togglePinkLinkButton = gEBI("togglePinkLinkButton");
+          togglePinkLinkButton.disabled = false;
+          togglePinkLinkButton.ontouchstart = togglePinkLinkButton.onmousedown = function () {
+            togglePinkLink();
+            return false;
+          };
+        }
+      };
+
 
     </script>
   </body>
