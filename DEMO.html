@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Full Editor - Quill Rich Text Editor</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="language" content="english">
+  <meta name="viewport" content="width=device-width">
+  <script type="text/javascript">
+//<![CDATA[
+window.__cfRocketOptions = {byc:0,p:0,petok:"f652965e0afc0d47979f9c2a4fb05d101b483dab-1520749403-1800"};
+//]]>
+</script>
+<script type="text/javascript" src="js/rocket.min.js"></script>
+<!-- <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" /> -->
+<link rel="canonical" href="https://quilljs.com/standalone/full/">
+<link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml" title="quill" />
+<link href="https://cdn.bootcss.com/KaTeX/0.9.0/katex.min.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" /> -->
+<link href="https://cdn.bootcss.com/quill/1.3.5/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" href="css/framework7.min.css">
+<style>
+body > #standalone-container {
+  margin: 50px auto;
+  max-width: 720px;
+}
+#editor-container {
+  height: 350px;
+}
+</style>
+</head>
+<body>
+  <div id="app">
+    <div class="panel panel-left panel-reveal">
+      <div class="block">
+        <p>Left Panel content here</p>
+        <p>
+          <a class="panel-close" href="#">Close me</a>
+        </p>
+        <p>
+          <a class="panel-open" href="#" data-panel="right">Open Right Panel</a>
+        </p>
+      </div>
+    </div>
+    <div class="panel panel-right panel-cover">
+      <div class="block">
+        <p>Right Panel content here</p>
+        <p>
+          <a class="panel-close" href="#">Close me</a>
+        </p>
+        <p>
+          <a class="panel-open" href="#" data-panel="left">Open Left Panel</a>
+        </p>
+      </div>
+    </div>
+    <div class="view view-main">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"></div>
+            <div class="title">Panels</div>
+            <div class="right"></div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="block">
+            <div><a class="panel-open" data-panel="right" href="#">添加批注</a></div>
+            <div id="standalone-container">
+              <div id="toolbar-container">
+                <span class="ql-formats">
+                  <select class="ql-font"></select>
+                  <select class="ql-size"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-script" value="sub"></button>
+                  <button class="ql-script" value="super"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-header" value="1"></button>
+                  <button class="ql-header" value="2"></button>
+                  <button class="ql-blockquote"></button>
+                  <button class="ql-code-block"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <button class="ql-indent" value="-1"></button>
+                  <button class="ql-indent" value="+1"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-direction" value="rtl"></button>
+                  <select class="ql-align"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                  <button class="ql-video"></button>
+                  <button class="ql-formula"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-clean"></button>
+                </span>
+              </div>
+              <div id="editor-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/framework7.min.js"></script>
+  <script src="https://cdn.bootcss.com/KaTeX/0.9.0/katex.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/quill/1.3.5/quill.min.js"></script>
+  <script type="text/rocketscript">
+    var quill = new Quill('#editor-container', {
+    modules: {
+    formula: true,
+    syntax: true,
+    toolbar: '#toolbar-container'
+  },
+  placeholder: 'Compose an epic...',
+  theme: 'snow'
+});
+</script>
+<script>
+  var app = new Framework7({
+            // App root element
+            root: '#app',
+            // App Name
+            name: 'My App',
+            // App id
+            id: 'com.myapp.test',
+            // Enable swipe panel
+            panel: {
+              swipe: 'left',
+            },
+            // Add default routes
+            routes: [
+            {
+              path: '/about/',
+              url: 'about.html',
+            },
+            ],
+            // ... other parameters
+          });
+  var mainView = app.views.create('.view-main');
+</script>
+</body>
+</html>
