@@ -5,3 +5,36 @@
 p {
     text-indent: 2rem;
 }
+    .page-content {
+        letter-spacing: 0.2rem;
+    }
+
+    *.Bton0Backgrond {
+        background-color: rgba(240, 239, 136, 0.8)
+    }
+
+    *.Bton1Backgrond {
+        color: rgb(196, 28, 28);
+    }
+
+    *.Bton2Backgrond {
+        font-weight: bolder;
+    }
+
+    *.Bton3Backgrond {
+        border-bottom: 2px solid #f89;
+    }
+
+    *.Bton4Backgrond {
+        font-style: italic;
+    }
+
+    @media \0screen\,screen\9 {
+        /* 只支持IE6、7、8设置文字背景半透明 */
+        *.Bton0Backgrond {
+            background-color: rgb(240, 238, 137);
+            filter: Alpha(opacity=80);
+            position: static;
+            *zoom: 1;
+        }
+    }
