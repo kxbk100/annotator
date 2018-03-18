@@ -1,27 +1,3 @@
-//获取选中文字
-function buttonClick() {
-    var userSelection;
-    if (window.getSelection) { //现代浏览器
-        userSelection = window.getSelection();
-    }
-    var getRangeObject = function (selectionObject) {
-        if (selectionObject.getRangeAt)
-            return selectionObject.getRangeAt(0);
-        else { // 较老版本Safari!
-            var range = document.createRange();
-            range.setStart(selectionObject.anchorNode, selectionObject.anchorOffset);
-            range.setEnd(selectionObject.focusNode, selectionObject.focusOffset);
-            return range;
-        }
-    }
-    var rangeObject = getRangeObject(userSelection);
-    alert(rangeObject.startOffset);
-    alert(rangeObject.endOffset);
-}
-$$("#button0").click(function () {
-    buttonClick();
-});
-
 //批注按钮点击效果
 function gEBI(id) {
     return document.getElementById(id);

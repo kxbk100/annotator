@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <!-- Required meta tags-->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000">
-  <!-- Your app title -->
-  <title>Demo</title>
-  <!-- Path to Framework7 Library CSS -->
-  <link rel="stylesheet" href="css/framework7.css">
-  <link rel="stylesheet" href="css/framework7-icons.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#000">
+    <!-- Your app title -->
+    <title>Demo</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="css/framework7.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
 
-<body>
-  <!-- App root element -->
-  <div id="app">
-    <!-- 侧边栏 -->
-    <div class="panel panel-right panel-cover">
-      <div class="block" id="Mynote">
-        <p>
-          <a class="panel-close" href="#">Close me</a>
-        </p>
-        <div id="">
-        <p>
-         原文：666666666
-        </p>
-        <p>我的批注</p>
-        <p id=""></p>
+  <body>
+    <!-- App root element -->
+    <div id="app">
+      <!-- 侧边栏 -->
+      <div class="panel panel-right panel-cover">
+        <div class="block" id="Mynote">
+          <p>
+            <a class="panel-close" href="#">Close me</a>
+          </p>
+          <div id="">
+            <p>
+              原文：666666666
+            </p>
+            <p>我的批注</p>
+            <p id=""></p>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>
-    <!-- Statusbar overlay -->
+      <!-- Statusbar overlay -->
 
-    <!-- Your main view, should have "view-main" class -->
-    <div class="view view-main">
-      <!-- Initial Page, "data-name" contains page name -->
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
         <!-- 头部标题栏 -->
         <div class="navbar">
           <div class="navbar-inner">
@@ -133,91 +133,92 @@
             </div>
           </div>
         </div>
-                <div class="popup popup-about1">
-                  <div class="block">
-                    <button class="col button button-outline button-round popup-close">取消</button>
-                    <button class="col button button-outline button-round panel-open popup-close" data-panel="right" id="button1"  onclick="addToPanel()">添加批注</button>
-                    <p id="selectedTxt1"></p>
-                    <p id="start"></p>
-                    <p id="end"></p>
-                    <!-- Close Popup -->
-                    <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title item-label">Textarea</div>
-                      <div class="item-input-wrap">
-                        <textarea placeholder="请输入批注" id="addNote"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="popup popup-about2">
-                  <div class="block">
-                    <button class="col button button-outline button-round popup-close">取消</button>
-                    <button class="col button button-outline button-round panel-open popup-close" data-panel="right" id="button2" onclick="addToPanel()">添加批注</button>
-                    <p id="selectedTxt2"></p>
-                    <p id="start"></p>
-                    <p id="end"></p>
-                    <!-- Close Popup -->
-                    <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title item-label">Textarea</div>
-                      <div class="item-input-wrap">
-                        <textarea placeholder="请输入批注" id="addNote"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="popup popup-about3">
-                  <div class="block">
-                    <button class="col button button-outline button-round popup-close">取消</button>
-                    <button class="col button button-outline button-round panel-open popup-close" data-panel="right"  id="button3"  onclick="addToPanel()">添加批注</button>
-                    <p id="selectedTxt3"></p>
-                    <p id="start"></p>
-                    <p id="end"></p>
-                    <!-- Close Popup -->
-                    <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title item-label">Textarea</div>
-                      <div class="item-input-wrap">
-                        <textarea placeholder="请输入批注" id="addNote"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="popup popup-about4">
-                  <div class="block">
-                    <button class="col button button-outline button-round popup-close">取消</button>
-                    <button class="col button button-outline button-round panel-open popup-close" data-panel="right"  id="button4"  onclick="addToPanel()">添加批注</button>
-                    <p id="selectedTxt4"></p>
-                    <p id="start"></p>
-                    <p id="end"></p>
-                    <!-- Close Popup -->
-                    <div class="item-media">
-                      <i class="icon demo-list-icon"></i>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title item-label">Textarea</div>
-                      <div class="item-input-wrap">
-                        <textarea placeholder="请输入批注" id="addNote"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div class="popup popup-about1">
+          <div class="block">
+            <button class="col button button-outline button-round popup-close">取消</button>
+            <button class="col button button-outline button-round panel-open popup-close" data-panel="right" id="button1" onclick="addToPanel()">添加批注</button>
+            <p id="selectedTxt1"></p>
+            <p id="start"></p>
+            <p id="end"></p>
+            <!-- Close Popup -->
+            <div class="item-media">
+              <i class="icon demo-list-icon"></i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-label">Textarea</div>
+              <div class="item-input-wrap">
+                <textarea placeholder="请输入批注" id="addNote"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup-about2">
+          <div class="block">
+            <button class="col button button-outline button-round popup-close">取消</button>
+            <button class="col button button-outline button-round panel-open popup-close" data-panel="right" id="button2" onclick="addToPanel()">添加批注</button>
+            <p id="selectedTxt2"></p>
+            <p id="start"></p>
+            <p id="end"></p>
+            <!-- Close Popup -->
+            <div class="item-media">
+              <i class="icon demo-list-icon"></i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-label">Textarea</div>
+              <div class="item-input-wrap">
+                <textarea placeholder="请输入批注" id="addNote"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup-about3">
+          <div class="block">
+            <button class="col button button-outline button-round popup-close">取消</button>
+            <button class="col button button-outline button-round panel-open popup-close" data-panel="right" id="button3" onclick="addToPanel()">添加批注</button>
+            <p id="selectedTxt3"></p>
+            <p id="start"></p>
+            <p id="end"></p>
+            <!-- Close Popup -->
+            <div class="item-media">
+              <i class="icon demo-list-icon"></i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-label">Textarea</div>
+              <div class="item-input-wrap">
+                <textarea placeholder="请输入批注" id="addNote"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup-about4">
+          <div class="block">
+            <button class="col button button-outline button-round popup-close">取消</button>
+            <button class="col button button-outline button-round panel-open popup-close" data-panel="right" id="button4" onclick="addToPanel()">添加批注</button>
+            <p id="selectedTxt4"></p>
+            <p id="start"></p>
+            <p id="end"></p>
+            <!-- Close Popup -->
+            <div class="item-media">
+              <i class="icon demo-list-icon"></i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-label">Textarea</div>
+              <div class="item-input-wrap">
+                <textarea placeholder="请输入批注" id="addNote"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Path to Framework7 Library JS-->
-  <script src="js/framework7.js"></script>
-  <!-- Path to your app js-->
-  <script src="js/app.js"></script>
-  <script src="js/rangy-core.js"></script>
-  <script src="js/rangy-classapplier.js"></script>
-  <script src="js/js.js"></script>
-</body>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+    <script src="js/framework7.js"></script>
+    <!-- Path to your app js-->
+    <script src="js/app.js"></script>
+    <script src="js/rangy-core.js"></script>
+    <script src="js/rangy-classapplier.js"></script>
+    <script src="js/js.js"></script>
+  </body>
+
 </html>
