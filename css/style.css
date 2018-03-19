@@ -5,10 +5,6 @@
 p {
     text-indent: 2rem;
 }
-    .page-content {
-        letter-spacing: 0.2rem;
-    }
-
     *.Bton0Backgrond {
         background-color: rgba(240, 239, 136, 0.8)
     }
