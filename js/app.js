@@ -22,10 +22,21 @@ var app = new Framework7({
     {
       name: 'about',
       path: '/about/',
-      url: './about.html',
+      url: 'about.html',
     },
   ],
   // ... other parameters
 });
 var mainView = app.views.create('.view-main');
 var $$ = Dom7;
+
+var searchbar = app.searchbar.create({
+  el: '.searchbar',
+  searchContainer: '.list',
+  searchIn: '.item-title',
+  on: {
+    search(sb, query, previousQuery) {
+      console.log(query, previousQuery);
+    }
+  }
+});
