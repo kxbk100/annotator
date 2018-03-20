@@ -36,21 +36,21 @@ function getLocation() {
   var rangeObject = getRangeObject(userSelection);
   var p = rangeObject.startContainer.parentNode;
   var i = 0;
-  while (p = p.previousSibling) {
-    i++;
-  }
-  i = (i + 1) / 2;
-  alert(i);
-  alert(rangeObject.startOffset);
-  alert(rangeObject.endOffset);
-  alert(getString());
+  // while (p = p.previousSibling) {
+  //   i++;
+  // }
+  // i = (i + 1) / 2;
+  // alert(i);
+  // alert(rangeObject.startOffset);
+  // alert(rangeObject.endOffset);
+  // alert(getString());
 }
 
 //添加批注样式
 function anPaint(bton) {
   rangy.init();
   var classApplierModule = rangy.modules.ClassApplier;
-  if (rangy.supported && classApplierModule && classApplierModule.supported) {
+  if (true) {
     switch (bton) {
       case 0:
         cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
@@ -80,52 +80,55 @@ function anPaint(bton) {
 var button0 = document.getElementById("button0");
 button0.ontouchstart = function () {
   getString(0);
+  anPaint(0);
 }
 
 var botton1 = document.getElementById("button1");
-button1.ontouchstart = function () {
+button1.addEventListener('touchstart', function () {
   getString(1);
-}
+  anPaint(1);
+});
 
 var botton2 = document.getElementById("button2");
-button2.ontouchstart = function () {
+button2.addEventListener('touchstart', function () {
   getString(2);
-}
+  anPaint(2);
+});
 
 var botton3 = document.getElementById("button3");
-button3.ontouchstart = function () {
+button3.addEventListener('touchstart', function () {
   getString(3);
-}
+  anPaint(3);
+});
 
 var botton4 = document.getElementById("button4");
-button4.ontouchstart = function () {
+button4.addEventListener('touchstart', function () {
   getString(4);
-}
-
+  anPaint(4);
+  getLocation();
+});
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
-add0.ontouchstart = function () {
-  anPaint(0);
+add0.addEventListener('touchstart', function () {
   panel(0);
-}
+});
 
 var add1 = document.getElementById("add1");
-add1.ontouchstart = function () {
-  anPaint(1);
-  panel(1)
-}
+add1.addEventListener('touchstart', function () {
+  panel(1);
+});
+
 var add2 = document.getElementById("add2");
-add2.ontouchstart = function () {
-  anPaint(2);
+add2.addEventListener('touchstart', function () {
   panel(2);
-}
+});
+
 var add3 = document.getElementById("add3");
-add3.ontouchstart = function () {
-  anPaint(3);
+add3.addEventListener('touchstart', function () {
   panel(3);
-}
+});
+
 var add4 = document.getElementById("add4");
-add4.ontouchstart = function () {
-  anPaint(4);
+add4.addEventListener('touchstart',function (){
   panel(4);
-}
+}) ;
