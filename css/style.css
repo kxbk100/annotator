@@ -2,7 +2,7 @@
     color: #0084ff!important;
 }
 
-p {
+#box>p {
     text-indent: 2rem;
 }
 
@@ -25,4 +25,73 @@ p {
 *.Bton4Backgrond {
   font-weight: bolder;
   font-style: italic;
+}
+
+.ios .list.main {
+    margin-top: 0;
+}
+
+.demo-card-header-pic .card-header {
+    height: 40vw;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.demo-card-header-pic .card-header .card-content-padding .date {
+    color: #8e8e93;
+}
+
+.blockquote {
+    border-left: 6px solid #b4b4b4;
+    margin: 0.2rem;
+    min-height: 1.5rem;
+}
+
+.anblock {
+    background-color:white;
+    border: 0.1vw solid #ececec;    
+    box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+}
+
+.anpanel {
+    background-color: #ececec;
+}
+.blockquote>p {
+    margin: 0.1rem 0 0 0.5rem;
+    color: #a6a6a6;
+    font-style: italic;
+}
+
+#Mynote {
+    padding: 0px;
+    margin-top: 2.2rem;
+}
+
+.card-footer {
+    background: #fafafa;
+}
+
+.card-footer a {
+    color: #81848b;
+    font-weight: 500;
+}
+
+/* 用于控制侧栏内容高度和位置的样式 */
+.subar {
+    margin-top: -2em;
+    height: 1rem;
+}
+
+#subwrap {
+    height: 1.3rem;
+}
+
+#search {
+    height: 1.8rem;
+}
+
+#searchnav {
+    height: 2.2rem;
 }
