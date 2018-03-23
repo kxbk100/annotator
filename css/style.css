@@ -1,5 +1,5 @@
 .an-button.active-state {
-    color: #0084ff!important;
+    color: #0084ff !important;
 }
 
 #box>p {
@@ -23,8 +23,8 @@
 }
 
 *.Bton4Backgrond {
-  font-weight: bolder;
-  font-style: italic;
+    font-weight: bolder;
+    font-style: italic;
 }
 
 .ios .list.main {
@@ -49,8 +49,8 @@
 }
 
 .anblock {
-    background-color:white;
-    border: 0.1vw solid #ececec;    
+    background-color: white;
+    border: 0.1vw solid #ececec;
     box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.1);
     margin-top: 0.5rem;
 }
@@ -58,6 +58,7 @@
 .anpanel {
     background-color: #ececec;
 }
+
 .blockquote>p {
     margin: 0.1rem 0 0 0.5rem;
     color: #a6a6a6;
@@ -79,6 +80,7 @@
 }
 
 /* 用于控制侧栏内容高度和位置的样式 */
+
 .subar {
     margin-top: -2em;
     height: 1rem;
@@ -94,4 +96,24 @@
 
 #searchnav {
     height: 2.2rem;
+}
+
+/* 图标大小 */
+
+.ios .list .f7-icons.size-18 {
+    font-size: 18px;
+    width: 26px;
+    height: 18px;
+}
+
+.date.index {
+    color: #929292;
+}
+
+.ios .list ul.index {
+    background: none;
+}
+
+.ios .list ul:before {
+    background-color: unset;
 }

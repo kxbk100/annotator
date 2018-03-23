@@ -9,229 +9,186 @@
   <!-- Color theme for statusbar -->
   <meta name="theme-color" content="#000">
   <!-- Your app title -->
-  <title>批注系统</title>
+  <title>首页</title>
   <!-- Path to Framework7 Library CSS -->
   <link rel="stylesheet" href="css/framework7.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .ios .searchbar:after {
-      background-color: white;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- App root element -->
   <div id="app">
-    <!-- 侧边栏 -->
-    <div class="panel panel-left panel-cover anpanel">
-      <div class="subnavbar subbar" id="searchnav">
-        <!-- Searchbar with auto init -->
-        <form class="searchbar" id="search">
-          <div class="searchbar-inner">
-            <div class="searchbar-input-wrap" id="subwrap">
-              <input type="search" placeholder="Search">
-              <i class="searchbar-icon"></i>
-              <span class="input-clear-button"></span>
+    <div class="view view-main view-init">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Search Bar</div>
+            <div class="subnavbar">
+              <!-- Searchbar with auto init -->
+              <form class="searchbar">
+                <div class="searchbar-inner">
+                  <div class="searchbar-input-wrap">
+                    <input type="search" placeholder="搜索">
+                    <i class="searchbar-icon"></i>
+                    <span class="input-clear-button"></span>
+                  </div>
+                  <span class="searchbar-disable-button">Cancel</span>
+                </div>
+              </form>
             </div>
-            <span class="searchbar-disable-button">Cancel</span>
           </div>
-        </form>
-      </div>
-      <div class="block" id="Mynote">
-        <div id="ancontent">
-          <div class="content-block inset anblock">
-            <div class="content-block-inner">
-              <blockquote class="blockquote">
-                <p>阿里</p>
-              </blockquote>
-              <p>有了野心，你才能坚持不懈、不断学习和改进，以最快的速度完善自己！</p>
+        </div>
+        <div class="subnavbar">
+          <div class="subnavbar-inner">
+            <div class="segmented segmented-raised">
+              <a class="button tab-link tab-link-active" href="#tab1">推荐</a>
+              <a class="button tab-link" href="#tab2">热门</a>
+              <a class="button tab-link" href="#tab3">排行</a>
             </div>
-            <div class="card-footer">
-              <a href="#" class="link">修改</a>
-              <a href="#" class="link">删除</a>
+          </div>
+        </div>
+        <!-- 工具栏标签 -->
+        <div class="toolbar tabbar-labels">
+          <div class="toolbar-inner">
+            <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
+              <!-- Different icons for iOS and MD themes -->
+              <i class="icon f7-icons">home_fill</i>
+              <span class="tabbar-label">首页</span>
+            </a>
+            <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
+              <i class="icon f7-icons">layers_fill</i>
+              <span class="tabbar-label">班级</span>
+            </a>
+            <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
+              <i class="icon f7-icons">person_fill</i>
+              <span class="tabbar-label">我的</span>
+            </a>
+            <!-- <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
+              <i class="icon f7-icons ">mic_fill</i>
+              <span class="tabbar-label">评价</span>
+            </a>
+            <a href="#" class="tab-link an-button popup-open" data-popup=".popup4" id="button4">
+              <i class="icon f7-icons ">compose_fill</i>
+              <span class="tabbar-label">补充</span>
+            </a> -->
+          </div>
+        </div>
+        <div class="page-content ptr-content">
+          <!-- <div class="searchbar-backdrop"></div> -->
+          <div class="tabs">
+            <div class="tab tab-active" id="tab1">
+              <div class="ptr-preloader">
+                <div class="preloader"></div>
+                <div class="ptr-arrow"></div>
+              </div>
+              <div class="list media-list">
+                <ul class="index">
+                  <div class="card demo-card-header-pic">
+                    <div style="background-image:url(images/timg.jpg)" class="card-header align-items-flex-end">阿里年会马云演讲全文：可以失去一切，不能失去理想</div>
+                    <div class="card-content card-content-padding">
+                      <p class="date index">话题：演讲 · 1 小时前</p>
+                      <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的 ...
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" class="link">
+                        <i class="f7-icons size-18">heart_fill</i>514 喜欢</a>
+                      <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header">没有理由拒绝成为更好的自己</div>
+                    <div class="card-content card-content-padding">
+                      <p class="date index">专栏：佳作 · 40 分钟前</p>
+                      <p>你会发现这么多年喜欢你的人还会喜欢，不喜欢你的人依旧是陌路。但自己所有的努力，只是为了成为更好的自己。别人的看法似乎没有那么重要了，至少更爱自己了 ...
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" class="link">
+                        <i class="f7-icons size-18">heart_fill</i>1,421 喜欢</a>
+                      <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="card demo-card-header-pic">
+                    <div style="background-image:url(images/dianying.jpg)" class="card-header align-items-flex-end">你要高雅 ——由“烂片”所想到的
+                    </div>
+                    <div class="card-content card-content-padding">
+                      <p class="date index">散文：佳作 · 3 小时前</p>
+                      <p>一直想就电影这个话题写点儿东西，可作为外行，一直没有提笔的勇气。 文题借用郭德纲“你”字系列相声。要说我写的只是我对中国电影的个人看法 ...
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" class="link">
+                        <i class="f7-icons size-18">heart_fill</i>2,514 喜欢</a>
+                      <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header">台湾作家林清玄散文精选摘抄</div>
+                    <div class="card-content card-content-padding">
+                      <p class="date index">散文：摘记 · 5小时前</p>
+                      <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人 ...
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" class="link">
+                        <i class="f7-icons size-18">heart_fill</i>1,014 喜欢</a>
+                      <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header">一场花期一段梦</div>
+                    <div class="card-content card-content-padding">
+                      <p class="date index">散文：佳作 · 1天前</p>
+                      <p>一朵小小的木樨花在寂静中绽放，怀念的果子便要在光阴里结实。青春韶华无情流逝，承载了太多苦涩又甘甜的往昔。花瓣曼妙飞扬的时候，牵念起心中清落的记忆 ...
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" class="link">
+                        <i class="f7-icons size-18">heart_fill</i>6,054 喜欢</a>
+                      <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tab" id="tab2">
+              <div class="block">
+                <p>Donec iaculis posuere massa sed dignissim...</p>
+              </div>
+            </div>
+            <div class="tab" id="tab3">
+              <div class="block">
+                <p>Etiam non interdum erat. Curabitur erat lacus...</p>
+              </div>
+            </div>
+            <div class="block searchbar-not-found">
+              <div class="block-inner">无结果</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Statusbar overlay -->
-    <!-- Your main view, should have "view-main" class -->
-    <div class="view view-main">
-      <!-- Initial Page, "data-name" contains page name -->
-      <!-- 头部标题栏 -->
-      <div class="navbar">
-        <div class="navbar-inner">
-          <div class="left"></div>
-          <div class="title">马云演讲</div>
-          <div class="right"></div>
-        </div>
-      </div>
-
-      <!-- 工具栏 -->
-      <div class="toolbar tabbar-labels">
-        <div class="toolbar-inner">
-          <!-- 工具栏标签 -->
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
-            <!-- Different icons for iOS and MD themes -->
-            <i class="icon f7-icons ios-only">chat_fill</i>
-            <span class="tabbar-label">感想</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
-            <i class="icon f7-icons ios-only">help_fill</i>
-            <span class="tabbar-label">质疑</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
-            <i class="icon f7-icons ios-only">heart_fill</i>
-            <span class="tabbar-label">联想</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
-            <i class="icon f7-icons ios-only">mic_fill</i>
-            <span class="tabbar-label">评价</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup4" id="button4">
-            <i class="icon f7-icons ios-only">compose_fill</i>
-            <span class="tabbar-label">补充</span>
-          </a>
-        </div>
-      </div>
-      <!-- 内容区域 -->
-      <div class="page-content">
-        <div class="block" id="box">
-          <a class="link external" href="about.html">1651</a>
-          <p>马云说：在创办阿里巴巴时，我请了24个朋友来我家商量，我整整讲了两个小时，他们听得稀里糊涂，我也讲得糊里糊涂。</p>
-          <p>最后说到底怎么样，其中23个人说算了吧，只有一个在银行上班的朋友说你可以试试看，不行赶紧逃回来，我想了一个晚上，第二天早上决定还是干，哪怕24个人全反对我也要干。</p>
-          <p>当时立即遭到了亲朋好友的强烈反对“其实最大的决心并不是我对互联网有很大的信心，而是我觉得做一件事，无论失败与成功，经历就是一种成功，你去闯一闯，不行你还可以掉头；但是你如果不做，就像晚上想想千条路，早上起来走原路，一样的道理。”</p>
-          <p>马云说：很多人一生输就输在对新生事物上,第一看不见；第二看不起；第三看不懂；第四来不及！</p>
-          <p>你穷，是因为你没有野心！</p>
-          <p>野心，是一种人生在世的伟大理想，一定要实现的宏伟目标。在这个世界上，只有不敢想、不敢做的事，却没有干不成的事！你的野心有多大，未来就有多宽广。</p>
-          <p>一个贫苦不堪的勤杂工，却因一次人前的难堪，一次刻骨铭心的受窘，竟然成为举世瞩目、无比富有的女中豪杰！</p>
-          <p>最初，她在一家大公司里，是工作在最底层的员工，每天的工作就是端茶倒水，清扫卫生，根本没有人注意她。</p>
-          <p>一次，因为没带工作证，她被公司的门卫拦在门外，不准进入。她告诉门卫，自己确确实实是公司的员工，此次是为公司买办公用品去了。</p>
-          <p>然而她好话说了一大堆，门卫仍然对她不屑一顾，不准她入内。这期间，她眼睁睁地看着那些年龄相仿、身着职业装的白领们先后进入了公司的大门，根本没有出示工作证。</p>
-          <p>于是她问门卫：“这些人没有出示工作证，怎么也都进去了？”门卫用一种鄙视的目光上上下下打量了她一番，冷冷地一摆手，那意思就是说：“走远点，别烦我！”。</p>
-          <p>她感到了莫大的羞辱，自尊心仿佛被门卫狠狠的踩在脚下，跺个稀巴烂！她看看自己寒酸的衣着，和手中推着脏兮兮的平板车，再看看那些衣着华丽、她的心被深深的刺痛了，骤然品尝到被人歧视的酸楚，她的心发跳、脸发烫，浑身颤抖。</p>
-          <p>这时，就在这时，一个誓言，在她的心头轰然炸响：我一定要创造奇迹，成为万人瞩目的富姐，成为举世闻名的强人！让这种耻辱永远的埋藏地下！</p>
-          <p>从此以后，她开始利用一切机会来充实自己。每一天，她第一个来公司，最后一个离开。她分秒必争，将别人随随便便丢掉的时间都花在了学习和工作上。很快，她就脱颖而出了。</p>
-          <p>在同一批骋用者中，她第一个做了业务代表，接着她又依靠超人的努力，成为这家跨国公司中国区总经理，她学历并不高，只有自考专科文凭，在中国的经理中被尊为“打工皇后”，后来，她又任微软公司中国公司的总经理。她，就是商界女杰吴士宏！</p>
-          <p>试想，如果当初，吴士宏没有改变命运的决心，没有成为富人的野心，或许，她一辈子都是那个贫穷而卑微的勤杂工！是野心，是无坚不摧的野心， 铸就了辉煌！</p>
-          <p>你穷，是因为你没有极度渴望成为成功的野心！</p>
-          <p>你穷，是因为你没有燕雀缺乏的鸿鹄之志！</p>
-          <p>你穷，是因为你无法战胜自己内心的怯懦！</p>
-          <p>你穷，是因为你缺乏变不可能为可能的勇气和巨大决心！</p>
-          <p>有了野心，你才能克服一切自卑、逼出潜能！</p>
-          <p>有了野心，你才能坚持不懈、不断学习和改进，以最快的速度完善自己！</p>
-          <p>有了野心，你才会不畏一切艰难险阻。敢于创造出别人不敢、也不能的奇迹！</p>
-          <p>不论你现在家境有多穷，地位有多低。都不要否定自己，都不要失去凌云之志。</p>
-          <p>一身贫寒的李嘉诚，当初比现在的你还窘迫，你又有什么理由继续受穷，不成为富翁呢？</p>
-          <p>当你的家人数落你没出息的时候，没有人会可怜你！</p>
-          <p>当你的父母生病没钱医治的时候，没有人会可怜你！</p>
-          <p>当你被你的竞争对手打败的时候，没有人会可怜你！</p>
-          <p>当你心爱的另一半抛弃你的时候，没有人会可怜你！</p>
-          <p>当你30岁40岁还没有什么成就的时候，没有人会可怜你！</p>
-          <p>世界万物要么走向成长，要么走向灭亡！！！！</p>
-          <p>等待，就是浪费青春！！！！</p>
-          <p>没有野心的人注定一辈子是穷人！</p>
-        </div>
-      </div>
-      <!-- 弹出页面 -->
-      <div class="popup popup0">
-        <div class="block">
-          <button class="col button button-outline button-round panel-open popup-close" id="add0">添加批注</button>
-          <button class="col button button-outline button-round popup-close">取消</button>
-          <p id="selectedtxt0"></p>
-          <!-- Close Popup -->
-          <div class="item-media">
-            <i class="icon demo-list-icon"></i>
-          </div>
-          <div class="item-inner">
-            <div class="item-title item-label">Textarea</div>
-            <div class="item-input-wrap">
-              <textarea placeholder="请输入批注" id="note0"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="popup popup1">
-        <div class="block">
-          <button class="col button button-outline button-round panel-open popup-close" id="add1">添加批注</button>
-          <button class="col button button-outline button-round popup-close">取消</button>
-          <p id="selectedtxt1"></p>
-          <!-- Close Popup -->
-          <div class="item-media">
-            <i class="icon demo-list-icon"></i>
-          </div>
-          <div class="item-inner">
-            <div class="item-title item-label">Textarea</div>
-            <div class="item-input-wrap">
-              <textarea placeholder="请输入批注" id="note1"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="popup popup2">
-        <div class="block">
-          <button class="col button button-outline button-round panel-open popup-close" id="add2">添加批注</button>
-          <button class="col button button-outline button-round popup-close">取消</button>
-          <p id="selectedtxt2"></p>
-          <!-- Close Popup -->
-          <div class="item-media">
-            <i class="icon demo-list-icon"></i>
-          </div>
-          <div class="item-inner">
-            <div class="item-title item-label">Textarea</div>
-            <div class="item-input-wrap">
-              <textarea placeholder="请输入批注" id="note2"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="popup popup3">
-        <div class="block">
-          <button class="col button button-outline button-round panel-open popup-close" id="add3">添加批注</button>
-          <button class="col button button-outline button-round popup-close">取消</button>
-          <p id="selectedtxt3"></p>
-          <!-- Close Popup -->
-          <div class="item-media">
-            <i class="icon demo-list-icon"></i>
-          </div>
-          <div class="item-inner">
-            <div class="item-title item-label">Textarea</div>
-            <div class="item-input-wrap">
-              <textarea placeholder="请输入批注" id="note3"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="popup popup4">
-        <div class="block">
-          <button class="col button button-outline button-round panel-open popup-close" id="add4">添加批注</button>
-          <button class="col button button-outline button-round popup-close">取消</button>
-          <p id="selectedtxt4"></p>
-          <!-- Close Popup -->
-          <div class="item-media">
-            <i class="icon demo-list-icon"></i>
-          </div>
-          <div class="item-inner">
-            <div class="item-title item-label">Textarea</div>
-            <div class="item-input-wrap">
-              <textarea placeholder="请输入批注" id="note4"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="js/framework7.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/rangy-core.js"></script>
-  <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
+    <script src="js/framework7.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/rangy-core.js"></script>
+    <script src="js/rangy-classapplier.js"></script>
+    <script src="js/annotate.js"></script>
 </body>
 
 </html>
