@@ -42,59 +42,23 @@ var searchbar = app.searchbar.create({
   }
 });
 
-//无限下拉滚动
-// Loading flag
-var allowInfinite = true;
-
-// Last loaded index
-var lastItemIndex = $$('.list div').length;
-
-// Max items to load
-var maxItems = 240;
-
-// Append items per load
-var itemsPerLoad = 12;
-
-// Attach 'infinite' event handler
-$$('.infinite-scroll-content').on('infinite', function () {
-  // Exit, if loading in progress
-  if (!allowInfinite) return;
-
-  // Set loading flag
-  allowInfinite = false;
-
-  // Emulate 1s loading
+//下拉刷新
+// Dummy Content
+var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
+var authors = ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'];
+// Pull to refresh content
+var $ptrContent = $$('.ptr-content');
+// Add 'refresh' listener on it
+$ptrContent.on('ptr:refresh', function (e) {
+  // Emulate 2s loading
   setTimeout(function () {
-    // Reset loading flag
-    allowInfinite = true;
-
-    if (lastItemIndex >= maxItems) {
-      // Nothing more to load, detach infinite scroll events to prevent unnecessary loadings
-      app.infiniteScroll.destroy('.infinite-scroll-content');
-      // Remove preloader
-      $$('.infinite-scroll-preloader').remove();
-      return;
-    }
-
-    // Generate new items HTML
-    var html = '';
-    for (var i = lastItemIndex + 1; i <= lastItemIndex + itemsPerLoad; i++) {
-      html += 
-        '<div class="card demo-card-header-pic">'+
-          '<div style="background-image:url(images/timg.jpg)" class="card-header align-items-flex-end">Lorem Ipsum</div>'+
-          '<div class="card-content card-content-padding">'+
-            '<p class="date">Posted on January 21, 2015</p>'+
-            '<p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis. Phasellus quis nibh hendrerit...</p>'+
-          '</div>'+
-          '<div class="card-footer"><a href="#" class="link">Like</a><a href="#" class="link">Read more</a></div>'+
-        '</div>'
-        ;
-    }
-
-    // Append new items
-    $$('.list ul').append(html);
-
-    // Update last loaded index
-    lastItemIndex = $$('.list div').length;
-  }, 0);
+    var picURL = 'http://lorempixel.com/88/88/abstract/' + Math.round(Math.random() * 10);
+    var song = songs[Math.floor(Math.random() * songs.length)];
+    var author = authors[Math.floor(Math.random() * authors.length)];
+    var itemHTML ='';
+    // Prepend new list element
+    $ptrContent.find('ul').prepend(itemHTML);
+    // When loading done, we need to reset it
+    app.ptr.done(); // or e.detail();
+  }, 500);
 });

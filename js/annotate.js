@@ -49,14 +49,14 @@ function getLocation() {
   var rangeObject = getRangeObject(userSelection);
   var p = rangeObject.startContainer.parentNode;
   var i = 0;
-  // while (p = p.previousSibling) {
-  //   i++;
-  // }
-  // i = (i + 1) / 2;
-  // alert(i);
-  // alert(rangeObject.startOffset);
-  // alert(rangeObject.endOffset);
-  // alert(getString());
+  while (p = p.previousSibling) {
+    i++;
+  }
+  i = (i + 1) / 2;
+  alert(i);
+  alert(rangeObject.startOffset);
+  alert(rangeObject.endOffset);
+  alert(getString());
 }
 
 //添加批注样式
@@ -88,6 +88,12 @@ function anPaint(bton) {
     }
   }
 }
+
+//修改批注
+function anChange() {
+  console.log('132')
+  $$('change').parent().prev().children('#anPnode').text='132';
+};
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
@@ -124,6 +130,7 @@ button4.addEventListener('touchstart', function () {
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
   panel(0);
+  getLocation()  
 });
 
 var add1 = document.getElementById("add1");
@@ -144,4 +151,10 @@ add3.addEventListener('touchstart', function () {
 var add4 = document.getElementById("add4");
 add4.addEventListener('touchstart', function () {
   panel(4);
+});
+
+//修改按钮
+var change = document.getElementById("change");
+change.addEventListener('touchstart',function (){
+  anChange();
 });
