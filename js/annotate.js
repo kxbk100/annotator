@@ -13,7 +13,20 @@ function getString(n) {
 function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
-  $$('#ancontent').append('<div><p>原文：' + text + '</p><p>我的批注:' + textarea + '</p></div>')
+  $$('#ancontent').append(
+    '<div class="content-block inset anblock">' +
+    ' <div class="content-block-inner">' +
+    '<blockquote class="blockquote">' +
+    '<p>' + text + '</p>' +
+    '</blockquote>' +
+    '<p>' + textarea + '</p>' +
+    '</div >' +
+
+    ' <div class="card-footer">' +
+    '<a href="#" class="link">Like</a><a href="#" class="link">Comment</a><a href="#" class="link">Share</a>' +
+    '</div>' +
+    '</div>' +
+    '</div>');
   document.getElementById(string).value = '';
 }
 
@@ -78,10 +91,10 @@ function anPaint(bton) {
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
-button0.ontouchstart = function () {
+button0.addEventListener('touchstart', function () {
   getString(0);
   anPaint(0);
-}
+});
 
 var botton1 = document.getElementById("button1");
 button1.addEventListener('touchstart', function () {
@@ -129,6 +142,6 @@ add3.addEventListener('touchstart', function () {
 });
 
 var add4 = document.getElementById("add4");
-add4.addEventListener('touchstart',function (){
+add4.addEventListener('touchstart', function () {
   panel(4);
-}) ;
+});
