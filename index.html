@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <!-- Required meta tags-->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000">
-  <!-- Your app title -->
-  <title>首页</title>
-  <!-- Path to Framework7 Library CSS -->
-  <link rel="stylesheet" href="css/framework7.css">
-  <link rel="stylesheet" href="css/framework7-icons.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#000">
+    <!-- Your app title -->
+    <title>首页</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="css/framework7.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
 
-<body>
-  <div id="app">
-    <div class="view view-main view-init">
-      <div class="page">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="title">Search Bar</div>
-            <div class="subnavbar">
-              <!-- Searchbar with auto init -->
-              <form class="searchbar">
-                <div class="searchbar-inner">
-                  <div class="searchbar-input-wrap">
-                    <input type="search" placeholder="搜索">
-                    <i class="searchbar-icon"></i>
-                    <span class="input-clear-button"></span>
+  <body>
+    <div id="app">
+      <div class="view view-main view-init">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Search Bar</div>
+              <div class="subnavbar">
+                <!-- Searchbar with auto init -->
+                <form class="searchbar">
+                  <div class="searchbar-inner">
+                    <div class="searchbar-input-wrap">
+                      <input type="search" placeholder="搜索">
+                      <i class="searchbar-icon"></i>
+                      <span class="input-clear-button"></span>
+                    </div>
+                    <span class="searchbar-disable-button">Cancel</span>
                   </div>
-                  <span class="searchbar-disable-button">Cancel</span>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="subnavbar">
-          <div class="subnavbar-inner">
-            <div class="segmented segmented-raised">
-              <a class="button tab-link tab-link-active" href="#tab1">推荐</a>
-              <a class="button tab-link" href="#tab2">热门</a>
-              <a class="button tab-link" href="#tab3">排行</a>
+          <div class="subnavbar">
+            <div class="subnavbar-inner">
+              <div class="segmented segmented-raised">
+                <a class="button tab-link tab-link-active" href="#tab1">推荐</a>
+                <a class="button tab-link" href="#tab2">热门</a>
+                <a class="button tab-link" href="#tab3">排行</a>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- 工具栏标签 -->
-        <div class="toolbar tabbar-labels">
-          <div class="toolbar-inner">
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
-              <!-- Different icons for iOS and MD themes -->
-              <i class="icon f7-icons">home_fill</i>
-              <span class="tabbar-label">首页</span>
-            </a>
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
-              <i class="icon f7-icons">layers_fill</i>
-              <span class="tabbar-label">班级</span>
-            </a>
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
-              <i class="icon f7-icons">person_fill</i>
-              <span class="tabbar-label">我的</span>
-            </a>
-            <!-- <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
+          <!-- 工具栏标签 -->
+          <div class="toolbar tabbar-labels">
+            <div class="toolbar-inner">
+              <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
+                <!-- Different icons for iOS and MD themes -->
+                <i class="icon f7-icons">home_fill</i>
+                <span class="tabbar-label">首页</span>
+              </a>
+              <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
+                <i class="icon f7-icons">layers_fill</i>
+                <span class="tabbar-label">班级</span>
+              </a>
+              <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
+                <i class="icon f7-icons">person_fill</i>
+                <span class="tabbar-label">我的</span>
+              </a>
+              <!-- <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
               <i class="icon f7-icons ">mic_fill</i>
               <span class="tabbar-label">评价</span>
             </a>
@@ -71,114 +71,115 @@
               <i class="icon f7-icons ">compose_fill</i>
               <span class="tabbar-label">补充</span>
             </a> -->
+            </div>
           </div>
-        </div>
-        <div class="page-content ptr-content">
-          <!-- <div class="searchbar-backdrop"></div> -->
-          <div class="tabs">
-            <div class="tab tab-active" id="tab1">
-              <div class="ptr-preloader">
-                <div class="preloader"></div>
-                <div class="ptr-arrow"></div>
+          <div class="page-content ptr-content">
+            <!-- <div class="searchbar-backdrop"></div> -->
+            <div class="tabs">
+              <div class="tab tab-active" id="tab1">
+                <div class="ptr-preloader">
+                  <div class="preloader"></div>
+                  <div class="ptr-arrow"></div>
+                </div>
+                <div class="list media-list">
+                  <ul class="index">
+                    <div class="card demo-card-header-pic">
+                      <div style="background-image:url(images/timg.jpg)" class="card-header align-items-flex-end">阿里年会马云演讲全文：可以失去一切，不能失去理想</div>
+                      <div class="card-content card-content-padding">
+                        <p class="date index">话题：演讲 · 1 小时前</p>
+                        <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的 ...
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <a href="#" class="link">
+                          <i class="f7-icons size-18">heart_fill</i>514 喜欢</a>
+                        <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">没有理由拒绝成为更好的自己</div>
+                      <div class="card-content card-content-padding">
+                        <p class="date index">专栏：佳作 · 40 分钟前</p>
+                        <p>你会发现这么多年喜欢你的人还会喜欢，不喜欢你的人依旧是陌路。但自己所有的努力，只是为了成为更好的自己。别人的看法似乎没有那么重要了，至少更爱自己了 ...
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <a href="#" class="link">
+                          <i class="f7-icons size-18">heart_fill</i>1,421 喜欢</a>
+                        <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                      </div>
+                    </div>
+
+                    <div class="card demo-card-header-pic">
+                      <div style="background-image:url(images/dianying.jpg)" class="card-header align-items-flex-end">你要高雅 ——由“烂片”所想到的
+                      </div>
+                      <div class="card-content card-content-padding">
+                        <p class="date index">散文：佳作 · 3 小时前</p>
+                        <p>一直想就电影这个话题写点儿东西，可作为外行，一直没有提笔的勇气。 文题借用郭德纲“你”字系列相声。要说我写的只是我对中国电影的个人看法 ...
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <a href="#" class="link">
+                          <i class="f7-icons size-18">heart_fill</i>2,514 喜欢</a>
+                        <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">台湾作家林清玄散文精选摘抄</div>
+                      <div class="card-content card-content-padding">
+                        <p class="date index">散文：摘记 · 5小时前</p>
+                        <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人 ...
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <a href="#" class="link">
+                          <i class="f7-icons size-18">heart_fill</i>1,014 喜欢</a>
+                        <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header">一场花期一段梦</div>
+                      <div class="card-content card-content-padding">
+                        <p class="date index">散文：佳作 · 1天前</p>
+                        <p>一朵小小的木樨花在寂静中绽放，怀念的果子便要在光阴里结实。青春韶华无情流逝，承载了太多苦涩又甘甜的往昔。花瓣曼妙飞扬的时候，牵念起心中清落的记忆 ...
+                        </p>
+                      </div>
+                      <div class="card-footer">
+                        <a href="#" class="link">
+                          <i class="f7-icons size-18">heart_fill</i>6,054 喜欢</a>
+                        <a href="#" class="link">更多
+                        <i class="f7-icons size-18">bars</i>
+                      </a>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
               </div>
-              <div class="list media-list">
-                <ul class="index">
-                  <div class="card demo-card-header-pic">
-                    <div style="background-image:url(images/timg.jpg)" class="card-header align-items-flex-end">阿里年会马云演讲全文：可以失去一切，不能失去理想</div>
-                    <div class="card-content card-content-padding">
-                      <p class="date index">话题：演讲 · 1 小时前</p>
-                      <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的 ...
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <a href="#" class="link">
-                        <i class="f7-icons size-18">heart_fill</i>514 喜欢</a>
-                      <a href="#" class="link">更多
-                        <i class="f7-icons size-18">bars</i>
-                      </a>
-                    </div>
-                  </div>
 
-                  <div class="card">
-                    <div class="card-header">没有理由拒绝成为更好的自己</div>
-                    <div class="card-content card-content-padding">
-                      <p class="date index">专栏：佳作 · 40 分钟前</p>
-                      <p>你会发现这么多年喜欢你的人还会喜欢，不喜欢你的人依旧是陌路。但自己所有的努力，只是为了成为更好的自己。别人的看法似乎没有那么重要了，至少更爱自己了 ...
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <a href="#" class="link">
-                        <i class="f7-icons size-18">heart_fill</i>1,421 喜欢</a>
-                      <a href="#" class="link">更多
-                        <i class="f7-icons size-18">bars</i>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div class="card demo-card-header-pic">
-                    <div style="background-image:url(images/dianying.jpg)" class="card-header align-items-flex-end">你要高雅 ——由“烂片”所想到的
-                    </div>
-                    <div class="card-content card-content-padding">
-                      <p class="date index">散文：佳作 · 3 小时前</p>
-                      <p>一直想就电影这个话题写点儿东西，可作为外行，一直没有提笔的勇气。 文题借用郭德纲“你”字系列相声。要说我写的只是我对中国电影的个人看法 ...
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <a href="#" class="link">
-                        <i class="f7-icons size-18">heart_fill</i>2,514 喜欢</a>
-                      <a href="#" class="link">更多
-                        <i class="f7-icons size-18">bars</i>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-header">台湾作家林清玄散文精选摘抄</div>
-                    <div class="card-content card-content-padding">
-                      <p class="date index">散文：摘记 · 5小时前</p>
-                      <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人 ...
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <a href="#" class="link">
-                        <i class="f7-icons size-18">heart_fill</i>1,014 喜欢</a>
-                      <a href="#" class="link">更多
-                        <i class="f7-icons size-18">bars</i>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-header">一场花期一段梦</div>
-                    <div class="card-content card-content-padding">
-                      <p class="date index">散文：佳作 · 1天前</p>
-                      <p>一朵小小的木樨花在寂静中绽放，怀念的果子便要在光阴里结实。青春韶华无情流逝，承载了太多苦涩又甘甜的往昔。花瓣曼妙飞扬的时候，牵念起心中清落的记忆 ...
-                      </p>
-                    </div>
-                    <div class="card-footer">
-                      <a href="#" class="link">
-                        <i class="f7-icons size-18">heart_fill</i>6,054 喜欢</a>
-                      <a href="#" class="link">更多
-                        <i class="f7-icons size-18">bars</i>
-                      </a>
-                    </div>
-                  </div>
-                </ul>
+              <div class="tab" id="tab2">
+                <div class="block">
+                  <p>Donec iaculis posuere massa sed dignissim...</p>
+                </div>
               </div>
-            </div>
-
-            <div class="tab" id="tab2">
-              <div class="block">
-                <p>Donec iaculis posuere massa sed dignissim...</p>
+              <div class="tab" id="tab3">
+                <div class="block">
+                  <p>Etiam non interdum erat. Curabitur erat lacus...</p>
+                </div>
               </div>
-            </div>
-            <div class="tab" id="tab3">
-              <div class="block">
-                <p>Etiam non interdum erat. Curabitur erat lacus...</p>
+              <div class="block searchbar-not-found">
+                <div class="block-inner">无结果</div>
               </div>
-            </div>
-            <div class="block searchbar-not-found">
-              <div class="block-inner">无结果</div>
             </div>
           </div>
         </div>
@@ -189,6 +190,6 @@
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
     <script src="js/annotate.js"></script>
-</body>
+  </body>
 
 </html>
