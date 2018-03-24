@@ -116,3 +116,20 @@
 .ios .list ul:before {
     background-color: unset;
 }
+
+.ios .list .size-22 {
+    font-size: 22px;
+}
+
+.block-footer.center {
+    text-align: center;
+}
+
+.ios .navbar.homework {
+    background: white;
+    height: 35px;
+}
+
+.like {
+    margin-left: 15px;
+}
