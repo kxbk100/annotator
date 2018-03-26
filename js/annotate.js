@@ -14,16 +14,16 @@ function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
   $$('#ancontent').append(
-    '<div class="content-block inset anblock">' +
-    ' <div class="content-block-inner">' +
+    '<div class="card">' +
+    '<div class="card-content card-content">' +
     '<blockquote class="blockquote">' +
     '<p>' + text + '</p>' +
     '</blockquote>' +
-    '<p>' + textarea + '</p>' +
+    '<p  id="anPnode">' + textarea + '</p>' +
     '</div >' +
 
     ' <div class="card-footer">' +
-    '<a href="#" class="link">Like</a><a href="#" class="link">Comment</a><a href="#" class="link">Share</a>' +
+    '<a href="#" class="link" id="change">修改</a><a href="#" class="link" id="delete">删除</a>' +
     '</div>' +
     '</div>' +
     '</div>');
@@ -124,13 +124,11 @@ var botton4 = document.getElementById("button4");
 button4.addEventListener('touchstart', function () {
   getString(4);
   anPaint(4);
-  getLocation();
 });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
   panel(0);
-  getLocation()  
 });
 
 var add1 = document.getElementById("add1");

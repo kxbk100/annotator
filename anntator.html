@@ -18,6 +18,10 @@
     .ios .searchbar:after {
       background-color: white;
     }
+
+    .ios .card {
+      margin: 0.5rem 0 0 0;
+    }
   </style>
 </head>
 
@@ -41,8 +45,8 @@
       </div>
       <div class="block" id="Mynote">
         <div id="ancontent">
-          <div class="content-block inset anblock">
-            <div class="content-block-inner">
+          <div class="card">
+            <div class="card-content card-content">
               <blockquote class="blockquote">
                 <p>阿里</p>
               </blockquote>
@@ -51,6 +55,44 @@
             <div class="card-footer">
               <a href="#" class="link" id="change">修改</a>
               <a href="#" class="link" id="delete">删除</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 右侧侧边栏 -->
+    <div class="panel panel-right panel-cover anpanel">
+      <div class="subnavbar subbar" id="searchnav">
+        <!-- Searchbar with auto init -->
+        <form class="searchbar" id="search">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap" id="subwrap">
+              <input type="search" placeholder="Search">
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
+            </div>
+            <span class="searchbar-disable-button">Cancel</span>
+          </div>
+        </form>
+      </div>
+      <div class="block" id="Mynote">
+        <div id="ancontent">
+          <div class="card">
+            <div class="card-header">教师</div>
+            <div class="card-content card-content">
+              <blockquote class="blockquote">
+                <p>阿里</p>
+              </blockquote>
+              <p id="anPnode">有了野心，你才能坚持不懈、不断学习和改进，以最快的速度完善自己！</p>
+            </div>
+            <div class="card">
+              <div class="card-header">学生</div>
+              <div class="card-content card-content">
+                <blockquote class="blockquote">
+                  <p>巴巴</p>
+                </blockquote>
+                <p id="anPnode">你穷，是因为你缺乏变不可能为可能的勇气和巨大决心！</p>
+              </div>
             </div>
           </div>
         </div>
@@ -98,8 +140,10 @@
       </div>
       <!-- 内容区域 -->
       <div class="page-content">
+        <p>
+          <a class="panel-open" href="#" data-panel="right">查看他人批注</a>
+        </p>
         <div class="block" id="box">
-          <a class="link external" href="about.html">1651</a>
           <p>马云说：在创办阿里巴巴时，我请了24个朋友来我家商量，我整整讲了两个小时，他们听得稀里糊涂，我也讲得糊里糊涂。</p>
           <p>最后说到底怎么样，其中23个人说算了吧，只有一个在银行上班的朋友说你可以试试看，不行赶紧逃回来，我想了一个晚上，第二天早上决定还是干，哪怕24个人全反对我也要干。</p>
           <p>当时立即遭到了亲朋好友的强烈反对“其实最大的决心并不是我对互联网有很大的信心，而是我觉得做一件事，无论失败与成功，经历就是一种成功，你去闯一闯，不行你还可以掉头；但是你如果不做，就像晚上想想千条路，早上起来走原路，一样的道理。”</p>
