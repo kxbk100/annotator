@@ -135,3 +135,11 @@
 #anPnode {
     text-indent: 2rem;
 }
+
+.back {
+    color: #000;
+}
+
+.anblock {
+    color: slategrey;
+}
