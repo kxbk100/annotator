@@ -135,3 +135,16 @@
 #anPnode {
     text-indent: 2rem;
 }
+
+.ios .list.index {
+    margin: 0;
+}
+
+.triangle-topleft {
+    position: absolute;
+    /* top: -127px; */
+    border-top: 32px solid red;
+    border-right: 32px solid transparent;
+    z-index: 999;
+    display: inline;
+}
