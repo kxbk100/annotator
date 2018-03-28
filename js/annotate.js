@@ -89,10 +89,18 @@ function anPaint(bton) {
   }
 }
 
+//蒙板
+var anblock = document.getElementById("anpanel").className;
+console.log(anblock);
+while (anblock == "panel panel-left panel-cover anpanel panel-active") {
+  $$('txblock').addClass('anblock');
+  console.log("yes");
+}
+
 //修改批注
 function anChange() {
   console.log('132')
-  $$('change').parent().prev().children('#anPnode').text='132';
+  $$('change').parent().prev().children('#anPnode').text = '132';
 };
 
 // 底部工具栏按钮事件
@@ -153,6 +161,6 @@ add4.addEventListener('touchstart', function () {
 
 //修改按钮
 var change = document.getElementById("change");
-change.addEventListener('touchstart',function (){
+change.addEventListener('touchstart', function () {
   anChange();
 });

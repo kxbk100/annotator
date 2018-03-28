@@ -148,3 +148,11 @@
     z-index: 999;
     display: inline;
 }
+
+.back {
+    color: #000;
+}
+
+.anblock {
+    color: slategrey;
+}
