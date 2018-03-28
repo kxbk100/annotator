@@ -48,13 +48,6 @@
     min-height: 1.5rem;
 }
 
-.anblock {
-    background-color: white;
-    border: 0.1vw solid #ececec;
-    box-shadow: 0 0.1rem 0.1rem 0 rgba(0, 0, 0, 0.1);
-    margin-top: 0.5rem;
-}
-
 .anpanel {
     background-color: #ececec;
 }
@@ -132,4 +125,13 @@
 
 .like {
     margin-left: 15px;
+}
+
+.twork {
+    position: fixed;
+    top: 3rem;
+}
+
+#anPnode {
+    text-indent: 2rem;
 }
