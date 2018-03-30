@@ -43,13 +43,37 @@
 }
 
 .blockquote {
-    border-left: 6px solid #b4b4b4;
     margin: 0.2rem;
     min-height: 1.5rem;
 }
 
+.blockquote p {
+    word-wrap: break-word;
+}
+
+.bqcolor0 {
+    border-left: 6px solid rgba(240, 239, 136, 0.8);
+}
+
+.bqcolor1 {
+    border-left: 6px solid rgb(196, 28, 28);
+}
+
+.bqcolor2 {
+    border-left: 6px solid rgba(0, 0, 0, 0.8);
+}
+
+.bqcolor3 {
+    border-left: 6px solid #f89;
+}
+
+.bqcolor4 {
+    border-left: 6px solid #b4b4b4;
+}
+
 .anpanel {
     background-color: #ececec;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 .blockquote>p {
@@ -132,10 +156,6 @@
     top: 3rem;
 }
 
-#anPnode {
-    text-indent: 2rem;
-}
-
 .ios .list.index {
     margin: 0;
 }
@@ -155,4 +175,28 @@
 
 .anblock {
     color: slategrey;
+}
+
+.stitle {
+    font-size: 10px;
+}
+
+.ios .navbar .f7-icons.more {
+    font-size: 10px;
+}
+
+.cardcss {
+    padding-top: 0.2rem;
+}
+
+.cardct {
+    padding: 0 1rem;
+}
+
+.texbg {
+    position:absolute;
+    text-align: center;
+    width: 100%;
+    z-index:-1;
+    color:#999999;
 }

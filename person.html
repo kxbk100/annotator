@@ -206,7 +206,7 @@
                         <div class="list">
                             <ul>
                                 <li>
-                                    <a class="item-link list-button size-22" href="#">注册</a>
+                                    <a class="item-link list-button size-22 open-toast-icon" href="#">注册</a>
                                 </li>
                             </ul>
                             <div class="block-footer center line">
@@ -224,6 +224,20 @@
         <script src="js/rangy-core.js"></script>
         <script src="js/rangy-classapplier.js"></script>
         <script src="js/annotate.js"></script>
+        <script>
+        // Create toast with icon
+            var toastIcon = app.toast.create({
+                icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
+                text: '恭喜！注册成功',
+                position: 'center',
+                closeTimeout: 1500,
+            });
+            $$('.open-toast-icon').on('click', function () {
+                toastIcon.open();
+                setTimeout("window.location.href='index.html'", 1500);
+            });
+             
+        </script>
 </body>
 
 </html>

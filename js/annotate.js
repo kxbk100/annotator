@@ -14,17 +14,15 @@ function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
   $$('#ancontent').append(
-    '<div class="card">' +
-    '<div class="card-content card-content">' +
-    '<blockquote class="blockquote">' +
+    '<div class="card cardcss">'+
+    '<blockquote class="blockquote bqcolor'+m+'">' +
     '<p>' + text + '</p>' +
     '</blockquote>' +
+    '<div class="card-content cardct ">' +
     '<p  id="anPnode">' + textarea + '</p>' +
     '</div >' +
-
-    ' <div class="card-footer">' +
+    '<div class="card-footer">' +
     '<a href="#" class="link" id="change">修改</a><a href="#" class="link" id="delete">删除</a>' +
-    '</div>' +
     '</div>' +
     '</div>');
   document.getElementById(string).value = '';
@@ -87,14 +85,6 @@ function anPaint(bton) {
         break;
     }
   }
-}
-
-//蒙板
-var anblock = document.getElementById("anpanel").className;
-console.log(anblock);
-while (anblock == "panel panel-left panel-cover anpanel panel-active") {
-  $$('txblock').addClass('anblock');
-  console.log("yes");
 }
 
 //修改批注
@@ -164,3 +154,4 @@ var change = document.getElementById("change");
 change.addEventListener('touchstart', function () {
   anChange();
 });
+
