@@ -45,6 +45,10 @@
             background-color: white;
             opacity: 0.8;
         }
+
+        .cardcss {
+            padding-bottom: 3px;
+        }
     </style>
 </head>
 
@@ -78,10 +82,6 @@
                         <div class="card-content cardct ">
                             <p id="anPnode">阿里的发展也反应着互联网的飞快发展</p>
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="link" id="change">修改</a>
-                            <a href="#" class="link" id="delete">删除</a>
-                        </div>
                     </div>
                     <div class="card cardcss">
                         <blockquote class="blockquote bqcolor1">
@@ -90,10 +90,7 @@
                         <div class="card-content cardct ">
                             <p id="anPnode">什么是新经济体</p>
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="link" id="change">修改</a>
-                            <a href="#" class="link" id="delete">删除</a>
-                        </div>
+
                     </div>
                     <div class="card cardcss">
                         <blockquote class="blockquote bqcolor2">
@@ -101,10 +98,6 @@
                         </blockquote>
                         <div class="card-content cardct ">
                             <p id="anPnode" class="">以后我们是不是能直接从外国人开的淘宝店铺买商品呢</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="link" id="change">修改</a>
-                            <a href="#" class="link" id="delete">删除</a>
                         </div>
                     </div>
                     <div class="card cardcss">
@@ -114,10 +107,6 @@
                         <div class="card-content cardct ">
                             <p id="anPnode">阿里的成功来自所有阿里人的努力</p>
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="link" id="change">修改</a>
-                            <a href="#" class="link" id="delete">删除</a>
-                        </div>
                     </div>
                     <div class="card cardcss">
                         <blockquote class="blockquote bqcolor4">
@@ -126,16 +115,28 @@
                         <div class="card-content cardct ">
                             <p id="anPnode">这也是阿里的立足之本</p>
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="link" id="change">修改</a>
-                            <a href="#" class="link" id="delete">删除</a>
-                        </div>
                     </div>
                 </div>
+
+                <div class="block-title">评分</div>
+                <div class="list no-hairlines-md">
+                    <ul>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="请选择分数" readonly="readonly" id="demo-picker-describe" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+        
             </div>
         </div>
         <!-- 右侧侧边栏 -->
-        <div class="panel panel-right panel-cover anpanel" id="anpanel" style="">
+        <div class="panel panel-right panel-cover anpanel" id="anpanel">
             <div class="subnavbar subbar" id="searchnav">
                 <!-- Searchbar with auto init -->
                 <div class="searchbar-backdrop"></div>
@@ -199,17 +200,6 @@
                 </div>
             </div>
 
-            <!-- 工具栏 -->
-            <div class="toolbar tabbar-labels">
-                <div class="toolbar-inner">
-                    <!-- 工具栏标签 -->
-
-                    <a href="#" class="tab-link an-button popup-open" data-popup="" id="">
-                        <i class="icon f7-icons ios-only">compose_fill</i>
-                        <span class="tabbar-label">批改</span>
-                    </a>
-                </div>
-            </div>
             <!-- 内容区域 -->
             <div class="page-content">
                 <div id="txblock">
@@ -249,8 +239,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 弹出页面 -->
-
             </div>
         </div>
         <div class="popup-backdrop"></div>

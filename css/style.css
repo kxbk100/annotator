@@ -228,3 +228,15 @@
 .ios .list.class {
     margin: 0;
 }
+
+.great {
+    color: green;
+}
+
+.jsoso {
+    color: darkorange;
+}
+
+.bad {
+    color: red;
+}

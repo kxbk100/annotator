@@ -28,6 +28,9 @@ var app = new Framework7({
   dialog:{
     buttonOk:'确定',
     buttonCancel:'取消',
+  },
+  picker: {
+    toolbarCloseText: '关闭'
   }
 });
 var mainView = app.views.create('.view-main');
@@ -43,7 +46,9 @@ var searchbar = app.searchbar.create({
       console.log(query, previousQuery);
     }
   }
-});
+
+}  
+);
 
 //下拉刷新
 var $ptrContent = $$('.ptr-content');
@@ -69,8 +74,12 @@ $ptrContent.on('ptr:refresh', function (e) {
 });
 
 //打分评语
-$$('.open-prompt').on('click', function () {
-  var dialog = app.dialog.prompt('');
-  dialog.setText('请输入分数');
-  dialog.setTitle('教师打分');
+var pickerDescribe = app.picker.create({
+  inputEl: '#demo-picker-describe',
+  rotateEffect: true,
+  cols: [{
+      textAlign: 'left',
+      values: ('A B C D').split(' ')
+    },
+  ]
 });
