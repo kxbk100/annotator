@@ -25,6 +25,10 @@ var app = new Framework7({
     },
   ],
   // ... other parameters
+  dialog:{
+    buttonOk:'确定',
+    buttonCancel:'取消',
+  }
 });
 var mainView = app.views.create('.view-main');
 var $$ = Dom7;
@@ -41,3 +45,32 @@ var searchbar = app.searchbar.create({
   }
 });
 
+//下拉刷新
+var $ptrContent = $$('.ptr-content');
+// Add 'refresh' listener on it
+$ptrContent.on('ptr:refresh', function (e) {
+  // Emulate 2s loading
+  setTimeout(function () {
+    var itemHTML =''
+      // '<li class="item-content">' +
+      // '<div class="item-media"><img src="' + '" width="44"/></div>' +
+      // '<div class="item-inner">' +
+      // '<div class="item-title-row">' +
+      // '<div class="item-title">'  + '</div>' +
+      // '</div>' +
+      // '<div class="item-subtitle">'  + '</div>' +
+      // '</div>' +
+      // '</li>';
+    // Prepend new list element
+    $ptrContent.find('ul').prepend(itemHTML);
+    // When loading done, we need to reset it
+    app.ptr.done(); // or e.detail();
+  }, 500);
+});
+
+//打分评语
+$$('.open-prompt').on('click', function () {
+  var dialog = app.dialog.prompt('');
+  dialog.setText('请输入分数');
+  dialog.setTitle('教师打分');
+});
