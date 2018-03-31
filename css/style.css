@@ -199,4 +199,32 @@
     width: 100%;
     z-index:-1;
     color:#999999;
+    margin-top: 3rem;
+}
+
+.popup.annotator {
+    top: unset;
+    bottom: 0;
+    height: 60%;
+}
+
+.block.annotator {
+    margin-top: 20px;
+}
+
+.content {
+    line-height: 3.5rem;
+    margin-bottom: 0;
+}
+
+.textarea {
+    font-size: 1rem;
+}
+
+.ios .list.annotator {
+    margin: 0;
+}
+
+.ios .list.class {
+    margin: 0;
 }

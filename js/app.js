@@ -20,8 +20,8 @@ var app = new Framework7({
   // Add default routes
   routes: [
     {
-      path: '/about/',
-      url: 'about.html',
+      path: '/annotator/index/',
+      url: '/annotator/index.html',
     },
   ],
   // ... other parameters
