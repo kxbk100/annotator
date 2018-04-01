@@ -240,3 +240,8 @@
 .bad {
     color: red;
 }
+
+.subutton {
+    background-color: white;
+    margin-top: 0.1rem;
+}
