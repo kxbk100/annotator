@@ -169,7 +169,7 @@
     display: inline;
 }
 
-.back {
+.black {
     color: #000;
 }
 
@@ -244,4 +244,9 @@
 .subutton {
     background-color: white;
     margin-top: 0.1rem;
+}
+
+.markred {
+    color: red
+    
 }
