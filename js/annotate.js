@@ -155,13 +155,3 @@ change.addEventListener('touchstart', function () {
   anChange();
 });
 
-//点评提交按钮
-var subreturn = document.getElementById("subreturn");
-sub.addEventListener('touchstart',function (){
-
-});
-
-var subnext = document.getElementById("subnext");
-subnext.addEventListener('touchstart', function () {
-
-});
