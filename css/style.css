@@ -228,11 +228,11 @@ a.icon {
 }
 
 .texbg {
-    position:absolute;
+    position: absolute;
     text-align: center;
     width: 100%;
-    z-index:-1;
-    color:#999999;
+    z-index: -1;
+    color: #999999;
     margin-top: 3rem;
 }
 
@@ -282,6 +282,36 @@ a.icon {
 
 .markred {
     color: red
+}
+
+.size-30 {
+    font-size: 30px;
+}
+
+.rank {
+    position: absolute;
+    right: 40px;
+    top: 0;
+}
+
+.experience {
+    margin-top: 40px;
+}
+
+.list .margin-b1 {
+    margin: 0px 0px 1px 0px;
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+.blue {
+    color: navy;
     
 }
 
