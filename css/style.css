@@ -2,6 +2,36 @@
     color: #0084ff !important;
 }
 
+.ios .navbar {
+    height: 75px;
+    color: white;;
+}
+
+.navbar-inner {
+    top: 14px;
+}
+
+.navbar-inner.index {
+    top: 20px;
+    background-color: #f7f7f8;
+}
+
+.ios .navbar ~ *:not(.no-navbar) .page-content, .ios .navbar ~ .page-content {
+    padding-top: 75px;
+}
+
+.ios .navbar ~ .page-with-subnavbar:not(.no-navbar) .subnavbar, .ios .navbar ~ .subnavbar {
+    top: 65px;
+}
+
+.ios .navbar ~ .page-with-subnavbar:not(.no-navbar) .page-content, .ios .page-with-subnavbar .navbar ~ .page-content, .ios .navbar ~ *:not(.no-navbar) .subnavbar ~ .page-content, .ios .navbar ~ *:not(.no-navbar) .subnavbar ~ * .page-content.index {
+    padding-top: 110px;
+}
+
+a.icon {
+    color: white;
+}
+
 #box>p {
     text-indent: 2rem;
 }
@@ -29,6 +59,10 @@
 
 .ios .list.main {
     margin-top: 0;
+}
+
+.ios .navbar {
+    background: #007aff;
 }
 
 .demo-card-header-pic .card-header {
@@ -278,4 +312,29 @@
 
 .blue {
     color: navy;
+    
+}
+
+.radius {
+    border-radius: 50px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.ios .login-screen-content .login-screen-title, .ios .login-screen-content .list, .ios .login-screen-content .block.login {
+    font-size: 20px;
+}
+
+.logo {
+    margin-top: 70px;
+}
+
+.text-center {
+    text-align: center!important;
 }

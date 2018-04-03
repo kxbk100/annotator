@@ -72,7 +72,7 @@
               <li>
                 <a href="#" class="item-link item-content login-screen-open" data-login-screen=".login-screen">
                   <div class="item-media">
-                    <img src="images/weidenglu.jpg" width="80" />
+                    <img class="radius" src="images/weidenglu.jpg" width="80" />
                   </div>
                   <div class="item-inner">
                     <div class="item-title-row">
@@ -87,137 +87,309 @@
               </li>
             </ul>
           </div>
+
+          <div class="list">
+            <ul>
+              <li>
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">gear</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">设置</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">info</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">关于</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <div class="login-screen">
             <div class="view">
               <div class="page">
                 <div class="page-content login-screen-content">
-                  <div class="login-screen-title">用户登录</div>
+                  <div class="logo text-center"><img src="images/logo.png" width="75px"></div>
+                  <div class="login-screen-title login">用户登录</div>
                   <form>
-                    <div class="list">
+                    <div class="list no-hairlines-md">
                       <ul>
                         <li class="item-content item-input">
+                          <div class="item-media">
+                            <i class="icon framework7-icons">person</i>
+                          </div>
                           <div class="item-inner">
                             <div class="item-title item-label">用户名</div>
                             <div class="item-input-wrap">
-                              <input type="text" name="username" placeholder="请输入用户名">
+                              <input type="text" placeholder="请输入用户名">
+                              <span class="input-clear-button"></span>
                             </div>
                           </div>
                         </li>
                         <li class="item-content item-input">
+                          <div class="item-media">
+                            <i class="icon framework7-icons">lock</i>
+                          </div>
                           <div class="item-inner">
                             <div class="item-title item-label">密码</div>
                             <div class="item-input-wrap">
-                              <input type="password" name="password" placeholder="请输入密码">
+                              <input type="password" placeholder="请输入密码">
+                              <span class="input-clear-button"></span>
                             </div>
                           </div>
                         </li>
                       </ul>
                     </div>
-                    <div class="list">
-                      <ul>
-                        <li>
-                          <a class="item-link list-button size-22" href="#">登录</a>
-                        </li>
-                        <li>
-                          <a class="item-link list-button popup-open" href="#" data-popup=".popup-about">注册</a>
-                        </li>
-                      </ul>
-                      <div class="block-footer">
-                        <p>
-                          <a class="link login-screen-close" href="#">取消登录</a>
-                        </p>
-                      </div>
+
+                    <div class="block">
+                      <p class="row">
+                        <button class="col-85 button button-big button-fill" style="margin-left: auto;margin-right: auto;">登录</button>
+                      </p>
+                      <p class="row">
+                        <button class="col-85 button button-big button-fill color-red popup-open" style="margin-left: auto;margin-right: auto;" data-popup=".popup-about">注册</button>
+                      </p>
                     </div>
+                    <div class="text-center"><a class="link login-screen-close" href="#">取消</a></div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
           <div class="popup popup-about">
-            <div class="login-screen-title">用户注册</div>
-            <form>
-              <div class="list">
-                <ul>
-                  <li class="item-content item-input">
-                    <div class="item-inner">
-                      <div class="item-title item-label">用户名</div>
-                      <div class="item-input-wrap">
-                        <input type="text" name="username" placeholder="请输入用户名">
+            <div class="page-content login-screen-content">
+              <div class="logo text-center"><img src="images/logo.png" width="75px"></div>
+              <div class="login-screen-title login">用户注册</div>
+              <form>
+                <div class="list no-hairlines-md">
+                  <ul>
+                    <li class="item-content item-input">
+                      <div class="item-media">
+                        <i class="icon framework7-icons">person</i>
                       </div>
-                    </div>
-                  </li>
-                  <li class="item-content item-input">
-                    <div class="item-inner">
-                      <div class="item-title item-label">密码</div>
-                      <div class="item-input-wrap">
-                        <input type="password" name="password" placeholder="请输入密码">
-                      </div>
-                    </div>
-                  </li>
-                  <li class="item-content item-input">
-                    <div class="item-inner">
-                      <div class="item-title item-label">请确认密码</div>
-                      <div class="item-input-wrap">
-                        <input type="password" name="password" placeholder="请确认密码">
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="like">个人喜好</div>
-              <div class="list">
-                <ul>
-                  <li>
-                    <label class="item-checkbox item-content">
-                      <input type="checkbox" name="demo-checkbox" value="Books" checked="checked" />
-                      <i class="icon icon-checkbox"></i>
                       <div class="item-inner">
-                        <div class="item-title">散文</div>
+                        <div class="item-title item-label">用户名</div>
+                        <div class="item-input-wrap">
+                          <input type="text" placeholder="请输入用户名">
+                          <span class="input-clear-button"></span>
+                        </div>
                       </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="item-checkbox item-content">
-                      <input type="checkbox" name="demo-checkbox" value="Movies" />
-                      <i class="icon icon-checkbox"></i>
+                    </li>
+                    <li class="item-content item-input">
+                      <div class="item-media">
+                        <i class="icon framework7-icons">lock</i>
+                      </div>
                       <div class="item-inner">
-                        <div class="item-title">演讲</div>
+                        <div class="item-title item-label">密码</div>
+                        <div class="item-input-wrap">
+                          <input type="password" placeholder="请输入密码">
+                          <span class="input-clear-button"></span>
+                        </div>
                       </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="item-checkbox item-content">
-                      <input type="checkbox" name="demo-checkbox" value="Food" />
-                      <i class="icon icon-checkbox"></i>
+                    </li>
+
+                    <li class="item-content item-input">
+                      <div class="item-media">
+                        <i class="icon framework7-icons">lock</i>
+                      </div>
                       <div class="item-inner">
-                        <div class="item-title">摘记</div>
+                        <div class="item-title item-label">再次输入密码</div>
+                        <div class="item-input-wrap">
+                          <input type="password" placeholder="请再次输入密码">
+                          <span class="input-clear-button"></span>
+                        </div>
                       </div>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="item-checkbox item-content">
-                      <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                      <i class="icon icon-checkbox"></i>
-                      <div class="item-inner">
-                        <div class="item-title">专栏</div>
-                      </div>
-                    </label>
-                  </li>
-                </ul>
-              </div>
-              <div class="list">
-                <ul>
-                  <li>
-                    <a class="item-link list-button size-22 open-toast-icon" href="#">注册</a>
-                  </li>
-                </ul>
-                <div class="block-footer center line">
-                  <p>
-                    <a class="link popup-close login-screen-close" href="#">取消注册</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="block">
+                  <p class="row">
+                    <button class="col-85 button button-big button-fill popup-open" style="margin-left: auto;margin-right: auto;" data-popup=".popup-chose">下一步</button>
                   </p>
                 </div>
-              </div>
-            </form>
+                <div class="text-center"><a class="link popup-close login-screen-close" href="#">取消</a></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="popup popup-chose">
+            <div class="page-content login-screen-content">
+              <div class="logo text-center"><img src="images/logo.png" width="75px"></div>
+              <div class="login-screen-title login">请选择感兴趣的内容</div>
+              <form>
+                <div class="row">
+                  <div class="col">
+                    <div class="list">
+                      <ul>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Books" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">演讲</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Movies" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">生活</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Food" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">摘录</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">编程</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">金融</div>
+                            </div>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="list">
+                      <ul>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Books" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">设计</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Movies" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">政治</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Food" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">摘录</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">编程</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">金融</div>
+                            </div>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="list">
+                      <ul>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Books" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">演讲</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Movies" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">生活</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Food" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">摘录</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">编程</div>
+                            </div>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="item-checkbox item-content">
+                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                              <div class="item-title">金融</div>
+                            </div>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="block">
+                  <p class="row">
+                    <button class="col-85 button button-big button-fill popup-open" style="margin-left: auto;margin-right: auto;" data-popup=".popup-chose">完成</button>
+                  </p>
+                </div>
+                <div class="text-center"><a class="link popup-close login-screen-close" href="#">暂时跳过</a></div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
