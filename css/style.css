@@ -28,6 +28,15 @@
     padding-top: 110px;
 }
 
+.ios .subnavbar.annotator {
+    margin-top: 22px;
+}
+
+
+.panel.annotator {
+    padding-top: 28px;
+}
+
 a.icon {
     color: white;
 }
