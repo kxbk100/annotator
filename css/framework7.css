@@ -89,7 +89,7 @@ p {
   display: none !important;
 }
 .ios a {
-  color: #007aff;
+  color: #57a3bd;
 }
 @media all and (width: 1024px) and (height: 691px) and (orientation: landscape) {
   .ios,
@@ -115,7 +115,7 @@ p {
   color: #4cd964;
 }
 .ios .color-theme-blue a {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .color-theme-pink a {
   color: #ff2d55;
@@ -142,7 +142,7 @@ p {
   color: #4cd964;
 }
 .ios a.color-blue {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios a.color-pink {
   color: #ff2d55;
@@ -1576,7 +1576,7 @@ html.with-statusbar.device-iphone-x .panel {
 }
 .ios .tabbar a.tab-link-active,
 .ios .tabbar-labels a.tab-link-active {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .tabbar i.icon,
 .ios .tabbar-labels i.icon {
@@ -1676,7 +1676,7 @@ html.with-statusbar.device-iphone-x .panel {
 .ios .color-theme-blue .tabbar-labels a.tab-link-active,
 .ios .color-theme-blue.tabbar-labels a.tab-link-active,
 .ios .color-theme-blue.tabbar a.tab-link-active {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .color-theme-pink .tabbar a.tab-link-active,
 .ios .color-theme-pink .tabbar-labels a.tab-link-active,
@@ -1724,7 +1724,7 @@ html.with-statusbar.device-iphone-x .panel {
 }
 .ios .tabbar-labels.color-blue a.tab-link-active,
 .ios .tabbar.color-blue a.tab-link-active {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .tabbar-labels.color-pink a.tab-link-active,
 .ios .tabbar.color-pink a.tab-link-active {
@@ -3515,7 +3515,7 @@ li.list-group-title:before {
 .ios .list .list-button {
   padding: 0 15px;
   text-align: center;
-  color: #007aff;
+  color: #57a3bd;
   line-height: 44px;
 }
 .ios .list .item-content {
@@ -4120,7 +4120,7 @@ html.device-pixel-ratio-3 .ios li:last-child li .item-inner:after {
   color: #4cd964;
 }
 .ios .color-theme-blue .list-button {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .color-theme-pink .list-button {
   color: #ff2d55;
@@ -4165,7 +4165,7 @@ html.device-pixel-ratio-3 .ios li:last-child li .item-inner:after {
 .ios .links-list a.color-blue,
 .ios .list .item-link.color-blue,
 .ios .list li.color-blue .item-link {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .list .list-button.color-pink,
 .ios .list li.color-pink .list-button,
@@ -4748,7 +4748,7 @@ html.device-pixel-ratio-3 .md li:last-child li .item-inner:after {
   background-color: #4cd964;
 }
 .ios .badge.color-blue {
-  background-color: #007aff;
+  background-color: #57a3bd;
 }
 .ios .badge.color-pink {
   background-color: #ff2d55;
@@ -4868,8 +4868,8 @@ button {
   width: 100%;
 }
 .ios .button {
-  border: 1px solid #007aff;
-  color: #007aff;
+  border: 1px solid #57a3bd;
+  color: #57a3bd;
   border-radius: 5px;
   line-height: 27px;
   height: 29px;
@@ -4883,7 +4883,7 @@ button {
 }
 .ios .button.button-active,
 .ios .button.tab-link-active {
-  background: #007aff;
+  background: #57a3bd;
   color: #fff;
 }
 .ios .button.button-big,
@@ -4907,15 +4907,15 @@ button {
 .ios .button.button-small-ios.button-fill.active-state,
 .ios .button.button-small.button-fill-ios.active-state,
 .ios .button.button-small-ios.button-fill-ios.active-state {
-  color: #007aff;
-  border: 2px solid #007aff;
+  color: #57a3bd;
+  border: 2px solid #57a3bd;
   background-color: transparent;
   opacity: 1;
 }
 .ios .button.button-fill,
 .ios .button.button-fill-ios {
   color: #fff;
-  background: #007aff;
+  background: #57a3bd;
   border-color: transparent;
 }
 .ios .button.button-fill.active-state,
@@ -5016,8 +5016,8 @@ button {
   background-color: transparent;
 }
 .ios .color-theme-blue .button {
-  border-color: #007aff;
-  color: #007aff;
+  border-color: #57a3bd;
+  color: #57a3bd;
 }
 .ios .color-theme-blue .button.active-state {
   background: rgba(0, 122, 255, 0.15);
@@ -5030,19 +5030,19 @@ button {
 }
 .ios .color-theme-blue .button.button-active,
 .ios .color-theme-blue .button.tab-link-active {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-blue .button.button-fill,
 .ios .color-theme-blue .button.button-fill-ios {
-  background: #007aff;
+  background: #57a3bd;
   border-color: transparent;
 }
 .ios .color-theme-blue .button.button-small.button-fill.active-state,
 .ios .color-theme-blue .button.button-small-ios.button-fill.active-state,
 .ios .color-theme-blue .button.button-small.button-fill-ios.active-state,
 .ios .color-theme-blue .button.button-small-ios.button-fill-ios.active-state {
-  color: #007aff;
-  border: 2px solid #007aff;
+  color: #57a3bd;
+  border: 2px solid #57a3bd;
   background-color: transparent;
 }
 .ios .color-theme-pink .button {
@@ -5286,8 +5286,8 @@ button {
   background-color: transparent;
 }
 .ios .button.color-blue {
-  border-color: #007aff;
-  color: #007aff;
+  border-color: #57a3bd;
+  color: #57a3bd;
 }
 .ios .button.color-blue.active-state {
   background: rgba(0, 122, 255, 0.15);
@@ -5300,19 +5300,19 @@ button {
 }
 .ios .button.color-blue.button-active,
 .ios .button.color-blue.tab-link-active {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .button.color-blue.button-fill,
 .ios .button.color-blue.button-fill-ios {
-  background: #007aff;
+  background: #57a3bd;
   border-color: transparent;
 }
 .ios .button.color-blue.button-small.button-fill.active-state,
 .ios .button.color-blue.button-small-ios.button-fill.active-state,
 .ios .button.color-blue.button-small.button-fill-ios.active-state,
 .ios .button.color-blue.button-small-ios.button-fill-ios.active-state {
-  color: #007aff;
-  border: 2px solid #007aff;
+  color: #57a3bd;
+  border: 2px solid #57a3bd;
   background-color: transparent;
 }
 .ios .button.color-pink {
@@ -6367,7 +6367,7 @@ i.icon {
   color: #4cd964;
 }
 .ios .icon.color-blue {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .icon.color-pink {
   color: #ff2d55;
@@ -6779,7 +6779,7 @@ html.with-modal-dialog .page-content {
   font-size: 17px;
   line-height: 44px;
   text-align: center;
-  color: #007aff;
+  color: #57a3bd;
   display: block;
   position: relative;
   white-space: nowrap;
@@ -6918,7 +6918,7 @@ html.with-modal-dialog .page-content {
   color: #4cd964;
 }
 .ios .dialog-button.color-blue {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .dialog-button.color-pink {
   color: #ff2d55;
@@ -7957,7 +7957,7 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .login-screen {
   height: 57px;
   line-height: 57px;
   font-size: 20px;
-  color: #007aff;
+  color: #57a3bd;
   white-space: normal;
   text-overflow: ellipsis;
   -webkit-box-pack: center;
@@ -8109,7 +8109,7 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .login-screen {
 }
 .ios .actions-button.color-blue,
 .ios .actions-label.color-blue {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .actions-button.color-pink,
 .ios .actions-label.color-pink {
@@ -9303,19 +9303,19 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root > 
   border-radius: 2px;
 }
 .ios .progressbar span {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .progressbar-infinite:before {
   content: '';
-  background: #007aff;
+  background: #57a3bd;
   -webkit-animation: ios-progressbar-infinite 1s linear infinite;
   animation: ios-progressbar-infinite 1s linear infinite;
 }
 .ios .progressbar-infinite.color-multi:before {
   width: 400%;
-  background-image: -webkit-gradient(linear, left top, right top, from(#4cd964), color-stop(#5ac8fa), color-stop(#007aff), color-stop(#34aadc), color-stop(#5856d6), color-stop(#ff2d55), color-stop(#5856d6), color-stop(#34aadc), color-stop(#007aff), color-stop(#5ac8fa), to(#4cd964));
-  background-image: -webkit-linear-gradient(left, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55, #5856d6, #34aadc, #007aff, #5ac8fa, #4cd964);
-  background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55, #5856d6, #34aadc, #007aff, #5ac8fa, #4cd964);
+  background-image: -webkit-gradient(linear, left top, right top, from(#4cd964), color-stop(#5ac8fa), color-stop(#57a3bd), color-stop(#34aadc), color-stop(#5856d6), color-stop(#ff2d55), color-stop(#5856d6), color-stop(#34aadc), color-stop(#57a3bd), color-stop(#5ac8fa), to(#4cd964));
+  background-image: -webkit-linear-gradient(left, #4cd964, #5ac8fa, #57a3bd, #34aadc, #5856d6, #ff2d55, #5856d6, #34aadc, #57a3bd, #5ac8fa, #4cd964);
+  background-image: linear-gradient(to right, #4cd964, #5ac8fa, #57a3bd, #34aadc, #5856d6, #ff2d55, #5856d6, #34aadc, #57a3bd, #5ac8fa, #4cd964);
   background-size: 25% 100%;
   background-repeat: repeat-x;
   -webkit-animation: ios-progressbar-infinite-multicolor 3s linear infinite;
@@ -9334,10 +9334,10 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root > 
   background: #4cd964;
 }
 .ios .color-theme-blue .progressbar span {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-blue .progressbar-infinite:before {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-pink .progressbar span {
   background: #ff2d55;
@@ -9388,10 +9388,10 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root > 
   background: #4cd964;
 }
 .ios .progressbar.color-blue span {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .progressbar-infinite.color-blue:before {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .progressbar.color-pink span {
   background: #ff2d55;
@@ -10141,7 +10141,7 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root > 
 .ios .swipeout-actions-right > span.color-blue,
 .ios .swipeout-actions-left > div.color-blue,
 .ios .swipeout-actions-right > div.color-blue {
-  background-color: #007aff;
+  background-color: #57a3bd;
 }
 .ios .swipeout-actions-left > a.color-pink,
 .ios .swipeout-actions-right > a.color-pink,
@@ -12352,7 +12352,7 @@ input[type="button"].md .card-footer a.link {
   background: #4cd964;
 }
 .ios .chip.color-blue {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .chip.color-pink {
   background: #ff2d55;
@@ -13279,7 +13279,7 @@ label.item-checkbox.disabled,
 .ios label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox,
 .ios .checkbox input[type="checkbox"]:checked ~ i {
   border: none;
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox:after,
 .ios .checkbox input[type="checkbox"]:checked ~ i:after {
@@ -13314,7 +13314,7 @@ label.item-checkbox.disabled,
 }
 .ios .color-theme-blue label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox,
 .ios .color-theme-blue .checkbox input[type="checkbox"]:checked ~ i {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-pink label.item-checkbox input[type="checkbox"]:checked ~ .icon-checkbox,
 .ios .color-theme-pink .checkbox input[type="checkbox"]:checked ~ i {
@@ -13350,7 +13350,7 @@ label.item-checkbox.disabled,
 }
 .ios label.item-checkbox.color-blue input[type="checkbox"]:checked ~ .icon-checkbox,
 .ios .checkbox.color-blue input[type="checkbox"]:checked ~ i {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios label.item-checkbox.color-pink input[type="checkbox"]:checked ~ .icon-checkbox,
 .ios .checkbox.color-pink input[type="checkbox"]:checked ~ i {
@@ -13673,7 +13673,7 @@ label.item-radio.disabled,
   background-size: 13px 10px;
 }
 .ios .radio input[type="radio"]:checked ~ .icon-radio {
-  border-color: #007aff;
+  border-color: #57a3bd;
 }
 .ios label.item-radio .item-content .item-media,
 .ios label.item-radio.item-content .item-media {
@@ -13729,7 +13729,7 @@ label.item-radio.disabled,
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2010'%3E%3Cpolygon%20fill%3D'%23007aff'%20points%3D'11.6%2C0%204.4%2C7.2%201.4%2C4.2%200%2C5.6%204.4%2C10%204.4%2C10%204.4%2C10%2013%2C1.4%20'%2F%3E%3C%2Fsvg%3E");
 }
 .ios .color-theme-blue .radio input[type="radio"]:checked ~ .icon-radio {
-  border-color: #007aff;
+  border-color: #57a3bd;
 }
 .ios .color-theme-pink label.item-radio input[type="radio"]:checked ~ .icon-radio,
 .ios .color-theme-pink label.item-radio input[type="radio"]:checked ~ * .icon-radio,
@@ -13801,7 +13801,7 @@ label.item-radio.disabled,
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2010'%3E%3Cpolygon%20fill%3D'%23007aff'%20points%3D'11.6%2C0%204.4%2C7.2%201.4%2C4.2%200%2C5.6%204.4%2C10%204.4%2C10%204.4%2C10%2013%2C1.4%20'%2F%3E%3C%2Fsvg%3E");
 }
 .ios .radio.color-blue input[type="radio"]:checked ~ .icon-radio {
-  border-color: #007aff;
+  border-color: #57a3bd;
 }
 .ios label.item-radio.color-pink input[type="radio"]:checked ~ .icon-radio,
 .ios label.item-radio.color-pink input[type="radio"]:checked ~ * .icon-radio,
@@ -14324,7 +14324,7 @@ label.item-radio.disabled,
   background-color: #4cd964;
 }
 .ios .toggle.color-blue input[type="checkbox"]:checked + .toggle-icon {
-  background-color: #007aff;
+  background-color: #57a3bd;
 }
 .ios .toggle.color-pink input[type="checkbox"]:checked + .toggle-icon {
   background-color: #ff2d55;
@@ -14553,7 +14553,7 @@ label.item-radio.disabled,
   height: 1px;
 }
 .ios .range-bar-active {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .range-knob-wrap {
   height: 28px;
@@ -14589,7 +14589,7 @@ label.item-radio.disabled,
   background-color: #4cd964;
 }
 .ios .color-theme-blue .range-slider .range-bar-active {
-  background-color: #007aff;
+  background-color: #57a3bd;
 }
 .ios .color-theme-pink .range-slider .range-bar-active {
   background-color: #ff2d55;
@@ -14616,7 +14616,7 @@ label.item-radio.disabled,
   background-color: #4cd964;
 }
 .ios .range-slider.color-blue .range-bar-active {
-  background-color: #007aff;
+  background-color: #57a3bd;
 }
 .ios .range-slider.color-pink .range-bar-active {
   background-color: #ff2d55;
@@ -17303,13 +17303,13 @@ label.item-radio.disabled,
   background: #e3e3e3;
 }
 .ios .calendar-day.calendar-day-has-events span:after {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .calendar-day.calendar-day-has-events.calendar-day-selected span:after {
   background-color: #fff;
 }
 .ios .calendar-day.calendar-day-selected span {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .calendar-day span {
   width: 30px;
@@ -17464,7 +17464,7 @@ label.item-radio.disabled,
 }
 .ios .color-theme-blue .calendar-day.calendar-day-selected span,
 .ios .color-blue .calendar-day.calendar-day-selected span {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-pink .calendar-day.calendar-day-selected span,
 .ios .color-pink .calendar-day.calendar-day-selected span {
@@ -18725,7 +18725,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
   background: rgba(0, 122, 255, 0.1);
 }
 .ios .data-table-title-selected {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .data-table tbody td:before {
   content: '';
@@ -18824,7 +18824,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
 }
 .ios .color-theme-blue .data-table-title-selected,
 .ios .color-blue .data-table-title-selected {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .color-theme-pink .data-table-header-selected,
 .ios .data-table-header-selected.color-pink {
@@ -19433,7 +19433,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
 }
 .ios .fab > a,
 .ios .fab-buttons a {
-  background: #007aff;
+  background: #57a3bd;
   width: 50px;
   height: 50px;
   -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
@@ -19483,7 +19483,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
 }
 .ios .fab-morph {
   border-radius: 25px;
-  background: #007aff;
+  background: #57a3bd;
   -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -19528,7 +19528,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
 .ios .color-theme-blue .fab-buttons a,
 .ios .color-theme-blue.fab > a,
 .ios .color-theme-blue.fab-buttons a {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-blue .fab > a.active-state,
 .ios .color-theme-blue .fab-buttons a.active-state,
@@ -19538,7 +19538,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
 }
 .ios .color-theme-blue .fab-morph,
 .ios .color-theme-blue.fab-morph {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-theme-pink .fab > a,
 .ios .color-theme-pink .fab-buttons a,
@@ -19675,7 +19675,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
 .ios .fab-buttons.color-blue a,
 .ios .fab > a.color-blue,
 .ios .fab .fab-buttons > a.color-blue {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .fab.color-blue > a.active-state,
 .ios .fab.color-blue .fab-buttons > a.active-state,
@@ -19685,7 +19685,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
   background: #0066d6;
 }
 .ios .fab-morph.color-blue {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .fab.color-pink > a,
 .ios .fab.color-pink .fab-buttons > a,
@@ -20393,7 +20393,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
   transform: translate3d(0, 0, 0);
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
-  color: #007aff;
+  color: #57a3bd;
   display: none;
 }
 .ios .searchbar-disable-button.active-state {
@@ -20468,7 +20468,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active):hover:
   color: #4cd964;
 }
 .ios .color-theme-blue .searchbar-disable-button {
-  color: #007aff;
+  color: #57a3bd;
 }
 .ios .color-theme-pink .searchbar-disable-button {
   color: #ff2d55;
@@ -22305,10 +22305,10 @@ button.swiper-pagination-bullet {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
 }
 .ios .swiper-pagination-bullet-active {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .swiper-button-prev.color-red,
 .ios .swiper-container-rtl .swiper-button-next.color-red,
@@ -22380,7 +22380,7 @@ button.swiper-pagination-bullet {
 }
 .ios .color-blue .swiper-pagination-bullet-active,
 .ios .color-theme-blue .swiper-pagination-bullet-active {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .color-blue .swiper-pagination-progressbar,
 .ios .color-theme-blue .swiper-pagination-progressbar,
@@ -22392,7 +22392,7 @@ button.swiper-pagination-bullet {
 .ios .color-theme-blue .swiper-pagination-progressbar .swiper-pagination-progressbar-fill,
 .ios .color-blue.swiper-pagination-progressbar .swiper-pagination-progressbar-fill,
 .ios .color-theme-blue.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: #007aff;
+  background: #57a3bd;
 }
 .ios .swiper-button-prev.color-pink,
 .ios .swiper-container-rtl .swiper-button-next.color-pink,
@@ -24167,13 +24167,13 @@ iframe#viAd {
   border-color: #4cd964 !important;
 }
 .ios .text-color-blue {
-  color: #007aff !important;
+  color: #57a3bd !important;
 }
 .ios .bg-color-blue {
-  background-color: #007aff !important;
+  background-color: #57a3bd !important;
 }
 .ios .border-color-blue {
-  border-color: #007aff !important;
+  border-color: #57a3bd !important;
 }
 .ios .text-color-pink {
   color: #ff2d55 !important;

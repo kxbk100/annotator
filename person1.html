@@ -72,16 +72,32 @@
               <li>
                 <a href="#" class="item-link item-content login-screen-open" data-login-screen=".login-screen">
                   <div class="item-media">
-                    <img class="radius" src="images/weidenglu.jpg" width="80" />
+                    <img class="radius" src="images/login.jpg" width="80" />
                   </div>
                   <div class="item-inner">
                     <div class="item-title-row">
-                      <div class="item-title">未登录</div>
+                      <div class="item-title">胡一天</div>
                     </div>
                     <div class="item-subtitle">
                       <p> </p>
                     </div>
-                    <div class="item-text">登录查看更多信息</div>
+                    <div class="item-text">hyt@foxmail.com</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="block-title">历史</div>
+          <div class="list">
+            <ul>
+              <li>
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">time</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">我批注过的文章</div>
                   </div>
                 </a>
               </li>
@@ -101,8 +117,19 @@
                   </div>
                 </a>
               </li>
+              <li>
+                <a href="person.html" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">info</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">退出登录</div>
+                  </div>
+                </a>
+              </li>
             </ul>
           </div>
+
           <div class="login-screen">
             <div class="view">
               <div class="page">
@@ -375,7 +402,7 @@
 
                 <div class="block">
                   <p class="row">
-                    <button class="col-85 button button-big button-fill" style="margin-left: auto;margin-right: auto;"><a href="person1.html" class="icon">完成</a></button>
+                    <button class="col-85 button button-big button-fill" style="margin-left: auto;margin-right: auto;"><a href="person1.html">完成</a></button>
                   </p>
                 </div>
                 <div class="text-center"><a class="link popup-close login-screen-close" href="#">暂时跳过</a></div>
@@ -384,26 +411,25 @@
           </div>
         </div>
       </div>
-    </div>
-    <script src="js/framework7.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
-    <script src="js/annotate.js"></script>
-    <script>
-      // Create toast with icon
-      var toastIcon = app.toast.create({
-        icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
-        text: '恭喜！注册成功',
-        position: 'center',
-        closeTimeout: 1500,
-      });
-      $$('.open-toast-icon').on('click', function () {
-        toastIcon.open();
-        setTimeout("window.location.href='index.html'", 1500);
-      });
+      <script src="js/framework7.js"></script>
+      <script src="js/app.js"></script>
+      <script src="js/rangy-core.js"></script>
+      <script src="js/rangy-classapplier.js"></script>
+      <script src="js/annotate.js"></script>
+      <script>
+        // Create toast with icon
+        var toastIcon = app.toast.create({
+          icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
+          text: '恭喜！注册成功',
+          position: 'center',
+          closeTimeout: 1500,
+        });
+        $$('.open-toast-icon').on('click', function () {
+          toastIcon.open();
+          setTimeout("window.location.href='index.html'", 1500);
+        });
 
-    </script>
+      </script>
   </body>
 
 </html>

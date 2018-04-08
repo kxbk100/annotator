@@ -1,5 +1,5 @@
 .an-button.active-state {
-    color: #0084ff !important;
+    color: #57a3bd !important;
 }
 
 .ios .navbar {
@@ -32,6 +32,9 @@
     margin-top: 22px;
 }
 
+.ios .list .item-content.class {
+    background-color: #f0f0f0;
+}
 
 .panel.annotator {
     padding-top: 28px;
@@ -70,8 +73,12 @@ a.icon {
     margin-top: 0;
 }
 
+.ios .tabbar a.tab-link-active, .ios .tabbar-labels a.tab-link-active {
+    color: #57a3bd;
+}
+
 .ios .navbar {
-    background: #007aff;
+    background-color: #57a3bd;
 }
 
 .demo-card-header-pic .card-header {
