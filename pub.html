@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#000">
+    <!-- Your app title -->
+    <title>班级</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="css/framework7.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    .ios .list textarea.resizable {
+        height: 250px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="view view-main view-init">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="left">
+                        <a href="classteacher.html" class="item-link icon external">
+                            <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+                        </a>
+                    </div>
+                    <div class="title">发布作业</div>
+                    <div class="right"></div>
+                </div>
+            </div>
+            <div class=" page-content">
+                <form class="list" id="my-form">
+                    <ul>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">题目</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="name" placeholder="请输入题目">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-input">
+                            <div class="item-media">
+                                <i class="icon demo-list-icon"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title item-label">内容</div>
+                                <div class="item-input-wrap">
+                                    <textarea class="resizable" placeholder="输入作业内容"></textarea>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">截至日期</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="选择截至日期" readonly="readonly" id="demo-calendar-modal" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+                <div class="block block-strong row">
+                    <div class="col">
+                        <a class="button convert-form-to-data" href="#">发布</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/framework7.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/rangy-core.js"></script>
+        <script src="js/rangy-classapplier.js"></script>
+        <script src="js/annotate.js"></script>
+        <script>
+            var calendarModal = app.calendar.create({
+                inputEl: '#demo-calendar-modal',
+                openIn: 'customModal',
+                header: true,
+                footer: true,
+                
+            });
+        </script>
+        <script>
+            $$('.convert-form-to-data').on('click', function () {
+                var formData = app.form.convertToData('#my-form');
+                alert(JSON.stringify(formData));
+            });
+        </script>
+</body>
+
+</html>

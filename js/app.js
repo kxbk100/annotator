@@ -31,6 +31,9 @@ var app = new Framework7({
   },
   picker: {
     toolbarCloseText: '关闭'
+  },
+  calendar:{
+  toolbarCloseText:'完成'
   }
 });
 var mainView = app.views.create('.view-main');
