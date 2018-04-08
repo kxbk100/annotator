@@ -60,8 +60,8 @@
     <!-- App root element -->
     <div id="app" class="framework7-root">
         <!-- 左侧边栏 -->
-        <div class="panel-backdrop" style=""></div>
-        <div class="panel panel-left panel-cover anpanel" style="">
+        <div class="panel-backdrop"></div>
+        <div class="panel panel-left panel-cover anpanel">
             <div class="subnavbar subbar" id="searchnav">
                 <!-- Searchbar with auto init -->
                 <div class="searchbar-backdrop"></div>
@@ -129,7 +129,7 @@
                             <div class="item-content item-input">
                                 <div class="item-inner">
                                     <div class="item-input-wrap">
-                                        <input type="text" placeholder="请选择分数" readonly="readonly" id="demo-picker-describe mark" />
+                                        <input type="text" placeholder="选择分数" readonly="readonly" id="demo-picker-device" />
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                         </li>
                     </ul>
                     <div class="row subutton">
-                        <a href="homework.html" class="link external">
+                        <a href="homework2.html" class="link external">
                             <button class="button col subreturn">提交并返回</button>
                         </a>
                         <a href="#" class="link external">
@@ -204,12 +204,12 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="left">
-                        <a href="#" class="item-link" onclick="javascript :history.back(-1);">
-                            <i class="icon icon-back"></i>
+                        <a href="#" class="item-link icon" onclick="javascript :history.back(-1);">
+                            <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
                         </a>
                     </div>
                     <div class="title">可以失去一切，不能失去理想
-                        <div class="stitle">批注人：艾小雨
+                        <div class="stitle">批注人：曹清德
                         </div>
                     </div>
                     <div class="right">
@@ -274,6 +274,15 @@
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
     <script src="js/annotate.js"></script>
+    <script>
+        var pickerDevice = app.picker.create({
+            inputEl: '#demo-picker-device',
+            cols: [{
+                textAlign: 'center',
+                values: ['A', 'B', 'C', 'D']
+            }]
+        });
+    </script>
 </body>
 
 </html>
