@@ -256,7 +256,7 @@
           </div>
           <div id="txblock">
             <div class="block" id="box">
-              <p>我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人。</p>
+              <p class="delete">我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人。</p>
               <p>18年来变化最大的，是我们从18个人变成了54421名员工，70个不同的国家，我们在21个国家和地区有自己的办事处。18年以来我们最大的成就是拥有了大家，从18个人到了5.4万多人，我们最大的财富也是因为有了你们，我们最大的资产就是因为有了5.4万多名员工。</p>
               <p>我去年一年在空中飞了870个小时，但是去年一年，阿里人在空中总共飞了68万个小时，相当于77年的时间在空中，谢谢大家的付出。</p>
               <p>
@@ -286,6 +286,28 @@
           </div>
         </div>
         <!-- 弹出页面 -->
+      <div class="popup popup5 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">help_fill</i> 修改质疑批注</p>
+          <blockquote class="blockquote xg1">
+            <p id="old"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入质疑批注" id="xg" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="xgadd">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+
+
         <div class="popup popup0 annotator">
           <div class="block annotator">
             <p>
@@ -397,6 +419,30 @@
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
     <script src="js/annotate.js"></script>
+    <script>
+      function del() {
+        $$('.delete').html("我们要感谢这个时代，感谢互联网，感谢中国中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人。");
+        $$('.cardcss').remove();
+      }
+
+      function xiugai() {
+        var x = $$('.p1').text();
+        var t = $$('.bqcolor1>p').text()
+        $$('#old').text(t);
+        $$('#xg').val(x);
+      }
+
+      var ad = document.getElementById("xgadd");
+      ad.addEventListener('touchstart', function () {
+        add();
+      });
+
+      function add() {
+        var nw = $$('#xg').val();
+        $$('.p1').text(nw);
+      }
+    </script>
+
   </body>
 
 </html>
