@@ -19,10 +19,10 @@ function panel(m) {
     '<p>' + text + '</p>' +
     '</blockquote>' +
     '<div class="card-content cardct ">' +
-    '<p  id="anPnode">' + textarea + '</p>' +
+    '<p  id="anPnode" class="p'+m+'">' + textarea + '</p>' +
     '</div >' +
     '<div class="card-footer">' +
-    '<a href="#" class="link" id="change">修改</a><a href="#" class="link" id="delete">删除</a>' +
+    '<a href="#" class="link popup-open" id="change" data-popup=".popup5" onclick="xiugai()">修改</a><a href="#" class="link" id="delete" onclick="del()">删除</a>' +
     '</div>' +
     '</div>');
   document.getElementById(string).value = '';
