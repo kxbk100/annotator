@@ -354,3 +354,17 @@ a.icon {
 .text-center {
     text-align: center!important;
 }
+
+.col75 {
+    width: 75%;
+}
+
+.size-13 {
+    font-size: 13px;
+    height: 10px;
+    margin-right: 6px;
+}
+
+.ios .block.annotator {
+    margin-bottom: 0;
+}
