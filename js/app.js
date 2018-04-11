@@ -10,7 +10,7 @@ var app = new Framework7({
   // App root element
   root: '#app',
   // App Name
-  name: 'My App',
+  name: '课外阅读智能批注系统',
   // App id
   id: 'com.myapp.test',
   // Enable swipe panel
@@ -25,15 +25,15 @@ var app = new Framework7({
     },
   ],
   // ... other parameters
-  dialog:{
-    buttonOk:'确定',
-    buttonCancel:'取消',
+  dialog: {
+    buttonOk: '确定',
+    buttonCancel: '取消',
   },
   picker: {
     toolbarCloseText: '关闭'
   },
-  calendar:{
-  toolbarCloseText:'完成'
+  calendar: {
+    toolbarCloseText: '完成'
   }
 });
 var mainView = app.views.create('.view-main');
@@ -50,7 +50,7 @@ var searchbar = app.searchbar.create({
     }
   }
 
-}  
+}
 );
 
 //下拉刷新
@@ -59,16 +59,16 @@ var $ptrContent = $$('.ptr-content');
 $ptrContent.on('ptr:refresh', function (e) {
   // Emulate 2s loading
   setTimeout(function () {
-    var itemHTML =''
-      // '<li class="item-content">' +
-      // '<div class="item-media"><img src="' + '" width="44"/></div>' +
-      // '<div class="item-inner">' +
-      // '<div class="item-title-row">' +
-      // '<div class="item-title">'  + '</div>' +
-      // '</div>' +
-      // '<div class="item-subtitle">'  + '</div>' +
-      // '</div>' +
-      // '</li>';
+    var itemHTML = ''
+    // '<li class="item-content">' +
+    // '<div class="item-media"><img src="' + '" width="44"/></div>' +
+    // '<div class="item-inner">' +
+    // '<div class="item-title-row">' +
+    // '<div class="item-title">'  + '</div>' +
+    // '</div>' +
+    // '<div class="item-subtitle">'  + '</div>' +
+    // '</div>' +
+    // '</li>';
     // Prepend new list element
     $ptrContent.find('ul').prepend(itemHTML);
     // When loading done, we need to reset it
@@ -81,8 +81,8 @@ var pickerDescribe = app.picker.create({
   inputEl: '#demo-picker-describe',
   rotateEffect: true,
   cols: [{
-      textAlign: 'left',
-      values: ('A B C D').split(' ')
-    },
+    textAlign: 'left',
+    values: ('A B C D').split(' ')
+  },
   ]
 });

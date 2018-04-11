@@ -53,10 +53,6 @@
       .ios .list .item-media+.item-inner {
         margin-left: 0;
       }
-
-      .mark {
-        font-size: 18px;
-      }
     </style>
   </head>
 
@@ -64,6 +60,8 @@
     <!-- App root element -->
     <div id="app" class="framework7-root">
       <!-- 左侧边栏 -->
+      <div class="panel-backdrop"></div>
+
       <div class="panel panel-left panel-cover anpanel annotator">
         <div class="subnavbar subbar annotator" id="searchnav">
           <!-- Searchbar with auto init -->
@@ -90,7 +88,7 @@
               </div>
             </div>
             <div class="card cardcss">
-              <blockquote class="blockquote bqcolor2">
+              <blockquote class="blockquote bqcolor1">
                 <p>它已经是全世界第21大经济体。</p>
               </blockquote>
               <div class="card-content cardct ">
@@ -126,170 +124,39 @@
         </div>
       </div>
       <!-- 右侧侧边栏 -->
-      <div class="panel panel-right panel-cover anpanel annotator" id="anpanel">
-
-        <div class="subnavbar subbar annotator" id="searchnav">
+      <div class="panel panel-right panel-cover anpanel" id="anpanel">
+        <div class="subnavbar subbar" id="searchnav">
           <!-- Searchbar with auto init -->
+          <div class="searchbar-backdrop"></div>
           <form class="searchbar" id="search">
             <div class="searchbar-inner">
               <div class="searchbar-input-wrap" id="subwrap">
-                <input type="search" placeholder="搜索">
+                <input type="search" placeholder="Search">
                 <i class="searchbar-icon"></i>
                 <span class="input-clear-button"></span>
               </div>
-              <span class="searchbar-disable-button">取消</span>
+              <span class="searchbar-disable-button">Cancel</span>
             </div>
           </form>
         </div>
-
-        <div class="block block-strong annotator">
-          <p>批注来源：
-            <label class="checkbox"><input type="checkbox" name="student" checked="checked">
-              <i class="icon-checkbox"></i>
-            </label> 学生
-            <label class="checkbox"><input type="checkbox" name="teacher" checked="checked">
-              <i class="icon-checkbox"></i>
-            </label> 教师</p>
-        </div>
-
-        <div class="block" id="Mynote" style="margin-top: 0;">
+        <div class="block" id="Mynote">
           <div id="ancontent">
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor2">
-                <p>我们要感谢这个时代</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">大家好好品品马云爸爸的演讲</p>
+            <div class="card">
+              <div class="card-header">教师</div>
+              <div class="card-content card-content">
+                <blockquote class="blockquote">
+                  <p>阿里</p>
+                </blockquote>
+                <p id="anPnode">有了野心，你才能坚持不懈、不断学习和改进，以最快的速度完善自己！</p>
               </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>428 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张晓飞</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="student">
-              <blockquote class="blockquote bqcolor1">
-                <p>今天的阿里巴巴已经</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">一个新型的经济体以前的经济体以地理位置界定</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>421 赞同
-                </a>
-                <a href="#" class="link" id="change">冯天祥</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor0">
-                <p>再过19年，我们希望能够打造全世界第5大经济体</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">我们更希望能够为1000万家中小企业创造盈利的平台</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>401 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：波波</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor3">
-                <p>这个经济体创造的价值就是能够让世界更加普惠</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">快乐的成长。经济体</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>384 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张晓飞</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor3">
-                <p>的公司，已</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">全球买， 全球卖，全球付，全球运和全球邮</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>471 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张晓飞</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor4">
-                <p>这个经济体创造的价值就是能够让世界更加普惠</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">更加健康和快乐的成长</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>411 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张凡</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="student">
-              <blockquote class="blockquote bqcolor3">
-                <p>18年来变化最大的</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">变化最大的是什么？</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>11 赞同
-                </a>
-                <a href="#" class="link" id="change">张艺凡</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="student">
-              <blockquote class="blockquote bqcolor3">
-                <p>我去年一年在空中飞了870个小时，但是去年一年</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">一年有360天</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>21 赞同
-                </a>
-                <a href="#" class="link" id="change">王晨韬</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor4">
-                <p>我们要感谢这个时代</p>
-              </blockquote>
-              <div class="card-content cardct">
-
-
-                <p id="anPnode">令人敬佩的企业家！
-                </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>28 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张锐</a>
+              <div class="card">
+                <div class="card-header">学生</div>
+                <div class="card-content card-content">
+                  <blockquote class="blockquote">
+                    <p>巴巴</p>
+                  </blockquote>
+                  <p id="anPnode">你穷，是因为你缺乏变不可能为可能的勇气和巨大决心！</p>
+                </div>
               </div>
             </div>
           </div>
@@ -308,11 +175,9 @@
               </a>
             </div>
             <div class="title">可以失去一切，不能失去理想
-              <div class="mark">等第：
-                <span class="markred">A</span>
+              <div class="stitle">批注人：张宇宙老师，5 个批注
               </div>
             </div>
-
             <div class="right">
               <a href="#" class="link panel-open" data-panel="right">
                 <i class="icon f7-icons">more</i>
@@ -320,38 +185,7 @@
             </div>
           </div>
         </div>
-        <div class="toolbar tabbar-labels">
-          <div class="toolbar-inner">
-            <a href="#" class="link sheet-open" data-sheet=".my-sheet">
-              <!-- Different icons for iOS and MD themes -->
-              <span>查看教师点评</span>
-            </a>
-            <a href="#" class="tab-link an-button panel-open" data-panel="right" id="button5">
-              <i class="icon f7-icons ios-only">forward_fill
-                <span class="badge color-red">9</span>
-              </i>
-              <span class="tabbar-label">所有批注</span>
-            </a>
-          </div>
-        </div>
 
-        <!-- 查看点评 -->
-        <div class="sheet-modal my-sheet">
-          <div class="toolbar">
-            <div class="toolbar-inner">
-              <div class="left"></div>
-              <div class="right">
-                <a class="link sheet-close" href="#">关闭</a>
-              </div>
-            </div>
-          </div>
-          <div class="sheet-modal-inner">
-            <div class="block">
-              <h4>教师点评：</h4>
-              <p>思路清晰，有独到的见解，并且在原文的基础上有自己的思维延伸。继续努力，期待见到你更精彩的批注</p>
-            </div>
-          </div>
-        </div>
         <!-- 内容区域 -->
         <div class="page-content">
           <div id="txblock">
@@ -399,6 +233,7 @@
           </div>
         </div>
       </div>
+      <div class="popup-backdrop"></div>
     </div>
     <script src="js/framework7.js"></script>
     <script src="js/app.js"></script>
@@ -406,20 +241,12 @@
     <script src="js/rangy-classapplier.js"></script>
     <script src="js/annotate.js"></script>
     <script>
-      $$("input[name='teacher']").change(function () {
-        if (!$$(this).is(':checked')) {
-          $$("[id=teacher]").css('display', 'none');
-        } else {
-          $$("[id=teacher]").css('display', 'block');
-        }
-      });
-
-      $$("input[name='student']").change(function () {
-        if (!$$(this).is(':checked')) {
-          $$("[id=student]").css('display', 'none');
-        } else {
-          $$("[id=student]").css('display', 'block');
-        }
+      var pickerDevice = app.picker.create({
+        inputEl: '#demo-picker-device',
+        cols: [{
+          textAlign: 'center',
+          values: ['A', 'B', 'C', 'D']
+        }]
       });
     </script>
   </body>
