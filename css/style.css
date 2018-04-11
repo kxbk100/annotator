@@ -304,12 +304,6 @@ a.icon {
     font-size: 30px;
 }
 
-.rank {
-    position: absolute;
-    right: 40px;
-    top: 0;
-}
-
 .experience {
     margin-top: 40px;
 }
@@ -367,4 +361,39 @@ a.icon {
 
 .ios .block.annotator {
     margin-bottom: 0;
+}
+
+.size-40 {
+font-size: 40px;
+}
+
+.textcenter {
+    text-align: center;
+}
+
+.myrank {
+    font-size: 30px;
+}
+
+.size-20 {
+    font-size: 20px;
+}
+
+.rank0 {
+    margin: 0 15px;
+}
+
+.rank {
+    position: absolute;
+    right: 20px;
+}
+
+.rank2 {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+}
+
+.email {
+    margin-top: 10px;
 }
