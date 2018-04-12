@@ -403,3 +403,15 @@ font-size: 40px;
 .size-14 {
     font-size: 14px;
 }
+
+.title {
+    margin-left: 15px;
+}
+
+.margin-top-30 {
+margin-top: -30px;
+}
+
+.margin-top10 {
+    margin-top: 10px;
+}
