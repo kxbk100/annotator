@@ -129,7 +129,7 @@ a.icon {
 .blockquote>p {
     margin: 0.1rem 0 0 0.5rem;
     color: #a6a6a6;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 #Mynote {
@@ -396,4 +396,8 @@ font-size: 40px;
 
 .email {
     margin-top: 10px;
+}
+
+.size-14 {
+    font-size: 14px;
 }

@@ -14,7 +14,7 @@ function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
   $$('#ancontent').append(
-    '<div class="card cardcss">'+
+    '<div class="card cardcss cd'+m+'">'+
     '<blockquote class="blockquote bqcolor'+m+'">' +
     '<p>' + text + '</p>' +
     '</blockquote>' +
