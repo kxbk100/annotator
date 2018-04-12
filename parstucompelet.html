@@ -53,6 +53,11 @@
       .ios .list .item-media+.item-inner {
         margin-left: 0;
       }
+
+      .mark {
+        font-size: 16px;
+        margin-top: 16px;
+      }
     </style>
   </head>
 
@@ -60,8 +65,6 @@
     <!-- App root element -->
     <div id="app" class="framework7-root">
       <!-- 左侧边栏 -->
-      <div class="panel-backdrop"></div>
-
       <div class="panel panel-left panel-cover anpanel annotator">
         <div class="subnavbar subbar annotator" id="searchnav">
           <!-- Searchbar with auto init -->
@@ -88,7 +91,7 @@
               </div>
             </div>
             <div class="card cardcss">
-              <blockquote class="blockquote bqcolor1">
+              <blockquote class="blockquote bqcolor2">
                 <p>它已经是全世界第21大经济体。</p>
               </blockquote>
               <div class="card-content cardct ">
@@ -124,39 +127,122 @@
         </div>
       </div>
       <!-- 右侧侧边栏 -->
-      <div class="panel panel-right panel-cover anpanel" id="anpanel">
-        <div class="subnavbar subbar" id="searchnav">
+      <div class="panel panel-right panel-cover anpanel annotator" id="anpanel">
+
+        <div class="subnavbar subbar annotator" id="searchnav">
           <!-- Searchbar with auto init -->
-          <div class="searchbar-backdrop"></div>
           <form class="searchbar" id="search">
             <div class="searchbar-inner">
               <div class="searchbar-input-wrap" id="subwrap">
-                <input type="search" placeholder="Search">
+                <input type="search" placeholder="搜索">
                 <i class="searchbar-icon"></i>
                 <span class="input-clear-button"></span>
               </div>
-              <span class="searchbar-disable-button">Cancel</span>
+              <span class="searchbar-disable-button">取消</span>
             </div>
           </form>
         </div>
-        <div class="block" id="Mynote">
+
+        <div class="block block-strong annotator">
+          <p>批注来源：
+            <label class="checkbox"><input type="checkbox" name="student" checked="checked">
+              <i class="icon-checkbox"></i>
+            </label> 学生
+            <label class="checkbox"><input type="checkbox" name="teacher" checked="checked">
+              <i class="icon-checkbox"></i>
+            </label> 教师</p>
+        </div>
+
+        <div class="block" id="Mynote" style="margin-top: 0;">
           <div id="ancontent">
-            <div class="card">
-              <div class="card-header">教师</div>
-              <div class="card-content card-content">
-                <blockquote class="blockquote">
-                  <p>阿里</p>
-                </blockquote>
-                <p id="anPnode">有了野心，你才能坚持不懈、不断学习和改进，以最快的速度完善自己！</p>
+
+            <div class="card cardcss" id="teacher">
+              <blockquote class="blockquote bqcolor2">
+                <p>今天的阿里巴巴已经不是一家普通的公司，已经是一个经济体</p>
+              </blockquote>
+              <div class="card-content cardct">
+                <p id="anPnode">阿里已经和我们的国家经济个人生活紧密的联系在一起</p>
               </div>
-              <div class="card">
-                <div class="card-header">学生</div>
-                <div class="card-content card-content">
-                  <blockquote class="blockquote">
-                    <p>巴巴</p>
-                  </blockquote>
-                  <p id="anPnode">你穷，是因为你缺乏变不可能为可能的勇气和巨大决心！</p>
-                </div>
+              <div class="card-footer">
+                <a href="#" class="link">
+                  <i class="f7-icons size-13">heart_fill</i>428 赞同
+                </a>
+                <a href="#" class="link" id="change">教师：张晓飞</a>
+              </div>
+            </div>
+
+            <div class="card cardcss" id="student">
+              <blockquote class="blockquote bqcolor1">
+                <p>以前的经济体以地理位置界定：长三角经济体，珠三角经济体，加州经济体但是今天新的经济体诞生在互联网上</p>
+              </blockquote>
+              <div class="card-content cardct">
+                <p id="anPnode">互联网已经是一个新经济体诞生地</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="link">
+                  <i class="f7-icons size-13">heart_fill</i>421 赞同
+                </a>
+                <a href="#" class="link" id="change">冯天祥</a>
+              </div>
+            </div>
+
+            <div class="card cardcss" id="teacher">
+              <blockquote class="blockquote bqcolor0">
+                <p>我们希望能够让更多的发展中国家，中小企业和年轻人都能够分享自由贸易和全球化的快乐</p>
+              </blockquote>
+              <div class="card-content cardct">
+                <p id="anPnode">届时不只是中国人能享受到网上购物的便利</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="link">
+                  <i class="f7-icons size-13">heart_fill</i>401 赞同
+                </a>
+                <a href="#" class="link" id="change">教师：波波</a>
+              </div>
+            </div>
+
+            <div class="card cardcss" id="teacher">
+              <blockquote class="blockquote bqcolor3">
+                <p>一个新型的经济体以前的经济体以地理位置界定：长三角经济体，珠三角经济体，加州经济体但是今天新的经济体诞生在互联网上</p>
+              </blockquote>
+              <div class="card-content cardct">
+                <p id="anPnode">今后更多的经济体都将诞生在互联网上而不是地理位置</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="link">
+                  <i class="f7-icons size-13">heart_fill</i>384 赞同
+                </a>
+                <a href="#" class="link" id="change">教师：张晓飞</a>
+              </div>
+            </div>
+
+            <div class="card cardcss" id="teacher">
+              <blockquote class="blockquote bqcolor3">
+                <p>全球买， 全球卖，全球付，全球运和全球邮</p>
+              </blockquote>
+              <div class="card-content cardct">
+                <p id="anPnode">以后我们在家中就能通过淘宝直接购买到世界各地商家的商品</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="link">
+                  <i class="f7-icons size-13">heart_fill</i>471 赞同
+                </a>
+                <a href="#" class="link" id="change">教师：张晓飞</a>
+              </div>
+            </div>
+
+            <div class="card cardcss" id="teacher">
+              <blockquote class="blockquote bqcolor4">
+                <p>中小企业和年轻人都能够分享自由贸易和全球化的快乐，尝试创业创新的快乐，享受技术进步的好处</p>
+              </blockquote>
+              <div class="card-content cardct">
+                <p id="anPnode">互联网将带给我们跟多的创业就业机会</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="link">
+                  <i class="f7-icons size-13">heart_fill</i>411 赞同
+                </a>
+                <a href="#" class="link" id="change">教师：张凡</a>
               </div>
             </div>
           </div>
@@ -174,22 +260,51 @@
                 <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
               </a>
             </div>
-            <div class="title">可以失去一切，不能失去理想
-              <div class="stitle">批注人：张宇宙老师，5 个批注
-              </div>
-            </div>
+            <div class="title" style="left: 25px;">可以失去一切，不能失去理想</div>
+
             <div class="right">
-              <a href="#" class="link panel-open" data-panel="right">
-                <i class="icon f7-icons">more</i>
-              </a>
+              <div class="mark">成绩：
+                <span class="markred">A</span>
+              </div>
             </div>
           </div>
         </div>
+        <div class="toolbar tabbar-labels">
+          <div class="toolbar-inner">
+            <a href="#" class="link sheet-open" data-sheet=".my-sheet">
+              <!-- Different icons for iOS and MD themes -->
+              <span>查看教师点评</span>
+            </a>
+            <a href="#" class="tab-link an-button panel-open" data-panel="right" id="button5">
+              <i class="icon f7-icons ios-only">forward_fill
+                <span class="badge color-red">6</span>
+              </i>
+              <span class="tabbar-label">所有批注</span>
+            </a>
+          </div>
+        </div>
 
+        <!-- 查看点评 -->
+        <div class="sheet-modal my-sheet">
+          <div class="toolbar">
+            <div class="toolbar-inner">
+              <div class="left"></div>
+              <div class="right">
+                <a class="link sheet-close" href="#">关闭</a>
+              </div>
+            </div>
+          </div>
+          <div class="sheet-modal-inner">
+            <div class="block">
+              <h4>教师点评：</h4>
+              <p>思路清晰，有独到的见解，并且在原文的基础上有自己的思维延伸。继续努力，期待见到你更精彩的批注</p>
+            </div>
+          </div>
+        </div>
         <!-- 内容区域 -->
         <div class="page-content">
           <div id="txblock">
-            <div class="block" id="box">
+            <div class="block" id="box" style="color:black">
               <p class="">我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人。</p>
               <p class="">
                 <span class="Bton0Backgrond">18年来 变化最大的，是我们从18个人变成了54421名员工，来自70个不同的国家，我们在21个国家和地区有自己的办事处。
@@ -233,7 +348,6 @@
           </div>
         </div>
       </div>
-      <div class="popup-backdrop"></div>
     </div>
     <script src="js/framework7.js"></script>
     <script src="js/app.js"></script>
@@ -241,12 +355,20 @@
     <script src="js/rangy-classapplier.js"></script>
     <script src="js/annotate.js"></script>
     <script>
-      var pickerDevice = app.picker.create({
-        inputEl: '#demo-picker-device',
-        cols: [{
-          textAlign: 'center',
-          values: ['A', 'B', 'C', 'D']
-        }]
+      $$("input[name='teacher']").change(function () {
+        if (!$$(this).is(':checked')) {
+          $$("[id=teacher]").css('display', 'none');
+        } else {
+          $$("[id=teacher]").css('display', 'block');
+        }
+      });
+
+      $$("input[name='student']").change(function () {
+        if (!$$(this).is(':checked')) {
+          $$("[id=student]").css('display', 'none');
+        } else {
+          $$("[id=student]").css('display', 'block');
+        }
       });
     </script>
   </body>
