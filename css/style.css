@@ -65,7 +65,7 @@ a.icon {
 }
 
 *.Bton4Backgrond {
-    font-weight: bolder;
+    /* font-weight: bolder; */
     font-style: italic;
 }
 
@@ -129,6 +129,7 @@ a.icon {
 .blockquote>p {
     margin: 0.1rem 0 0 0.5rem;
     color: #a6a6a6;
+    font-family: '宋体';
     /* font-style: italic; */
 }
 
@@ -396,6 +397,7 @@ font-size: 40px;
 
 .email {
     margin-top: 10px;
+    font-size: 15px;
 }
 
 .size-14 {
