@@ -415,3 +415,7 @@ margin-top: -30px;
 .margin-top10 {
     margin-top: 10px;
 }
+
+.inline {
+    display: inline;
+}

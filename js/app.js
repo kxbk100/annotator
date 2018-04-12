@@ -30,7 +30,7 @@ var app = new Framework7({
     buttonCancel: '取消',
   },
   picker: {
-    toolbarCloseText: '关闭'
+    toolbarCloseText: '完成'
   },
   calendar: {
     toolbarCloseText: '完成'
