@@ -1,5 +1,5 @@
 .an-button.active-state {
-    color: #57a3bd !important;
+    color: #638BD4 !important;
 }
 
 .ios .navbar {
@@ -74,11 +74,11 @@ a.icon {
 }
 
 .ios .tabbar a.tab-link-active, .ios .tabbar-labels a.tab-link-active {
-    color: #57a3bd;
+    color: #638BD4;
 }
 
 .ios .navbar {
-    background-color: #57a3bd;
+    background-color: #638BD4;
 }
 
 .demo-card-header-pic .card-header {

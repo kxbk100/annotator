@@ -47,11 +47,94 @@
         }
 
         .ios .list .item-content.class {
-            background-color:white;
+            background-color: white;
         }
 
         .ios .navbar {
             height: 45px;
+        }
+
+        .textarea {
+            font-size: 10px;
+        }
+
+        .ios .tabbar-labels .tabbar-label {
+            font-size: 10px;
+        }
+
+        .ios .tabbar .f7-icons,
+        .ios .tabbar-labels .f7-icons {
+            font-size: 18px;
+        }
+
+        .toolbar-inner {
+            height: 100%;
+        }
+
+        .ios .tabbar-labels {
+            height: 38px;
+        }
+
+        .ios .icon .badge,
+        .ios .f7-icons .badge,
+        .ios .framework7-icons .badge,
+        .ios .material-icons .badge {
+            line-height: 10px;
+            height: 10px;
+            border-radius: 10px;
+            padding: 0 4px;
+            min-width: 16px;
+            font-family: -apple-system, SF UI Text, Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 1px;
+        }
+
+        .ios .list .item-content.class {
+            background-color: white;
+            height: 35px;
+        }
+
+        .ios .media-list .item-media,
+        .ios li.media-item .item-media {
+            padding-top: 0;
+        }
+
+        .ios .list .item-media {
+            padding-top: 0;
+        }
+
+        .ios .searchbar-icon {
+            margin-top: -8px;
+        }
+
+        .ios .searchbar input[type="search"],
+        .ios .searchbar input[type="text"] {
+            font-size: 10px;
+            height: 80%;
+        }
+
+        .ios .searchbar-enabled .searchbar-disable-button {
+            font-size: 10px;
+        }
+
+        .ios .subnavbar.annotator {
+            margin-top: 5px;
+        }
+
+        .panel {
+            width: 200px;
+        }
+
+        .popup {
+            left: 30%;
+            width: 40%;
+        }
+
+        .navbar-inner {
+            top: 0;
+        }
+
+        .float {
+            float: right;
         }
     </style>
 </head>
@@ -260,17 +343,20 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="left">
-                        <a href="#" class="item-link icon" onclick="javascript :history.back(-1);">
-                        </a>
+                        悦批
                     </div>
-                    <div class="title">
+                    <div class="title" style="margin-left: 500px;">
                         <div class="stitle">
+                            <div class="float" style="margin-left: 50px;">排行</div>
+                            <div class="float" style="margin-left: 50px;">作业</div>
+                            <div class="float" style="margin-left: 50px;">班级</div>
+                            <div class="float" style="margin-left: 50px;">首页</div>
                         </div>
                     </div>
 
-                    <div class="right">
-                        <a href="#" class="icon link panel-open" data-panel="right">
-                        </a>
+                    <div class="right" style="font-size:10px;margin-right:10px;">
+                        <i class="f7-icons" style="font-size:15px;">person_fill</i>
+                       &nbsp; 个人中心
                     </div>
                 </div>
             </div>
@@ -321,16 +407,19 @@
                                 </div>
                                 <div class="item-inner">
                                     <div class="item-title">
-                                        <div class="item-title size-14">发布人：张晓飞老师</div>
+                                        <div class="item-title" style="font-size:10px;">发布人：张晓飞老师</div>
                                     </div>
-                                    <div class="item-subtitle size-14">教育工作者</div>
+                                    <div class="item-subtitle" style="font-size:10px;">教育工作者</div>
                                 </div>
                             </a>
                         </li>
                     </ul>
                 </div>
+                <div style="text-align:center">
+                    <strong>可以失去一切，不能失去理想</strong>
+                </div>
                 <div id="txblock">
-                    <div class="block" id="box" style="color:black;padding:0 30px;">
+                    <div class="block" id="box" style="color:black;padding:0 40px;">
                         <p class="delete">我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人。</p>
                         <p>18年来变化最大的，是我们从18个人变成了54421名员工，70个不同的国家，我们在21个国家和地区有自己的办事处。18年以来我们最大的成就是拥有了大家，从18个人到了5.4万多人，我们最大的财富也是因为有了你们，我们最大的资产就是因为有了5.4万多名员工。</p>
                         <p>我去年一年在空中飞了870个小时，但是去年一年，阿里人在空中总共飞了68万个小时，相当于77年的时间在空中，谢谢大家的付出。</p>
@@ -493,7 +582,164 @@
     <script src="js/app.js"></script>
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
-    <script src="js/annotate.js"></script>
+    <script>
+        // 选中并传递到popup
+        var text;
+
+        function getString(n) {
+            text = rangy.getSelection().toString();
+            console.log(text);
+            var string = 'selectedtxt' + n;
+            var selectedtxt = document.getElementById(string);
+            selectedtxt.innerText = text;
+        }
+
+        //将popu中的文字传递到侧边栏
+        function panel(m) {
+            var string = 'note' + m;
+            var textarea = document.getElementById(string).value;
+            $$('#ancontent').append(
+                '<div class="card cardcss cd' + m + '">' +
+                '<blockquote class="blockquote bqcolor' + m + '">' +
+                '<p>' + text + '</p>' +
+                '</blockquote>' +
+                '<div class="card-content cardct ">' +
+                '<p  id="anPnode" class="p' + m + '">' + textarea + '</p>' +
+                '</div >' +
+                '<div class="card-footer">' +
+                '<a href="#" class="link popup-open" id="change" data-popup=".popup5" onclick="xiugai()">修改</a><a href="#" class="link" id="delete" onclick="del()">删除</a>' +
+                '</div>' +
+                '</div>');
+            document.getElementById(string).value = '';
+        }
+
+        //获取选中文字的位置
+        function getLocation() {
+            var userSelection;
+            if (window.getSelection) { //现代浏览器
+                userSelection = window.getSelection();
+            }
+            var getRangeObject = function (selectionObject) {
+                if (selectionObject.getRangeAt)
+                    return selectionObject.getRangeAt(0);
+                else { // 较老版本Safari!
+                    var range = document.createRange();
+                    range.setStart(selectionObject.anchorNode, selectionObject.anchorOffset);
+                    range.setEnd(selectionObject.focusNode, selectionObject.focusOffset);
+                    return range;
+                }
+            }
+            var rangeObject = getRangeObject(userSelection);
+            var p = rangeObject.startContainer.parentNode;
+            var i = 0;
+            while (p = p.previousSibling) {
+                i++;
+            }
+            i = (i + 1) / 2;
+            alert(i);
+            alert(rangeObject.startOffset);
+            alert(rangeObject.endOffset);
+            alert(getString());
+        }
+
+        //添加批注样式
+        function anPaint(bton) {
+            rangy.init();
+            var classApplierModule = rangy.modules.ClassApplier;
+            if (true) {
+                switch (bton) {
+                    case 0:
+                        cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
+                        cssApplier.toggleSelection();
+                        break;
+                    case 1:
+                        cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
+                        cssApplier.toggleSelection();
+                        break;
+                    case 2:
+                        cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
+                        cssApplier.toggleSelection();
+                        break;
+                    case 3:
+                        cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
+                        cssApplier.toggleSelection();
+                        break;
+                    case 4:
+                        cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
+                        cssApplier.toggleSelection();
+                        break;
+                }
+            }
+        }
+
+        //修改批注
+        function anChange() {
+            console.log('132')
+            $$('change').parent().prev().children('#anPnode').text = '132';
+        };
+
+        // 底部工具栏按钮事件
+        var button0 = document.getElementById("button0");
+        button0.onclick = function () {
+            getString(0);
+            anPaint(0);
+        };
+
+        var botton1 = document.getElementById("button1");
+        button1.onclick = function () {
+            getString(1);
+            anPaint(1);
+        };
+
+        var botton2 = document.getElementById("button2");
+        button2.onclick = function () {
+            getString(2);
+            anPaint(2);
+        };
+
+        var botton3 = document.getElementById("button3");
+        button3.onclick = function () {
+            getString(3);
+            anPaint(3);
+        };
+
+        var botton4 = document.getElementById("button4");
+        button4.onclick = function () {
+            getString(4);
+            anPaint(4);
+        };
+        //添加批注按钮点击事件
+        var add0 = document.getElementById("add0");
+        add0.onclick = function () {
+            panel(0);
+        };
+
+        var add1 = document.getElementById("add1");
+        add1.onclick = function () {
+            panel(1);
+        };
+
+        var add2 = document.getElementById("add2");
+        add2.onclick = function () {
+            panel(2);
+        };
+
+        var add3 = document.getElementById("add3");
+        add3.onclick = function () {
+            panel(3);
+        };
+
+        var add4 = document.getElementById("add4");
+        add4.onclick = function () {
+            panel(4);
+        };
+
+        //修改按钮
+        var change = document.getElementById("change");
+        change.onclick = function () {
+            anChange();
+        };
+    </script>
     <script>
         function del() {
             $$('.delete').html("我们要感谢这个时代，感谢互联网，感谢中国中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的人。");
@@ -508,9 +754,9 @@
         }
 
         var ad = document.getElementById("xgadd");
-        ad.addEventListener('touchstart', function () {
+        ad.onclick = function () {
             add();
-        });
+        };
 
         function add() {
             var nw = $$('#xg').val();
