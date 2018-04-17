@@ -10,7 +10,7 @@ var app = new Framework7({
   // App root element
   root: '#app',
   // App Name
-  name: '课外阅读智能批注系统',
+  name: '悦批',
   // App id
   id: 'com.myapp.test',
   // Enable swipe panel
