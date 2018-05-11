@@ -423,3 +423,14 @@ margin-top: -30px;
 .margin-top10 {
     margin-top: 10px;
 }
+
+.hidden {
+    display: none!important;
+}
+
+.text_overflow{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
