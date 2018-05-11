@@ -490,37 +490,15 @@
   <script src="js/rangy-core.js"></script>
   <script src="js/rangy-classapplier.js"></script>
   <script src="js/annotate.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <script>
-    app.request.get('', function (data) {}, JSON);
-
-    // 从数据库取回数据后重新渲染批注
-    function annotate(paragraph, start, end, type) {
-      var px = $$("#box p")[paragraph - 1].firstChild;
-      console.log(px);
-      var range = rangy.createRange();
-      range.setStart(px, start);
-      range.setEnd(px, end);
-      range.select();
-      switch (type) {
-        case 0:
-          cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
-          break;
-        case 1:
-          cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
-          break;
-        case 2:
-          cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
-          break;
-        case 3:
-          cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
-          break;
-        case 4:
-          cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
-          break;
-      }
-      cssApplier.toggleSelection();
-      window.getSelection().removeAllRanges();
-    }
+    //从数据库获得json类型数据并解析
+    var par, st, ed, type,anID,content,selected;
+    app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations', function (data) {
+      var result = jQuery.parseJSON(data);
+      console.log(data);
+      each(result);
+    }, JSON);
   </script>
 
 </body>

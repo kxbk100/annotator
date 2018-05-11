@@ -8,42 +8,42 @@ function getString(n) {
   var selectedtxt = document.getElementById(string);
   selectedtxt.innerText = text;
 }
-var jieshouID=1;
 var userID = 1;
 var passageId = 1;
 //将popu中的文字传递到侧边栏
 function panel(m) {
+  var leftID;
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
-  $$('#ancontent').append(
-    '<div class="card cardcss cd' + m + 'id="' + jieshouID + '">' +
-    '<blockquote class="blockquote bqcolor' + m + '">' +
-    '<p>' + text + '</p>' +
-    '</blockquote>' +
-    '<div class="card-content cardct ">' +
-    '<p  id="an' + jieshouID + '">' + textarea + '</p>' +
-    '</div >' +
-    '<div class="card-footer">' +
-    '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + jieshouID + ')">修改</a><a  class="link" id="delete" onclick="del('+jieshouID+')">删除</a>' +
-    '</div>' +
-    '</div>');
-  document.getElementById(string).value = '';
 
+  //ajax传递数据到后台并获得批注id
   app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
     end: end,
     type: type,
-    userId: '1',
+    userId: userID,
     passageId: passageId,
     selected: text
   }, function (data) {
-    if (data.msg == "ture") {
-      console.log("成功")
-    }
+    leftID = jQuery.parseJSON(data);
+    $$('#ancontent').append(
+      '<div class="card cardcss" id="' + leftID + '">' +
+      '<blockquote class="blockquote bqcolor' + m + '">' +
+      '<p>' + text + '</p>' +
+      '</blockquote>' +
+      '<div class="card-content cardct ">' +
+      '<p  id="an' + leftID + '">' + textarea + '</p>' +
+      '</div >' +
+      '<div class="card-footer cgdel">' +
+      '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + leftID + ')">修改</a><a  class="link" id="delete" onclick="del(' + leftID + ')">删除</a>' +
+      '</div>' +
+      '</div>');
+    document.getElementById(string).value = '';
   });
 }
+
 
 //获取选中文字的位置
 var paragraph = 0;
@@ -113,11 +113,11 @@ function anPaint(bton) {
 
 //删除批注
 function del(delID) {
-   $$('#'+delID).remove();
-
+  alert(delID);
+  $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
-
+  app.request.post('http://192.168.1.111:8686/EAnnotation/deleteAnnotation', {
+    id:delID
   }, function (data) {
     if (data.msg == "ture") {
       console.log("成功")
@@ -127,7 +127,7 @@ function del(delID) {
 
 //修改批注
 function modify(modId) {
-  var x = $$('#' + modId).text();
+  var x = $$('#an' + modId).text();
   var t = $$('.bqcolor1>p').text();
   $$('#sendID').text(modId);
   $$('#old').text(t);
@@ -141,16 +141,79 @@ ad.addEventListener('touchstart', function () {
 
 function add() {
   var nw = $$('#mod').val();
-  var getID = $$('#sendID').val();
+  var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
-
+  app.request.post('http://192.168.1.111:8686/EAnnotation/updateAnnotation', {
+    content:nw,
+    id:getID
   }, function (data) {
     if (data.msg == "ture") {
       console.log("成功")
     }
   });
+}
+
+// 从数据库取回数据后重新渲染批注
+function each(result) {
+  $.each(result, function (i, item) {
+    par = item.paragraph;
+    st = item.start;
+    ed = item.end;
+    type = item.type;
+    anID = item.id;
+    content = item.content;
+    selected = item.selected;
+    annotate();
+    rePanel();
+  })
+}
+
+function annotate() {
+  var px = $$("#box p")[par - 1].firstChild;
+  console.log(px);
+  var range = rangy.createRange();
+  range.setStart(px, st);
+  range.setEnd(px, ed);
+  range.select();
+  switch (type) {
+    case 0:
+      cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
+      break;
+    case 1:
+      cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
+      break;
+    case 2:
+      cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
+      break;
+    case 3:
+      cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
+      break;
+    case 4:
+      cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
+      break;
+  }
+  cssApplier.toggleSelection();
+  window.getSelection().removeAllRanges();
+}
+
+//渲染侧边栏批注
+function rePanel() {
+  var string = 'note' + type;
+  var textarea = content;
+  $$('#ancontent').append(
+    '<div class="card cardcss" id="' + anID + '">' +
+    '<blockquote class="blockquote bqcolor' + type + '">' +
+    '<p>' + selected + '</p>' +
+    '</blockquote>' +
+    '<div class="card-content cardct ">' +
+    '<p  id="an' + anID + '">' + textarea + '</p>' +
+    '</div >' +
+    '<div class="card-footer">' +
+    '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID + ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
+    '</div>' +
+    '</div>');
+  document.getElementById(string).value = '';
 }
 
 // 底部工具栏按钮事件
