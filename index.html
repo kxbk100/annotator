@@ -1,6 +1,5 @@
-
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
 
   <head>
     <!-- Required meta tags-->
@@ -121,6 +120,7 @@
                         </a>
                       </div>
                     </div>
+
                     <div class="card">
                       <div class="card-header">青春中国梦</div>
                       <div class="card-content card-content-padding">
@@ -414,6 +414,92 @@
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
     <script src="js/annotate.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+      function getcontent(text) {
+        var html = text;
+        return html.replace(/<[^>]*>|/g, "");
+      }
+
+      // 2014-05-08 00:22:11
+      function getDateDiff(dateTimeStamp) {
+        var dateTimeStamp = new Date(Date.parse(dateTimeStamp.replace(/-/g, "/")));
+        dateTimeStamp = dateTimeStamp.getTime();
+        var result;
+        var minute = 1000 * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        var halfamonth = day * 15;
+        var month = day * 30;
+        var now = new Date().getTime();
+        var diffValue = now - dateTimeStamp;
+        if (diffValue < 0) {
+          return;
+        }
+        var monthC = diffValue / month;
+        var weekC = diffValue / (7 * day);
+        var dayC = diffValue / day;
+        var hourC = diffValue / hour;
+        var minC = diffValue / minute;
+        if (monthC >= 1) {
+          if (monthC <= 12)
+            result = "" + parseInt(monthC) + "个月前";
+          else {
+            result = "" + parseInt(monthC / 12) + "年前";
+          }
+        }
+        else if (weekC >= 1) {
+          result = "" + parseInt(weekC) + "周前";
+        }
+        else if (dayC >= 1) {
+          result = "" + parseInt(dayC) + "天前";
+        }
+        else if (hourC >= 1) {
+          result = "" + parseInt(hourC) + "小时前";
+        }
+        else if (minC >= 1) {
+          result = "" + parseInt(minC) + "分钟前";
+        } else {
+          result = "刚刚";
+        }
+        return result;
+      };
+
+      $.ajax({
+        url: 'http://192.168.1.111:8686/EAnnotation/getAllPassages',
+        type: "post",
+        cache: false,
+        success: function (data) {
+          console.log(data);
+          $.each(data, function (i, item) {
+            var time = getDateDiff(item.releaseTime);
+            if (item.photo) {
+
+            } else {
+              $("ul[class=index]").append(
+                `<div class="card">
+                  <div class="card-header">` + item.title + `</div>
+                  <div class="card-content card-content-padding">
+                    <p class="date index">` + item.theme + ` · ` + time + `</p>
+                    <a href="anntator.html?id=` + item.id + `" class="link" style="color: black"><p style="margin-top: 0; margin-bottom: 0;" class="text_overflow">` + getcontent(item.content) + `</p></a>
+                  </div>
+                  <div class="card-footer">
+                    <a href="#" class="link" style="color">
+                      <i class="f7-icons size-18">heart_fill</i>` + Math.ceil(Math.random() * 10 + 26) + ` 喜欢</a>
+                    <a href="#" class="link">
+                      ` + Math.ceil(Math.random() * 10 + 13) + ` 人批注过，共计` + 44 + `条批注
+                        </a>
+                  </div>
+                </div>`
+              )
+            }
+          })
+
+        },
+        error: function (e) {
+        }
+      })
+    </script>
   </body>
 
-  </html>
+</html>
