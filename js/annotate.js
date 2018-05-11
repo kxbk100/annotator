@@ -8,28 +8,50 @@ function getString(n) {
   var selectedtxt = document.getElementById(string);
   selectedtxt.innerText = text;
 }
-
+var jieshouID=1;
+var userID = 1;
+var passageId = 1;
 //将popu中的文字传递到侧边栏
 function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
   $$('#ancontent').append(
-    '<div class="card cardcss cd'+m+'">'+
-    '<blockquote class="blockquote bqcolor'+m+'">' +
+    '<div class="card cardcss cd' + m + 'id="' + jieshouID + '">' +
+    '<blockquote class="blockquote bqcolor' + m + '">' +
     '<p>' + text + '</p>' +
     '</blockquote>' +
     '<div class="card-content cardct ">' +
-    '<p  id="anPnode" class="p'+m+'">' + textarea + '</p>' +
+    '<p  id="an' + jieshouID + '">' + textarea + '</p>' +
     '</div >' +
     '<div class="card-footer">' +
-    '<a class="link popup-open" id="change" data-popup=".popup5" onclick="xiugai()">修改</a><a  class="link" id="delete" onclick="del()">删除</a>' +
+    '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + jieshouID + ')">修改</a><a  class="link" id="delete" onclick="del('+jieshouID+')">删除</a>' +
     '</div>' +
     '</div>');
   document.getElementById(string).value = '';
+
+  app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
+    content: textarea,
+    paragraph: paragraph,
+    start: start,
+    end: end,
+    type: type,
+    userId: '1',
+    passageId: passageId,
+    selected: text
+  }, function (data) {
+    if (data.msg == "ture") {
+      console.log("成功")
+    }
+  });
 }
 
 //获取选中文字的位置
-function getLocation() {
+var paragraph = 0;
+var start;
+var end;
+var type;
+
+function getLocation(n) {
   var userSelection;
   if (window.getSelection) { //现代浏览器
     userSelection = window.getSelection();
@@ -46,15 +68,17 @@ function getLocation() {
   }
   var rangeObject = getRangeObject(userSelection);
   var p = rangeObject.startContainer.parentNode;
-  var i = 0;
   while (p = p.previousSibling) {
-    i++;
+    paragraph++;
   }
-  i = (i + 1) / 2;
-  alert(i);
-  alert(rangeObject.startOffset);
-  alert(rangeObject.endOffset);
-  alert(getString());
+  paragraph = (paragraph + 1) / 2;
+  start = rangeObject.startOffset;
+  end = rangeObject.endOffset;
+  type = n;
+  // alert(paragraph);
+  // alert(rangeObject.startOffset);
+  // alert(rangeObject.endOffset);
+  // alert("第"+n+"批注类型");
 }
 
 //添加批注样式
@@ -85,43 +109,84 @@ function anPaint(bton) {
         break;
     }
   }
-}
+};
+
+//删除批注
+function del(delID) {
+   $$('#'+delID).remove();
+
+  //ajax传输给后台
+  app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
+
+  }, function (data) {
+    if (data.msg == "ture") {
+      console.log("成功")
+    }
+  })
+};
 
 //修改批注
-function anChange() {
-  console.log('132')
-  $$('change').parent().prev().children('#anPnode').text = '132';
-};
+function modify(modId) {
+  var x = $$('#' + modId).text();
+  var t = $$('.bqcolor1>p').text();
+  $$('#sendID').text(modId);
+  $$('#old').text(t);
+  $$('#mod').val(x);
+}
+
+var ad = document.getElementById("modadd");
+ad.addEventListener('touchstart', function () {
+  add();
+});
+
+function add() {
+  var nw = $$('#mod').val();
+  var getID = $$('#sendID').val();
+  $$('#an' + getID).text(nw);
+  //ajax传输给后台
+  app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
+
+  }, function (data) {
+    if (data.msg == "ture") {
+      console.log("成功")
+    }
+  });
+}
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
 button0.addEventListener('touchstart', function () {
   getString(0);
   anPaint(0);
+  getLocation(0);
 });
 
 var botton1 = document.getElementById("button1");
 button1.addEventListener('touchstart', function () {
   getString(1);
   anPaint(1);
+  getLocation(1);
 });
 
 var botton2 = document.getElementById("button2");
 button2.addEventListener('touchstart', function () {
   getString(2);
   anPaint(2);
+  getLocation(2);
 });
 
 var botton3 = document.getElementById("button3");
 button3.addEventListener('touchstart', function () {
   getString(3);
   anPaint(3);
+  getLocation(3);
 });
 
 var botton4 = document.getElementById("button4");
 button4.addEventListener('touchstart', function () {
   getString(4);
   anPaint(4);
+  getLocation(4);
 });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
@@ -155,3 +220,8 @@ change.addEventListener('touchstart', function () {
   anChange();
 });
 
+//删除按钮
+var delbutn = document.getElementById("delete");
+delbutn.addEventListener('touchstart', function () {
+  del()
+});
