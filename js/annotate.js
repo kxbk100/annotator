@@ -117,7 +117,7 @@ function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
   app.request.post('http://192.168.1.111:8686/EAnnotation/deleteAnnotation', {
-    id:delID
+    id: delID
   }, function (data) {
     if (data.msg == "ture") {
       console.log("成功")
@@ -145,8 +145,8 @@ function add() {
   $$('#an' + getID).text(nw);
   //ajax传输给后台
   app.request.post('http://192.168.1.111:8686/EAnnotation/updateAnnotation', {
-    content:nw,
-    id:getID
+    content: nw,
+    id: getID
   }, function (data) {
     if (data.msg == "ture") {
       console.log("成功")

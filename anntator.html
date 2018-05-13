@@ -461,7 +461,7 @@
       </div>
     </div>
 
-    <script src="js/framework7.js"></script>
+    <script src="js/framework7.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
@@ -489,13 +489,13 @@
         })
       });
 
-//从数据库获得json类型数据并解析
-var par, st, ed, type,anID,content,selected;
-app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations', function (data) {
-var result = jQuery.parseJSON(data);
-console.log(data);
-each(result);
-}, JSON);
+      //从数据库获得json类型数据并解析
+      var par, st, ed, type, anID, content, selected;
+      app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations', function (data) {
+        var result = jQuery.parseJSON(data);
+        console.log(data);
+        each(result);
+      }, JSON);
     </script>
 
   </body>

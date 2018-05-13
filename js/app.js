@@ -86,3 +86,9 @@ var pickerDescribe = app.picker.create({
   },
   ]
 });
+
+var calendarModal = app.calendar.create({
+  inputEl: '#demo-calendar-modal',
+  openIn: 'customModal',
+  dateFormat: 'yyyy-MM-dd',
+});
