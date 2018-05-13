@@ -1,503 +1,565 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#000">
-    <!-- Your app title -->
-    <title>悦批</title>
-    <!-- Path to Framework7 Library CSS -->
-    <link rel="stylesheet" href="css/framework7.css">
-    <link rel="stylesheet" href="css/framework7-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-      .ios .searchbar:after {
-        background-color: white;
-      }
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000">
+  <!-- Your app title -->
+  <title>悦批</title>
+  <!-- Path to Framework7 Library CSS -->
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ios .searchbar:after {
+      background-color: white;
+    }
 
-      .ios .card {
-        margin: 0.5rem 0 0 0;
-      }
+    .ios .card {
+      margin: 0.5rem 0 0 0;
+    }
 
-      .ios .navbar .left {
-        margin-right: 0px;
-      }
+    .ios .navbar .left {
+      margin-right: 0px;
+    }
 
-      .ios .navbar b,
-      .ios .navbar .title {
-        font-weight: 500;
-      }
+    .ios .navbar b,
+    .ios .navbar .title {
+      font-weight: 500;
+    }
 
-      p {
-        font-size: 16px;
-        line-height: 1.5rem;
-      }
+    p {
+      font-size: 16px;
+      line-height: 1.5rem;
+    }
 
-      .ios .navbar .title {
-        font-size: 16px;
-      }
+    .ios .navbar .title {
+      font-size: 16px;
+    }
 
-      .ios .media-list .item-title,
-      .ios li.media-item .item-title {
-        font-weight: 500;
-      }
-    </style>
-  </head>
+    .ios .media-list .item-title,
+    .ios li.media-item .item-title {
+      font-weight: 500;
+    }
+  </style>
+</head>
 
-  <body>
-    <!-- App root element -->
-    <div id="app">
-      <!-- 左侧边栏 -->
-      <div class="panel panel-left panel-cover anpanel annotator">
-        <div class="subnavbar subbar annotator" id="searchnav">
-          <!-- Searchbar with auto init -->
-          <form class="searchbar" id="search">
-            <div class="searchbar-inner">
-              <div class="searchbar-input-wrap" id="subwrap">
-                <input type="search" placeholder="搜索">
-                <i class="searchbar-icon"></i>
-                <span class="input-clear-button"></span>
-              </div>
-              <span class="searchbar-disable-button">取消</span>
+<body>
+  <!-- App root element -->
+  <div id="app">
+    <!-- 左侧边栏 -->
+    <div class="panel panel-left panel-cover anpanel annotator">
+      <div class="subnavbar subbar annotator" id="searchnav">
+        <!-- Searchbar with auto init -->
+        <form class="searchbar" id="search">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap" id="subwrap">
+              <input type="search" placeholder="搜索">
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
             </div>
-          </form>
-        </div>
-        <div class="block" id="Mynote">
-          <div id="ancontent">
-            <div class="texbg">暂无批注</div>
+            <span class="searchbar-disable-button">取消</span>
           </div>
+        </form>
+      </div>
+      <div class="block" id="Mynote">
+        <div id="ancontent">
+          <div class="texbg">暂无批注</div>
         </div>
       </div>
-      <!-- 右侧侧边栏 -->
-      <div class="panel panel-right panel-cover anpanel annotator" id="anpanel">
+    </div>
+    <!-- 右侧侧边栏 -->
+    <div class="panel panel-right panel-cover anpanel annotator" id="anpanel">
 
-        <div class="subnavbar subbar annotator" id="searchnav">
-          <!-- Searchbar with auto init -->
-          <form class="searchbar" id="search">
-            <div class="searchbar-inner">
-              <div class="searchbar-input-wrap" id="subwrap">
-                <input type="search" placeholder="搜索">
-                <i class="searchbar-icon"></i>
-                <span class="input-clear-button"></span>
-              </div>
-              <span class="searchbar-disable-button">取消</span>
+      <div class="subnavbar subbar annotator" id="searchnav">
+        <!-- Searchbar with auto init -->
+        <form class="searchbar" id="search">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap" id="subwrap">
+              <input type="search" placeholder="搜索">
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
             </div>
-          </form>
-        </div>
-
-        <div class="block block-strong annotator">
-          <p>批注来源：
-            <label class="checkbox">
-              <input type="checkbox" name="student" checked="checked">
-              <i class="icon-checkbox"></i>
-            </label> 学生
-            <label class="checkbox">
-              <input type="checkbox" name="teacher" checked="checked">
-              <i class="icon-checkbox"></i>
-            </label> 教师</p>
-        </div>
-
-        <div class="block" id="Mynote" style="margin-top: 0;">
-          <div id="ancontent">
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor2">
-                <p>我们要感谢这个时代</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">大家好好品品马云爸爸的演讲</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>428 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张晓飞</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="student">
-              <blockquote class="blockquote bqcolor1">
-                <p>今天的阿里巴巴已经</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">一个新型的经济体以前的经济体以地理位置界定</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>421 赞同
-                </a>
-                <a href="#" class="link" id="change">冯天祥</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor0">
-                <p>再过19年，我们希望能够打造全世界第5大经济体</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">我们更希望能够为1000万家中小企业创造盈利的平台</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>401 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：波波</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor3">
-                <p>这个经济体创造的价值就是能够让世界更加普惠</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">快乐的成长。经济体</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>384 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张晓飞</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor3">
-                <p>的公司，已</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">全球买， 全球卖，全球付，全球运和全球邮</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>471 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张晓飞</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor4">
-                <p>这个经济体创造的价值就是能够让世界更加普惠</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">更加健康和快乐的成长</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>411 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张凡</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="student">
-              <blockquote class="blockquote bqcolor3">
-                <p>18年来变化最大的</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">变化最大的是什么？</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>11 赞同
-                </a>
-                <a href="#" class="link" id="change">张艺凡</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="student">
-              <blockquote class="blockquote bqcolor3">
-                <p>我去年一年在空中飞了870个小时，但是去年一年</p>
-              </blockquote>
-              <div class="card-content cardct">
-                <p id="anPnode">一年有360天</p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>21 赞同
-                </a>
-                <a href="#" class="link" id="change">王晨韬</a>
-              </div>
-            </div>
-
-            <div class="card cardcss" id="teacher">
-              <blockquote class="blockquote bqcolor4">
-                <p>我们要感谢这个时代</p>
-              </blockquote>
-              <div class="card-content cardct">
-
-
-                <p id="anPnode">令人敬佩的企业家！
-                </p>
-              </div>
-              <div class="card-footer">
-                <a href="#" class="link">
-                  <i class="f7-icons size-13">heart_fill</i>28 赞同
-                </a>
-                <a href="#" class="link" id="change">教师：张锐</a>
-              </div>
-            </div>
+            <span class="searchbar-disable-button">取消</span>
           </div>
-        </div>
+        </form>
       </div>
-      <!-- Statusbar overlay -->
-      <!-- Your main view, should have "view-main" class -->
-      <div class="view view-main">
-        <!-- Initial Page, "data-name" contains page name -->
-        <!-- 头部标题栏 -->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left">
-              <a href="#" class="item-link icon" onclick="javascript :history.back(-1);">
-                <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
-              </a>
-            </div>
-            <div class="title">
-              <span id="title">可以失去一切，不能失去理想</span>
-              <div class="stitle">
-                <span id="count">5,582个批注</span>
-                <i class="icon f7-icons more">right</i>
-              </div>
-            </div>
 
-            <div class="right">
-              <a href="#" class="icon link panel-open" data-panel="right">
-                <i class="icon f7-icons" style="font-size: 25px">more</i>
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="block block-strong annotator">
+        <p>批注来源：
+          <label class="checkbox">
+            <input type="checkbox" name="student" checked="checked">
+            <i class="icon-checkbox"></i>
+          </label> 学生
+          <label class="checkbox">
+            <input type="checkbox" name="teacher" checked="checked">
+            <i class="icon-checkbox"></i>
+          </label> 教师</p>
+      </div>
 
-        <!-- 工具栏 -->
-        <div class="toolbar tabbar-labels">
-          <div class="toolbar-inner">
-            <!-- 工具栏标签 -->
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
-              <!-- Different icons for iOS and MD themes -->
-              <i class="icon f7-icons ios-only">chat_fill</i>
-              <span class="tabbar-label">感想</span>
-            </a>
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
-              <i class="icon f7-icons ios-only">help_fill</i>
-              <span class="tabbar-label">质疑</span>
-            </a>
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
-              <i class="icon f7-icons ios-only">heart_fill</i>
-              <span class="tabbar-label">联想</span>
-            </a>
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
-              <i class="icon f7-icons ios-only">mic_fill</i>
-              <span class="tabbar-label">评价</span>
-            </a>
-            <a href="#" class="tab-link an-button popup-open" data-popup=".popup4" id="button4">
-              <i class="icon f7-icons ios-only">compose_fill</i>
-              <span class="tabbar-label">补充</span>
-            </a>
+      <div class="block" id="Mynote" style="margin-top: 0;">
+        <div id="ancontent">
 
-
-            <a href="#" class="tab-link an-button panel-open" data-panel="right" id="button5">
-              <i class="icon f7-icons ios-only">forward_fill
-                <span class="badge color-red">99+</span>
-              </i>
-              <span class="tabbar-label">所有批注</span>
-            </a>
-          </div>
-        </div>
-        <!-- 内容区域 -->
-        <div class="page-content">
-          <div class="list media-list annotator">
-            <ul>
-              <li>
-                <a href="#" class="item-link item-content class">
-                  <div class="item-media">
-                    <img src="images/teacher.jpg" width="44" />
-                  </div>
-                  <div class="item-inner">
-                    <div class="item-title-row">
-                      <div class="item-title size-14" id="person">发布人：张晓飞老师</div>
-                    </div>
-                    <div class="item-subtitle size-14">教育工作者</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div id="txblock">
-            <div class="block" id="box" style="color:black"></div>
-          </div>
-        </div>
-        <!-- 弹出页面 -->
-        <div class="popup popup5 annotator">
-          <div class="block annotator">
-            <p>
-              <i class="icon f7-icons ios-only">help_fill</i> 修改质疑批注</p>
-            <blockquote class="blockquote xg1 bqcolor1">
-              <p id="old"></p>
-              <p id="sendID" style="display: none"></p>
-            </blockquote>
-            <p class="content">
-              <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
-            <!-- Close Popup -->
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
-            </div>
-            <textarea placeholder="请输入质疑批注" id="mod" cols="45" rows="8" class="textarea"></textarea>
-            <p class="row">
-              <button class="col-30 button button-fill panel-open popup-close" id="modadd">添加批注</button>
-              <button class="button col-30  popup-close">取消</button>
-            </p>
-          </div>
-        </div>
-
-
-        <div class="popup popup0 annotator">
-          <div class="block annotator">
-            <p>
-              <i class="icon f7-icons ios-only">chat_fill</i> 添加感想批注</p>
-            <blockquote class="blockquote bqcolor0">
-              <p id="selectedtxt0"></p>
-            </blockquote>
-            <p class="content">
-              <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
-            <!-- Close Popup -->
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
-            </div>
-            <textarea placeholder="请输入感想批注" id="note0" cols="45" rows="8" class="textarea"></textarea>
-            <p class="row">
-              <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
-              <button class="button col-30  popup-close">取消</button>
-            </p>
-          </div>
-        </div>
-
-        <div class="popup popup1 annotator">
-          <div class="block annotator">
-            <p>
-              <i class="icon f7-icons ios-only">help_fill</i> 添加质疑批注</p>
-            <blockquote class="blockquote bqcolor1">
-              <p id="selectedtxt1"></p>
-            </blockquote>
-            <p class="content">
-              <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
-            <!-- Close Popup -->
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
-            </div>
-            <textarea placeholder="请输入质疑批注" id="note1" cols="45" rows="8" class="textarea"></textarea>
-            <p class="row">
-              <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
-              <button class="button col-30  popup-close">取消</button>
-            </p>
-          </div>
-        </div>
-
-        <div class="popup popup2 annotator">
-          <div class="block annotator">
-            <p>
-              <i class="icon f7-icons ios-only">heart_fill</i> 添加联想批注</p>
+          <div class="card cardcss" id="teacher">
             <blockquote class="blockquote bqcolor2">
-              <p id="selectedtxt2"></p>
+              <p>我们要感谢这个时代</p>
             </blockquote>
-            <p class="content">
-              <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
-            <!-- Close Popup -->
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
+            <div class="card-content cardct">
+              <p id="anPnode">大家好好品品马云爸爸的演讲</p>
             </div>
-            <textarea placeholder="请输入联想批注" id="note2" cols="45" rows="8" class="textarea"></textarea>
-            <p class="row">
-              <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
-              <button class="button col-30  popup-close">取消</button>
-            </p>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>428 赞同
+              </a>
+              <a href="#" class="link" id="change">教师：张晓飞</a>
+            </div>
           </div>
-        </div>
 
-        <div class="popup popup3 annotator">
-          <div class="block annotator">
-            <p>
-              <i class="icon f7-icons ios-only">mic_fill</i> 添加评价批注</p>
+          <div class="card cardcss" id="student">
+            <blockquote class="blockquote bqcolor1">
+              <p>今天的阿里巴巴已经</p>
+            </blockquote>
+            <div class="card-content cardct">
+              <p id="anPnode">一个新型的经济体以前的经济体以地理位置界定</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>421 赞同
+              </a>
+              <a href="#" class="link" id="change">冯天祥</a>
+            </div>
+          </div>
+
+          <div class="card cardcss" id="teacher">
+            <blockquote class="blockquote bqcolor0">
+              <p>再过19年，我们希望能够打造全世界第5大经济体</p>
+            </blockquote>
+            <div class="card-content cardct">
+              <p id="anPnode">我们更希望能够为1000万家中小企业创造盈利的平台</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>401 赞同
+              </a>
+              <a href="#" class="link" id="change">教师：波波</a>
+            </div>
+          </div>
+
+          <div class="card cardcss" id="teacher">
             <blockquote class="blockquote bqcolor3">
-              <p id="selectedtxt3"></p>
+              <p>这个经济体创造的价值就是能够让世界更加普惠</p>
             </blockquote>
-            <p class="content">
-              <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
-            <!-- Close Popup -->
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
+            <div class="card-content cardct">
+              <p id="anPnode">快乐的成长。经济体</p>
             </div>
-            <textarea placeholder="请输入评价批注" id="note3" cols="45" rows="8" class="textarea"></textarea>
-            <p class="row">
-              <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
-              <button class="button col-30  popup-close">取消</button>
-            </p>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>384 赞同
+              </a>
+              <a href="#" class="link" id="change">教师：张晓飞</a>
+            </div>
           </div>
-        </div>
 
-        <div class="popup popup4 annotator">
-          <div class="block annotator">
-            <p>
-              <i class="icon f7-icons ios-only">compose_fill</i> 添加补充批注</p>
-            <blockquote class="blockquote bqcolor4">
-              <p id="selectedtxt4"></p>
+          <div class="card cardcss" id="teacher">
+            <blockquote class="blockquote bqcolor3">
+              <p>的公司，已</p>
             </blockquote>
-            <p class="content">
-              <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
-            <!-- Close Popup -->
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
+            <div class="card-content cardct">
+              <p id="anPnode">全球买， 全球卖，全球付，全球运和全球邮</p>
             </div>
-            <textarea placeholder="请输入补充批注" id="note4" cols="45" rows="8" class="textarea"></textarea>
-            <p class="row">
-              <button class="col-30 button button-fill panel-open popup-close" id="add4">添加批注</button>
-              <button class="button col-30  popup-close">取消</button>
-            </p>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>471 赞同
+              </a>
+              <a href="#" class="link" id="change">教师：张晓飞</a>
+            </div>
+          </div>
+
+          <div class="card cardcss" id="teacher">
+            <blockquote class="blockquote bqcolor4">
+              <p>这个经济体创造的价值就是能够让世界更加普惠</p>
+            </blockquote>
+            <div class="card-content cardct">
+              <p id="anPnode">更加健康和快乐的成长</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>411 赞同
+              </a>
+              <a href="#" class="link" id="change">教师：张凡</a>
+            </div>
+          </div>
+
+          <div class="card cardcss" id="student">
+            <blockquote class="blockquote bqcolor3">
+              <p>18年来变化最大的</p>
+            </blockquote>
+            <div class="card-content cardct">
+              <p id="anPnode">变化最大的是什么？</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>11 赞同
+              </a>
+              <a href="#" class="link" id="change">张艺凡</a>
+            </div>
+          </div>
+
+          <div class="card cardcss" id="student">
+            <blockquote class="blockquote bqcolor3">
+              <p>我去年一年在空中飞了870个小时，但是去年一年</p>
+            </blockquote>
+            <div class="card-content cardct">
+              <p id="anPnode">一年有360天</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>21 赞同
+              </a>
+              <a href="#" class="link" id="change">王晨韬</a>
+            </div>
+          </div>
+
+          <div class="card cardcss" id="teacher">
+            <blockquote class="blockquote bqcolor4">
+              <p>我们要感谢这个时代</p>
+            </blockquote>
+            <div class="card-content cardct">
+
+
+              <p id="anPnode">令人敬佩的企业家！
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>28 赞同
+              </a>
+              <a href="#" class="link" id="change">教师：张锐</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Statusbar overlay -->
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+      <!-- Initial Page, "data-name" contains page name -->
+      <!-- 头部标题栏 -->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <a href="#" class="item-link icon" onclick="javascript :history.back(-1);">
+              <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+            </a>
+          </div>
+          <div class="title">
+            <span id="title">可以失去一切，不能失去理想</span>
+            <div class="stitle">
+              <span id="count">5,582个批注</span>
+              <i class="icon f7-icons more">right</i>
+            </div>
+          </div>
 
-    <script src="js/framework7.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
-    <script src="js/annotate.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script>
-      $(function () {
-        var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        var id = unescape(r[2]);
+          <div class="right">
+            <a href="#" class="icon link panel-open" data-panel="right">
+              <i class="icon f7-icons" style="font-size: 25px">more</i>
+            </a>
+          </div>
+        </div>
+      </div>
 
-        $.ajax({
-          url: 'http://192.168.1.111:8686/EAnnotation/getPassage?id=' + id,
-          type: "post",
-          cache: false,
-          success: function (data) {
-            console.log(data);
-            $("#title").html(data.title);
-            $("#count").html(data.count + '个批注');
-            $("#box").html(data.content);
-            $("#person").html('发布人：' + data.auth + '老师');
-          },
-          error: function (e) {
-          }
-        })
-      });
+      <!-- 工具栏 -->
+      <div class="toolbar tabbar-labels">
+        <div class="toolbar-inner">
+          <!-- 工具栏标签 -->
+          <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
+            <!-- Different icons for iOS and MD themes -->
+            <i class="icon f7-icons ios-only">chat_fill</i>
+            <span class="tabbar-label">感想</span>
+          </a>
+          <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
+            <i class="icon f7-icons ios-only">help_fill</i>
+            <span class="tabbar-label">质疑</span>
+          </a>
+          <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
+            <i class="icon f7-icons ios-only">heart_fill</i>
+            <span class="tabbar-label">联想</span>
+          </a>
+          <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
+            <i class="icon f7-icons ios-only">mic_fill</i>
+            <span class="tabbar-label">评价</span>
+          </a>
+          <a href="#" class="tab-link an-button popup-open" data-popup=".popup4" id="button4">
+            <i class="icon f7-icons ios-only">compose_fill</i>
+            <span class="tabbar-label">补充</span>
+          </a>
 
-      //从数据库获得json类型数据并解析
-      var par, st, ed, type, anID, content, selected;
-      app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations', function (data) {
-        var result = jQuery.parseJSON(data);
-        console.log(data);
-        each(result);
-      }, JSON);
-    </script>
 
-  </body>
+          <a href="#" class="tab-link an-button panel-open" data-panel="right" id="button5">
+            <i class="icon f7-icons ios-only">forward_fill
+              <span class="badge color-red">99+</span>
+            </i>
+            <span class="tabbar-label">所有批注</span>
+          </a>
+        </div>
+      </div>
+      <!-- 内容区域 -->
+      <div class="page-content">
+        <div class="list media-list annotator">
+          <ul>
+            <li>
+              <a href="#" class="item-link item-content class">
+                <div class="item-media">
+                  <img src="images/teacher.jpg" width="44" />
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title size-14" id="person">发布人：张晓飞老师</div>
+                  </div>
+                  <div class="item-subtitle size-14">教育工作者</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="txblock">
+          <div class="block" id="box" style="color:black"></div>
+        </div>
+      </div>
+      <!-- 弹出页面 -->
+      <div class="popup popup5 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">help_fill</i> 修改质疑批注</p>
+          <blockquote class="blockquote xg1 bqcolor1">
+            <p id="old"></p>
+            <p id="sendID" style="display: none"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入质疑批注" id="mod" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="modadd">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="popup popup0 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">chat_fill</i> 添加感想批注</p>
+          <blockquote class="blockquote bqcolor0">
+            <p id="selectedtxt0"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入感想批注" id="note0" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="popup popup1 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">help_fill</i> 添加质疑批注</p>
+          <blockquote class="blockquote bqcolor1">
+            <p id="selectedtxt1"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入质疑批注" id="note1" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="popup popup2 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">heart_fill</i> 添加联想批注</p>
+          <blockquote class="blockquote bqcolor2">
+            <p id="selectedtxt2"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入联想批注" id="note2" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="popup popup3 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">mic_fill</i> 添加评价批注</p>
+          <blockquote class="blockquote bqcolor3">
+            <p id="selectedtxt3"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入评价批注" id="note3" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="popup popup4 annotator">
+        <div class="block annotator">
+          <p>
+            <i class="icon f7-icons ios-only">compose_fill</i> 添加补充批注</p>
+          <blockquote class="blockquote bqcolor4">
+            <p id="selectedtxt4"></p>
+          </blockquote>
+          <p class="content">
+            <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
+          <!-- Close Popup -->
+          <div class="item-media">
+            <i class="icon demo-list-icon"></i>
+          </div>
+          <textarea placeholder="请输入补充批注" id="note4" cols="45" rows="8" class="textarea"></textarea>
+          <p class="row">
+            <button class="col-30 button button-fill panel-open popup-close" id="add4">添加批注</button>
+            <button class="button col-30  popup-close">取消</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/framework7.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/rangy-core.js"></script>
+  <script src="js/rangy-classapplier.js"></script>
+  <script src="js/annotate.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      var id = unescape(r[2]);
+
+      $.ajax({
+        url: 'http://192.168.1.111:8686/EAnnotation/getPassage?id=' + id,
+        type: "post",
+        cache: false,
+        success: function (data) {
+          console.log(data);
+          $("#title").html(data.title);
+          $("#count").html(data.count + '个批注');
+          $("#box").html(data.content);
+          $("#person").html('发布人：' + data.auth + '老师');
+        },
+        error: function (e) {}
+      })
+    });
+    var par, st, ed, type, anID, content, selected;
+    //从数据库获得json类型数据并解析
+      app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations',
+        function (data) {
+          var result = jQuery.parseJSON(data);
+          console.log(data);
+          each(result);
+        }, JSON);
+    
+    // 从数据库取回数据后重新渲染批注
+    function each(result) {
+      $.each(result, function (i, item) {
+        par = item.paragraph;
+        st = item.start;
+        ed = item.end;
+        type = item.type;
+        anID = item.id;
+        content = item.content;
+        selected = item.selected;
+        annotate();
+        rePanel();
+      })
+    }
+
+    function annotate() {
+      var px = $$("#box p")[par - 1].firstChild;
+      console.log(px);
+      var range = rangy.createRange();
+      range.setStart(px, st);
+      range.setEnd(px, ed);
+      range.select();
+      switch (type) {
+        case 0:
+          cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
+          break;
+        case 1:
+          cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
+          break;
+        case 2:
+          cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
+          break;
+        case 3:
+          cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
+          break;
+        case 4:
+          cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
+          break;
+      }
+      cssApplier.toggleSelection();
+      window.getSelection().removeAllRanges();
+    }
+
+    //渲染侧边栏批注
+    function rePanel() {
+      var string = 'note' + type;
+      var textarea = content;
+      $$('#ancontent').append(
+        '<div class="card cardcss" id="' + anID + '">' +
+        '<blockquote class="blockquote bqcolor' + type + '">' +
+        '<p>' + selected + '</p>' +
+        '</blockquote>' +
+        '<div class="card-content cardct ">' +
+        '<p  id="an' + anID + '">' + textarea + '</p>' +
+        '</div >' +
+        '<div class="card-footer">' +
+        '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID +
+        ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
+        '</div>' +
+        '</div>');
+      document.getElementById(string).value = '';
+    }
+  </script>
+
+</body>
 
 </html>
