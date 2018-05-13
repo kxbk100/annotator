@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <script src="js/framework7.js"></script>
+    <script src="js/framework7.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/rangy-core.js"></script>
     <script src="js/rangy-classapplier.js"></script>
@@ -233,12 +233,6 @@
       }
     </script>
     <script>
-      var calendarModal = app.calendar.create({
-        inputEl: '#demo-calendar-modal',
-        openIn: 'customModal',
-        dateFormat: 'yyyy-MM-dd ',
-      });
-
       $("#submit").on('touchstart', function () {
         var form = $("#handouts").serialize();
         $.ajax({
