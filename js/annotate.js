@@ -53,7 +53,7 @@ var type;
 
 function getLocation(n) {
   var userSelection;
-  var par=0;
+  var par = 0;
   if (window.getSelection) { //现代浏览器
     userSelection = window.getSelection();
   }
@@ -75,12 +75,9 @@ function getLocation(n) {
   par = par + 1;
   paragraph = par;
   start = rangeObject.startOffset;
+  console.log(start);
   end = rangeObject.endOffset;
   type = n;
-  // alert(paragraph);
-  // alert(rangeObject.startOffset);
-  // alert(rangeObject.endOffset);
-  // alert("第"+n+"批注类型");
 }
 
 //添加批注样式
@@ -112,18 +109,113 @@ function anPaint(bton) {
     }
   }
 };
+//获取文章id
+var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
+var r = window.location.search.substr(1).match(reg);
+var passgeId = unescape(r[2]);
+var userId = 1; //预设的用户id
+window.onload=function () {
+  getPassage()
+}
+ function getPassage() {
+   $.ajax({
+     url: 'http://192.168.1.111:8686/EAnnotation/getPassage?id=' + passageId,
+     type: "post",
+     cache: false,
+     success: function (data) {
+       console.log(data);
+       $("#title").html(data.title);
+       $("#count").html(data.count + '个批注');
+       $("#box").html(data.content);
+       $("#person").html('发布人：' + data.auth + '老师');
+       getAnnotator(passageId, userId);
+     },
+     error: function (e) {}
+   })
+ };
+ var par, st, ed, type, anID, content, selected;
+ //从数据库获得json类型数据并解析
+ function getAnnotator(passageId, userId) {
+   app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+     userId,
+     function (data) {
+       var result = jQuery.parseJSON(data);
+       each(result);
+     }, JSON);
+ }
+
+
+ // 从数据库取回数据后重新渲染批注
+ function each(result) {
+   $.each(result, function (i, item) {
+     par = item.paragraph;
+     st = item.start;
+     ed = item.end;
+     type = item.type;
+     anID = item.id;
+     content = item.content;
+     selected = item.selected;
+     annotate();
+     rePanel();
+   })
+ }
+
+ function annotate() {
+   var px = $$("#box p")[par - 1].firstChild;
+   console.log(px);
+   var range = rangy.createRange();
+   range.setStart(px, st);
+   range.setEnd(px, ed);
+   range.select();
+   switch (type) {
+     case 0:
+       cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
+       break;
+     case 1:
+       cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
+       break;
+     case 2:
+       cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
+       break;
+     case 3:
+       cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
+       break;
+     case 4:
+       cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
+       break;
+   }
+   cssApplier.toggleSelection();
+   window.getSelection().removeAllRanges();
+ }
+
+ //渲染侧边栏批注
+ function rePanel() {
+   var string = 'note' + type;
+   var textarea = content;
+   $$('#ancontent').append(
+     '<div class="card cardcss" id="' + anID + '">' +
+     '<blockquote class="blockquote bqcolor' + type + '">' +
+     '<p>' + selected + '</p>' +
+     '</blockquote>' +
+     '<div class="card-content cardct ">' +
+     '<p  id="an' + anID + '">' + textarea + '</p>' +
+     '</div >' +
+     '<div class="card-footer">' +
+     '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID +
+     ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
+     '</div>' +
+     '</div>');
+   document.getElementById(string).value = '';
+ }
 
 //删除批注
 function del(delID) {
-  alert(delID);
   $$('#' + delID).remove();
   //ajax传输给后台
   app.request.post('http://192.168.1.111:8686/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
-    if (data.msg == "ture") {
-      console.log("成功")
-    }
+    getPassage();
   })
 };
 

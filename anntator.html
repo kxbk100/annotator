@@ -370,7 +370,7 @@
           <textarea placeholder="请输入感想批注" id="note0" cols="45" rows="8" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
-            <button class="button col-30  popup-close">取消</button>
+            <button class="button col-30  popup-close" onclick="annotate()">取消</button>
           </p>
         </div>
       </div>
@@ -461,103 +461,14 @@
     </div>
   </div>
 
-  <script src="js/framework7.js"></script>
+  <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/rangy-core.js"></script>
   <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
   <script src="js/jquery.min.js"></script>
+  <script src="js/annotate.js"></script>
   <script>
-    $(function () {
-      var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
-      var r = window.location.search.substr(1).match(reg);
-      var id = unescape(r[2]);
-
-      $.ajax({
-        url: 'http://192.168.1.111:8686/EAnnotation/getPassage?id=' + id,
-        type: "post",
-        cache: false,
-        success: function (data) {
-          console.log(data);
-          $("#title").html(data.title);
-          $("#count").html(data.count + '个批注');
-          $("#box").html(data.content);
-          $("#person").html('发布人：' + data.auth + '老师');
-        },
-        error: function (e) {}
-      })
-    });
-    var par, st, ed, type, anID, content, selected;
-    //从数据库获得json类型数据并解析
-      app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations',
-        function (data) {
-          var result = jQuery.parseJSON(data);
-          console.log(data);
-          each(result);
-        }, JSON);
-    
-    // 从数据库取回数据后重新渲染批注
-    function each(result) {
-      $.each(result, function (i, item) {
-        par = item.paragraph;
-        st = item.start;
-        ed = item.end;
-        type = item.type;
-        anID = item.id;
-        content = item.content;
-        selected = item.selected;
-        annotate();
-        rePanel();
-      })
-    }
-
-    function annotate() {
-      var px = $$("#box p")[par - 1].firstChild;
-      console.log(px);
-      var range = rangy.createRange();
-      range.setStart(px, st);
-      range.setEnd(px, ed);
-      range.select();
-      switch (type) {
-        case 0:
-          cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
-          break;
-        case 1:
-          cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
-          break;
-        case 2:
-          cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
-          break;
-        case 3:
-          cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
-          break;
-        case 4:
-          cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
-          break;
-      }
-      cssApplier.toggleSelection();
-      window.getSelection().removeAllRanges();
-    }
-
-    //渲染侧边栏批注
-    function rePanel() {
-      var string = 'note' + type;
-      var textarea = content;
-      $$('#ancontent').append(
-        '<div class="card cardcss" id="' + anID + '">' +
-        '<blockquote class="blockquote bqcolor' + type + '">' +
-        '<p>' + selected + '</p>' +
-        '</blockquote>' +
-        '<div class="card-content cardct ">' +
-        '<p  id="an' + anID + '">' + textarea + '</p>' +
-        '</div >' +
-        '<div class="card-footer">' +
-        '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID +
-        ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
-        '</div>' +
-        '</div>');
-      document.getElementById(string).value = '';
-    }
+   
   </script>
 
 </body>
