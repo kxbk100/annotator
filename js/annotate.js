@@ -53,6 +53,7 @@ var type;
 
 function getLocation(n) {
   var userSelection;
+  var par=0;
   if (window.getSelection) { //现代浏览器
     userSelection = window.getSelection();
   }
@@ -69,9 +70,10 @@ function getLocation(n) {
   var rangeObject = getRangeObject(userSelection);
   var p = rangeObject.startContainer.parentNode;
   while (p = p.previousSibling) {
-    paragraph++;
+    par++;
   }
-  paragraph = (paragraph + 1) / 2;
+  par = par + 1;
+  paragraph = par;
   start = rangeObject.startOffset;
   end = rangeObject.endOffset;
   type = n;
@@ -154,67 +156,6 @@ function add() {
   });
 }
 
-// 从数据库取回数据后重新渲染批注
-function each(result) {
-  $.each(result, function (i, item) {
-    par = item.paragraph;
-    st = item.start;
-    ed = item.end;
-    type = item.type;
-    anID = item.id;
-    content = item.content;
-    selected = item.selected;
-    annotate();
-    rePanel();
-  })
-}
-
-function annotate() {
-  var px = $$("#box p")[par - 1].firstChild;
-  console.log(px);
-  var range = rangy.createRange();
-  range.setStart(px, st);
-  range.setEnd(px, ed);
-  range.select();
-  switch (type) {
-    case 0:
-      cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
-      break;
-    case 1:
-      cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
-      break;
-    case 2:
-      cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
-      break;
-    case 3:
-      cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
-      break;
-    case 4:
-      cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
-      break;
-  }
-  cssApplier.toggleSelection();
-  window.getSelection().removeAllRanges();
-}
-
-//渲染侧边栏批注
-function rePanel() {
-  var string = 'note' + type;
-  var textarea = content;
-  $$('#ancontent').append(
-    '<div class="card cardcss" id="' + anID + '">' +
-    '<blockquote class="blockquote bqcolor' + type + '">' +
-    '<p>' + selected + '</p>' +
-    '</blockquote>' +
-    '<div class="card-content cardct ">' +
-    '<p  id="an' + anID + '">' + textarea + '</p>' +
-    '</div >' +
-    '<div class="card-footer">' +
-    '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID + ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
-    '</div>' +
-    '</div>');
-  document.getElementById(string).value = '';
-}
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
@@ -286,5 +227,6 @@ change.addEventListener('touchstart', function () {
 //删除按钮
 var delbutn = document.getElementById("delete");
 delbutn.addEventListener('touchstart', function () {
-  del()
+  del();
+  refresh();
 });
