@@ -107,10 +107,6 @@
                         <label class="radio">
                           <input type="radio" name="theme" value="小说">
                           <i class="icon-radio"></i>
-                        </label>&nbsp;&nbsp;&nbsp;演讲
-                        <label class="radio">
-                          <input type="radio" name="theme" value="演讲">
-                          <i class="icon-radio"></i>
                         </label>&nbsp;&nbsp;&nbsp;摘录
                         <label class="radio">
                           <input type="radio" name="theme" value="摘录">
@@ -121,11 +117,7 @@
                           <i class="icon-radio"></i>
                         </label>
                       </p>
-                      <p>&nbsp;&nbsp;&nbsp;科技
-                        <label class="radio">
-                          <input type="radio" name="theme" value="科技">
-                          <i class="icon-radio"></i>
-                        </label>&nbsp;&nbsp;&nbsp;励志
+                      <p>&nbsp;&nbsp;&nbsp;励志
                         <label class="radio">
                           <input type="radio" name="theme" value="励志">
                           <i class="icon-radio"></i>
@@ -137,17 +129,13 @@
                         <label class="radio">
                           <input type="radio" name="theme" value="心理">
                           <i class="icon-radio"></i>
-                        </label>&nbsp;&nbsp;&nbsp;古诗
+                        </label>&nbsp;&nbsp;&nbsp;诗歌
                         <label class="radio">
-                          <input type="radio" name="theme" value="古诗">
+                          <input type="radio" name="theme" value="诗歌">
                           <i class="icon-radio"></i>
                         </label>
                       </p>
-                      <p>&nbsp;&nbsp;&nbsp;哲学
-                        <label class="radio">
-                          <input type="radio" name="theme" value="哲学">
-                          <i class="icon-radio"></i>
-                        </label>&nbsp;&nbsp;&nbsp;传记
+                      <p>&nbsp;&nbsp;&nbsp;传记
                         <label class="radio">
                           <input type="radio" name="theme" value="传记">
                           <i class="icon-radio"></i>
@@ -162,6 +150,24 @@
                         </label>&nbsp;&nbsp;&nbsp;历史
                         <label class="radio">
                           <input type="radio" name="theme" value="历史">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                      <p>&nbsp;&nbsp;&nbsp;哲学
+                        <label class="radio">
+                          <input type="radio" name="theme" value="哲学">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;科技
+                        <label class="radio">
+                          <input type="radio" name="theme" value="科技">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;演讲
+                        <label class="radio">
+                          <input type="radio" name="theme" value="演讲">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;金融
+                        <label class="radio">
+                          <input type="radio" name="theme" value="金融">
                           <i class="icon-radio"></i>
                         </label>
                       </p>
@@ -315,7 +321,7 @@
     $("#submit").on('touchstart', function () {
       var form = new FormData($('#homework')[0]);
       $.ajax({
-        url: 'http://192.168.1.111:8686/EAnnotation/addPassage',
+        url: 'http://47.52.230.212:8080/EAnnotation/addPassage',
         type: 'POST',
         cache: false,
         data: form,
@@ -325,7 +331,7 @@
           window.location.href = "classteacher.html"
           console.log(form);
         },
-        error: function (e) {}
+        error: function (e) { }
       })
       return false;
     });
