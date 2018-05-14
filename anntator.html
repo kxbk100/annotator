@@ -53,8 +53,7 @@
   <div id="app">
     <!-- 左侧边栏 -->
     <div class="panel panel-left panel-cover anpanel annotator">
-      <div class="subnavbar subbar annotator" id="searchnav">
-        <!-- Searchbar with auto init -->
+      <!-- <div class="subnavbar subbar annotator" id="searchnav">
         <form class="searchbar" id="search">
           <div class="searchbar-inner">
             <div class="searchbar-input-wrap" id="subwrap">
@@ -65,7 +64,7 @@
             <span class="searchbar-disable-button">取消</span>
           </div>
         </form>
-      </div>
+      </div> -->
       <div class="block" id="Mynote">
         <div id="ancontent">
           <div class="texbg">暂无批注</div>
@@ -75,8 +74,7 @@
     <!-- 右侧侧边栏 -->
     <div class="panel panel-right panel-cover anpanel annotator" id="anpanel">
 
-      <div class="subnavbar subbar annotator" id="searchnav">
-        <!-- Searchbar with auto init -->
+      <!-- <div class="subnavbar subbar annotator" id="searchnav">
         <form class="searchbar" id="search">
           <div class="searchbar-inner">
             <div class="searchbar-input-wrap" id="subwrap">
@@ -87,7 +85,7 @@
             <span class="searchbar-disable-button">取消</span>
           </div>
         </form>
-      </div>
+      </div> -->
 
       <div class="block block-strong annotator">
         <p>批注来源：
@@ -335,7 +333,7 @@
         <div class="block annotator">
           <p>
             <i class="icon f7-icons ios-only">help_fill</i> 修改质疑批注</p>
-          <blockquote class="blockquote xg1 bqcolor1">
+          <blockquote class="blockquote bqcolor1" id="bqcolor">
             <p id="old"></p>
             <p id="sendID" style="display: none"></p>
           </blockquote>
@@ -370,7 +368,7 @@
           <textarea placeholder="请输入感想批注" id="note0" cols="45" rows="8" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
-            <button class="button col-30  popup-close" onclick="annotate()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -391,7 +389,7 @@
           <textarea placeholder="请输入质疑批注" id="note1" cols="45" rows="8" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
-            <button class="button col-30  popup-close">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -412,7 +410,7 @@
           <textarea placeholder="请输入联想批注" id="note2" cols="45" rows="8" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
-            <button class="button col-30  popup-close">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -433,7 +431,7 @@
           <textarea placeholder="请输入评价批注" id="note3" cols="45" rows="8" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
-            <button class="button col-30  popup-close">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -454,7 +452,7 @@
           <textarea placeholder="请输入补充批注" id="note4" cols="45" rows="8" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add4">添加批注</button>
-            <button class="button col-30  popup-close">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>

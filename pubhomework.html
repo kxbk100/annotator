@@ -1,411 +1,335 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#000">
-    <!-- Your app title -->
-    <title>班级</title>
-    <!-- Path to Framework7 Library CSS -->
-    <link rel="stylesheet" href="css/framework7.css">
-    <link rel="stylesheet" href="css/framework7-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-      .ios .list textarea.resizable {
-        height: 250px;
-      }
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000">
+  <!-- Your app title -->
+  <title>班级</title>
+  <!-- Path to Framework7 Library CSS -->
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ios .list textarea.resizable {
+      height: 250px;
+    }
 
-      .ios .item-label,
-      .ios .item-floating-label {
-        font-size: 17px;
-      }
-    </style>
-  </head>
+    .ios .item-label,
+    .ios .item-floating-label {
+      font-size: 17px;
+    }
 
-  <body>
-    <div id="app">
-      <div class="view view-main view-init">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left">
-              <a href="classteacher.html" class="item-link icon external">
-                <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
-              </a>
-            </div>
-            <div class="title">发布作业</div>
-            <div class="right"></div>
+    .ios .block-strong {
+      padding: 15px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="view view-main view-init">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <a href="classteacher.html" class="item-link icon external">
+              <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+            </a>
           </div>
-        </div>
-        <div class="page-content">
-          <form class="list" id="homework">
-            <ul>
-              <li>
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">标题</div>
-                    <div class="item-input-wrap">
-                      <input type="text" name="title" placeholder="请输入标题">
-                      <!-- 作业type为0 -->
-                      <input type="text" name="type" value="0" class="hidden">
-                      <input type="text" name="auth" value="1" class="hidden">
-                      <input type="text" name="classId" value="1" class="hidden">
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">标题图片</div>
-                    <div class="item-input-wrap">
-                      <input type="file" name="photo">
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="item-input">
-                <div class="item-media">
-                  <i class="icon demo-list-icon"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title item-label">内容</div>
-                  <div class="item-input-wrap">
-                    <script id="editor" type="text/plain" style="height: 300px;"></script>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">截止日期</div>
-                    <div class="item-input-wrap">
-                      <input type="text" placeholder="选择截止日期" name="endTime" readonly="readonly" id="demo-calendar-modal" />
-                    </div>
-                  </div>
-                </div>
-              </li>
-
-            </ul>
-            <div class="item-media">
-              <i class="icon demo-list-icon"></i>
-            </div>
-            <div class="title">选择主题</div>
-            <div class="row margin-top-30">
-              <div class="col">
-                <div class="list">
-                  <ul>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="radio" name="demo-checkbox" value="Books" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">演讲</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="radio" name="demo-checkbox" value="Movies" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">生活</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Food" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">摘录</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">心理</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">金融</div>
-                        </div>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col">
-                <div class="list">
-                  <ul>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="radio" name="demo-checkbox" value="Books" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">校园</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Movies" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">科技</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Food" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">励志</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">青春</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">传记</div>
-                        </div>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="list">
-                  <ul>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Books" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">实事</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Movies" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">推理</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Food" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">教育</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">哲学</div>
-                        </div>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="item-checkbox item-content">
-                        <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                        <i class="icon icon-checkbox"></i>
-                        <div class="item-inner">
-                          <div class="item-title">历史</div>
-                        </div>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="block">
-              <button class="button button-big button-fill text-center" id="submit">发布</button>
-            </div>
-          </form>
+          <div class="title">发布作业</div>
+          <div class="right"></div>
         </div>
       </div>
+      <div class="page-content">
+        <form class="list" id="homework">
+          <ul>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">标题</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="title" placeholder="请输入标题">
+                    <!-- 作业type为0 -->
+                    <input type="text" name="type" value="0" class="hidden">
+                    <input type="text" name="auth" value="1" class="hidden">
+                    <input type="text" name="classId" value="1" class="hidden">
+                    <input type="text" name="teacherId" value="1" class="hidden">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">标题图片</div>
+                  <div class="item-input-wrap">
+                    <input type="file" name="image">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="item-input">
+              <div class="item-media">
+                <i class="icon demo-list-icon"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title item-label">内容</div>
+                <div class="item-input-wrap">
+                  <script id="editor" type="text/plain" style="height: 300px;"></script>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">截止日期</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="选择截止日期" name="endTime" readonly="readonly" id="demo-calendar-modal" />
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">选择主题</div>
+                  <div class="item-input-wrap">
+                    <div class="block-strong">
+                      <p>&nbsp;&nbsp;&nbsp;古文
+                        <label class="radio">
+                          <input type="radio" name="theme" value="古文">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;小说
+                        <label class="radio">
+                          <input type="radio" name="theme" value="小说">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;演讲
+                        <label class="radio">
+                          <input type="radio" name="theme" value="演讲">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;摘录
+                        <label class="radio">
+                          <input type="radio" name="theme" value="摘录">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;散文
+                        <label class="radio">
+                          <input type="radio" name="theme" value="散文">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                      <p>&nbsp;&nbsp;&nbsp;科技
+                        <label class="radio">
+                          <input type="radio" name="theme" value="科技">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;励志
+                        <label class="radio">
+                          <input type="radio" name="theme" value="励志">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;校园
+                        <label class="radio">
+                          <input type="radio" name="theme" value="校园">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;心理
+                        <label class="radio">
+                          <input type="radio" name="theme" value="心理">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;古诗
+                        <label class="radio">
+                          <input type="radio" name="theme" value="古诗">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                      <p>&nbsp;&nbsp;&nbsp;哲学
+                        <label class="radio">
+                          <input type="radio" name="theme" value="哲学">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;传记
+                        <label class="radio">
+                          <input type="radio" name="theme" value="传记">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;时事
+                        <label class="radio">
+                          <input type="radio" name="theme" value="时事">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;教育
+                        <label class="radio">
+                          <input type="radio" name="theme" value="教育">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;历史
+                        <label class="radio">
+                          <input type="radio" name="theme" value="历史">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="block">
+            <button class="button button-big button-fill text-center" id="submit">发布</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <script src="js/framework7.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
-    <script src="js/annotate.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="ueditor/ueditor.config.js"></script>
-    <script src="ueditor/ueditor.all.min.js"></script>
-    <script src="ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script>
-      //实例化编辑器
-      //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-      var ue = UE.getEditor('editor');
-      function isFocus(e) {
-        alert(UE.getEditor('editor').isFocus());
-        UE.dom.domUtils.preventDefault(e)
-      }
+  </div>
+  <script src="js/framework7.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/rangy-core.js"></script>
+  <script src="js/rangy-classapplier.js"></script>
+  <script src="js/annotate.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="ueditor/ueditor.config.js"></script>
+  <script src="ueditor/ueditor.all.min.js"></script>
+  <script src="ueditor/lang/zh-cn/zh-cn.js"></script>
+  <script>
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
 
-      function setblur(e) {
-        UE.getEditor('editor').blur();
-        UE.dom.domUtils.preventDefault(e)
-      }
+    function isFocus(e) {
+      alert(UE.getEditor('editor').isFocus());
+      UE.dom.domUtils.preventDefault(e)
+    }
 
-      function insertHtml() {
-        var value = prompt('插入html代码', '');
-        UE.getEditor('editor').execCommand('insertHtml', value)
-      }
+    function setblur(e) {
+      UE.getEditor('editor').blur();
+      UE.dom.domUtils.preventDefault(e)
+    }
 
-      function createEditor() {
-        enableBtn();
-        UE.getEditor('editor');
-      }
+    function insertHtml() {
+      var value = prompt('插入html代码', '');
+      UE.getEditor('editor').execCommand('insertHtml', value)
+    }
 
-      function getAllHtml() {
-        alert(UE.getEditor('editor').getAllHtml())
-      }
+    function createEditor() {
+      enableBtn();
+      UE.getEditor('editor');
+    }
 
-      function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
-      }
+    function getAllHtml() {
+      alert(UE.getEditor('editor').getAllHtml())
+    }
 
-      function getPlainTxt() {
-        var arr = [];
-        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getPlainTxt());
-        alert(arr.join('\n'))
-      }
+    function getContent() {
+      var arr = [];
+      arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+      arr.push("内容为：");
+      arr.push(UE.getEditor('editor').getContent());
+      alert(arr.join("\n"));
+    }
 
-      function setContent(isAppendTo) {
-        var arr = [];
-        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
-        alert(arr.join("\n"));
-      }
+    function getPlainTxt() {
+      var arr = [];
+      arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+      arr.push("内容为：");
+      arr.push(UE.getEditor('editor').getPlainTxt());
+      alert(arr.join('\n'))
+    }
 
-      function setDisabled() {
-        UE.getEditor('editor').setDisabled('fullscreen');
-        disableBtn("enable");
-      }
+    function setContent(isAppendTo) {
+      var arr = [];
+      arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+      UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+      alert(arr.join("\n"));
+    }
 
-      function setEnabled() {
-        UE.getEditor('editor').setEnabled();
-        enableBtn();
-      }
+    function setDisabled() {
+      UE.getEditor('editor').setDisabled('fullscreen');
+      disableBtn("enable");
+    }
 
-      function getText() {
-        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-        var range = UE.getEditor('editor').selection.getRange();
-        range.select();
-        var txt = UE.getEditor('editor').selection.getText();
-        alert(txt)
-      }
+    function setEnabled() {
+      UE.getEditor('editor').setEnabled();
+      enableBtn();
+    }
 
-      function getContentTxt() {
-        var arr = [];
-        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-        arr.push("编辑器的纯文本内容为：");
-        arr.push(UE.getEditor('editor').getContentTxt());
-        alert(arr.join("\n"));
-      }
+    function getText() {
+      //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+      var range = UE.getEditor('editor').selection.getRange();
+      range.select();
+      var txt = UE.getEditor('editor').selection.getText();
+      alert(txt)
+    }
 
-      function hasContent() {
-        var arr = [];
-        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-        arr.push("判断结果为：");
-        arr.push(UE.getEditor('editor').hasContents());
-        alert(arr.join("\n"));
-      }
+    function getContentTxt() {
+      var arr = [];
+      arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+      arr.push("编辑器的纯文本内容为：");
+      arr.push(UE.getEditor('editor').getContentTxt());
+      alert(arr.join("\n"));
+    }
 
-      function setFocus() {
-        UE.getEditor('editor').focus();
-      }
+    function hasContent() {
+      var arr = [];
+      arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+      arr.push("判断结果为：");
+      arr.push(UE.getEditor('editor').hasContents());
+      alert(arr.join("\n"));
+    }
 
-      function deleteEditor() {
-        disableBtn();
-        UE.getEditor('editor').destroy();
-      }
+    function setFocus() {
+      UE.getEditor('editor').focus();
+    }
 
-      function disableBtn(str) {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-          if (btn.id == str) {
-            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-          } else {
-            btn.setAttribute("disabled", "true");
-          }
-        }
-      }
+    function deleteEditor() {
+      disableBtn();
+      UE.getEditor('editor').destroy();
+    }
 
-      function enableBtn() {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
+    function disableBtn(str) {
+      var div = document.getElementById('btns');
+      var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+      for (var i = 0, btn; btn = btns[i++];) {
+        if (btn.id == str) {
           UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+        } else {
+          btn.setAttribute("disabled", "true");
         }
       }
+    }
 
-      function getLocalData() {
-        alert(UE.getEditor('editor').execCommand("getlocaldata"));
+    function enableBtn() {
+      var div = document.getElementById('btns');
+      var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+      for (var i = 0, btn; btn = btns[i++];) {
+        UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
       }
+    }
 
-      function clearLocalData() {
-        UE.getEditor('editor').execCommand("clearlocaldata");
-        alert("已清空草稿箱")
-      }
-    </script>
-    <script>
-      $("#submit").on('touchstart', function () {
-        var form = $("#homework").serialize();
-        $.ajax({
-          url: 'http://192.168.1.111:8686/EAnnotation/addPassage',
-          type: "post",
-          data: form,
-          cache: false,
-          success: function (data) {
-            window.location.href = "classteacher.html"
-          },
-          error: function (e) {
-          }
-        })
-        return false;
-      });
-    </script>
-  </body>
+    function getLocalData() {
+      alert(UE.getEditor('editor').execCommand("getlocaldata"));
+    }
+
+    function clearLocalData() {
+      UE.getEditor('editor').execCommand("clearlocaldata");
+      alert("已清空草稿箱")
+    }
+  </script>
+  <script>
+    $("#submit").on('touchstart', function () {
+      var form = new FormData($('#homework')[0]);
+      $.ajax({
+        url: 'http://192.168.1.111:8686/EAnnotation/addPassage',
+        type: 'POST',
+        cache: false,
+        data: form,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+          window.location.href = "classteacher.html"
+          console.log(form);
+        },
+        error: function (e) {}
+      })
+      return false;
+    });
+  </script>
+</body>
 
 </html>

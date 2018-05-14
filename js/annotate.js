@@ -9,7 +9,6 @@ function getString(n) {
   selectedtxt.innerText = text;
 }
 var userID = 1;
-var passageId = 1;
 //将popu中的文字传递到侧边栏
 function panel(m) {
   var leftID;
@@ -17,7 +16,7 @@ function panel(m) {
   var textarea = document.getElementById(string).value;
 
   //ajax传递数据到后台并获得批注id
-  app.request.post('http://192.168.1.111:8686/EAnnotation/addAnnotation', {
+  app.request.post('http://47.52.230.212:8080/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
@@ -30,7 +29,7 @@ function panel(m) {
     leftID = jQuery.parseJSON(data);
     $$('#ancontent').append(
       '<div class="card cardcss" id="' + leftID + '">' +
-      '<blockquote class="blockquote bqcolor' + m + '">' +
+      '<blockquote class="blockquote bqcolor' + m + '" id="bq'+leftID+'">' +
       '<p>' + text + '</p>' +
       '</blockquote>' +
       '<div class="card-content cardct ">' +
@@ -109,44 +108,46 @@ function anPaint(bton) {
     }
   }
 };
-//获取文章id
+
 var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
 var r = window.location.search.substr(1).match(reg);
-var passgeId = unescape(r[2]);
+var passageId = unescape(r[2]);
 var userId = 1; //预设的用户id
+//获取文章id
+function getPassage(dele) {
+  $.ajax({
+    url: 'http://47.52.230.212:8080/EAnnotation/getPassage?id=' + passageId,
+    type: "post",
+    cache: false,
+    success: function (data) {
+      console.log(data);
+      $("#title").html(data.title);
+      $("#count").html(data.count + '个批注');
+      $("#box").html(data.content);
+      $("#person").html('发布人：' + data.auth + '老师');
+      getAnnotator(passageId, userId, dele);
+    },
+    error: function (e) { }
+  })
+};
 window.onload=function () {
   getPassage()
 }
- function getPassage() {
-   $.ajax({
-     url: 'http://192.168.1.111:8686/EAnnotation/getPassage?id=' + passageId,
-     type: "post",
-     cache: false,
-     success: function (data) {
-       console.log(data);
-       $("#title").html(data.title);
-       $("#count").html(data.count + '个批注');
-       $("#box").html(data.content);
-       $("#person").html('发布人：' + data.auth + '老师');
-       getAnnotator(passageId, userId);
-     },
-     error: function (e) {}
-   })
- };
+
  var par, st, ed, type, anID, content, selected;
  //从数据库获得json类型数据并解析
- function getAnnotator(passageId, userId) {
-   app.request.get('http://192.168.1.111:8686/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+ function getAnnotator(passageId, userId,dele) {
+   app.request.get('http://47.52.230.212:8080/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
      userId,
      function (data) {
        var result = jQuery.parseJSON(data);
-       each(result);
+       each(result,dele);
      }, JSON);
  }
 
 
  // 从数据库取回数据后重新渲染批注
- function each(result) {
+ function each(result,dele) {
    $.each(result, function (i, item) {
      par = item.paragraph;
      st = item.start;
@@ -156,7 +157,9 @@ window.onload=function () {
      content = item.content;
      selected = item.selected;
      annotate();
-     rePanel();
+     if(dele!="ture"){
+       rePanel();
+     }
    })
  }
 
@@ -194,7 +197,7 @@ window.onload=function () {
    var textarea = content;
    $$('#ancontent').append(
      '<div class="card cardcss" id="' + anID + '">' +
-     '<blockquote class="blockquote bqcolor' + type + '">' +
+     '<blockquote class="blockquote bqcolor' + type + '" id="bq'+anID+'">' +
      '<p>' + selected + '</p>' +
      '</blockquote>' +
      '<div class="card-content cardct ">' +
@@ -212,20 +215,23 @@ window.onload=function () {
 function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('http://192.168.1.111:8686/EAnnotation/deleteAnnotation', {
+  app.request.post('http://47.52.230.212:8080/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
-    getPassage();
+    var dele = "ture";
+    getPassage(dele);
   })
 };
 
 //修改批注
 function modify(modId) {
   var x = $$('#an' + modId).text();
-  var t = $$('.bqcolor1>p').text();
+  var t = $$('#bq'+modId+'>p').text();
+  var bqcolor = $$('#bq'+modId).attr('class')
   $$('#sendID').text(modId);
   $$('#old').text(t);
   $$('#mod').val(x);
+  $$('#bqcolor').attr('class',bqcolor);
 }
 
 var ad = document.getElementById("modadd");
@@ -238,7 +244,7 @@ function add() {
   var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('http://192.168.1.111:8686/EAnnotation/updateAnnotation', {
+  app.request.post('http://47.52.230.212:8080/EAnnotation/updateAnnotation', {
     content: nw,
     id: getID
   }, function (data) {
