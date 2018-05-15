@@ -36,9 +36,9 @@
     background-color: #f0f0f0;
 }
 
-.panel.annotator {
+/* .panel.annotator {
     padding-top: 28px;
-}
+} */
 
 a.icon {
     color: white;
@@ -135,7 +135,7 @@ a.icon {
 
 #Mynote {
     padding: 0px;
-    margin-top: 2.2rem;
+    margin-top: 0.2rem;
 }
 
 .card-footer {
@@ -431,6 +431,13 @@ margin-top: -30px;
 .text_overflow{
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text_overflow2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

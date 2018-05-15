@@ -1,254 +1,346 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#000">
-    <!-- Your app title -->
-    <title>班级</title>
-    <!-- Path to Framework7 Library CSS -->
-    <link rel="stylesheet" href="css/framework7.css">
-    <link rel="stylesheet" href="css/framework7-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-      .ios .list textarea.resizable {
-        height: 250px;
-      }
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000">
+  <!-- Your app title -->
+  <title>班级</title>
+  <!-- Path to Framework7 Library CSS -->
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ios .list textarea.resizable {
+      height: 250px;
+    }
 
-      .ios .list {
-        margin-bottom: 0;
-      }
+    .ios .list {
+      margin-bottom: 0;
+    }
 
-      .ios .item-label,
-      .ios .item-floating-label {
-        font-size: 17px;
-      }
-    </style>
-  </head>
+    .ios .item-label,
+    .ios .item-floating-label {
+      font-size: 17px;
+    }
 
-  <body>
-    <div id="app">
-      <div class="view view-main view-init">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left">
-              <a href="course.html" class="item-link icon external">
-                <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
-              </a>
-            </div>
-            <div class="title">上传讲义</div>
-            <div class="right"></div>
+    .ios .block-strong {
+      padding: 15px 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="view view-main view-init">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <a href="course.html" class="item-link icon external">
+              <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+            </a>
           </div>
-        </div>
-        <div class="page-content">
-          <form class="list" id="handouts">
-            <ul>
-              <li>
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">标题</div>
-                    <div class="item-input-wrap">
-                      <input type="text" name="title" placeholder="请输入标题">
-                      <!-- 讲义type为0 -->
-                      <input type="text" name="type" value="1" class="hidden">
-                      <input type="text" name="auth" value="1" class="hidden">
-                      <input type="text" name="classId" value="1" class="hidden">
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">标题图片</div>
-                    <div class="item-input-wrap">
-                      <input type="file" name="photo">
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="item-input">
-                <div class="item-media">
-                  <i class="icon demo-list-icon"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title item-label">内容</div>
-                  <div class="item-input-wrap">
-                    <script id="editor" type="text/plain" style="height: 300px;"></script>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="item-content item-input">
-                  <div class="item-inner">
-                    <div class="item-title item-label">截止日期</div>
-                    <div class="item-input-wrap">
-                      <input type="text" placeholder="选择截止日期" name="endTime" readonly="readonly" id="demo-calendar-modal" />
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <div class="block">
-              <button class="button button-big button-fill text-center" id="submit">上传</button>
-            </div>
-          </form>
+          <div class="title">上传讲义</div>
+          <div class="right"></div>
         </div>
       </div>
+      <div class="page-content">
+        <form class="list" id="handouts" enctype="multipart/form-data">
+          <ul>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">标题</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="title" placeholder="请输入标题">
+                    <!-- 讲义type为0 -->
+                    <input type="text" name="auth" value="1" class="hidden">
+                    <input type="text" name="classId" value="1" class="hidden">
+                    <input type="text" name="teacherId" value="1" class="hidden">
+                    <input type="text" name="type" value="1" class="hidden">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">标题图片</div>
+                  <div class="item-input-wrap">
+                    <input type="file" name="image">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="item-input">
+              <div class="item-media">
+                <i class="icon demo-list-icon"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title item-label">内容</div>
+                <div class="item-input-wrap">
+                  <script id="editor" type="text/plain" style="height: 300px;"></script>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">截止日期</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="选择截止日期" name="endTime" readonly="readonly" id="demo-calendar-modal" />
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">选择主题</div>
+                  <div class="item-input-wrap">
+                    <div class="block-strong">
+                      <p>&nbsp;&nbsp;&nbsp;古文
+                        <label class="radio">
+                          <input type="radio" name="theme" value="古文">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;小说
+                        <label class="radio">
+                          <input type="radio" name="theme" value="小说">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;摘录
+                        <label class="radio">
+                          <input type="radio" name="theme" value="摘录">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;散文
+                        <label class="radio">
+                          <input type="radio" name="theme" value="散文">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                      <p>&nbsp;&nbsp;&nbsp;励志
+                        <label class="radio">
+                          <input type="radio" name="theme" value="励志">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;校园
+                        <label class="radio">
+                          <input type="radio" name="theme" value="校园">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;心理
+                        <label class="radio">
+                          <input type="radio" name="theme" value="心理">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;诗歌
+                        <label class="radio">
+                          <input type="radio" name="theme" value="诗歌">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                      <p>&nbsp;&nbsp;&nbsp;传记
+                        <label class="radio">
+                          <input type="radio" name="theme" value="传记">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;时事
+                        <label class="radio">
+                          <input type="radio" name="theme" value="时事">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;教育
+                        <label class="radio">
+                          <input type="radio" name="theme" value="教育">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;历史
+                        <label class="radio">
+                          <input type="radio" name="theme" value="历史">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                      <p>&nbsp;&nbsp;&nbsp;哲学
+                        <label class="radio">
+                          <input type="radio" name="theme" value="哲学">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;科技
+                        <label class="radio">
+                          <input type="radio" name="theme" value="科技">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;演讲
+                        <label class="radio">
+                          <input type="radio" name="theme" value="演讲">
+                          <i class="icon-radio"></i>
+                        </label>&nbsp;&nbsp;&nbsp;金融
+                        <label class="radio">
+                          <input type="radio" name="theme" value="金融">
+                          <i class="icon-radio"></i>
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="block">
+            <button class="button button-big button-fill text-center" id="submit">上传</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <script src="js/framework7.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
-    <script src="js/annotate.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="ueditor/ueditor.config.js"></script>
-    <script src="ueditor/ueditor.all.min.js"></script>
-    <script src="ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script>
-      //实例化编辑器
-      //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-      var ue = UE.getEditor('editor');
-      function isFocus(e) {
-        alert(UE.getEditor('editor').isFocus());
-        UE.dom.domUtils.preventDefault(e)
-      }
+  </div>
+  <script src="js/framework7.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/rangy-core.js"></script>
+  <script src="js/rangy-classapplier.js"></script>
+  <script src="js/annotate.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="ueditor/ueditor.config.js"></script>
+  <script src="ueditor/ueditor.all.min.js"></script>
+  <script src="ueditor/lang/zh-cn/zh-cn.js"></script>
+  <script>
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
 
-      function setblur(e) {
-        UE.getEditor('editor').blur();
-        UE.dom.domUtils.preventDefault(e)
-      }
+    function isFocus(e) {
+      alert(UE.getEditor('editor').isFocus());
+      UE.dom.domUtils.preventDefault(e)
+    }
 
-      function insertHtml() {
-        var value = prompt('插入html代码', '');
-        UE.getEditor('editor').execCommand('insertHtml', value)
-      }
+    function setblur(e) {
+      UE.getEditor('editor').blur();
+      UE.dom.domUtils.preventDefault(e)
+    }
 
-      function createEditor() {
-        enableBtn();
-        UE.getEditor('editor');
-      }
+    function insertHtml() {
+      var value = prompt('插入html代码', '');
+      UE.getEditor('editor').execCommand('insertHtml', value)
+    }
 
-      function getAllHtml() {
-        alert(UE.getEditor('editor').getAllHtml())
-      }
+    function createEditor() {
+      enableBtn();
+      UE.getEditor('editor');
+    }
 
-      function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
-      }
+    function getAllHtml() {
+      alert(UE.getEditor('editor').getAllHtml())
+    }
 
-      function getPlainTxt() {
-        var arr = [];
-        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getPlainTxt());
-        alert(arr.join('\n'))
-      }
+    function getContent() {
+      var arr = [];
+      arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+      arr.push("内容为：");
+      arr.push(UE.getEditor('editor').getContent());
+      alert(arr.join("\n"));
+    }
 
-      function setContent(isAppendTo) {
-        var arr = [];
-        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
-        alert(arr.join("\n"));
-      }
+    function getPlainTxt() {
+      var arr = [];
+      arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+      arr.push("内容为：");
+      arr.push(UE.getEditor('editor').getPlainTxt());
+      alert(arr.join('\n'))
+    }
 
-      function setDisabled() {
-        UE.getEditor('editor').setDisabled('fullscreen');
-        disableBtn("enable");
-      }
+    function setContent(isAppendTo) {
+      var arr = [];
+      arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+      UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+      alert(arr.join("\n"));
+    }
 
-      function setEnabled() {
-        UE.getEditor('editor').setEnabled();
-        enableBtn();
-      }
+    function setDisabled() {
+      UE.getEditor('editor').setDisabled('fullscreen');
+      disableBtn("enable");
+    }
 
-      function getText() {
-        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-        var range = UE.getEditor('editor').selection.getRange();
-        range.select();
-        var txt = UE.getEditor('editor').selection.getText();
-        alert(txt)
-      }
+    function setEnabled() {
+      UE.getEditor('editor').setEnabled();
+      enableBtn();
+    }
 
-      function getContentTxt() {
-        var arr = [];
-        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-        arr.push("编辑器的纯文本内容为：");
-        arr.push(UE.getEditor('editor').getContentTxt());
-        alert(arr.join("\n"));
-      }
+    function getText() {
+      //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+      var range = UE.getEditor('editor').selection.getRange();
+      range.select();
+      var txt = UE.getEditor('editor').selection.getText();
+      alert(txt)
+    }
 
-      function hasContent() {
-        var arr = [];
-        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-        arr.push("判断结果为：");
-        arr.push(UE.getEditor('editor').hasContents());
-        alert(arr.join("\n"));
-      }
+    function getContentTxt() {
+      var arr = [];
+      arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+      arr.push("编辑器的纯文本内容为：");
+      arr.push(UE.getEditor('editor').getContentTxt());
+      alert(arr.join("\n"));
+    }
 
-      function setFocus() {
-        UE.getEditor('editor').focus();
-      }
+    function hasContent() {
+      var arr = [];
+      arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+      arr.push("判断结果为：");
+      arr.push(UE.getEditor('editor').hasContents());
+      alert(arr.join("\n"));
+    }
 
-      function deleteEditor() {
-        disableBtn();
-        UE.getEditor('editor').destroy();
-      }
+    function setFocus() {
+      UE.getEditor('editor').focus();
+    }
 
-      function disableBtn(str) {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-          if (btn.id == str) {
-            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
-          } else {
-            btn.setAttribute("disabled", "true");
-          }
-        }
-      }
+    function deleteEditor() {
+      disableBtn();
+      UE.getEditor('editor').destroy();
+    }
 
-      function enableBtn() {
-        var div = document.getElementById('btns');
-        var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
+    function disableBtn(str) {
+      var div = document.getElementById('btns');
+      var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+      for (var i = 0, btn; btn = btns[i++];) {
+        if (btn.id == str) {
           UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+        } else {
+          btn.setAttribute("disabled", "true");
         }
       }
+    }
 
-      function getLocalData() {
-        alert(UE.getEditor('editor').execCommand("getlocaldata"));
+    function enableBtn() {
+      var div = document.getElementById('btns');
+      var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+      for (var i = 0, btn; btn = btns[i++];) {
+        UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
       }
+    }
 
-      function clearLocalData() {
-        UE.getEditor('editor').execCommand("clearlocaldata");
-        alert("已清空草稿箱")
-      }
-    </script>
-    <script>
-      $("#submit").on('touchstart', function () {
-        var form = $("#handouts").serialize();
-        $.ajax({
-          url: 'http://192.168.1.111:8686/EAnnotation/addPassage',
-          type: "post",
-          data: form,
-          cache: false,
-          success: function (data) {
-            window.location.href = "course.html"
-          },
-          error: function (e) {
-          }
-        })
-        return false;
-      });
-    </script>
-  </body>
+    function getLocalData() {
+      alert(UE.getEditor('editor').execCommand("getlocaldata"));
+    }
+
+    function clearLocalData() {
+      UE.getEditor('editor').execCommand("clearlocaldata");
+      alert("已清空草稿箱")
+    }
+  </script>
+  <script>
+    $("#submit").on('touchstart', function () {
+      var form = new FormData($('#handouts')[0]);
+      $.ajax({
+        url: 'http://47.52.230.212:8080/EAnnotation/addPassage',
+        type: 'POST',
+        cache: false,
+        data: form,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+          window.location.href = "course.html"
+        },
+        error: function (e) {
+          console.log(form);
+        }
+      })
+      return false;
+    });
+  </script>
+</body>
 
 </html>
