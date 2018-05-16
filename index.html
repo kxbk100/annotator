@@ -487,15 +487,17 @@
                   </p>
                 </div>
 
-<div class="card-footer">
-  <a href="#" class="link" style="color">
-    <i class="f7-icons size-18">heart_fill</i>` +
-              Math.ceil(Math.random() * 10 + 26) + ` 喜欢</a>
-  <a href="#" class="link">
-    ` + Math.ceil(
-                Math.random() * 10 + 13) + ` 人批注过
-  </a>
-</div>
+              <div class="card-footer">
+                  <a href="#" class="link" style="color">
+                    <i class="f7-icons size-18">heart_fill</i>` +
+              Math.ceil(Math.random() * 10 + 26) +
+              ` 喜欢</a>
+                  <a href="#" class="link">
+                    ` + Math.ceil(
+                Math.random() * 10 + 13) +
+              ` 人批注过
+                  </a>
+                </div>
               </div>
               `
             )
@@ -540,18 +542,20 @@
       type: 'post',
       cache: false,
       success: function (data) {
+        console.log(data);
         if (data == 0) {
           $('#myclass').attr("href", "person.html")
-        }
-        $.each(data, function (i, item) {
-          if (item.type == 0) {
-            $('#myclass').attr("href", "class.html")
-          } else if (item.type == 1) {
-            $('#myclass').attr("href", "classteacher.html")
-          }
-        })
+        } else if (data.type == 0) {
+          $('#myclass').attr("href", "class.html")
+        } else if (data.type == 1) {
+          $('#myclass').attr("href", "classteacher.html")
+        }/*  */
       },
-      error: function () {}
+      error: function () {
+
+        console.log(1);
+
+      }
     })
   </script>
 </body>
