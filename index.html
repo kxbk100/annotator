@@ -53,11 +53,11 @@
               <span class="tabbar-label">首页</span>
             </a>
 
-            <a href="classteacher.html" class="tab-link an-button link external">
+            <a href="#" class="tab-link an-button link external" id="myclass">
               <i class="icon f7-icons">layers_fill</i>
               <span class="tabbar-label">班级</span>
             </a>
-            <a href="person.html" class="tab-link an-button link external">
+            <a href="person.html" class="tab-link an-button link external" id="myself">
               <i class="icon f7-icons">person_fill</i>
               <span class="tabbar-label">我的</span>
             </a>
@@ -462,7 +462,7 @@
     };
 
     $.ajax({
-      url: 'http://47.52.230.212:8080/EAnnotation/getAllPassages',
+      url: 'https://bitcandy.one/EAnnotation/getAllPassages',
       type: "post",
       cache: false,
       success: function (data) {
@@ -472,7 +472,7 @@
               `
               <div class="card demo-card-header-pic">
                 <a href="anntator.html" class="link external black" style="width:100%;">
-                  <div style="background-image:url(http://47.52.230.212:8080/EAnnotation/` +
+                  <div style="background-image:url(https://bitcandy.one/EAnnotation/` +
               item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
               `</div>
                 </a>
@@ -480,19 +480,24 @@
                   <p class="date index">` +
               item.theme + ` · ` + item.releaseTime +
               `</p>
-                  <p><a href="anntator.html?id=` + item.id + `" class="link external color-black text_overflow2">` +
+                  <p><a href="anntator.html?id=` + item.id +
+              `" class="link external color-black text_overflow2">` +
               getcontent(item.content) +
               `</a>
                   </p>
                 </div>
 
-<div class="card-footer">
-  <a href="#" class="link" style="color">
-    <i class="f7-icons size-18">heart_fill</i>` + Math.ceil(Math.random() * 10 + 26) + ` 喜欢</a>
-  <a href="#" class="link">
-    ` + Math.ceil( Math.random() * 10 + 13) + ` 人批注过
-  </a>
-</div>
+              <div class="card-footer">
+                  <a href="#" class="link" style="color">
+                    <i class="f7-icons size-18">heart_fill</i>` +
+              Math.ceil(Math.random() * 10 + 26) +
+              ` 喜欢</a>
+                  <a href="#" class="link">
+                    ` + Math.ceil(
+                Math.random() * 10 + 13) +
+              ` 人批注过
+                  </a>
+                </div>
               </div>
               `
             )
@@ -527,9 +532,30 @@
             )
           }
         })
-
       },
       error: function (e) {}
+    })
+
+    //获取登录者id
+    $.ajax({
+      url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+      type: 'post',
+      cache: false,
+      success: function (data) {
+        console.log(data);
+        if (data == 0) {
+          $('#myclass').attr("href", "person.html")
+        } else if (data.type == 0) {
+          $('#myclass').attr("href", "class.html")
+        } else if (data.type == 1) {
+          $('#myclass').attr("href", "classteacher.html")
+        }/*  */
+      },
+      error: function () {
+
+        console.log(1);
+
+      }
     })
   </script>
 </body>

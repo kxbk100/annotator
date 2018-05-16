@@ -8,7 +8,8 @@ function getString(n) {
   var selectedtxt = document.getElementById(string);
   selectedtxt.innerText = text;
 }
-var userID = 1;
+var userID = 1; // 现在还有没
+
 //将popu中的文字传递到侧边栏
 function panel(m) {
   var leftID;
@@ -16,7 +17,7 @@ function panel(m) {
   var textarea = document.getElementById(string).value;
 
   //ajax传递数据到后台并获得批注id
-  app.request.post('http://47.52.230.212:8080/EAnnotation/addAnnotation', {
+  app.request.post('https://bitcandy.one/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
@@ -114,9 +115,9 @@ var r = window.location.search.substr(1).match(reg);
 var passageId = unescape(r[2]);
 var userId = 1; //预设的用户id
 //获取文章id
-function getPassage(dele) {
+function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
-    url: 'http://47.52.230.212:8080/EAnnotation/getPassage?id=' + passageId,
+    url: 'https://bitcandy.one/EAnnotation/getPassage?id=' + passageId,
     type: "post",
     cache: false,
     success: function (data) {
@@ -134,10 +135,11 @@ window.onload=function () {
   getPassage()
 }
 
- var par, st, ed, type, anID, content, selected;
+ var par, st, ed, type, anID, content, selected; //用于传递数据的参数
+
  //从数据库获得json类型数据并解析
  function getAnnotator(passageId, userId,dele) {
-   app.request.get('http://47.52.230.212:8080/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+   app.request.get('https://bitcandy.one/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
      userId,
      function (data) {
        var result = jQuery.parseJSON(data);
@@ -215,7 +217,7 @@ window.onload=function () {
 function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('http://47.52.230.212:8080/EAnnotation/deleteAnnotation', {
+  app.request.post('https://bitcandy.one/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
     var dele = "ture";
@@ -225,12 +227,12 @@ function del(delID) {
 
 //修改批注
 function modify(modId) {
-  var x = $$('#an' + modId).text();
-  var t = $$('#bq'+modId+'>p').text();
-  var bqcolor = $$('#bq'+modId).attr('class')
-  $$('#sendID').text(modId);
-  $$('#old').text(t);
-  $$('#mod').val(x);
+  var x = $$('#an' + modId).text(); //获取批注的文章内容
+  var t = $$('#bq'+modId+'>p').text();  //获得原批注
+  var bqcolor = $$('#bq'+modId).attr('class');  //获得颜色样式
+  $$('#sendID').text(modId);  //传递id
+  $$('#old').text(t); //传递原批注
+  $$('#mod').val(x);  //传递文章内容到popup
   $$('#bqcolor').attr('class',bqcolor);
 }
 
@@ -244,7 +246,7 @@ function add() {
   var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('http://47.52.230.212:8080/EAnnotation/updateAnnotation', {
+  app.request.post('https://bitcandy.one/EAnnotation/updateAnnotation', {
     content: nw,
     id: getID
   }, function (data) {
