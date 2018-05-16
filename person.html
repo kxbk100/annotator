@@ -76,18 +76,18 @@
                 </div>
                 <div class="item-inner">
                   <div class="item-title-row">
-                    <div class="item-title">未登录</div>
+                    <div class="item-title" id="identy">未登录</div>
                   </div>
                   <div class="item-subtitle">
                     <p> </p>
                   </div>
-                  <div class="item-text">登录查看更多信息</div>
+                  <div class="item-text" id="more">登录查看更多信息</div>
                 </div>
               </a>
             </li>
           </ul>
         </div>
-
+        <div id="content">
         <div class="block-title">系统</div>
         <div class="list">
           <ul>
@@ -103,6 +103,7 @@
             </li>
           </ul>
         </div>
+      </div>
         <div class="login-screen">
           <div class="view">
             <div class="page">
@@ -424,7 +425,7 @@
     $("#logbton").on('touchstart', function () {
       var form = $("#login").serialize();
       $.ajax({
-        url: 'http://192.168.1.111:8686/EAnnotation/loginChk',
+        url: 'https://bitcandy.one/EAnnotation/loginChk',
         type: "post",
         data: form,
         cache: false,
@@ -439,6 +440,68 @@
       })
       return false;
     });
+
+    //已登录者信息
+    $.ajax({
+      url:"",
+      type:"post",
+      cache:false,
+      success:function(data) {
+        $.each(data, function (i, item) {
+          var name = document.getElementById("identy");
+          var more = document.getElementById("more");
+          more.innerHTML=item;
+          name.innerHTML=item;
+          document.getElementById("content").innerHTML=
+          `
+          <div class="block-title">历史</div>
+          <div class="list">
+            <ul>
+              <li>
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">time</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">我批注过的文章</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="block-title">系统</div>
+          <div class="list">
+            <ul>
+              <li>
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">gear</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">设置</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="person.html" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="icon f7-icons">info</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">退出登录</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          `
+        })
+      },
+      error:function (){
+
+      }
+    })
   </script>
 </body>
 
