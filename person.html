@@ -56,7 +56,7 @@
               <i class="icon f7-icons ios-only">home_fill</i>
               <span class="tabbar-label">首页</span>
             </a>
-            <a href="class.html" class="tab-link an-button link external">
+            <a href="jump.html" class="tab-link an-button link external">
               <i class="icon f7-icons ios-only">layers_fill</i>
               <span class="tabbar-label">班级</span>
             </a>
@@ -410,51 +410,21 @@
     <script src="js/annotate.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
-      // Create toast with icon
-      var toastIcon = app.toast.create({
-        icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
-        text: '恭喜！注册成功',
-        position: 'center',
-        closeTimeout: 1500,
-      });
-      $$('.open-toast-icon').on('click', function () {
-        toastIcon.open();
-        setTimeout("window.location.href='index.html'", 1500);
-      });
-
-      //登录
-      $("#logbton").on('touchstart', function () {
-        var act = $("#account").val();
-        var pswd = $("#password").val();
-        console.log(act);
-        console.log(pswd);
+      $(function () {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
           type: "post",
-          cache: false,
-          success: function (data) {
-            if (data == 0) {
-              window.location.href = 'index.html'
-            } else {
-              app.dialog.alert('密码错误');
-            }
+          dataType: "jsonp",
+          xhrFields: {
+            withCredentials: true
           },
-        })
-        return false;
-      });
-
-      //已登录者信息
-      $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
-        type: "post",
-        cache: false,
-        success: function (data) {
-          if (data != 0) {
-            $.each(data, function (i, item) {
+          crossDomain: true,
+          success: function (data) {
+            if (data != 0) {
               var name = document.getElementById("identy");
               var more = document.getElementById("more");
-              more.innerHTML = item.id;
-              name.innerHTML = item.id;
+              more.innerHTML = data.id;
+              name.innerHTML = data.id;
               document.getElementById("content").innerHTML =
                 `
           <div class="block-title">历史</div>
@@ -487,7 +457,7 @@
                 </a>
               </li>
               <li>
-                <a href="person.html" class="item-link item-content">
+                <a href="javascript:void(0);" class="item-link item-content" ontouchstart="logout()">
                   <div class="item-media">
                     <i class="icon f7-icons">info</i>
                   </div>
@@ -499,13 +469,64 @@
             </ul>
           </div>
           `
-            })
-          }
-        },
-        error: function () {
+            }
+          },
+          error: function () {
 
-        }
+          }
+        })
       })
+
+      // Create toast with icon
+      var toastIcon = app.toast.create({
+        icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
+        text: '恭喜！注册成功',
+        position: 'center',
+        closeTimeout: 1500,
+      });
+      $$('.open-toast-icon').on('click', function () {
+        toastIcon.open();
+        setTimeout("window.location.href='index.html'", 1500);
+      });
+
+      //登录
+      $("#logbton").on('touchstart', function () {
+        var act = $("#account").val();
+        var pswd = $("#password").val();
+        $.ajax({
+          url: 'https://bitcandy.one/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          type: "post",
+          dataType: "jsonp",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          success: function (data) {
+            if (data == 0) {
+              window.location.href = 'index.html'
+            } else {
+              app.dialog.alert('密码错误');
+            }
+          },
+        })
+      });
+
+      // 注销
+      function logout() {
+        $.ajax({
+          url: 'https://bitcandy.one/EAnnotation/logout',
+          type: "post",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          success: function (data) {
+          },
+          error: function () {
+            window.location.href = "person.html";
+          }
+        })
+      }
     </script>
   </body>
 
