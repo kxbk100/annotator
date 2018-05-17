@@ -462,7 +462,7 @@
     };
 
     $.ajax({
-      url: 'https://bitcandy.one/EAnnotation/getAllPassages',
+      url: 'http://192.168.1.111/EAnnotation/getAllPassages',
       type: "post",
       cache: false,
       success: function (data) {
@@ -538,10 +538,16 @@
 
     //获取登录者id
     $.ajax({
-      url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+      url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
       type: 'post',
       cache: false,
+      dataType:"jsonp",
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
       success: function (data) {
+        console.log(data.type);
         console.log(data);
         if (data == 0) {
           $('#myclass').attr("href", "person.html")
@@ -549,7 +555,7 @@
           $('#myclass').attr("href", "class.html")
         } else if (data.type == 1) {
           $('#myclass').attr("href", "classteacher.html")
-        }/*  */
+        } /*  */
       },
       error: function () {
 
