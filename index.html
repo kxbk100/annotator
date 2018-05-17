@@ -53,11 +53,11 @@
                 <span class="tabbar-label">首页</span>
               </a>
 
-              <a href="#" class="tab-link an-button link external" id="myclass">
+              <a href="jump.html" class="tab-link an-button link external">
                 <i class="icon f7-icons">layers_fill</i>
                 <span class="tabbar-label">班级</span>
               </a>
-              <a href="person.html" class="tab-link an-button link external" id="myself">
+              <a href="person.html" class="tab-link an-button link external">
                 <i class="icon f7-icons">person_fill</i>
                 <span class="tabbar-label">我的</span>
               </a>
@@ -460,11 +460,10 @@
         }
         return result;
       };
-
+      // 获取文章
       $.ajax({
         url: 'https://bitcandy.one/EAnnotation/getAllPassages',
         type: "post",
-        cache: false,
         success: function (data) {
           $.each(data, function (i, item) {
             if (item.photo) {
@@ -525,6 +524,7 @@
         crossDomain: true,
         success: function (data) {
           console.log(data);
+          console.log(data.type)
           if (data == 0) {
             $('#myclass').attr("href", "person.html")
           } else if (data.type == 0) {
@@ -534,9 +534,6 @@
           }
         },
         error: function () {
-
-          console.log(22);
-
         }
       })
     </script>
