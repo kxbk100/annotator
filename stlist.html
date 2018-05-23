@@ -30,7 +30,7 @@
         <div class="navbar">
           <div class="navbar-inner">
             <div class="left">
-              <a href="#" onclick="javascript :history.back(-1);" class="item-link icon external">
+              <a href="#" id="back" class="item-link icon external">
                 <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
               </a>
             </div>
@@ -251,6 +251,15 @@
   <script src="js/rangy-core.js"></script>
   <script src="js/rangy-classapplier.js"></script>
   <script src="js/annotate.js"></script>
+  <script>
+    // 返回按钮
+    var back = document.getElementById("back");
+    if (back) {
+      back.addEventListener('touchstart', function () {
+        window.history.back(-1);
+      })
+    };
+  </script>
 </body>
 
 </html>
