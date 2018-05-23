@@ -503,7 +503,7 @@
           crossDomain: true,
           success: function (data) {
             if (data == 0) {
-              window.location.href = 'index.html'
+              window.history.back(-1);
             } else {
               app.dialog.alert('密码错误');
             }

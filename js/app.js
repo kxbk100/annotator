@@ -34,6 +34,9 @@ var app = new Framework7({
   },
   calendar: {
     toolbarCloseText: '完成'
+  },
+  popup: {
+    closeByBackdropClick: false,
   }
 });
 var mainView = app.views.create('.view-main');

@@ -20,7 +20,7 @@
     }
 
     .ios .card {
-      margin: 0.5rem 0 0 0;
+      margin: 8px 0 0 0;
     }
 
     .ios .navbar .left {
@@ -99,7 +99,7 @@
           </label> 教师</p>
       </div>
 
-      <div class="block" id="Mynote" style="margin-top: 0;">
+      <div class="block" id="Mynote" style="margin-top: 0;padding-top: 0px;">
         <div id="ancontent">
 
           <div class="card cardcss" id="teacher">
@@ -250,7 +250,7 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="left">
-            <a href="#" class="item-link icon" onclick="javascript :history.back(-1);">
+            <a href="#" class="item-link icon" id="back">
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
@@ -343,7 +343,7 @@
           <div class="item-media">
             <i class="icon demo-list-icon"></i>
           </div>
-          <textarea placeholder="请输入质疑批注" id="mod" cols="45" rows="8" class="textarea"></textarea>
+          <textarea placeholder="请输入质疑批注" id="mod" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="modadd">添加批注</button>
             <button class="button col-30  popup-close">取消</button>
@@ -357,7 +357,7 @@
           <p>
             <i class="icon f7-icons ios-only">chat_fill</i> 添加感想批注</p>
           <blockquote class="blockquote bqcolor0">
-            <p id="selectedtxt0"></p>
+            <p id="selectedtxt0" class="text_overflow3"></p>
           </blockquote>
           <p class="content">
             <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
@@ -365,7 +365,7 @@
           <div class="item-media">
             <i class="icon demo-list-icon"></i>
           </div>
-          <textarea placeholder="请输入感想批注" id="note0" cols="45" rows="8" class="textarea"></textarea>
+          <textarea placeholder="请输入感想批注" id="note0" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
             <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
@@ -378,7 +378,7 @@
           <p>
             <i class="icon f7-icons ios-only">help_fill</i> 添加质疑批注</p>
           <blockquote class="blockquote bqcolor1">
-            <p id="selectedtxt1"></p>
+            <p id="selectedtxt1" class="text_overflow3"></p>
           </blockquote>
           <p class="content">
             <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
@@ -386,7 +386,7 @@
           <div class="item-media">
             <i class="icon demo-list-icon"></i>
           </div>
-          <textarea placeholder="请输入质疑批注" id="note1" cols="45" rows="8" class="textarea"></textarea>
+          <textarea placeholder="请输入质疑批注" id="note1" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
             <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
@@ -399,7 +399,7 @@
           <p>
             <i class="icon f7-icons ios-only">heart_fill</i> 添加联想批注</p>
           <blockquote class="blockquote bqcolor2">
-            <p id="selectedtxt2"></p>
+            <p id="selectedtxt2" class="text_overflow3"></p>
           </blockquote>
           <p class="content">
             <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
@@ -407,7 +407,7 @@
           <div class="item-media">
             <i class="icon demo-list-icon"></i>
           </div>
-          <textarea placeholder="请输入联想批注" id="note2" cols="45" rows="8" class="textarea"></textarea>
+          <textarea placeholder="请输入联想批注" id="note2" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
             <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
@@ -420,7 +420,7 @@
           <p>
             <i class="icon f7-icons ios-only">mic_fill</i> 添加评价批注</p>
           <blockquote class="blockquote bqcolor3">
-            <p id="selectedtxt3"></p>
+            <p id="selectedtxt3" class="text_overflow3"></p>
           </blockquote>
           <p class="content">
             <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
@@ -428,7 +428,7 @@
           <div class="item-media">
             <i class="icon demo-list-icon"></i>
           </div>
-          <textarea placeholder="请输入评价批注" id="note3" cols="45" rows="8" class="textarea"></textarea>
+          <textarea placeholder="请输入评价批注" id="note3" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
             <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
@@ -441,7 +441,7 @@
           <p>
             <i class="icon f7-icons ios-only">compose_fill</i> 添加补充批注</p>
           <blockquote class="blockquote bqcolor4">
-            <p id="selectedtxt4"></p>
+            <p id="selectedtxt4" class="text_overflow3"></p>
           </blockquote>
           <p class="content">
             <i class="icon f7-icons ios-only">bookmark_fill</i> 批注内容</p>
@@ -449,7 +449,7 @@
           <div class="item-media">
             <i class="icon demo-list-icon"></i>
           </div>
-          <textarea placeholder="请输入补充批注" id="note4" cols="45" rows="8" class="textarea"></textarea>
+          <textarea placeholder="请输入补充批注" id="note4" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add4">添加批注</button>
             <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
@@ -464,11 +464,49 @@
   <script src="js/rangy-core.js"></script>
   <script src="js/rangy-classapplier.js"></script>
   <script src="js/jquery.min.js"></script>
-  <script src="js/annotate.js"></script>
   <script>
-   
-  </script>
+    // 返回按钮
+    var back = document.getElementById("back");
+    if (back) {
+      back.addEventListener('touchstart', function () {
+        window.history.back(-1);
+      })
+    };
 
+    var user;
+    $.ajax({
+      url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+      type: 'post',
+      dataType: 'jsonp',
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: function (data) {
+        if (data == 0) {
+          user = 0;
+        } else {
+          user = 1;
+        }
+      },
+      error: function () {}
+    })
+
+    function goload() {
+      app.dialog.create({
+        text: '请先登录',
+        buttons: [{
+            text: '确定',
+            onClick:function () {
+              window.location.href = "person.html";
+            }
+          },    
+        ],
+        verticalButtons: true,
+      }).open();
+    }
+  </script>
+  <script src="js/annotate.js"></script>  
 </body>
 
 </html>
