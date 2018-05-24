@@ -462,7 +462,7 @@
       };
       // 获取文章
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getAllPassages',
+        url: 'http://192.168.1.100:8080/EAnnotation/getAllPassages',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -470,10 +470,10 @@
               $("ul[class=index]").append(
                 `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` + item.id + `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(https://bitcandy.one/EAnnotation/` + item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title + `</div>
+                    <div style="background-image:url(http://192.168.1.100:8080/` + item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title + `</div>
                   </a>
                 <div class="card-content card-content-padding">
-                  <p class="date index">` + item.theme + ` · ` + item.releaseTime + `</p>
+                  <p class="date index">` + item.theme + ` · ` + getDateDiff(item.releaseTime) + `</p>
                   <p>
                     <a href="anntator.html?id=` + item.id + `" class="link external color-black text_overflow2">` + getcontent(item.content) + `</a>
                   </p>
@@ -493,7 +493,7 @@
                 `<div class="card">
                   <div class="card-header">` + item.title + `</div>
                   <div class="card-content card-content-padding">
-                    <p class="date index">` + item.theme + ` · ` + item.releaseTime + `</p>
+                    <p class="date index">` + item.theme + ` · ` + getDateDiff(item.releaseTime) + `</p>
                     <a href="anntator.html?id=` + item.id + `" class="link" style="color: black">
                       <p style="margin-top: 0; margin-bottom: 0;" class="text_overflow">` + getcontent(item.content) + `</p>
                     </a>
@@ -515,7 +515,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+        url: 'http://192.168.1.100:8080/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {

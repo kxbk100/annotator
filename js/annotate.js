@@ -17,7 +17,7 @@ function panel(m) {
   var textarea = document.getElementById(string).value;
 
   //ajax传递数据到后台并获得批注id
-  app.request.post('http://192.168.1.111/EAnnotation/addAnnotation', {
+  app.request.post('http://192.168.1.100:8080/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
@@ -129,16 +129,18 @@ var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
 var r = window.location.search.substr(1).match(reg);
 var passageId = unescape(r[2]);
 var userId = 1; //预设的用户id
+var ancount;  //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
-    url: 'http://192.168.1.111/EAnnotation/getPassage?id=' + passageId,
+    url: 'http://192.168.1.100:8080/EAnnotation/getPassage?id=' + passageId,
     type: "post",
     cache: false,
     success: function (data) {
       console.log(data);
       $("#title").html(data.title);
       $("#count").html(data.count + '个批注');
+      ancount = data.count;
       $("#box").html(data.content);
       $("#person").html('发布人：' + data.auth + '老师');
       getAnnotator(passageId, userId, dele);
@@ -154,7 +156,7 @@ var par, st, ed, type, anID, content, selected; //用于传递数据的参数
 
 //从数据库获得json类型数据并解析
 function getAnnotator(passageId, userId, dele) {
-  app.request.get('http://192.168.1.111/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+  app.request.get('http://192.168.1.100:8080/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
     userId,
     function (data) {
       var result = jQuery.parseJSON(data);
@@ -232,7 +234,7 @@ function rePanel() {
 function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('http://192.168.1.111/EAnnotation/deleteAnnotation', {
+  app.request.post('http://192.168.1.100:8080/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
     var dele = "ture";
@@ -261,7 +263,7 @@ function add() {
   var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('http://192.168.1.111/EAnnotation/updateAnnotation', {
+  app.request.post('http://192.168.1.100:8080/EAnnotation/updateAnnotation', {
     content: nw,
     id: getID
   }, function (data) {
@@ -270,6 +272,54 @@ function add() {
     }
   });
 }
+
+// 页面上随时改变批注数量的方法
+function addNum () {
+  ancount++;
+  $("#count").html(ancount + '个批注');
+}
+function rdNum () {
+  ancount--;
+  $("#count").html(ancount + '个批注');
+}
+
+// 右侧侧边栏显示所有批注
+$.ajax({
+  url: 'http://192.168.1.100:8080/EAnnotation/getAllAnnotations?id=' + passageId,
+  type: "post",
+  cache: false,
+  success: function (data) {
+  each(data,function(i,item) {
+    if(item.userId == 0){
+      var antator = "学生"
+    }
+    else {
+      antator = "教师"
+    };
+
+    $('#ancontent2').appendTo(
+      `    <div class="card cardcss" id="teacher">
+      <blockquote class="blockquote bqcolor2">
+        <p>`+ item.selected +`</p>
+      </blockquote>
+      <div class="card-content cardct">
+        <p id="anPnode">`+ item.content +`</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="link">
+          <i class="f7-icons size-13">heart_fill</i>` + Math.ceil(Math.random() * 10 + 26) + `赞同
+        </a>
+        <a href="#" class="link" id="change">`+ antator +`:`+ item.userName +`</a>
+      </div>
+      <p id="rstart" style="display: none">`+ item.start +`</p>
+      <p id="rend" style="display: none">`+ item.end +`</p>
+      <p id="rparagraph" style="display: none">`+ item.paragraph +`</p>
+    </div>`
+    )
+  })
+  },
+  error: function (e) {}
+})
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
@@ -287,6 +337,9 @@ button1.addEventListener('touchstart', function () {
   getString(1);
   anPaint(1);
   getLocation(1);
+  if (user == 0) {
+    goload();
+  }
 });
 
 var botton2 = document.getElementById("button2");
@@ -294,6 +347,9 @@ button2.addEventListener('touchstart', function () {
   getString(2);
   anPaint(2);
   getLocation(2);
+  if (user == 0) {
+    goload();
+  }
 });
 
 var botton3 = document.getElementById("button3");
@@ -301,6 +357,9 @@ button3.addEventListener('touchstart', function () {
   getString(3);
   anPaint(3);
   getLocation(3);
+  if (user == 0) {
+    goload();
+  }
 });
 
 var botton4 = document.getElementById("button4");
@@ -308,31 +367,39 @@ button4.addEventListener('touchstart', function () {
   getString(4);
   anPaint(4);
   getLocation(4);
+  if (user == 0) {
+    goload();
+  }
 });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
   panel(0);
+  addNum();
 });
 
 var add1 = document.getElementById("add1");
 add1.addEventListener('touchstart', function () {
   panel(1);
+  addNum();
 });
 
 var add2 = document.getElementById("add2");
 add2.addEventListener('touchstart', function () {
   panel(2);
+  addNum();
 });
 
 var add3 = document.getElementById("add3");
 add3.addEventListener('touchstart', function () {
   panel(3);
+  addNum();
 });
 
 var add4 = document.getElementById("add4");
 add4.addEventListener('touchstart', function () {
   panel(4);
+  addNum();
 });
 
 //修改按钮
@@ -346,4 +413,5 @@ var delbutn = document.getElementById("delete");
 delbutn.addEventListener('touchstart', function () {
   del();
   refresh();
+  rdNum();
 });

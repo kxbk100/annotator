@@ -70,7 +70,7 @@
           <div class="list media-list">
             <ul>
               <li>
-                <a href="#" class="item-link item-content login-screen-open" data-login-screen=".login-screen">
+                <a href="#" class="item-link item-content login-screen-open" data-login-screen=".login-screen" id="logscreen">
                   <div class="item-media">
                     <img class="radius" src="images/weidenglu.jpg" width="80" />
                   </div>
@@ -412,7 +412,7 @@
     <script>
       $(function () {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+          url: 'http://192.168.1.100:8080/EAnnotation/getCurrentUser',
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -494,7 +494,7 @@
         var act = $("#account").val();
         var pswd = $("#password").val();
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'http://192.168.1.100:8080/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -502,25 +502,34 @@
           },
           crossDomain: true,
           success: function (data) {
+            console.log(data);
+            $('#logscreen').attr('data-login-screen',' ');
             if (data == 0) {
-              window.history.back(-1);
+              console.log(666);
+                window.history.back(-1);
+                window.history.back(-1);
             } else {
               app.dialog.alert('密码错误');
             }
           },
+          error:function (e){
+            console.log(e);
+            console.log('错误')
+          }
         })
       });
 
       // 注销
       function logout() {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/logout',
+          url: 'http://192.168.1.100:8080/EAnnotation/logout',
           type: "post",
           xhrFields: {
             withCredentials: true
           },
           crossDomain: true,
           success: function (data) {
+            window.location.href = "person.html";
           },
           error: function () {
             window.location.href = "person.html";
