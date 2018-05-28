@@ -412,7 +412,7 @@
     <script>
       $(function () {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+          url: 'http://192.168.1.103/EAnnotation/getCurrentUser',
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -494,7 +494,7 @@
         var act = $("#account").val();
         var pswd = $("#password").val();
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'http://192.168.1.103/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -522,7 +522,7 @@
       // 注销
       function logout() {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/logout',
+          url: 'http://192.168.1.103/EAnnotation/logout',
           type: "post",
           xhrFields: {
             withCredentials: true

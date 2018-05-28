@@ -17,7 +17,7 @@ function panel(m) {
   var textarea = document.getElementById(string).value;
 
   //ajax传递数据到后台并获得批注id
-  app.request.post('https://bitcandy.one/EAnnotation/addAnnotation', {
+  app.request.post('http://192.168.1.103/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
@@ -133,7 +133,7 @@ var ancount;  //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
-    url: 'https://bitcandy.one/EAnnotation/getPassage?id=' + passageId,
+    url: 'http://192.168.1.103/EAnnotation/getPassage?id=' + passageId,
     type: "post",
     cache: false,
     success: function (data) {
@@ -156,7 +156,7 @@ var par, st, ed, type, anID, content, selected; //用于传递数据的参数
 
 //从数据库获得json类型数据并解析
 function getAnnotator(passageId, userId, dele) {
-  app.request.get('https://bitcandy.one/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+  app.request.get('http://192.168.1.103/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
     userId,
     function (data) {
       var result = jQuery.parseJSON(data);
@@ -234,7 +234,7 @@ function rePanel() {
 function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('https://bitcandy.one/EAnnotation/deleteAnnotation', {
+  app.request.post('http://192.168.1.103/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
     var dele = "ture";
@@ -263,7 +263,7 @@ function add() {
   var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('https://bitcandy.one/EAnnotation/updateAnnotation', {
+  app.request.post('http://192.168.1.103/EAnnotation/updateAnnotation', {
     content: nw,
     id: getID
   }, function (data) {
@@ -284,21 +284,24 @@ function rdNum () {
 }
 
 // 右侧侧边栏显示所有批注
+$(function() {
 $.ajax({
-  url: 'https://bitcandy.one/EAnnotation/getAllAnnotations?passageId=' + passageId,
+  url: 'http://192.168.1.103/EAnnotation/getAllAnnotations?passageId=' + passageId,
   type: "post",
   cache: false,
   success: function (data) {
-  each(data,function(i,item) {
-    if(item.userId == 0){
-      var antator = "学生"
+  $.each(data,function(i,item) {
+    if(item.userType == 0){
+      var antator = "学生";
+      var antype = "student";
     }
     else {
-      antator = "教师"
+      antator = "教师";
+      var antype = "teacher";
     };
 
     $('#ancontent2').append(
-      `    <div class="card cardcss" id="teacher">
+      `    <div class="card cardcss" id="`+antype+`">
       <blockquote class="blockquote bqcolor2">
         <p>`+ item.selected +`</p>
       </blockquote>
@@ -320,7 +323,7 @@ $.ajax({
   },
   error: function (e) {}
 })
-
+})
 // 批注筛选
 $$("input[name='teacher']").change(function () {
   if (!$$(this).is(':checked')) {

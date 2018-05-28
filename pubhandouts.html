@@ -325,7 +325,7 @@
     $("#submit").on('touchstart', function () {
       var form = new FormData($('#handouts')[0]);
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/addPassage',
+        url: 'http://192.168.1.103/EAnnotation/addPassage',
         type: 'POST',
         cache: false,
         data: form,
