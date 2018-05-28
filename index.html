@@ -57,6 +57,10 @@
                 <i class="icon f7-icons">layers_fill</i>
                 <span class="tabbar-label">班级</span>
               </a>
+              <a href="#" class="tab-link an-button link external">
+                <i class="icon f7-icons">persons</i>
+                <span class="tabbar-label">群组</span>
+              </a>
               <a href="person.html" class="tab-link an-button link external">
                 <i class="icon f7-icons">person_fill</i>
                 <span class="tabbar-label">我的</span>
@@ -462,7 +466,7 @@
       };
       // 获取文章
       $.ajax({
-        url: 'http://192.168.1.100:8080/EAnnotation/getAllPassages',
+        url: 'https://bitcandy.one/EAnnotation/getAllPassages',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -470,7 +474,7 @@
               $("ul[class=index]").append(
                 `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` + item.id + `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.100:8080/` + item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title + `</div>
+                    <div style="background-image:url(https://bitcandy.one/` + item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title + `</div>
                   </a>
                 <div class="card-content card-content-padding">
                   <p class="date index">` + item.theme + ` · ` + getDateDiff(item.releaseTime) + `</p>
@@ -515,7 +519,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.100:8080/EAnnotation/getCurrentUser',
+        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
