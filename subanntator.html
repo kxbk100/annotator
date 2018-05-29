@@ -53,19 +53,6 @@
   <div id="app">
     <!-- 左侧边栏 -->
     <div class="panel panel-left panel-cover anpanel annotator">
-      <div class="subnavbar subbar annotator" id="searchnav">
-        <!-- Searchbar with auto init -->
-        <form class="searchbar" id="search">
-          <div class="searchbar-inner">
-            <div class="searchbar-input-wrap" id="subwrap">
-              <input type="search" placeholder="搜索">
-              <i class="searchbar-icon"></i>
-              <span class="input-clear-button"></span>
-            </div>
-            <span class="searchbar-disable-button">取消</span>
-          </div>
-        </form>
-      </div>
       <div class="block" id="Mynote">
         <div id="ancontent">
           <div class="texbg">暂无批注</div>
@@ -105,24 +92,24 @@
           <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
             <!-- Different icons for iOS and MD themes -->
             <i class="icon f7-icons ios-only">chat_fill</i>
-            <span class="tabbar-label">感想</span>
+            <span class="tabbar-label">背景高亮</span>
           </a>
           <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
             <i class="icon f7-icons ios-only">help_fill</i>
-            <span class="tabbar-label">质疑</span>
+            <span class="tabbar-label">文字高亮</span>
           </a>
           <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
             <i class="icon f7-icons ios-only">heart_fill</i>
-            <span class="tabbar-label">联想</span>
+            <span class="tabbar-label">下划线</span>
           </a>
           <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
             <i class="icon f7-icons ios-only">mic_fill</i>
-            <span class="tabbar-label">评价</span>
+            <span class="tabbar-label">加粗</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup4" id="button4">
+          <!-- <a href="#" class="tab-link an-button popup-open" data-popup=".popup4" id="button4">
             <i class="icon f7-icons ios-only">compose_fill</i>
             <span class="tabbar-label">补充</span>
-          </a>
+          </a> -->
 
 
           <a href="#" class="tab-link an-button open-confirm" id="button5">
@@ -194,7 +181,7 @@
       <div class="popup popup0 annotator">
         <div class="block annotator">
           <p>
-            <i class="icon f7-icons ios-only">chat_fill</i> 添加感想批注</p>
+            <i class="icon f7-icons ios-only">chat_fill</i> 添加批注</p>
           <blockquote class="blockquote bqcolor0">
             <p id="selectedtxt0"></p>
           </blockquote>
@@ -215,7 +202,7 @@
       <div class="popup popup1 annotator">
         <div class="block annotator">
           <p>
-            <i class="icon f7-icons ios-only">help_fill</i> 添加质疑批注</p>
+            <i class="icon f7-icons ios-only">help_fill</i> 添加批注</p>
           <blockquote class="blockquote bqcolor1">
             <p id="selectedtxt1"></p>
           </blockquote>
@@ -236,7 +223,7 @@
       <div class="popup popup2 annotator">
         <div class="block annotator">
           <p>
-            <i class="icon f7-icons ios-only">heart_fill</i> 添加联想批注</p>
+            <i class="icon f7-icons ios-only">heart_fill</i> 添加批注</p>
           <blockquote class="blockquote bqcolor2">
             <p id="selectedtxt2"></p>
           </blockquote>
@@ -257,7 +244,7 @@
       <div class="popup popup3 annotator">
         <div class="block annotator">
           <p>
-            <i class="icon f7-icons ios-only">mic_fill</i> 添加评价批注</p>
+            <i class="icon f7-icons ios-only">mic_fill</i> 添加批注</p>
           <blockquote class="blockquote bqcolor3">
             <p id="selectedtxt3"></p>
           </blockquote>
@@ -278,7 +265,7 @@
       <div class="popup popup4 annotator">
         <div class="block annotator">
           <p>
-            <i class="icon f7-icons ios-only">compose_fill</i> 添加补充批注</p>
+            <i class="icon f7-icons ios-only">compose_fill</i> 添加批注</p>
           <blockquote class="blockquote bqcolor4">
             <p id="selectedtxt4"></p>
           </blockquote>
