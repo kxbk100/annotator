@@ -412,7 +412,7 @@
     <script>
       $(function () {
         $.ajax({
-          url: 'http://192.168.1.103/EAnnotation/getCurrentUser',
+          url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -421,6 +421,7 @@
           crossDomain: true,
           success: function (data) {
             if (data != 0) {
+              $('#logscreen').attr('data-login-screen',' ');
               var name = document.getElementById("identy");
               var more = document.getElementById("more");
               more.innerHTML = data.id;
@@ -431,7 +432,7 @@
           <div class="list">
             <ul>
               <li>
-                <a href="#" class="item-link item-content">
+                <a href="history.html" class="item-link item-content external">
                   <div class="item-media">
                     <i class="icon f7-icons">time</i>
                   </div>
@@ -494,15 +495,14 @@
         var act = $("#account").val();
         var pswd = $("#password").val();
         $.ajax({
-          url: 'http://192.168.1.103/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'http://192.168.1.104/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
           type: "post",
           dataType: "jsonp",
           xhrFields: {
             withCredentials: true
           },
           crossDomain: true,
-          success: function (data) {
-            console.log(data);
+          success: function (data) {           
             $('#logscreen').attr('data-login-screen',' ');
             if (data == 0) {
               console.log(666);
@@ -522,7 +522,7 @@
       // 注销
       function logout() {
         $.ajax({
-          url: 'http://192.168.1.103/EAnnotation/logout',
+          url: 'http://192.168.1.104/EAnnotation/logout',
           type: "post",
           xhrFields: {
             withCredentials: true
