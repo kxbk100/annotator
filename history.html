@@ -74,21 +74,82 @@
         var html = text;
         return html.replace(/<[^>]*>|/g, "");
       }
+
+      function getDateDiff(dateTimeStamp) {
+        var dateTimeStamp = new Date(Date.parse(dateTimeStamp.replace(/-/gi, "-")));
+        dateTimeStamp = dateTimeStamp.getTime();
+        var result;
+        var minute = 1000 * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        var halfamonth = day * 15;
+        var month = day * 30;
+        var now = new Date().getTime();
+        var diffValue = now - dateTimeStamp;
+        if (diffValue < 0) {
+          return;
+        }
+        var monthC = diffValue / month;
+        var weekC = diffValue / (7 * day);
+        var dayC = diffValue / day;
+        var hourC = diffValue / hour;
+        var minC = diffValue / minute;
+        if (monthC >= 1) {
+          if (monthC <= 12)
+            result = "" + parseInt(monthC) + "个月前";
+          else {
+            result = "" + parseInt(monthC / 12) + "年前";
+          }
+        } else if (weekC >= 1) {
+          result = "" + parseInt(weekC) + "周前";
+        } else if (dayC >= 1) {
+          result = "" + parseInt(dayC) + "天前";
+        } else if (hourC >= 1) {
+          result = "" + parseInt(hourC) + "小时前";
+        } else if (minC >= 1) {
+          result = "" + parseInt(minC) + "分钟前";
+        } else {
+          result = "刚刚";
+        }
+        return result;
+      };
+      
+      //获取登录者id
+      $.ajax({
+        url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
+        type: 'post',
+        dataType: 'jsonp',
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          console.log(data);
+          console.log(data.type)
+          if (data == 0) {
+            localStorage.id = data.id;
+          }
+          else {
+            localStorage.id = data.id;
+          }
+        },
+        error: function () {}
+      })
+
         // 获取文章
         $.ajax({
-            url: 'http://192.168.1.104/EAnnotation/getAllPassages',
+            url: 'http://192.168.1.104/EAnnotation/getHistory?userId='+ localStorage.id +'',
             type: "post",
             success: function (data) {
                 $.each(data, function (i, item) {
                     if (item.photo) {
                         $("ul[class=history]").append(
-                       `                                <a href="anntator.html?id=` + item.id + `" class="item-link item-content">
+                       `                                <a href="anntator.html?id=` + item.id + `" class="item-link item-content external">
                                     <div class="item-inner">
                                         <div class="item-title-row">
                                             <div class="item-title">` + item.title + `</div>
-                                            <div class="item-after">17:14</div>
                                         </div>
-                                        <div class="item-subtitle">` + item.theme + `</div>
+                                        <div class="item-subtitle">` + item.theme + `·` + getDateDiff(item.releaseTime) +`</div>
                                         <div class="item-text">` + getcontent(item.content) + `</div>
                                     </div>
                                 </a>`)
@@ -96,29 +157,6 @@
                 })
             },
             error: function (e) {}
-        })
-
-        //获取登录者id
-        $.ajax({
-            url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
-            type: 'post',
-            dataType: 'jsonp',
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
-            success: function (data) {
-                console.log(data);
-                console.log(data.type)
-                if (data == 0) {
-                    $('#myclass').attr("href", "person.html")
-                } else if (data.type == 0) {
-                    $('#myclass').attr("href", "class.html")
-                } else if (data.type == 1) {
-                    $('#myclass').attr("href", "classteacher.html")
-                }
-            },
-            error: function () {}
         })
     </script>
 </body>

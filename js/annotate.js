@@ -87,22 +87,7 @@ function anPaint(bton) {
   if (true) {
     switch (bton) {
       case 0:
-        cssApplier = rangy.createClassApplier("Bton0Backgrond", {
-          applyToEditableOnly: true,
-          normalize: true,
-          tagNames: ['span', 'p'],
-          elementProperties: {
-            st: {
-              start
-            },
-            ed: {
-              end
-            },
-            px: {
-              paragraph
-            }
-          }
-        });
+        cssApplier = rangy.createClassApplier("Bton0Backgrond",false);
         cssApplier.toggleSelection();
         break;
       case 1:
@@ -128,7 +113,7 @@ function anPaint(bton) {
 var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
 var r = window.location.search.substr(1).match(reg);
 var passageId = unescape(r[2]);
-var userId = 1; //预设的用户id
+var userId = localStorage.id; //预设的用户id
 var ancount;  //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
@@ -140,6 +125,7 @@ function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
       console.log(data);
       $("#title").html(data.title);
       $("#count").html(data.count + '个批注');
+      $("#allantate").text(data.count);
       ancount = data.count;
       $("#box").html(data.content);
       $("#person").html('发布人：' + data.auth + '老师');
@@ -191,7 +177,7 @@ function annotate() {
   range.select();
   switch (type) {
     case 0:
-      cssApplier = rangy.createClassApplier("Bton0Backgrond", false)
+      cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
       break;
     case 1:
       cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
@@ -381,15 +367,15 @@ button3.addEventListener('touchstart', function () {
   }
 });
 
-var botton4 = document.getElementById("button4");
-button4.addEventListener('touchstart', function () {
-  getString(4);
-  anPaint(4);
-  getLocation(4);
-  if (user == 0) {
-    goload();
-  }
-});
+// var botton4 = document.getElementById("button4");
+// button4.addEventListener('touchstart', function () {
+//   getString(4);
+//   anPaint(4);
+//   getLocation(4);
+//   if (user == 0) {
+//     goload();
+//   }
+// });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
@@ -415,11 +401,11 @@ add3.addEventListener('touchstart', function () {
   addNum();
 });
 
-var add4 = document.getElementById("add4");
-add4.addEventListener('touchstart', function () {
-  panel(4);
-  addNum();
-});
+// var add4 = document.getElementById("add4");
+// add4.addEventListener('touchstart', function () {
+//   panel(4);
+//   addNum();
+// });
 
 //修改按钮
 var change = document.getElementById("change");

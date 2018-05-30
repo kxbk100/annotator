@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000">
+  <!-- Your app title -->
+  <title>班级</title>
+  <!-- Path to Framework7 Library CSS -->
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ios a {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="view view-main view-init">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <a href="#" class="item-link icon" id="back" style="color: white;">
+              <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+            </a>
+          </div>
+          <div class="title">班级列表</div>
+          <div class="right"></div>
+        </div>
+      </div>
+
+      <div class=" page-content">
+        <div class="list class">
+          <ul>
+            <!-- 未完成作业栏 -->
+            <li class="accordion-item accordion-item-opened">
+              <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                  <div class="item-title">我的班级</div>
+                  <div class="item-after">
+                    <!-- <span class="badge color-red" id="unfinnum">0</span> -->
+                  </div>
+                </div>
+              </a>
+              <div class="accordion-item-content">
+                <div class="list media-list">
+                  <ul class="course">
+
+
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <!-- 已完成作业栏 -->
+            <!-- <li class="accordion-item">
+              <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                  <div class="item-title">我的群组</div>
+                  <div class="item-after">
+                    <span class="badge" id="finnum">0</span>
+                  </div>
+                </div>
+              </a>
+              <div class="accordion-item-content">
+                <div class="list media-list">
+                  <ul class="finish0">
+
+                  </ul>
+                </div>
+
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="js/framework7.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/rangy-core.js"></script>
+    <script src="js/rangy-classapplier.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+      // 返回按钮
+      var back = document.getElementById("back");
+      if (back) {
+        back.addEventListener('touchstart', function () {
+          window.history.back(-2);
+        })
+      };
+
+      //获取登录者id
+      $.ajax({
+        url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
+        type: 'post',
+        dataType: 'jsonp',
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          localStorage.id = data.id;
+        },
+        error: function () {}
+      })
+
+      // 获取所有班级
+      $.ajax({
+        url: 'http://192.168.1.104/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+              $("ul[class=course]").append(
+                `<li>
+                    <a href="class.html" class="link item-content external" ontouchstart="pushclass(`+ item.classId +`)">
+                      <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
+                      <div class="item-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">`+ item.className +`</div>
+                        </div>
+                        <div class="item-subtitle">`+ item.teacher +`</div>
+                      </div>
+                    </a>
+               </li>`
+              )
+          })
+        },
+        error: function (e) {}
+      })
+      function pushclass(id) {
+        localStorage.classId = id;
+      }
+    </script>
+</body>
+
+</html>
