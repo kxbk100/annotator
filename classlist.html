@@ -96,24 +96,9 @@
         })
       };
 
-      //获取登录者id
-      $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
-        type: 'post',
-        dataType: 'jsonp',
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (data) {
-          localStorage.id = data.id;
-        },
-        error: function () {}
-      })
-
       // 获取所有班级
       $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+        url: 'http://192.168.1.105/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
