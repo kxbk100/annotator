@@ -304,7 +304,7 @@
       };
       // 获取文章
       $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getAllPassages',
+        url: 'http://192.168.1.105/EAnnotation/getAllPassages',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -312,7 +312,7 @@
               $("ul[class=index]").append(
                 `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` + item.id + `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.104/` + item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title + `</div>
+                    <div style="background-image:url(http://192.168.1.105/` + item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title + `</div>
                   </a>
                 <div class="card-content card-content-padding">
                   <p class="date index">` + item.theme + ` · ` + getDateDiff(item.releaseTime) + `</p>
@@ -357,7 +357,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
+        url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {

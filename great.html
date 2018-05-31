@@ -123,12 +123,6 @@
             <!-- Different icons for iOS and MD themes -->
             <span>查看教师点评</span>
           </a>
-          <a href="#" class="tab-link an-button panel-open" data-panel="right" id="button5">
-            <i class="icon f7-icons ios-only">forward_fill
-              <span class="badge color-red" id="num">0</span>
-            </i>
-            <span class="tabbar-label">所有批注</span>
-          </a>
         </div>
       </div>
 
@@ -192,26 +186,13 @@
   </script>
   <script>
     var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
+    var reg2 = new RegExp("(^|&)userId=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     var id = unescape(r[2]);
-    // 获取用户id
-    $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/getFinishedHome?id=' + id,
-      type: "POST",
-      success: function (data) {
-        passageId(data.passageId);
+    var g = window.location.search.substr(1).match(reg2);
+    var userId = unescape(g[2]);
 
-        if(data.score == ""){
-          $('#mark').html("未批改");
-        }
-        else {
-          $('#mark').html('成绩：<span class="markred">'+ data.score +'</span>')
-        }
-        $('#comment').text(data.remark);
-      }
-    });
     // 获取文章id
-    function passageId(id) {
       $.ajax({
         url: 'http://192.168.1.105/EAnnotation/getPassage?id=' + id,
         type: "POST",
@@ -219,74 +200,18 @@
           $('#title').text(data.title);
           $('#box').html(data.content);
           getAnnotator(data.id);
-          getAllAnnotations(data.id);
         }
       })
-    };
 
     //从数据库获得json类型数据并解析
-    function getAnnotator(passageId, userId) {
+    function getAnnotator(passageId) {
       app.request.get('http://192.168.1.105/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
-        localStorage.id,
+        userId,
         function (data) {
           var result = jQuery.parseJSON(data);
           each(result);
         }, JSON);
     }
-    // 右侧侧边栏显示所有批注
-    function getAllAnnotations(id) {
-      var num = 0;
-
-      $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getAllAnnotations?passageId=' + id,
-        type: "post",
-        cache: false,
-        success: function (data) {
-          $.each(data, function (i, item) {
-            num++;
-            $('#num').text(num);
-            if (item.userType == 0) {
-              var antator = "学生";
-              var antype = "student";
-            } else {
-              antator = "教师";
-              var antype = "teacher";
-            };
-
-            $('#ancontent2').append(
-              `    <div class="card cardcss" id="` + antype +
-              `">
-      <blockquote class="blockquote bqcolor2">
-        <p>` + item.selected +
-              `</p>
-      </blockquote>
-      <div class="card-content cardct">
-        <p id="anPnode">` +
-              item.content +
-              `</p>
-      </div>
-      <div class="card-footer">
-        <a href="#" class="link">
-          <i class="f7-icons size-13">heart_fill</i>` +
-              Math.ceil(Math.random() * 10 + 26) +
-              `赞同
-        </a>
-        <a href="#" class="link" id="change">` + antator + `:` + item.userName +
-              `</a>
-      </div>
-      <p id="rstart" style="display: none">` + item.start +
-              `</p>
-      <p id="rend" style="display: none">` + item.end +
-              `</p>
-      <p id="rparagraph" style="display: none">` + item.paragraph +
-              `</p>
-    </div>`
-            )
-          })
-        },
-        error: function (e) {}
-      })
-    };
   </script>
 
   <script>

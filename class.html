@@ -48,12 +48,12 @@
             <i class="icon f7-icons ios-only">persons_fill</i>
             <span class="tabbar-label active-state">成员</span>
           </a>
-          <a href="#" class="tab-link an-button">
+          <!-- <a href="#" class="tab-link an-button">
             <i class="icon f7-icons ios-only">chat_fill
               <span class="badge color-red">5</span>
             </i>
             <span class="tabbar-label">消息</span>
-          </a>
+          </a> -->
         </div>
       </div>
 
@@ -217,7 +217,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
+        url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -225,22 +225,23 @@
         },
         crossDomain: true,
         success: function (data) {
-            localStorage.id = data.id;     
+          localStorage.id = data.id;
         },
         error: function () {}
       })
 
-      var num = 0;
-      var num1 = 0;
+      var num=0, num1=0, num2=0, num3=0;
+      
       // 获取所有作业
       $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' + localStorage.classId + '',
+        url: 'http://192.168.1.105/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
+          localStorage.classId,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
             if (item.finish == false) {
-              num1++;
-              $('#unfinnum').text(num1);
+              num++;
+              $('#unfinnum').text(num);
 
               $("ul[class=unfinish0]").append(
                 `  <li class="swipeout ">
@@ -275,11 +276,10 @@
                       </div>
                     </li>`
               )
-            }
-            else if (item.finish == true){
-              num++;
-              $('#finnum').text(num);
-              if(item.score == "未批改"){
+            } else if (item.finish == true) {
+              num1++;
+              $('#finnum').text(num1);
+              if (item.score == "未批改") {
                 var score = "";
               } else {
                 var score = "成绩：";
@@ -291,11 +291,13 @@
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
-                                <a href="subanntator.html?passageId=` +
-                item.passageId + `studentId` +localStorage.id + `" class="link external" style="display: inline;">` + item.passageTitle +
+                                <a href="stucompelet.html?id=` +
+                item.id + `" class="link external" style="display: inline;">` + item.passageTitle +
                 `</a>
                                 </div>
-                              <div class="item-after">` + score +`<span class="red">`+ item.score + `</span></div>
+                              <div class="item-after">` +
+                score + `<span class="red">` + item.score +
+                `</span></div>
                             </div>
                             <div class="item-subtitle">` +
                 item.passageTheme + ` · ` + getDateDiff(item.releaseTime) +
@@ -323,33 +325,33 @@
         },
         error: function (e) {}
       })
-
+      //讲义列表
       $.ajax({
-        url: 'http://192.168.1.104/EAnnotation/getHandout?classId=' + localStorage.classId + '',
+        url: 'http://192.168.1.105/EAnnotation/getHandout?classId=' + localStorage.classId,
         type: "post",
-        success: function(data) {
-          $.each(data,function(i,item) {
-            num++;
-            $('#notenum').text(num);
+        success: function (data) {
+          $.each(data, function (i, item) {
+            num2++;
+            $('#notenum').text(num2);
             $('#handout').append(
-            `  <li class="swipeout ">
+              `  <li class="swipeout ">
                       <div class="swipeout-content">
                         <label href="#" class="item-content item-checkbox">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
-                                <a href="anntator.html?id=` +
-                item.id + `" class="link external" style="display: inline;">` + item.title +
-                `</a>
+                                <a href="handout.html?id=` +
+              item.id + `&teacherId=`+ item.teacherId +`" class="link external" style="display: inline;">` + item.title +
+              `</a>
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
-                item.passageTheme + ` · ` + getDateDiff(item.releaseTime) +
-                `</div>
+              item.theme + ` · ` + getDateDiff(item.releaseTime) +
+              `</div>
                             <div class="item-text">
                               ` +
-                getcontent(item.content) +
-                `
+              getcontent(item.content) +
+              `
                             </div>
                           </div>
                         </label>
@@ -363,7 +365,51 @@
                         <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
                       </div>
                     </li>`
-          )
+            )
+          })
+        }
+      })
+
+       //优秀作业列表
+       $.ajax({
+        url: 'http://192.168.1.105/EAnnotation/getExcellent?classId=' + localStorage.classId,
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+            num3++;
+            $('#greatnum').text(num3);
+            $("ul[class=great0]").append(
+              `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label href="#" class="item-content item-checkbox">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="great.html?id=` +
+              item.passageId + `&userId=`+ item.userId +`" class="link external" style="display: inline;">` + item.title +
+              `</a>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">` +
+              item.theme + `</div>
+                            <div class="item-text">
+                              ` +
+              getcontent(item.content) +
+              `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+            )
           })
         }
       })

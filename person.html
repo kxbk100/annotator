@@ -412,7 +412,7 @@
     <script>
       $(function () {
         $.ajax({
-          url: 'http://192.168.1.104/EAnnotation/getCurrentUser',
+          url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -495,7 +495,7 @@
         var act = $("#account").val();
         var pswd = $("#password").val();
         $.ajax({
-          url: 'http://192.168.1.104/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'http://192.168.1.105/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -504,12 +504,15 @@
           crossDomain: true,
           success: function (data) {           
             $('#logscreen').attr('data-login-screen',' ');
-            if (data == 0) {
-              console.log(666);
-                window.history.back(-1);
-                window.history.back(-1);
-            } else {
+            if (data == "-1") {
+              app.dialog.alert('帐号不存在');
+            } else if(data == "-2"){
               app.dialog.alert('密码错误');
+            }
+            else {
+                window.history.back(-1);
+                window.history.back(-1);
+                localStorage.id = data;
             }
           },
           error:function (e){
@@ -522,7 +525,7 @@
       // 注销
       function logout() {
         $.ajax({
-          url: 'http://192.168.1.104/EAnnotation/logout',
+          url: 'http://192.168.1.105/EAnnotation/logout',
           type: "post",
           xhrFields: {
             withCredentials: true
