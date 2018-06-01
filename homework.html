@@ -54,7 +54,7 @@
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
-          <div class="title">没有理由拒绝成为更好的自己</div>
+          <div class="title" id="title0"></div>
           <div class="right"></div>
         </div>
       </div>
@@ -67,27 +67,26 @@
             <i class="icon f7-icons ios-only">book_fill</i>
             <span class="tabbar-label">作业</span>
           </a>
-          <a href="#" class="tab-link an-button link external">
+          <!-- <a href="#" class="tab-link an-button link external">
             <i class="icon f7-icons ios-only">layers_fill</i>
             <span class="tabbar-label active-state">课堂</span>
-          </a>
+          </a> -->
           <a href="#" class="tab-link an-button link external">
             <i class="icon f7-icons ios-only">persons_fill</i>
             <span class="tabbar-label active-state">成员</span>
           </a>
-          <a href="#" class="tab-link an-button">
+          <!-- <a href="#" class="tab-link an-button">
             <i class="icon f7-icons ios-only">chat_fill
               <span class="badge color-red">5</span>
             </i>
             <span class="tabbar-label">消息</span>
-          </a>
+          </a> -->
 
         </div>
       </div>
       <div class=" page-content">
         <div class="card">
-          <div class="card-header">没有理由拒绝成为更好的自己</div>
-          <div class="card-content card-content-padding">你会发现这么多年喜欢你的人还会喜欢，不喜欢你的人依旧是陌路。但自己所有的努力，只是为了成为更好的自己。别人的看法似乎没有那么重要了，至少更爱自己了，这也 ...</div>
+          <div class="card-content card-content-padding" id="headbox"></div>
         </div>
 
         <div class="list">
@@ -96,62 +95,17 @@
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
                   <div class="item-title">已完成</div>
-                  <span class="badge">5</span>
+                  <span class="badge" id="finnum">0</span>
                 </div>
               </a>
               <div class="accordion-item-content">
                 <div class="list contacts-list">
                   <div class="list-group">
-                    <ul>
-                      <li>
-                        <a href="correct.html" class="external link">
-                          <div class="item-content">
-                            <div class="item-inner">
-                              <div class="item-title">连炜</div>
-                              <div class="mark">未批改</div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="external link">
-                          <div class="item-content">
-                            <div class="item-inner">
-                              <div class="item-title">曹清德</div>
-                              <div class="mark">未批改</div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">鲍骏</div>
-                            <div class="mark">
-                              <span class="great">A</span>等</div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">蔡文</div>
-                            <div class="mark">
-                              <span class="jsoso">B</span>等</div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <a href="#" class="external link">
-                          <div class="item-content">
-                            <div class="item-inner">
-                              <div class="item-title">艾小雨</div>
-                              <div class="mark">
-                                <span class="bad">C</span>等</div>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
+                    <ul class="finish0">
+
+                    </ul>
+                    <ul class="finish1">
+
                     </ul>
                   </div>
                 </div>
@@ -163,34 +117,14 @@
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
                   <div class="item-title">未完成</div>
-                  <span class="badge color-red">3</span>
+                  <span class="badge color-red" id="unfinnum">0</span>
                 </div>
               </a>
               <div class="accordion-item-content">
                 <div class="list contacts-list">
                   <div class="list-group">
-                    <ul>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">戴镐</div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">芳华</div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">高俊</div>
-                          </div>
-                        </div>
-                      </li>
+                    <ul class="unfinish0">
+
                     </ul>
                   </div>
                 </div>
@@ -203,9 +137,7 @@
   </div>
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/rangy-core.js"></script>
-  <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script>
     // 返回按钮
     var back = document.getElementById("back");
@@ -214,6 +146,95 @@
         window.history.back(-1);
       })
     };
+    var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    var id = unescape(r[2]);
+
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getFinishList?passageId=' + id + '&classId=' + localStorage.classId +
+        '&teacherId=' + localStorage.id,
+      type: "POST",
+      success: function (data) {
+        var num = 0,
+          num1 = 0,
+          num2 = 0;
+
+        $.each(data, function (i, item) {
+          if (item.finish == true) {
+            num++
+            $('#finnum').text(num);
+
+            if (item.score != "") {
+              $("ul[class=finish0]").append(
+                `          <li>
+                        <a href="correct.html?passageId=`+ id +`&studentId=`+ item.studentId +`&workId=`+ item.id +`&studentName=`+ item.studentName +`" class="external link">
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title">` +
+                item.studentName + `</div>
+                              <div class="mark">` + item.score +
+                `</div>
+                            </div>
+                          </div>
+                        </a>
+                      </li>`
+              )
+            } else if (item.score == ""){
+              num1++
+              $('#finnum').text(num1);
+
+              $("ul[class=finish1]").append(
+                `          <li>
+                        <a href="correct.html?passageId=`+ id +`&studentId=`+ item.studentId +`&workId=`+ item.id +`&studentName=`+ item.studentName +`" class="external link">
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-title">` +
+                item.studentName +
+                `</div>
+                              <div class="mark">未批改</div>
+                            </div>
+                          </div>
+                        </a>
+                      </li>`
+              )
+            }
+          } else {
+            num2++
+            $('#unfinnum').text(num2);
+
+            $("ul[class=unfinish0]").append(
+              `         <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">` +
+              item.studentName +
+              `</div>
+                          </div>
+                        </div>
+                      </li>`
+            )
+          }
+
+        })
+      }
+    })
+
+ function LimitNumber(txt) {
+        var str = txt;
+        str = str.substr(0,102) + '...' ;
+        return str;
+    }
+    //获得作业的文章
+    $.ajax({
+    url: 'http://192.168.1.105/EAnnotation/getPassage?id=' + id,
+    type: "post",
+    cache: false,
+    success: function (data) {
+      $("#headbox").html(LimitNumber(data.content));
+      $("#title0").text(data.title);
+    },
+    error: function (e) {}
+  })
   </script>
 </body>
 

@@ -58,20 +58,20 @@
             <i class="icon f7-icons ios-only">book_fill</i>
             <span class="tabbar-label">作业</span>
           </a>
-          <a href="course.html" class="tab-link an-button link external">
+          <!-- <a href="course.html" class="tab-link an-button link external">
             <i class="icon f7-icons ios-only">layers_fill</i>
             <span class="tabbar-label active-state">课堂</span>
-          </a>
+          </a> -->
           <a href="#" class="tab-link an-button link external">
             <i class="icon f7-icons ios-only">persons_fill</i>
             <span class="tabbar-label active-state">成员</span>
           </a>
-          <a href="#" class="tab-link an-button">
+          <!-- <a href="#" class="tab-link an-button">
             <i class="icon f7-icons ios-only">chat_fill
               <span class="badge color-red">5</span>
             </i>
             <span class="tabbar-label">消息</span>
-          </a>
+          </a> -->
         </div>
       </div>
 
@@ -108,164 +108,79 @@
         </div>
         <div class="list">
           <ul>
-            <!-- 已完成作业栏 -->
             <li class="accordion-item accordion-item-opened">
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
                   <div class="item-title">正在进行的作业</div>
                   <div class="item-after">
-                    <span class="badge color-red">1</span>
+                    <span class="badge color-red" id="unfinnum">0</span>
                   </div>
                 </div>
               </a>
               <div class="accordion-item-content">
                 <div class="list media-list">
-                  <ul>
-                    <li class="swipeout">
-                      <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
-                          <a href="homework.html" class="link external">
-                            <div class="item-inner">
-                              <div class="item-title-row">
-                                <div class="item-title">没有理由拒绝成为更好的自己</div>
-                                <div class="item-after"></div>
-                              </div>
-                              <div class="item-subtitle">励志 · 1 天前</div>
-                              <div class="item-text">
-                                你会发现这么多年喜欢你的人还会喜欢，不喜欢你的人依旧是陌路。但自己所有的努力，只是为了成为更好的自己。别人的看法似乎没有那么重要了，至少更爱自己了
-                              </div>
-                            </div>
-                          </a>
-                        </label>
-                      </div>
-                      <div class="swipeout-actions-left">
-                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
-                        <a href="#" class="color-blue alert-forward">Forward</a>
-                      </div>
-                      <div class="swipeout-actions-right">
-                        <a href="#" class="open-more-actions">更多</a>
-                        <a href="#" class="color-orange alert-mark">批改</a>
-                        <a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete swipeout-overswipe">删除</a>
-                      </div>
-                    </li>
+                  <ul class="unfinish0">
+
                   </ul>
                 </div>
               </div>
             </li>
 
-            <!-- 未完成作业栏 -->
             <li class="accordion-item">
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
                   <div class="item-title">已截止的作业</div>
                   <div class="item-after">
-                    <span class="badge">3</span>
+                    <span class="badge" id="finnum">0</span>
                   </div>
                 </div>
               </a>
               <div class="accordion-item-content">
                 <div class="list media-list">
-                  <ul>
-                    <li class="swipeout ">
-                      <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
-                          <div class="item-inner">
-                            <div class="item-title-row">
-                              <div class="item-title">阿里年会马云演讲全文：可以失去一切，不能失去理想</div>
-                              <div class="item-after"></div>
-                            </div>
-                            <div class="item-subtitle">演讲 · 1 天前</div>
-                            <div class="item-text">
-                              我们要感谢这个时代，感谢互联网，感谢中国，感谢所有的同事，包括那些曾经在阿里巴巴工作过哪怕半个小时的
-                            </div>
-                          </div>
-                        </label>
-                      </div>
-                      <div class="swipeout-actions-left">
-                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
-                        <a href="#" class="color-blue alert-forward">Forward</a>
-                      </div>
-                      <div class="swipeout-actions-right">
-                        <a href="#" class="open-more-actions">更多</a>
-                        <a href="#" class="color-orange alert-mark">批改</a>
-                        <a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete swipeout-overswipe">删除</a>
-                      </div>
-                    </li>
+                  <ul class="finish0">
 
-                    <li class="swipeout ">
-                      <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
-                          <div class="item-inner">
-                            <div class="item-title-row">
-                              <div class="item-title">台湾作家林清玄散文精选摘抄</div>
-                              <div class="item-after"></div>
-                            </div>
-                            <div class="item-subtitle">摘录 · 5 天前</div>
-                            <div class="item-text">
-                              无论是少年、青年还是已经步入中年，对于林清玄这个名字都并不陌生。 这个台湾作家的智慧确实渗透了他的每一篇散文，感染了每一颗灯前捧读的心。 正是林清玄，教会了我们如何用积极向上的心态去面对现实，定义人生
-                            </div>
-                          </div>
-                        </label>
-                      </div>
-                      <div class="swipeout-actions-left">
-                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
-                        <a href="#" class="color-blue alert-forward">Forward</a>
-                      </div>
-                      <div class="swipeout-actions-right">
-                        <a href="#" class="open-more-actions">更多</a>
-                        <a href="#" class="color-orange alert-mark">批改</a>
-                        <a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete swipeout-overswipe">删除</a>
-                      </div>
-                    </li>
-
-                    <li class="swipeout ">
-                      <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
-                          <div class="item-inner">
-                            <div class="item-title-row">
-                              <div class="item-title">一场花期一段梦</div>
-                              <div class="item-after"></div>
-                            </div>
-                            <div class="item-subtitle">青春 · 2018-4-11</div>
-                            <div class="item-text">
-                              一朵小小的木樨花在寂静中绽放，怀念的果子便要在光阴里结实。青春韶华无情流逝，承载了太多苦涩又甘甜的往昔。花瓣曼妙飞扬的时候，牵念起心中清落的记忆
-                            </div>
-                          </div>
-                        </label>
-                      </div>
-                      <div class="swipeout-actions-left">
-                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
-                        <a href="#" class="color-blue alert-forward">Forward</a>
-                      </div>
-                      <div class="swipeout-actions-right">
-                        <a href="#" class="open-more-actions">更多</a>
-                        <a href="#" class="color-orange alert-mark">批改</a>
-                        <a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete swipeout-overswipe">删除</a>
-                      </div>
-                    </li>
-
-                    <li class="accordion-item accordion-item">
-                      <a href="#" class="item-content item-link">
-                        <div class="item-inner">
-                          <div class="item-title">优秀作业</div>
-                          <div class="item-after">
-                            <span class="badge" id="greatnum">0</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="accordion-item-content">
-                        <div class="list media-list">
-                          <ul class="great0">
-        
-        
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
                   </ul>
                 </div>
               </div>
             </li>
+
+            <li class="accordion-item">
+              <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                  <div class="item-title">课堂笔记</div>
+                  <div class="item-after">
+                    <span class="badge" id="notenum">0</span>
+                  </div>
+                </div>
+              </a>
+              <div class="accordion-item-content">
+                <div class="list media-list">
+                  <ul id="handout">
+
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <li class="accordion-item accordion-item">
+              <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                  <div class="item-title">优秀作业</div>
+                  <div class="item-after">
+                    <span class="badge" id="greatnum">0</span>
+                  </div>
+                </div>
+              </a>
+              <div class="accordion-item-content">
+                <div class="list media-list">
+                  <ul class="great0">
+
+
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
           </ul>
         </div>
       </div>
@@ -273,9 +188,7 @@
   </div>
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/rangy-core.js"></script>
-  <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script>
     // 返回按钮
     var back = document.getElementById("back");
@@ -284,6 +197,241 @@
         window.history.back(-2);
       })
     };
+
+    function getcontent(text) {
+      var html = text;
+      return html.replace(/<[^>]*>|/g, "");
+    }
+
+    function getDateDiff(dateTimeStamp) {
+      var dateTimeStamp = new Date(Date.parse(dateTimeStamp.replace(/-/gi, "-")));
+      dateTimeStamp = dateTimeStamp.getTime();
+      var result;
+      var minute = 1000 * 60;
+      var hour = minute * 60;
+      var day = hour * 24;
+      var halfamonth = day * 15;
+      var month = day * 30;
+      var now = new Date().getTime();
+      var diffValue = now - dateTimeStamp;
+      if (diffValue < 0) {
+        return;
+      }
+      var monthC = diffValue / month;
+      var weekC = diffValue / (7 * day);
+      var dayC = diffValue / day;
+      var hourC = diffValue / hour;
+      var minC = diffValue / minute;
+      if (monthC >= 1) {
+        if (monthC <= 12)
+          result = "" + parseInt(monthC) + "个月前";
+        else {
+          result = "" + parseInt(monthC / 12) + "年前";
+        }
+      } else if (weekC >= 1) {
+        result = "" + parseInt(weekC) + "周前";
+      } else if (dayC >= 1) {
+        result = "" + parseInt(dayC) + "天前";
+      } else if (hourC >= 1) {
+        result = "" + parseInt(hourC) + "小时前";
+      } else if (minC >= 1) {
+        result = "" + parseInt(minC) + "分钟前";
+      } else {
+        result = "刚刚";
+      }
+      return result;
+    };
+
+    var num = 0,
+      num1 = 0,
+      num2 = 0,
+      num3 = 0;
+
+    // 获取所有作业
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/techGetHomeList?teacherId=' + localStorage.id + '&classId=' +
+        localStorage.classId,
+      type: "post",
+      success: function (data) {
+        var now = new Date().getTime();
+
+        $.each(data, function (i, item) {
+          //比较时间大小
+          var endtime = item.endTime;
+          endtime = new Date(Date.parse(endtime.replace(/-/gi, "-")));
+          endtime = endtime.getTime();
+
+          if (now < endtime) {
+            num++;
+            $('#unfinnum').text(num);
+
+            $("ul[class=unfinish0]").append(
+              `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label href="#" class="item-content item-checkbox">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="homework.html?id=` +
+              item.id + `" class="link external" style="display: inline;">` + item.title +
+              `</a>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">` +
+              item.theme + ` · ` + item.endTime +
+              `截止</div>
+                            <div class="item-text">
+                              ` +
+              getcontent(item.content) +
+              `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+            )
+          } else if (now > endtime) {
+            num1++;
+            $('#finnum').text(num1);
+
+            $("ul[class=finish0]").append(
+              `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label href="#" class="item-content item-checkbox">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="homework.html?id=` +
+              item.id + `" class="link external" style="display: inline;">` + item.title +
+              `</a>
+                                </div>
+                              <div class="item-after"></div>
+                            </div>
+                            <div class="item-subtitle">` +
+              item.theme + ` · ` + item.endTime +
+              `截止</div>
+                            <div class="item-text">
+                              ` +
+              getcontent(item.content) +
+              `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+            )
+          }
+        })
+      },
+      error: function (e) {}
+    })
+    //讲义列表
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getHandout?classId=' + localStorage.classId,
+      type: "post",
+      success: function (data) {
+        $.each(data, function (i, item) {
+          num2++;
+          $('#notenum').text(num2);
+          $('#handout').append(
+            `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label href="#" class="item-content item-checkbox">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="handout.html?id=` +
+            item.id + `&teacherId=` + item.teacherId + `" class="link external" style="display: inline;">` +
+            item.title +
+            `</a>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">` +
+            item.theme + ` · ` + getDateDiff(item.releaseTime) +
+            `</div>
+                            <div class="item-text">
+                              ` +
+            getcontent(item.content) +
+            `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+          )
+        })
+      }
+    });
+
+    //优秀作业列表
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getExcellent?classId=' + localStorage.classId,
+      type: "post",
+      success: function (data) {
+        $.each(data, function (i, item) {
+          num3++;
+          $('#greatnum').text(num3);
+          $("ul[class=great0]").append(
+            `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label href="#" class="item-content item-checkbox">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="great.html?id=` +
+            item.passageId + `&userId=` + item.userId + `" class="link external" style="display: inline;">` +
+            item.title +
+            `</a>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">` +
+            item.theme +
+            `</div>
+                            <div class="item-text">
+                              ` +
+            getcontent(item.content) +
+            `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+          )
+        })
+      }
+    })
   </script>
 </body>
 
