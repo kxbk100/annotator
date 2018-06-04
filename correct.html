@@ -74,67 +74,7 @@
       <div class="block" id="Mynote">
         <div id="ancontent">
           <div class="texbg">暂无批注</div>
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor0">
-              <p>你会发现这么多年喜欢你的人还会喜欢</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">别人的看法似乎没有那么重要了</p>
-            </div>
-          </div>
 
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor4">
-              <p>别人的看法似乎没有那么重要了</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">一个人的成熟是需要慢慢修炼的</p>
-            </div>
-
-          </div>
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor0">
-              <p>我还记得高中时的她与班里男生说话脸都羞的通红</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">但不是谁的初恋都能走到最后，这是后话了。</p>
-            </div>
-          </div>
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor0">
-              <p>读了不同学校</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">不同的城市，也只有通过电话了解彼此的生活。</p>
-            </div>
-          </div>
-
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor3">
-              <p>她担任了他们班的学委</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">不同的城市，也只有通过电话了解彼此的生活。</p>
-            </div>
-          </div>
-
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor1">
-              <p>但真心为她高兴</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">但不是谁的初恋都能走到最后</p>
-            </div>
-          </div>
-
-          <div class="card cardcss">
-            <blockquote class="blockquote bqcolor2">
-              <p>思想也慢慢变得丰富独立了。</p>
-            </blockquote>
-            <div class="card-content cardct ">
-              <p id="anPnode">读了不同学校</p>
-            </div>
-          </div>
         </div>
 
         <div class="block-title">评分</div>
@@ -157,14 +97,14 @@
               <div class="item-inner">
                 <div class="item-input-wrap">
                   <div class="item-title item-label label">点评：</div>
-                  <textarea placeholder="请输入点评" rows="15"></textarea>
+                  <textarea placeholder="请输入点评" rows="15" id="remark"></textarea>
                 </div>
               </div>
             </li>
           </ul>
           <div class="row subutton" style="padding: 12px;">
-            <a href="homework2.html" class="link external">
-              <button class="button col subreturn">提交</button>
+            <a href="#" class="link external">
+              <button class="button col subreturn" id="submit">提交</button>
             </a>
             <a href="#" class="link external">
               <button class="button col subnext">下一篇</button>
@@ -186,11 +126,14 @@
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
-          <div class="title" style="left: 50px;">可以失去一切，不能失去理想
-            <div class="stitle">批注人：连炜</div>
+          <div class="title">
+            <span id="title"></span>
+            <div class="stitle">批注人：
+              <span id="antor"></span>
+            </div>
           </div>
           <div class="right">
-            <div class="mark">3人已点评，共5人</div>
+            <div class="mark"></div>
           </div>
         </div>
       </div>
@@ -199,49 +142,7 @@
       <div class="page-content">
         <div id="txblock">
           <div class="block" id="box" style="color:black">
-            <p>
-              <span class="Bton0Backgrond">你会发现这么多年喜欢你的人还会喜欢</span>，不喜欢你的人依旧是陌路。但自己所有的努力，只是为了成为更好的自己。
-              <span class="Bton4Backgrond">别人的看法似乎没有那么重要了</span>，至少更爱自己了。
-            </p>
-            <p>一个人的成熟是需要慢慢修炼的，允许自己的不足并接纳然后努力改变。
-            </p>
-            <p>多年的一位朋友，
-              <span class="Bton0Backgrond">我还记得高中时的她与班里男生说话脸都羞的通红</span>，甚至不敢看对方。羞怯中略带些自卑。性格比较慢热，看似高冷的外表，其实是不知如何主动交往。
-            </p>
-            <p>后来我们彼此
-              <span class="Bton0Backgrond">读了不同学校</span>，不同的城市，也只有通过电话了解彼此的生活。
-            </p>
-            <p>我们彼此分享最近有哪些有趣的事，参加了什么社团，什么活动。
-              <span class="Bton3Backgrond">她担任了他们班的学委</span>，哎呦，不错呦我打趣道，一向爱学习的乖孩子，挺符合你的气质。
-            </p>
-            <p>虽是玩笑话，
-              <span class="Bton1Backgrond">但真心为她高兴</span>，性格变的开朗了许多，言语中流露着一种小小的自信。自由的大学生活确实能够改变一个人，是从稚嫩向成熟的一个过渡。
-              <span class="Bton2Backgrond">思想也慢慢变得丰富独立了。</span>
-            </p>
-            <p>不可否认自信的女孩总是最美的，
-              <span class="Bton4Backgrond">不管高矮胖瘦</span>，与其交往总感觉带给你的是满满的能量。
-            </p>
-            <p>大三的某一天，她跟我说自己恋爱了。这家伙隔着电话我也能感觉到浓浓的甜蜜味道。让我羡慕嫉妒恨自叹不如啊。
-            </p>
-            <p>爱情的开始总是充满着期待，但不是谁的初恋都能走到最后，这是后话了。
-            </p>
-            <p>临毕业的时候，我去了她的城市。那时彼此都在为毕业后工作考虑着。本来想着要不要去一个城市工作，虽然专业不同，陌生的城市一起租房子彼此也可以互相照应。
-            </p>
-            <p>最后是我一人去了上海，她决定留在省内发展。而她的初恋也只停留在了大四上半年。置于为什么分手，我没有多问。但我知道这段初恋给她带来了不小的伤害，那个晚上我也几乎没睡，陪她聊天。隔着屏幕也能感觉到失恋的泪水早已浸透了枕边。
-            </p>
-            <p>她说:我终于明白什么是心痛的感觉了。
-            </p>
-            <p>我说:这几年你真的变了很多，努力在做自己。至于爱情以后会遇到更好的。
-            </p>
-            <p>看似轻描淡写的改变，我知道她一直在努力的潜心修炼。她不善言谈，却逼着自己参加演讲比赛，没有期望取得什么好成绩，只是勇敢的让自己跨出去一步，多去尝试。
-            </p>
-            <p>因为是学委，自然少不了与同学之间的沟通。帮那些面临挂科的同学补课，和其他班委组织班级活动。慢慢的羞涩少了，站在讲台也不那么胆怯了。
-            </p>
-            <p>四年的时间与她重新塑造了一番，她的改变我是看在眼里的。
-            </p>
-            <p>所谓的成长也是发现不足而去改变的过程。也只有自己知道要勇敢的跨出去一步才能更好的完善自己。没有理由拒绝成为更好的自己，哪怕是生活给予的一些不愉快，试着与生活和解与自己和解。
-            </p>
-            <p>有一天或许会感谢曾经认为是生活故意的刁难。经历过才能成为一种阅历，才能修炼更加笃定的内心，也才能自信的一直走下去，成为那个更好的自己。 </p>
+
           </div>
         </div>
       </div>
@@ -252,13 +153,13 @@
   <script src="js/app.js"></script>
   <script src="js/rangy-core.js"></script>
   <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script>
     var pickerDevice = app.picker.create({
       inputEl: '#demo-picker-device',
       cols: [{
         textAlign: 'center',
-        values: ['A+，推荐为优秀作业','A', 'B', 'C', 'D']
+        values: ['A+，推荐为优秀作业', 'A', 'B', 'C', 'D']
       }]
     });
 
@@ -269,6 +170,140 @@
         window.history.back(-1);
       })
     };
+
+    var reg = new RegExp("(^|&)passageId=([^&]*)(&|$)");
+    var reg2 = new RegExp("(^|&)studentId=([^&]*)(&|$)");
+    var reg3 = new RegExp("(^|&)workId=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    var id = unescape(r[2]);
+    var g = window.location.search.substr(1).match(reg2);
+    var studentId = unescape(g[2]);
+    var w = window.location.search.substr(1).match(reg3);
+    var workId = unescape(w[2]);
+
+    var searchUrl = window.location.href;
+    var searchData = searchUrl.split("studentName=");
+    var studentName = decodeURI(searchData[1]);
+
+    //获得作业的文章
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getPassage?id=' + id,
+      type: "POST",
+      success: function (data) {
+        $('#title').text(data.title);
+        $('#box').html(data.content);
+        $('#antor').text(studentName);
+        getAnnotator(data.id);
+      }
+    })
+
+    //从数据库获得json类型数据并解析
+    function getAnnotator(passageId, userId) {
+      app.request.get('http://192.168.1.105/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+        studentId,
+        function (data) {
+          var result = jQuery.parseJSON(data);
+          each(result);
+        }, JSON);
+    }
+
+    // 从数据库取回数据后重新渲染批注
+    function each(result) {
+      $.each(result, function (i, item) {
+        par = item.paragraph;
+        st = item.start;
+        ed = item.end;
+        type = item.type;
+        anID = item.id;
+        content = item.content;
+        selected = item.selected;
+        annotate();
+        rePanel()
+      })
+    }
+
+    function annotate() {
+      var px = $$("#box p")[par - 1].firstChild;
+      console.log(px);
+      var range = rangy.createRange();
+      range.setStart(px, st);
+      range.setEnd(px, ed);
+      range.select();
+      switch (type) {
+        case 0:
+          cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
+          break;
+        case 1:
+          cssApplier = rangy.createClassApplier("Bton1Backgrond", false);
+          break;
+        case 2:
+          cssApplier = rangy.createClassApplier("Bton2Backgrond", false);
+          break;
+        case 3:
+          cssApplier = rangy.createClassApplier("Bton3Backgrond", false);
+          break;
+        case 4:
+          cssApplier = rangy.createClassApplier("Bton4Backgrond", false);
+          break;
+      }
+      cssApplier.toggleSelection();
+      window.getSelection().removeAllRanges();
+    }
+
+    //渲染侧边栏批注
+    function rePanel() {
+      var string = 'note' + type;
+      var textarea = content;
+      $$('#ancontent').append(
+        '<div class="card cardcss" id="' + anID + '">' +
+        '<blockquote class="blockquote bqcolor' + type + '" id="bq' + anID + '">' +
+        '<p>' + selected + '</p>' +
+        '</blockquote>' +
+        '<div class="card-content cardct ">' +
+        '<p  id="an' + anID + '">' + textarea + '</p>' +
+        '</div >' +
+        '</div>');
+    }
+
+    //老师打分
+    $('#submit').on("touchstart", function () {
+      var score = $('#demo-picker-device').val();
+      var remark = $('#remark').val();
+
+      $.ajax({
+        url: 'http://192.168.1.105/EAnnotation/setScore',
+        type: "POST",
+        cache: false,
+        data: {
+          score: score,
+          remark: remark,
+          passageId: id,
+          classId: localStorage.classId,
+          studentId: studentId,
+        },
+        success: function (data) {
+          window.history.back(-1);
+          window.history.back(-1);
+        },
+        error: function (e) {
+          window.history.back(-1);
+          window.history.back(-1);
+        }
+      })
+    });
+
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getHomeById?id='+workId,
+      type: "POST",
+      cache: false,
+      success: function (data) {
+        if (score != "") {
+          var score = $('#demo-picker-device').val(data.score);
+          var remark = $('#remark').val(data.remark);
+        }
+      },
+      error: function (e) {}
+    })
   </script>
 </body>
 

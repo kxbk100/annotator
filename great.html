@@ -111,8 +111,8 @@
           </div>
 
           <div class="right">
-            <div class="mark" id="mark">成绩：
-              <span class="markred">A</span>
+            <div class="mark">成绩：
+              <span class="markred" id="mark"></span>
             </div>
           </div>
         </div>
@@ -193,15 +193,15 @@
     var userId = unescape(g[2]);
 
     // 获取文章id
-      $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getPassage?id=' + id,
-        type: "POST",
-        success: function (data) {
-          $('#title').text(data.title);
-          $('#box').html(data.content);
-          getAnnotator(data.id);
-        }
-      })
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getPassage?id=' + id,
+      type: "POST",
+      success: function (data) {
+        $('#title').text(data.title);
+        $('#box').html(data.content);
+        getAnnotator(data.id);
+      }
+    })
 
     //从数据库获得json类型数据并解析
     function getAnnotator(passageId) {
@@ -212,6 +212,16 @@
           each(result);
         }, JSON);
     }
+    //获取成绩
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getHomeById?id=' + userId,
+      type: "POST",
+      success: function (data) {
+        $('#comment').text(data.remark);
+        $('#mark').html(data.score);
+        getAnnotator(data.id);
+      }
+    })
   </script>
 
   <script>
@@ -270,10 +280,6 @@
         '<div class="card-content cardct ">' +
         '<p  id="an' + anID + '">' + textarea + '</p>' +
         '</div >' +
-        '<div class="card-footer">' +
-        '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID +
-        ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
-        '</div>' +
         '</div>');
     }
   </script>

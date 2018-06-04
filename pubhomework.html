@@ -36,7 +36,7 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="left">
-            <a href="classteacher.html" class="item-link icon external">
+            <a href="javascript:void(null)" class="item-link icon external" onclick="history.back(-1)">
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
@@ -56,8 +56,8 @@
                     <!-- 作业type为0 -->
                     <input type="text" name="type" value="0" class="hidden">
                     <input type="text" name="auth" value="1" class="hidden">
-                    <input type="text" name="classId" value="1" class="hidden">
-                    <input type="text" name="teacherId" value="1" class="hidden">
+                    <input type="text" name="classId" value="" class="hidden">
+                    <input type="text" name="teacherId" value="" class="hidden">
                   </div>
                 </div>
               </div>
@@ -186,14 +186,14 @@
   </div>
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/rangy-core.js"></script>
-  <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="ueditor/ueditor.config.js"></script>
   <script src="ueditor/ueditor.all.min.js"></script>
   <script src="ueditor/lang/zh-cn/zh-cn.js"></script>
   <script>
+    $("input[name='classId']").attr("value",localStorage.classId);
+    $("input[name='teacherId']").attr("value",localStorage.id);
+
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');

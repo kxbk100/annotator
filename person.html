@@ -144,7 +144,7 @@
                     <div class="block">
                       <p class="row">
                         <button type="button" class="col-85 button button-big button-fill" id="logbton" style="margin-left: auto;margin-right: auto;">
-                          <a href="#" class="icon external">登录</a>
+                          <a href="javascript:void(null)" class="icon external">登录</a>
                         </button>
                       </p>
                       <p class="row">
@@ -405,9 +405,6 @@
     </div>
     <script src="js/framework7.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
-    <script src="js/annotate.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
       $(function () {
@@ -510,7 +507,6 @@
               app.dialog.alert('密码错误');
             }
             else {
-                window.history.back(-1);
                 window.history.back(-1);
                 localStorage.id = data;
             }
