@@ -529,9 +529,13 @@
           crossDomain: true,
           success: function (data) {
             window.location.href = "person.html";
+            localStorage.id=null;
+            localStorage.classId=null;
           },
           error: function () {
             window.location.href = "person.html";
+            localStorage.id=null;
+            localStorage.classId=null;
           }
         })
       }
