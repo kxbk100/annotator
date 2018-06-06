@@ -103,7 +103,7 @@
             </li>
           </ul>
           <div class="row subutton" style="padding: 12px;">
-            <a href="#" class="link external">
+            <a href="javascript:void(0);" class="link external">
               <button class="button col subreturn" id="submit">提交</button>
             </a>
             <a href="#" class="link external">
@@ -282,12 +282,10 @@
           studentId: studentId,
         },
         success: function (data) {
-          window.history.back(-1);
-          window.history.back(-1);
+          window.history.go(-1);
         },
         error: function (e) {
-          window.history.back(-1);
-          window.history.back(-1);
+          window.history.go(-1);
         }
       })
     });

@@ -8,14 +8,12 @@ function getString(n) {
   var selectedtxt = document.getElementById(string);
   selectedtxt.innerText = text;
 }
-var userID = 1; // 现在还有没
 
 //将popu中的文字传递到侧边栏
 function panel(m) {
   var leftID;
   var string = 'note' + m;
-  var textarea = document.getElementById(string).value;
-
+  var textarea = document.getElementById(string).value;  
   //ajax传递数据到后台并获得批注id
   app.request.post('http://192.168.1.105/EAnnotation/addAnnotation', {
     content: textarea,
@@ -23,7 +21,7 @@ function panel(m) {
     start: start,
     end: end,
     type: type,
-    userId: userID,
+    userId: userId,
     passageId: passageId,
     selected: text
   }, function (data) {
@@ -113,7 +111,7 @@ function anPaint(bton) {
 var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
 var r = window.location.search.substr(1).match(reg);
 var passageId = unescape(r[2]);
-var userId = localStorage.id; //预设的用户id
+var userId = localStorage.id; 
 var ancount;  //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
@@ -263,10 +261,12 @@ function add() {
 function addNum () {
   ancount++;
   $("#count").html(ancount + '个批注');
+  $("#allantate").text(ancount);
 }
 function rdNum () {
   ancount--;
   $("#count").html(ancount + '个批注');
+  $("#allantate").text(ancount);
 }
 
 // 右侧侧边栏显示所有批注
@@ -325,6 +325,22 @@ $$("input[name='student']").change(function () {
     $$("[id=student]").css('display', 'block');
   }
 });
+
+  var user;
+    //获取登录者id
+    $.ajax({
+      url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
+      type: 'post',
+      dataType: 'jsonp',
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: function (data) {
+        user = data;
+      },
+      error: function () {}
+    })
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");

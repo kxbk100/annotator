@@ -255,7 +255,9 @@
   <script src="js/app.js"></script>
   <script src="js/jquery.min.js"></script>
   <script>
-    function getcontent(text) {
+    window.onload = index();
+    function index() {
+      function getcontent(text) {
       var html = text;
       return html.replace(/<[^>]*>|/g, "");
     }
@@ -373,7 +375,7 @@
       },
       error: function (e) {}
     })
-
+  console.log(localStorage.id)
     //点赞
     function like(id) {
       if (localStorage.id == null || !localStorage.id) {
@@ -389,7 +391,7 @@
         }).open();
       } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {
         $('#' + id).css("color", "blue");
-        var count = $("span[class='" + id + "']").val();
+        var count = $("span[class='" + id + "']").text();
         console.log(count)
         $("span[class='" + id + "']").val(count++);
 
@@ -427,8 +429,7 @@
       },
       crossDomain: true,
       success: function (data) {
-        console.log(data);
-        console.log(data.type)
+        localStorage.id = data.id;
         if (data == 0) {
           $('#myclass').attr("href", "person.html")
         } else if (data.type == 0) {
@@ -439,6 +440,7 @@
       },
       error: function () {}
     })
+    }
   </script>
 </body>
 

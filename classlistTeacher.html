@@ -102,22 +102,27 @@
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
-              $("ul[class=course]").append(
-                `<li>
-                    <a href="classteacher.html" class="link item-content external" ontouchstart="pushclass(`+ item.classId +`)">
+            $("ul[class=course]").append(
+              `<li>
+                    <a href="classteacher.html?name=` + item.className +
+              `" class="link item-content external" ontouchstart="pushclass(` + item.classId +
+              `)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
                         <div class="item-title-row">
-                          <div class="item-title">`+ item.className +`</div>
+                          <div class="item-title">` +
+              item.className +
+              `</div>
                         </div>
                       </div>
                     </a>
                </li>`
-              )
+            )
           })
         },
         error: function (e) {}
       })
+
       function pushclass(id) {
         localStorage.classId = id;
       }
