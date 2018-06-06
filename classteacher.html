@@ -42,7 +42,7 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="left">
-            <a href="#" id="back" class="item-link icon external" style="color: white;">
+            <a href="javascrpt:void(0);" id="back" class="item-link icon external" style="color: white;">
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
@@ -78,6 +78,7 @@
       <div class="toolbar toolbar-bottom-md fab-morph-target tabbar-labels">
         <div class="toolbar-inner">
           <a class="link popup-open external" data-popup=".popup-about" href="pubhomework.html">发布作业</a>
+          <a class="link popup-open external" href="pubhandouts.html">发布讲义</a>
           <a class="link fab-close">取消</a>
         </div>
       </div>
@@ -99,7 +100,7 @@
                 </div>
                 <div class="item-inner">
                   <div class="item-title-row">
-                    <div class="item-title margin-top10">行政班：软件工程162</div>
+                    <div class="item-title margin-top10" id="classname"></div>
                   </div>
                 </div>
               </div>
@@ -194,9 +195,14 @@
     var back = document.getElementById("back");
     if (back) {
       back.addEventListener('touchstart', function () {
-        window.history.back(-2);
+        window.history.back(-1);
       })
     };
+
+    var searchUrl = window.location.href;
+    var searchData = searchUrl.split("name=");
+    var studentName = decodeURI(searchData[1]);
+      $('#classname').html(studentName);
 
     function getcontent(text) {
       var html = text;
