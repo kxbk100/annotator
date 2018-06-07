@@ -409,7 +409,7 @@
     <script>
       $(function () {
         $.ajax({
-          url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
+          url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -492,7 +492,7 @@
         var act = $("#account").val();
         var pswd = $("#password").val();
         $.ajax({
-          url: 'http://192.168.1.105/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'http://192.168.1.111/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -521,7 +521,7 @@
       // 注销
       function logout() {
         $.ajax({
-          url: 'http://192.168.1.105/EAnnotation/logout',
+          url: 'http://192.168.1.111/EAnnotation/logout',
           type: "post",
           xhrFields: {
             withCredentials: true
@@ -530,12 +530,12 @@
           success: function (data) {
             window.location.href = "person.html";
             localStorage.id=null;
-            localStorage.classId=null;
+            localStorage.classid=null;
           },
           error: function () {
             window.location.href = "person.html";
             localStorage.id=null;
-            localStorage.classId=null;
+            localStorage.classid=null;
           }
         })
       }

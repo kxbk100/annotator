@@ -98,7 +98,7 @@
 
       // 获取所有班级
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
+        url: 'http://192.168.1.111/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -124,7 +124,7 @@
       })
 
       function pushclass(id) {
-        localStorage.classId = id;
+        localStorage.classid = id;
       }
     </script>
 </body>

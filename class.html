@@ -217,7 +217,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
+        url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -234,8 +234,8 @@
       
       // 获取所有作业
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
-          localStorage.classId,
+        url: 'http://192.168.1.111/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
+          localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -327,7 +327,7 @@
       })
       //讲义列表
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getHandout?classId=' + localStorage.classId,
+        url: 'http://192.168.1.111/EAnnotation/getHandout?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -372,7 +372,7 @@
 
        //优秀作业列表
        $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getExcellent?classId=' + localStorage.classId,
+        url: 'http://192.168.1.111/EAnnotation/getExcellent?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
