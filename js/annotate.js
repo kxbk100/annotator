@@ -198,6 +198,7 @@ function annotate() {
 function rePanel() {
   var string = 'note' + type;
   var textarea = content;
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   $$('#ancontent').append(
     '<div class="card cardcss" id="' + anID + '">' +
     '<blockquote class="blockquote bqcolor' + type + '" id="bq' + anID + '">' +

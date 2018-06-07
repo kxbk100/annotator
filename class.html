@@ -391,13 +391,13 @@
                               <div class="item-title">
                                 <a href="great.html?id=` +
               item.passageId + `&userId=` + item.userId +
-              `" class="link external" style="display: inline;">` + item.title +
+              `&author=`+ item.userName +`" class="link external" style="display: inline;">` + item.title +
               `</a>
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
-              item.theme +
-              `</div>
+            item.theme + ` · 批注人： ` + item.userName +
+            `</div>
                             <div class="item-text">
                               ` +
               getcontent(item.content) +
