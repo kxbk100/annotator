@@ -285,14 +285,11 @@
     $$('.open-confirm').on('click', function () {
       if (ancount < 5) {
         app.dialog.confirm('您的批注内容过少，是否提交？', function () {
-          app.dialog.alert('提交成功！');
-          setTimeout("window.history.back(-1)", 1000);
+          submit();
         });
       } else {
-        app.dialog.alert('提交成功！');
-        setTimeout("window.history.back(-1)", 1000);
+        submit();
       }
-
     });
 
     // 返回按钮
@@ -303,11 +300,25 @@
       })
     };
 
-    $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
-        '&classId=' + localStorage.classId + '',
-      type: "POST",
-    })
+    function submit() {
+      $.ajax({
+        url: 'http://192.168.1.111/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
+          '&classId=' + localStorage.classid + '',
+        type: "POST",
+        success:function () {
+          app.dialog.create({
+            text: '提交成功',
+            buttons: [{
+              text: '确定',
+              onClick: function () {
+                window.history.back(-1)
+              }
+            }],
+            verticalButtons: true,
+          }).open();
+        }
+      })
+    }
   </script>
 </body>
 

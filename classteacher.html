@@ -199,11 +199,6 @@
       })
     };
 
-    var searchUrl = window.location.href;
-    var searchData = searchUrl.split("name=");
-    var studentName = decodeURI(searchData[1]);
-      $('#classname').html(studentName);
-
     function getcontent(text) {
       var html = text;
       return html.replace(/<[^>]*>|/g, "");
@@ -255,8 +250,8 @@
 
     // 获取所有作业
     $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/techGetHomeList?teacherId=' + localStorage.id + '&classId=' +
-        localStorage.classId,
+      url: 'http://192.168.1.111/EAnnotation/techGetHomeList?teacherId=' + localStorage.id + '&classId=' +
+        localStorage.classid,
       type: "post",
       success: function (data) {
         var now = new Date().getTime();
@@ -349,7 +344,7 @@
     })
     //讲义列表
     $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/getHandout?classId=' + localStorage.classId,
+      url: 'http://192.168.1.111/EAnnotation/getHandout?classId=' + localStorage.classid,
       type: "post",
       success: function (data) {
         $.each(data, function (i, item) {
@@ -395,7 +390,7 @@
 
     //优秀作业列表
     $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/getExcellent?classId=' + localStorage.classId,
+      url: 'http://192.168.1.111/EAnnotation/getExcellent?classId=' + localStorage.classid,
       type: "post",
       success: function (data) {
         $.each(data, function (i, item) {
@@ -415,7 +410,7 @@
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
-            item.theme +
+            item.theme + ` · 批注人： ` + item.userName +
             `</div>
                             <div class="item-text">
                               ` +
@@ -436,6 +431,15 @@
                     </li>`
           )
         })
+      }
+    })
+
+    //班级列表
+    $.ajax({
+      url:'http://192.168.1.111/EAnnotation/getClassById?id='+ localStorage.classid,
+      type:'POST',
+      success: function (data) {
+        $('#classname').html(data.className);
       }
     })
   </script>
