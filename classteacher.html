@@ -199,11 +199,6 @@
       })
     };
 
-    var searchUrl = window.location.href;
-    var searchData = searchUrl.split("name=");
-    var studentName = decodeURI(searchData[1]);
-      $('#classname').html(studentName);
-
     function getcontent(text) {
       var html = text;
       return html.replace(/<[^>]*>|/g, "");
@@ -436,6 +431,15 @@
                     </li>`
           )
         })
+      }
+    })
+
+    //班级列表
+    $.ajax({
+      url:'http://192.168.1.111/EAnnotation/getClassById?id='+ localStorage.classid,
+      type:'POST',
+      success: function (data) {
+        $('#classname').html(data.className);
       }
     })
   </script>

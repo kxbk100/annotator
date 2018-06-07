@@ -331,7 +331,7 @@
         processData: false,
         contentType: false,
         success: function (data) {
-          window.location.href = "course.html"
+          window.history.go(-1);
         },
         error: function (e) {
           console.log(form);
