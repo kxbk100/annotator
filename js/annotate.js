@@ -200,6 +200,7 @@ function annotate() {
 function rePanel() {
   var string = 'note' + type;
   var textarea = content;
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   $$('#ancontent').append(
     '<div class="card cardcss" id="' + anID + '">' +
     '<blockquote class="blockquote bqcolor' + type + '" id="bq' + anID + '">' +
@@ -273,27 +274,26 @@ function rdNum() {
 }
 
 // 右侧侧边栏显示所有批注
-window.onload = reright();
+$(function() {
+$.ajax({
+  url: 'http://192.168.1.111/EAnnotation/getAllAnnotations?passageId=' + passageId,
+  type: "post",
+  cache: false,
+  success: function (data) {
+  $.each(data,function(i,item) {
+    if(item.userType == 0){
+      var antator = "学生";
+      var antype = "student";
+    }
+    else {
+      antator = "教师";
+      var antype = "teacher";
+    };
 
-function reright() {
-  $.ajax({
-    url: 'http://192.168.1.111/EAnnotation/getAllAnnotations?passageId=' + passageId,
-    type: "post",
-    cache: false,
-    success: function (data) {
-      $('#ancontent2').html("");
-      $.each(data, function (i, item) {
-        if (item.userType == 0) {
-          var antator = "学生";
-          var antype = "student";
-        } else {
-          antator = "教师";
-          var antype = "teacher";
-        };
-        $('#ancontent2').append(
-          `    <div class="card cardcss" id="` + antype + `">
-      <blockquote class="blockquote bqcolor` + item.type + `" >
-        <p>` + item.selected + `</p>
+    $('#ancontent2').append(
+      `    <div class="card cardcss" id="`+antype+`">
+      <blockquote class="blockquote bqcolor2">
+        <p>`+ item.selected +`</p>
       </blockquote>
       <div class="card-content cardct">
         <p id="anPnode">` + item.content + `</p>

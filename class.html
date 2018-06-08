@@ -68,11 +68,11 @@
             <li>
               <div class="item-content class">
                 <div class="item-media">
-                  <img src="images/teacher.jpg" width="44" />
+                  <img src="images/teacher.jpg" width="44"/>
                 </div>
                 <div class="item-inner">
                   <div class="item-title-row">
-                    <div class="item-title">行政班：软件工程161</div>
+                    <div class="item-title" id="classname"></div>
                   </div>
                   <div class="item-subtitle">教师：张宇宙老师</div>
                 </div>
@@ -396,13 +396,15 @@
                               <div class="item-title">
                                 <a href="great.html?id=` +
               item.passageId + `&userId=` + item.userId +
-              `" class="link external" style="display: inline;">` + item.title +
+              `&author=`+ item.userName +`" class="link external" style="display: inline;">` + item.title +
+
               `</a>
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
-              item.theme +
-              `</div>
+
+            item.theme + ` · 批注人： ` + item.userName +
+            `</div>
                             <div class="item-text">
                               ` +
               getcontent(item.content) +
@@ -423,7 +425,16 @@
             )
           })
         }
-      })
+      });
+
+      //班级列表
+      $.ajax({
+        url: 'http://192.168.1.111/EAnnotation/getClassById?id=' + localStorage.classid,
+        type: 'POST',
+        success: function (data) {
+          $('#classname').html(data.className);
+        }
+      });
     </script>
 </body>
 

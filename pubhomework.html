@@ -328,7 +328,7 @@
         processData: false,
         contentType: false,
         success: function (data) {
-          window.location.href = "classteacher.html"
+          window.history.go(-1);
           console.log(form);
         },
         error: function (e) { }

@@ -108,6 +108,9 @@
           </div>
           <div class="title" style="left: 25px;">
             <span id="title"></span>
+            <div class="stitle">
+              <span id="author"></span>
+            </div>
           </div>
 
           <div class="right">
@@ -191,7 +194,11 @@
     var id = unescape(r[2]);
     var g = window.location.search.substr(1).match(reg2);
     var userId = unescape(g[2]);
+    var searchUrl = window.location.href;
+    var searchData = searchUrl.split("author=");
+    var author = decodeURI(searchData[1]);
 
+    $('#author').html('批注人：'+author);
     // 获取文章id
     $.ajax({
       url: 'http://192.168.1.111/EAnnotation/getPassage?id=' + id,
@@ -219,7 +226,6 @@
       success: function (data) {
         $('#comment').text(data.remark);
         $('#mark').html(data.score);
-        getAnnotator(data.id);
       }
     })
   </script>

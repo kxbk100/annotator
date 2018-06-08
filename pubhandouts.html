@@ -90,16 +90,6 @@
             <li>
               <div class="item-content item-input">
                 <div class="item-inner">
-                  <div class="item-title item-label">截止日期</div>
-                  <div class="item-input-wrap">
-                    <input type="text" placeholder="选择截止日期" name="endTime" readonly="readonly" id="demo-calendar-modal" />
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
                   <div class="item-title item-label">选择主题</div>
                   <div class="item-input-wrap">
                     <div class="block-strong">
@@ -190,9 +180,6 @@
   </div>
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/rangy-core.js"></script>
-  <script src="js/rangy-classapplier.js"></script>
-  <script src="js/annotate.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="ueditor/ueditor.config.js"></script>
   <script src="ueditor/ueditor.all.min.js"></script>
@@ -322,6 +309,8 @@
     }
   </script>
   <script>
+    $("input[name='classId']").attr("value", localStorage.classid);
+    $("input[name='teacherId']").attr("value", localStorage.id);
     $("#submit").on('touchstart', function () {
       var form = new FormData($('#handouts')[0]);
       $.ajax({
@@ -332,7 +321,7 @@
         processData: false,
         contentType: false,
         success: function (data) {
-          window.location.href = "course.html"
+          window.history.go(-1);
         },
         error: function (e) {
           console.log(form);
