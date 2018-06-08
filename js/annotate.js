@@ -295,9 +295,15 @@ $.ajax({
         <p id="anPnode">`+ item.content +`</p>
       </div>
       <div class="card-footer">
-        <a href="#" class="link">
-          <i class="f7-icons size-13">heart_fill</i>` + Math.ceil(Math.random() * 10 + 26) + `赞同
-        </a>
+      <a href="#" class="link" style="color" id="` +
+      item.id + `" ontouchstart="like(` +
+      item.id +
+      `)">
+            <i class="f7-icons size-18">heart_fill</i><span class="` + item.id +
+      `">` +
+      item.likeCount +
+      `</span> 喜欢
+          </a>
         <a href="#" class="link" id="change">`+ antator +`:`+ item.userName +`</a>
       </div>
       <p id="rstart" style="display: none">`+ item.start +`</p>
@@ -305,6 +311,7 @@ $.ajax({
       <p id="rparagraph" style="display: none">`+ item.paragraph +`</p>
     </div>`
     )
+    isLike(item.id);
   })
   },
   error: function (e) {}
@@ -341,6 +348,62 @@ $$("input[name='student']").change(function () {
       },
       error: function () {}
     })
+
+
+    //是否已经点赞
+    function isLike(id) {
+      $.ajax({
+        url: 'http://192.168.1.111/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id+`&annotationId=`+id,
+        type: "POST",
+        success: function (data) {
+          if (data == true) {
+            $('#' + id).css("color", "blue");
+          }
+        }
+      })
+    }
+
+    //点赞
+    function like(id) {
+      if (localStorage.id == null || !localStorage.id) {
+        app.dialog.create({
+          text: '请先登录',
+          buttons: [{
+            text: '确定',
+            onClick: function () {
+              window.location.href = "person.html";
+            }
+          }, ],
+          verticalButtons: true,
+        }).open();
+      } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {
+        $('#' + id).css("color", "blue");
+        var count = $("span[class='" + id + "']").html();       
+        $("span[class='" + id + "']").html(parseInt(count)+1);
+
+        $.ajax({
+          url: 'http://192.168.1.111/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id+`&annotationId=`+id,
+          type: 'post',
+          success: function (data) {
+
+          },
+          error: function () {}
+        })
+      } else {
+        $('#' + id).css("color", "#81848b");
+        var count = $("span[class='" + id + "']").html();       
+        $("span[class='" + id + "']").html(parseInt(count)-1);
+        $.ajax({
+          url: 'http://192.168.1.111/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id+`&annotationId=`+id,
+          type: 'post',
+          success: function (data) {
+
+          },
+          error: function () {}
+        })
+      }
+    }
+
 
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
