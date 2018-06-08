@@ -196,7 +196,7 @@
     var id = unescape(r[2]);
     // 获取用户id
     $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/getFinishedHome?id=' + id,
+      url: 'http://192.168.1.111/EAnnotation/getFinishedHome?id=' + id,
       type: "POST",
       success: function (data) {
         passageId(data.passageId);
@@ -213,7 +213,7 @@
     // 获取文章id
     function passageId(id) {
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getPassage?id=' + id,
+        url: 'http://192.168.1.111/EAnnotation/getPassage?id=' + id,
         type: "POST",
         success: function (data) {
           $('#title').text(data.title);
@@ -226,7 +226,7 @@
 
     //从数据库获得json类型数据并解析
     function getAnnotator(passageId, userId) {
-      app.request.get('http://192.168.1.105/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+      app.request.get('http://192.168.1.111/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
         localStorage.id,
         function (data) {
           var result = jQuery.parseJSON(data);
@@ -238,7 +238,7 @@
       var num = 0;
 
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getAllAnnotations?passageId=' + id,
+        url: 'http://192.168.1.111/EAnnotation/getAllAnnotations?passageId=' + id,
         type: "post",
         cache: false,
         success: function (data) {
@@ -254,32 +254,22 @@
             };
 
             $('#ancontent2').append(
-              `    <div class="card cardcss" id="` + antype +
-              `">
+              `    <div class="card cardcss" id="`+antype+`">
       <blockquote class="blockquote bqcolor2">
-        <p>` + item.selected +
-              `</p>
+        <p>`+ item.selected +`</p>
       </blockquote>
       <div class="card-content cardct">
-        <p id="anPnode">` +
-              item.content +
-              `</p>
+        <p id="anPnode">`+ item.content +`</p>
       </div>
       <div class="card-footer">
         <a href="#" class="link">
-          <i class="f7-icons size-13">heart_fill</i>` +
-              Math.ceil(Math.random() * 10 + 26) +
-              `赞同
+          <i class="f7-icons size-13">heart_fill</i>` + Math.ceil(Math.random() * 10 + 26) + `赞同
         </a>
-        <a href="#" class="link" id="change">` + antator + `:` + item.userName +
-              `</a>
+        <a href="#" class="link" id="change">`+ antator +`:`+ item.userName +`</a>
       </div>
-      <p id="rstart" style="display: none">` + item.start +
-              `</p>
-      <p id="rend" style="display: none">` + item.end +
-              `</p>
-      <p id="rparagraph" style="display: none">` + item.paragraph +
-              `</p>
+      <p id="rstart" style="display: none">`+ item.start +`</p>
+      <p id="rend" style="display: none">`+ item.end +`</p>
+      <p id="rparagraph" style="display: none">`+ item.paragraph +`</p>
     </div>`
             )
           })

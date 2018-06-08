@@ -39,6 +39,11 @@
       <!-- 工具栏标签 -->
       <div class="toolbar tabbar-labels">
         <div class="toolbar-inner">
+          <a href="index.html" class="tab-link an-button link external">
+            <!-- Different icons for iOS and MD themes -->
+            <i class="icon f7-icons ios-only">home_fill</i>
+            <span class="tabbar-label">首页</span>
+          </a>
           <a href="#" class="tab-link-active an-button link external">
             <!-- Different icons for iOS and MD themes -->
             <i class="icon f7-icons ios-only">book_fill</i>
@@ -217,7 +222,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
+        url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -230,12 +235,15 @@
         error: function () {}
       })
 
-      var num=0, num1=0, num2=0, num3=0;
-      
+      var num = 0,
+        num1 = 0,
+        num2 = 0,
+        num3 = 0;
+
       // 获取所有作业
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
-          localStorage.classId,
+        url: 'http://192.168.1.111/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
+          localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -327,7 +335,7 @@
       })
       //讲义列表
       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getHandout?classId=' + localStorage.classId,
+        url: 'http://192.168.1.111/EAnnotation/getHandout?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -341,7 +349,8 @@
                             <div class="item-title-row">
                               <div class="item-title">
                                 <a href="handout.html?id=` +
-              item.id + `&teacherId=`+ item.teacherId +`" class="link external" style="display: inline;">` + item.title +
+              item.id + `&teacherId=` + item.teacherId +
+              `" class="link external" style="display: inline;">` + item.title +
               `</a>
                                 </div>
                             </div>
@@ -370,9 +379,9 @@
         }
       });
 
-       //优秀作业列表
-       $.ajax({
-        url: 'http://192.168.1.105/EAnnotation/getExcellent?classId=' + localStorage.classId,
+      //优秀作业列表
+      $.ajax({
+        url: 'http://192.168.1.111/EAnnotation/getExcellent?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -386,12 +395,14 @@
                             <div class="item-title-row">
                               <div class="item-title">
                                 <a href="great.html?id=` +
-              item.passageId + `&userId=`+ item.userId +`" class="link external" style="display: inline;">` + item.title +
+              item.passageId + `&userId=` + item.userId +
+              `" class="link external" style="display: inline;">` + item.title +
               `</a>
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
-              item.theme + `</div>
+              item.theme +
+              `</div>
                             <div class="item-text">
                               ` +
               getcontent(item.content) +

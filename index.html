@@ -303,7 +303,7 @@
     };
     // 获取文章
     $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/getAllPassages',
+      url: 'http://192.168.1.111/EAnnotation/getAllPassages',
       type: "post",
       success: function (data) {
         $.each(data, function (i, item) {
@@ -313,7 +313,7 @@
                   <a href="anntator.html?id=` + item
               .id +
               `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.105/` +
+                    <div style="background-image:url(http://192.168.1.111/` +
               item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
               `</div>
                   </a>
@@ -396,7 +396,7 @@
         $("span[class='" + id + "']").val(count++);
 
         $.ajax({
-          url: 'http://192.168.1.105/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
+          url: 'http://192.168.1.111/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
           type: 'post',
           success: function (data) {
 
@@ -408,7 +408,7 @@
         var count = $("span[class='" + id + "']").val();
         $("span[class='" + id + "']").val(count--);
         $.ajax({
-          url: 'http://192.168.1.105/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
+          url: 'http://192.168.1.111/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
           type: 'post',
           success: function (data) {
 
@@ -421,7 +421,7 @@
 
     //获取登录者id
     $.ajax({
-      url: 'http://192.168.1.105/EAnnotation/getCurrentUser',
+      url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
       type: 'post',
       dataType: 'jsonp',
       xhrFields: {
