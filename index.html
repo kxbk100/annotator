@@ -342,7 +342,10 @@
                 </div>
                 `
             )
-            isLike(item.id);
+            if(localStorage.id != null && localStorage.id != "undefined"){
+              isLike(item.id);
+            };
+            
           } else {
             $("ul[class=index]").append(
               `<div class="card">
@@ -374,6 +377,9 @@
                   </div>
                 </div>`
             )
+            if(localStorage.id != null && localStorage.id != "undefined"){
+              isLike(item.id);
+            };
           }
         })
       },

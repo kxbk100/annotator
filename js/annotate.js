@@ -13,7 +13,7 @@ function getString(n) {
 function panel(m) {
   var leftID;
   var string = 'note' + m;
-  var textarea = document.getElementById(string).value;  
+  var textarea = document.getElementById(string).value;
   //ajax传递数据到后台并获得批注id
   app.request.post('http://192.168.1.111/EAnnotation/addAnnotation', {
     content: textarea,
@@ -38,6 +38,8 @@ function panel(m) {
       '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + leftID + ')">修改</a><a  class="link" id="delete" onclick="del(' + leftID + ')">删除</a>' +
       '</div>' +
       '</div>');
+
+    reright();//右边批注栏
     document.getElementById(string).value = '';
   });
 }
@@ -85,7 +87,7 @@ function anPaint(bton) {
   if (true) {
     switch (bton) {
       case 0:
-        cssApplier = rangy.createClassApplier("Bton0Backgrond",false);
+        cssApplier = rangy.createClassApplier("Bton0Backgrond", false);
         cssApplier.toggleSelection();
         break;
       case 1:
@@ -111,8 +113,8 @@ function anPaint(bton) {
 var reg = new RegExp("(^|&)id=([^&]*)(&|$)");
 var r = window.location.search.substr(1).match(reg);
 var passageId = unescape(r[2]);
-var userId = localStorage.id; 
-var ancount;  //统计批注数量，用于数量随时变化
+var userId = localStorage.id;
+var ancount; //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
@@ -132,9 +134,9 @@ function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
     error: function (e) {}
   })
 };
-window.onload = function () {
+$(function () {
   getPassage()
-}
+})
 
 var par, st, ed, type, anID, content, selected; //用于传递数据的参数
 
@@ -258,65 +260,67 @@ function add() {
 }
 
 // 页面上随时改变批注数量的方法
-function addNum () {
+function addNum() {
   ancount++;
   $("#count").html(ancount + '个批注');
   $("#allantate").text(ancount);
 }
-function rdNum () {
+
+function rdNum() {
   ancount--;
   $("#count").html(ancount + '个批注');
   $("#allantate").text(ancount);
 }
 
 // 右侧侧边栏显示所有批注
-$(function() {
-$.ajax({
-  url: 'http://192.168.1.111/EAnnotation/getAllAnnotations?passageId=' + passageId,
-  type: "post",
-  cache: false,
-  success: function (data) {
-  $.each(data,function(i,item) {
-    if(item.userType == 0){
-      var antator = "学生";
-      var antype = "student";
-    }
-    else {
-      antator = "教师";
-      var antype = "teacher";
-    };
+window.onload = reright();
 
-    $('#ancontent2').append(
-      `    <div class="card cardcss" id="`+antype+`">
-      <blockquote class="blockquote bqcolor2">
-        <p>`+ item.selected +`</p>
+function reright() {
+  $.ajax({
+    url: 'http://192.168.1.111/EAnnotation/getAllAnnotations?passageId=' + passageId,
+    type: "post",
+    cache: false,
+    success: function (data) {
+      $('#ancontent2').html("");
+      $.each(data, function (i, item) {
+        if (item.userType == 0) {
+          var antator = "学生";
+          var antype = "student";
+        } else {
+          antator = "教师";
+          var antype = "teacher";
+        };
+        $('#ancontent2').append(
+          `    <div class="card cardcss" id="` + antype + `">
+      <blockquote class="blockquote bqcolor` + item.type + `" >
+        <p>` + item.selected + `</p>
       </blockquote>
       <div class="card-content cardct">
-        <p id="anPnode">`+ item.content +`</p>
+        <p id="anPnode">` + item.content + `</p>
       </div>
       <div class="card-footer">
       <a href="#" class="link" style="color" id="` +
-      item.id + `" ontouchstart="like(` +
-      item.id +
-      `)">
+          item.id + `" ontouchstart="like(` +
+          item.id +
+          `)">
             <i class="f7-icons size-18">heart_fill</i><span class="` + item.id +
-      `">` +
-      item.likeCount +
-      `</span> 喜欢
+          `">` +
+          item.likeCount +
+          `</span> 喜欢
           </a>
-        <a href="#" class="link" id="change">`+ antator +`:`+ item.userName +`</a>
+        <a href="#" class="link" id="change">` + antator + `:` + item.userName + `</a>
       </div>
-      <p id="rstart" style="display: none">`+ item.start +`</p>
-      <p id="rend" style="display: none">`+ item.end +`</p>
-      <p id="rparagraph" style="display: none">`+ item.paragraph +`</p>
+      <p id="rstart" style="display: none">` + item.start + `</p>
+      <p id="rend" style="display: none">` + item.end + `</p>
+      <p id="rparagraph" style="display: none">` + item.paragraph + `</p>
     </div>`
-    )
-    isLike(item.id);
+        )
+        isLike(item.id);
+      })
+    },
+    error: function (e) {}
   })
-  },
-  error: function (e) {}
-})
-})
+}
 // 批注筛选
 $$("input[name='teacher']").change(function () {
   if (!$$(this).is(':checked')) {
@@ -333,76 +337,76 @@ $$("input[name='student']").change(function () {
   }
 });
 
-  var user;
-    //获取登录者id
+var user;
+//获取登录者id
+$.ajax({
+  url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
+  type: 'post',
+  dataType: 'jsonp',
+  xhrFields: {
+    withCredentials: true
+  },
+  crossDomain: true,
+  success: function (data) {
+    user = data;
+  },
+  error: function () {}
+})
+
+
+//是否已经点赞
+function isLike(id) {
+  $.ajax({
+    url: 'http://192.168.1.111/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
+    type: "POST",
+    success: function (data) {
+      if (data == true) {
+        $('#' + id).css("color", "blue");
+      }
+    }
+  })
+}
+
+//点赞
+function like(id) {
+  if (localStorage.id == null || !localStorage.id) {
+    app.dialog.create({
+      text: '请先登录',
+      buttons: [{
+        text: '确定',
+        onClick: function () {
+          window.location.href = "person.html";
+        }
+      }, ],
+      verticalButtons: true,
+    }).open();
+  } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {
+    $('#' + id).css("color", "blue");
+    var count = $("span[class='" + id + "']").html();
+    $("span[class='" + id + "']").html(parseInt(count) + 1);
+
     $.ajax({
-      url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
+      url: 'http://192.168.1.111/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
       type: 'post',
-      dataType: 'jsonp',
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
       success: function (data) {
-        user = data;
+
       },
       error: function () {}
     })
+  } else {
+    $('#' + id).css("color", "#81848b");
+    var count = $("span[class='" + id + "']").html();
+    $("span[class='" + id + "']").html(parseInt(count) - 1);
+    $.ajax({
+      url: 'http://192.168.1.111/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
+      type: 'post',
+      success: function (data) {
 
-
-    //是否已经点赞
-    function isLike(id) {
-      $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id+`&annotationId=`+id,
-        type: "POST",
-        success: function (data) {
-          if (data == true) {
-            $('#' + id).css("color", "blue");
-          }
-        }
-      })
-    }
-
-    //点赞
-    function like(id) {
-      if (localStorage.id == null || !localStorage.id) {
-        app.dialog.create({
-          text: '请先登录',
-          buttons: [{
-            text: '确定',
-            onClick: function () {
-              window.location.href = "person.html";
-            }
-          }, ],
-          verticalButtons: true,
-        }).open();
-      } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {
-        $('#' + id).css("color", "blue");
-        var count = $("span[class='" + id + "']").html();       
-        $("span[class='" + id + "']").html(parseInt(count)+1);
-
-        $.ajax({
-          url: 'http://192.168.1.111/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id+`&annotationId=`+id,
-          type: 'post',
-          success: function (data) {
-
-          },
-          error: function () {}
-        })
-      } else {
-        $('#' + id).css("color", "#81848b");
-        var count = $("span[class='" + id + "']").html();       
-        $("span[class='" + id + "']").html(parseInt(count)-1);
-        $.ajax({
-          url: 'http://192.168.1.111/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id+`&annotationId=`+id,
-          type: 'post',
-          success: function (data) {
-
-          },
-          error: function () {}
-        })
-      }
-    }
+      },
+      error: function () {}
+    })
+  }
+}
 
 
 // 底部工具栏按钮事件
