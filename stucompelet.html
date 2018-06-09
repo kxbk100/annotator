@@ -58,6 +58,7 @@
       font-size: 16px;
       margin-top: 16px;
     }
+
   </style>
 </head>
 
@@ -265,22 +266,19 @@
               `</p>
       </div>
       <div class="card-footer">
-          <a href="#" class="link" id="` +
-              item.id + `" ontouchstart="like(` +
-              item.id +
-              `)">
-                    <i class="f7-icons size-18">heart_fill</i><span class="` + item.id +
-              `">` +
-              item.likeCount +
-              `</span> 喜欢
-                  </a>
-        <a href="#" class="link" id="change">` + antator +
-              `:` + item.userName + `</a>
+      <a href="#" class="link"  id="rt` +
+          item.id + `" ontouchstart="like(` +
+          item.id +
+          `)">
+            <i class="f7-icons size-18">heart_fill</i><span class="` + item.id +
+          `">` +
+          item.likeCount +
+          `</span> 喜欢
+          </a>
+        <a href="#" class="link" id="change">` + antator + `:` + item.userName + `</a>
       </div>
-      <p id="rstart" style="display: none">` + item.start +
-              `</p>
-      <p id="rend" style="display: none">` + item.end +
-              `</p>
+      <p id="rstart" style="display: none">` + item.start + `</p>
+      <p id="rend" style="display: none">` + item.end + `</p>
       <p id="rparagraph" style="display: none">` + item.paragraph + `</p>
     </div>`
             )
@@ -351,7 +349,6 @@
         '</div>');
     }
 
-
     //是否已经点赞
     function isLike(id) {
       $.ajax({
@@ -360,7 +357,7 @@
         type: "POST",
         success: function (data) {
           if (data == true) {
-            $('#' + id).css("color", "blue");
+            $('#rt' + id).css("color", "blue");
           }
         }
       })
@@ -368,9 +365,9 @@
 
     //点赞
     function like(id) {
-      console.log($('#' + id).css("color"))
-      if ($('#' + id).css("color") == "rgb(109, 109, 114)") {
-        $('#' + id).css("color", "blue");
+      console.log($('#rt' + id).css("color"))
+      if ($('#rt' + id).css("color") == "rgb(129, 132, 139)") {
+        $("#rt" + id).css("color", "blue");
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 
@@ -384,7 +381,7 @@
           error: function () {}
         })
       } else {
-        $('#' + id).css("color", "rgb(109, 109, 114)");
+        $('#rt' + id).css("color", "rgb(129, 132, 139)");
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) - 1);
         $.ajax({
