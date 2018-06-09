@@ -39,6 +39,11 @@
       <!-- 工具栏标签 -->
       <div class="toolbar tabbar-labels">
         <div class="toolbar-inner">
+          <a href="index.html" class="tab-link an-button link external">
+            <!-- Different icons for iOS and MD themes -->
+            <i class="icon f7-icons ios-only">home_fill</i>
+            <span class="tabbar-label">首页</span>
+          </a>
           <a href="#" class="tab-link-active an-button link external">
             <!-- Different icons for iOS and MD themes -->
             <i class="icon f7-icons ios-only">book_fill</i>
@@ -392,10 +397,12 @@
                                 <a href="great.html?id=` +
               item.passageId + `&userId=` + item.userId +
               `&author=`+ item.userName +`" class="link external" style="display: inline;">` + item.title +
+
               `</a>
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
+
             item.theme + ` · 批注人： ` + item.userName +
             `</div>
                             <div class="item-text">
