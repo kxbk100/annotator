@@ -299,7 +299,7 @@ $.ajax({
         <p id="anPnode">` + item.content + `</p>
       </div>
       <div class="card-footer">
-      <a href="#" class="link" style="color" id="` +
+      <a href="#" class="link"  id="` +
           item.id + `" ontouchstart="like(` +
           item.id +
           `)">
@@ -320,7 +320,7 @@ $.ajax({
     },
     error: function (e) {}
   })
-}
+})
 // 批注筛选
 $$("input[name='teacher']").change(function () {
   if (!$$(this).is(':checked')) {

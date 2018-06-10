@@ -401,7 +401,8 @@
 
     //点赞
     function like(id) {
-      if (localStorage.id == null || !localStorage.id) {
+      console.log(localStorage.id)
+      if (localStorage.id == null || localStorage.id == "undefined") {
         app.dialog.create({
           text: '请先登录',
           buttons: [{
@@ -461,6 +462,16 @@
       },
       error: function () {}
     })
+
+    function rank() {
+      $.ajax({
+        url:'http://192.168.1.111/EAnnotation/getCurrentUser',
+        type:"POST",
+        success: function () {
+          
+        }
+      })
+    }
   </script>
 </body>
 
