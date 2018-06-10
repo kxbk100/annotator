@@ -197,7 +197,7 @@
     var id = unescape(r[2]);
     // 获取用户id
     $.ajax({
-      url: 'http://192.168.1.111/EAnnotation/getFinishedHome?id=' + id,
+      url: 'https://bitcandy.one/EAnnotation/getFinishedHome?id=' + id,
       type: "POST",
       success: function (data) {
         passageId(data.passageId);
@@ -213,7 +213,7 @@
     // 获取文章id
     function passageId(id) {
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getPassage?id=' + id,
+        url: 'https://bitcandy.one/EAnnotation/getPassage?id=' + id,
         type: "POST",
         success: function (data) {
           $('#title').text(data.title);
@@ -226,7 +226,7 @@
 
     //从数据库获得json类型数据并解析
     function getAnnotator(passageId, userId) {
-      app.request.get('http://192.168.1.111/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+      app.request.get('https://bitcandy.one/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
         localStorage.id,
         function (data) {
           var result = jQuery.parseJSON(data);
@@ -238,7 +238,7 @@
       var num = 0;
 
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getAllAnnotations?passageId=' + id,
+        url: 'https://bitcandy.one/EAnnotation/getAllAnnotations?passageId=' + id,
         type: "post",
         cache: false,
         success: function (data) {
@@ -352,7 +352,7 @@
     //是否已经点赞
     function isLike(id) {
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id +
+        url: 'https://bitcandy.one/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id +
           `&annotationId=` + id,
         type: "POST",
         success: function (data) {
@@ -372,7 +372,7 @@
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 
         $.ajax({
-          url: 'http://192.168.1.111/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id +
+          url: 'https://bitcandy.one/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id +
             `&annotationId=` + id,
           type: 'post',
           success: function (data) {
@@ -385,7 +385,7 @@
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) - 1);
         $.ajax({
-          url: 'http://192.168.1.111/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id +
+          url: 'https://bitcandy.one/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id +
             `&annotationId=` + id,
           type: 'post',
           success: function (data) {

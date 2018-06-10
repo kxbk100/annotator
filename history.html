@@ -116,7 +116,7 @@
       
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
+        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -138,7 +138,7 @@
 
         // 获取文章
         $.ajax({
-            url: 'http://192.168.1.111/EAnnotation/getHistory?userId='+ localStorage.id +'',
+            url: 'https://bitcandy.one/EAnnotation/getHistory?userId='+ localStorage.id +'',
             type: "post",
             success: function (data) {
                 $.each(data, function (i, item) {

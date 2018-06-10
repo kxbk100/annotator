@@ -222,7 +222,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
+        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -242,7 +242,7 @@
 
       // 获取所有作业
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
+        url: 'https://bitcandy.one/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
           localStorage.classid,
         type: "post",
         success: function (data) {
@@ -335,7 +335,7 @@
       })
       //讲义列表
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getHandout?classId=' + localStorage.classid,
+        url: 'https://bitcandy.one/EAnnotation/getHandout?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -381,7 +381,7 @@
 
       //优秀作业列表
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getExcellent?classId=' + localStorage.classid,
+        url: 'https://bitcandy.one/EAnnotation/getExcellent?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -429,7 +429,7 @@
 
       //班级列表
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getClassById?id=' + localStorage.classid,
+        url: 'https://bitcandy.one/EAnnotation/getClassById?id=' + localStorage.classid,
         type: 'POST',
         success: function (data) {
           $('#classname').html(data.className);

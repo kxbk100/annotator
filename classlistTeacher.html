@@ -98,7 +98,7 @@
 
       // 获取所有班级
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
+        url: 'https://bitcandy.one/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {

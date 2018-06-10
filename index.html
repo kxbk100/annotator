@@ -150,7 +150,7 @@
 
       // 获取文章
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getAllPassages',
+        url: 'https://bitcandy.one/EAnnotation/getAllPassages',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -161,7 +161,7 @@
                 item
                 .id +
                 `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.111/` +
+                    <div style="background-image:url(https://bitcandy.one/` +
                 item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
                 `</div>
                   </a>
@@ -237,7 +237,7 @@
       //是否已经点赞
       function isLike(id) {
         $.ajax({
-          url: 'http://192.168.1.111/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
+          url: 'https://bitcandy.one/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
           type: "POST",
           success: function (data) {
             if (data == true) {
@@ -270,7 +270,7 @@
           $("span[class='" + id + "']").html(parseInt(count) + 1);
 
           $.ajax({
-            url: 'http://192.168.1.111/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
+            url: 'https://bitcandy.one/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
             type: 'post',
             success: function (data) {
             },
@@ -282,7 +282,7 @@
           var count = $("span[class='" + id + "']").html();
           $("span[class='" + id + "']").html(parseInt(count) - 1);
           $.ajax({
-            url: 'http://192.168.1.111/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
+            url: 'https://bitcandy.one/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
             type: 'post',
             success: function (data) {
 
@@ -294,7 +294,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/getCurrentUser',
+        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -321,7 +321,7 @@
 
       function rank() {
         $.ajax({
-          url: 'http://192.168.1.111/EAnnotation/getRank',
+          url: 'https://bitcandy.one/EAnnotation/getRank',
           type: "post",
           success: function (data) {
             $.each(data, function (i, item) {
@@ -333,7 +333,7 @@
                   <a href="anntator.html?id=` +
                     item.passageId +
                     `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.111/` +
+                    <div style="background-image:url(https://bitcandy.one/` +
                     item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
                     `</div>
                   </a>

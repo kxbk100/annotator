@@ -187,7 +187,7 @@
 
     //获得作业的文章
     $.ajax({
-      url: 'http://192.168.1.111/EAnnotation/getPassage?id=' + id,
+      url: 'https://bitcandy.one/EAnnotation/getPassage?id=' + id,
       type: "POST",
       success: function (data) {
         $('#title').text(data.title);
@@ -199,7 +199,7 @@
 
     //从数据库获得json类型数据并解析
     function getAnnotator(passageId, userId) {
-      app.request.get('http://192.168.1.111/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+      app.request.get('https://bitcandy.one/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
         studentId,
         function (data) {
           var result = jQuery.parseJSON(data);
@@ -271,7 +271,7 @@
       var remark = $('#remark').val();
 
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/setScore',
+        url: 'https://bitcandy.one/EAnnotation/setScore',
         type: "POST",
         cache: false,
         data: {
@@ -291,7 +291,7 @@
     });
 
     $.ajax({
-      url: 'http://192.168.1.111/EAnnotation/getHomeById?id='+workId,
+      url: 'https://bitcandy.one/EAnnotation/getHomeById?id='+workId,
       type: "POST",
       cache: false,
       success: function (data) {

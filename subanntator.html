@@ -302,7 +302,7 @@
 
     function submit() {
       $.ajax({
-        url: 'http://192.168.1.111/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
+        url: 'https://bitcandy.one/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
           '&classId=' + localStorage.classid + '',
         type: "POST",
         success:function () {
