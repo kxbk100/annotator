@@ -230,18 +230,18 @@ function del(delID) {
 
 //修改批注
 function modify(modId) {
-  var x = $$('#an' + modId).text(); //获取批注的文章内容
-  var t = $$('#bq' + modId + '>p').text(); //获得原批注
-  var bqcolor = $$('#bq' + modId).attr('class'); //获得颜色样式
-  $$('#sendID').text(modId); //传递id
-  $$('#old').text(t); //传递原批注
-  $$('#mod').val(x); //传递文章内容到popup
+  var x = $$('#an' + modId).text();   //获取批注的文章内容
+  var t = $$('#bq' + modId + '>p').text();  //获得原批注
+  var bqcolor = $$('#bq' + modId).attr('class');  //获得颜色样式
+  $$('#sendID').text(modId);  //传递id
+  $$('#old').text(t);   //传递原批注
+  $$('#mod').val(x);    //传递文章内容到popup
   $$('#bqcolor').attr('class', bqcolor);
 }
 
-var ad = document.getElementById("modadd");
+var ad = document.getElementById("modadd");   //获得修改批注按钮
 ad.addEventListener('touchstart', function () {
-  add();
+  add();    //重新调用添加批注函数来实现修改批注
 });
 
 function add() {
@@ -367,9 +367,9 @@ function isLike(id) {
 
 //点赞
 function like(id) {
-  if (localStorage.id == null || localStorage.id == "undefined") {
+  if (localStorage.id == null || localStorage.id == "undefined") {  //先判断是否登录
     app.dialog.create({
-      text: '请先登录',
+      text: '请先登录',   
       buttons: [{
         text: '确定',
         onClick: function () {
@@ -378,7 +378,7 @@ function like(id) {
       }, ],
       verticalButtons: true,
     }).open();
-  } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {
+  } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {  //根据颜色判断是否已经点过赞，如果没有爱心变蓝调用点赞接口
     $('#' + id).css("color", "#638BD4");
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) + 1);
@@ -392,7 +392,7 @@ function like(id) {
       error: function () {}
     })
   } else {
-    $('#' + id).css("color", "#81848b");
+    $('#' + id).css("color", "#81848b");  //如果已经点赞了，点击后将颜色变回灰色，调用取消点赞按钮
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) - 1);
     $.ajax({
