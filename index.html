@@ -190,30 +190,6 @@
         error: function (e) {}
       })
 
-      //获取登录者id
-      $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
-        type: 'post',
-        dataType: 'jsonp',
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (data) {
-          localStorage.id = data.id;
-          if (data == 0) {
-            $('#jump').attr("href", "person.html")
-          } else if (data.type == 0) {
-            $('#jump').attr("href", "classlist.html")
-            localStorage.usertype = data.type;
-          } else if (data.type == 1) {
-            $('#jump').attr("href", "classlistTeacher.html")
-            localStorage.usertype = data.type;
-          }
-        },
-        error: function () {}
-      });
-
       //获取排行
       $('#rank').on("touchstart", function () {
         $("ul[class=rank]").html("");
