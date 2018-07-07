@@ -62,21 +62,14 @@ var $ptrContent = $$('.ptr-content');
 $ptrContent.on('ptr:refresh', function (e) {
   // Emulate 2s loading
   setTimeout(function () {
-    var itemHTML = ''
-    // '<li class="item-content">' +
-    // '<div class="item-media"><img src="' + '" width="44"/></div>' +
-    // '<div class="item-inner">' +
-    // '<div class="item-title">' +
-    // '<div class="item-title">'  + '</div>' +
-    // '</div>' +
-    // '<div class="item-subtitle">'  + '</div>' +
-    // '</div>' +
-    // '</li>';
-    // Prepend new list element
-    $ptrContent.find('ul').prepend(itemHTML);
-    // When loading done, we need to reset it
+    $$("ul[class=index]").html("");
+    index();
+    if($$("ul[class=rank]").html() != ""){
+      $$("ul[class=rank]").html("");
+      rank();
+    }
     app.ptr.done(); // or e.detail();
-  }, 500);
+  }, 300);
 });
 
 //打分评语

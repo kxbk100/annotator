@@ -92,62 +92,18 @@
                 <ul class="rank">
 
                 </ul>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="js/framework7.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script>
-      function getcontent(text) {
-        var html = text;
-        return html.replace(/<[^>]*>|/g, "");
-      }
-
-      // 2014-05-08 00:22:11
-      function getDateDiff(dateTimeStamp) {
-        var dateTimeStamp = new Date(Date.parse(dateTimeStamp.replace(/-/gi, "-")));
-        dateTimeStamp = dateTimeStamp.getTime();
-        var result;
-        var minute = 1000 * 60;
-        var hour = minute * 60;
-        var day = hour * 24;
-        var halfamonth = day * 15;
-        var month = day * 30;
-        var now = new Date().getTime();
-        var diffValue = now - dateTimeStamp;
-        if (diffValue < 0) {
-          return;
-        }
-        var monthC = diffValue / month;
-        var weekC = diffValue / (7 * day);
-        var dayC = diffValue / day;
-        var hourC = diffValue / hour;
-        var minC = diffValue / minute;
-        if (monthC >= 1) {
-          if (monthC <= 12)
-            result = "" + parseInt(monthC) + "个月前";
-          else {
-            result = "" + parseInt(monthC / 12) + "年前";
-          }
-        } else if (weekC >= 1) {
-          result = "" + parseInt(weekC) + "周前";
-        } else if (dayC >= 1) {
-          result = "" + parseInt(dayC) + "天前";
-        } else if (hourC >= 1) {
-          result = "" + parseInt(hourC) + "小时前";
-        } else if (minC >= 1) {
-          result = "" + parseInt(minC) + "分钟前";
-        } else {
-          result = "刚刚";
-        }
-        return result;
-      };
-
+  </div>
+  <script src="js/framework7.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script>
+    window.onload = index();
+    function index() {
       // 获取文章
       $.ajax({
         url: 'http://192.168.1.193/EAnnotation/getAllPassages',
@@ -234,64 +190,6 @@
         error: function (e) {}
       })
 
-      //是否已经点赞
-      function isLike(id) {
-        $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
-          type: "POST",
-          success: function (data) {
-            if (data == true) {
-              $('#' + id).css("color", "#638BD4");
-              $('#rank' + id).css("color", "#638BD4");
-            }
-          }
-        })
-      }
-
-      //点赞
-      function like(id) {
-        //先判断有没有登录
-        if (localStorage.id == null || localStorage.id == "undefined") {
-          app.dialog.create({
-            text: '请先登录',
-            buttons: [{
-              text: '确定',
-              onClick: function () {
-                window.location.href = "person.html";
-              }
-            }, ],
-            verticalButtons: true,
-          }).open();
-        } 
-        else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") == "rgb(129, 132, 139)") {
-          $('#' + id).css("color", "#638BD4");
-          $('#rank' + id).css("color", "#638BD4");//排行榜也一起变化
-          var count = $("span[class='" + id + "']").html();
-          $("span[class='" + id + "']").html(parseInt(count) + 1);
-
-          $.ajax({
-            url: 'http://192.168.1.193/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
-            type: 'post',
-            success: function (data) {
-            },
-            error: function () {}
-          })
-        } else {
-          $('#' + id).css("color", "rgb(129, 132, 139)");
-          $('#rank' + id).css("color", "rgb(129, 132, 139)");
-          var count = $("span[class='" + id + "']").html();
-          $("span[class='" + id + "']").html(parseInt(count) - 1);
-          $.ajax({
-            url: 'http://192.168.1.193/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
-            type: 'post',
-            success: function (data) {
-
-            },
-            error: function () {}
-          })
-        }
-      }
-
       //获取登录者id
       $.ajax({
         url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
@@ -321,130 +219,239 @@
         $("ul[class=rank]").html("");
         rank();
       });
+      }
 
-      function rank() {
+    //限制首页显示字数
+    function getcontent(text) {
+      var html = text;
+      return html.replace(/<[^>]*>|/g, "");
+    }
+
+    function getDateDiff(dateTimeStamp) {
+      var dateTimeStamp = new Date(Date.parse(dateTimeStamp.replace(/-/gi, "-")));
+      dateTimeStamp = dateTimeStamp.getTime();
+      var result;
+      var minute = 1000 * 60;
+      var hour = minute * 60;
+      var day = hour * 24;
+      var halfamonth = day * 15;
+      var month = day * 30;
+      var now = new Date().getTime();
+      var diffValue = now - dateTimeStamp;
+      if (diffValue < 0) {
+        return;
+      }
+      var monthC = diffValue / month;
+      var weekC = diffValue / (7 * day);
+      var dayC = diffValue / day;
+      var hourC = diffValue / hour;
+      var minC = diffValue / minute;
+      if (monthC >= 1) {
+        if (monthC <= 12)
+          result = "" + parseInt(monthC) + "个月前";
+        else {
+          result = "" + parseInt(monthC / 12) + "年前";
+        }
+      } else if (weekC >= 1) {
+        result = "" + parseInt(weekC) + "周前";
+      } else if (dayC >= 1) {
+        result = "" + parseInt(dayC) + "天前";
+      } else if (hourC >= 1) {
+        result = "" + parseInt(hourC) + "小时前";
+      } else if (minC >= 1) {
+        result = "" + parseInt(minC) + "分钟前";
+      } else {
+        result = "刚刚";
+      }
+      return result;
+    };
+
+    //是否已经点赞
+    function isLike(id) {
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
+        type: "POST",
+        success: function (data) {
+          if (data == true) {
+            $('#' + id).css("color", "#638BD4");
+            $('#rank' + id).css("color", "#638BD4");
+          }
+        }
+      })
+    }
+
+    //点赞函数
+    function like(id) {
+      //先判断有没有登录
+      if (localStorage.id == null || localStorage.id == "undefined") {
+        app.dialog.create({
+          text: '请先登录',
+          buttons: [{
+            text: '确定',
+            onClick: function () {
+              window.location.href = "person.html";
+            }
+          }, ],
+          verticalButtons: true,
+        }).open();
+      } else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
+        "rgb(129, 132, 139)") {
+        $('#' + id).css("color", "#638BD4");
+        $('#rank' + id).css("color", "#638BD4"); //排行榜也一起变化
+        var count = $("span[class='" + id + "']").html();
+        $("span[class='" + id + "']").html(parseInt(count) + 1);
+
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getRank',
-          type: "post",
+          url: 'http://192.168.1.193/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
+          type: 'post',
+          success: function (data) {},
+          error: function () {}
+        })
+      } else {
+        $('#' + id).css("color", "rgb(129, 132, 139)");
+        $('#rank' + id).css("color", "rgb(129, 132, 139)");
+        var count = $("span[class='" + id + "']").html();
+        $("span[class='" + id + "']").html(parseInt(count) - 1);
+        $.ajax({
+          url: 'http://192.168.1.193/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
+          type: 'post',
           success: function (data) {
-            $.each(data, function (i, item) {
-              console.log(item.type)
-              if (item.type != "annotation") {
-                if (item.photo) {
-                  $("ul[class=rank]").append(
-                    `<div class="card demo-card-header-pic">
+
+          },
+          error: function () {}
+        })
+      }
+    }
+
+    //获取排行
+    function rank() {
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getRank',
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+            console.log(item.type)
+            if (item.type != "annotation") {
+              if (item.photo) {
+                $("ul[class=rank]").append(
+                  `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` +
-                    item.passageId +
-                    `" class="link external black" style="width:100%;">
+                  item.passageId +
+                  `" class="link external black" style="width:100%;">
                     <div style="background-image:url(http://192.168.1.193/` +
-                    item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
-                    `</div>
+                  item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
+                  `</div>
                   </a>
                 <div class="card-content card-content-padding">
                   <p class="date index">` +
-                    item.theme + ` · ` + getDateDiff(item.releaseTime
-) +
-                    `</p>
+                  item.theme + ` · ` + getDateDiff(item.releaseTime) +
+                  `</p>
                   <p>
                     <a href="anntator.html?id=` + item.passageId +
-                    `" class="link external color-black text_overflow2">` + getcontent(item.content) +
-                    `</a>
+                  `" class="link external color-black text_overflow2">` + getcontent(item.content) +
+                  `</a>
                   </p>
                 </div>
                 <div class="card-footer">
                   <a href="#" class="link" style="color" id="rank` +
-                    item.passageId + `" ontouchstart="like(` +
-                    item.passageId +
-                    `)">
+                  item.passageId + `" ontouchstart="like(` +
+                  item.passageId +
+                  `)">
                     <i class="f7-icons size-18">heart_fill</i><span class="` +
-                    item.passageId +
-                    `">` +
-                    item.likecount +
-                    `</span> 喜欢
+                  item.passageId +
+                  `">` +
+                  item.likecount +
+                  `</span> 喜欢
                   </a>
                  
                   </div>
                 </div>
                 `
-                  )
-                  if (localStorage.id != null && localStorage.id != "undefined") {
-                    isLike(item.passageId);
-                  };
+                )
+                if (localStorage.id != null && localStorage.id != "undefined") {
+                  isLike(item.passageId);
+                };
 
-                } else {
-                  $("ul[class=rank]").append(
-                    `<div class="card">
+              } else {
+                $("ul[class=rank]").append(
+                  `<div class="card">
                   <div class="card-header">` + item.title +
-                    `</div>
+                  `</div>
                   <div class="card-content card-content-padding">
                     <p class="date index">` +
-                    item.theme + ` · </p>
+                  item.theme + ` · </p>
                     <a href="anntator.html?id=` + item.passageId +
-                    `" class="link" style="color: black">
+                  `" class="link" style="color: black">
                       <p style="margin-top: 0; margin-bottom: 0;" class="text_overflow">` +
-                    getcontent(item.content) +
-                    `</p>
+                  getcontent(item.content) +
+                  `</p>
                     </a>
                   </div>
                   <div class="card-footer">
                       <a href="#" class="link" style="color" id="rank` +
-                    item.passageId + `" ontouchstart="like(` +
-                    item.passageId +
-                    `)">
+                  item.passageId + `" ontouchstart="like(` +
+                  item.passageId +
+                  `)">
                     <i class="f7-icons size-18">heart_fill</i><span class="` +
-                    item.passageId +
-                    `">` +
-                    item.likecount +
-                    `</span> 喜欢
+                  item.passageId +
+                  `">` +
+                  item.likecount +
+                  `</span> 喜欢
                   </a>
                    
                     </a>
                   </div>
                 </div>`
-                  )
-                  if (localStorage.id != null && localStorage.id != "undefined") {
-                    isLike(item.passageId);
-                  };
-                }
+                )
+                if (localStorage.id != null && localStorage.id != "undefined") {
+                  isLike(item.passageId);
+                };
+              }
 
-              } else {
-                $("ul[class='rank']").append(
-                  `<div class="card">
-                    <div class="card-header">`+ item.title +`</div>
+            } else {
+              $("ul[class='rank']").append(
+                `<div class="card">
+                    <div class="card-header">` + item.title +
+                `</div>
                     <div class="card-content card-content-padding">
                       <p class="date index">批注</p>
-                      <blockquote class="blockquote bqcolor`+ item.style +`">
-                        <p>`+ item.selected +`</p>
+                      <blockquote class="blockquote bqcolor` +
+                item.style + `">
+                        <p>` + item.selected +
+                `</p>
                       </blockquote>
-                      <p>`+ getcontent(item.content) +`
+                      <p>` + getcontent(item.content) +
+                `
                       </p>
                     </div>
                     <div class="card-footer">
                       <a href="#" class="link" id="rank` +
-                    item.id + `" ontouchstart="like(` +
-                    item.id +
-                    `)">
+                item.id + `" ontouchstart="like(` +
+                item.id +
+                `)">
                         <i class="f7-icons size-18">heart_fill</i><span class="` +
-                    item.id +
-                    `">` +
-                    item.likecount +
+                item.id +
+                `">` +
+                item.likecount +
 
-                    `</span>喜欢</a>
+                `</span>喜欢</a>
                       <a href="#" class="link">
-                        `+ item.auth +`
+                        ` +
+                item.auth + `
                       </a>
                     </div>`
-                  );
-                  if (localStorage.id != null && localStorage.id != "undefined") {
-                    isLike(item.id);
-                  };
-              }
-            })
-          },
-          error: function (e) {}
-        })
-      }
-    </script>
+              );
+              if (localStorage.id != null && localStorage.id != "undefined") {
+                isLike(item.id);
+              };
+            }
+          })
+        },
+        error: function (e) {}
+      })
+    }
+  </script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
