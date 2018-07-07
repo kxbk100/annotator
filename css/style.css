@@ -386,7 +386,7 @@ font-size: 40px;
 
 .rank {
     position: absolute;
-    right: 20px;
+    /* right: 20px; */
 }
 
 .rank2 {
