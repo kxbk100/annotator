@@ -255,7 +255,7 @@
             $('#ancontent2').append(
               `    <div class="card cardcss" id="` + antype +
               `">
-      <blockquote class="blockquote bqcolor2">
+      <blockquote class="blockquote bqcolor`+ item.type +`">
         <p>` + item.selected +
               `</p>
       </blockquote>
@@ -359,7 +359,7 @@
         type: "POST",
         success: function (data) {
           if (data == true) {
-            $('#rt' + id).css("color", "blue");
+            $('#rt' + id).css("color", "#638BD4");
           }
         }
       })
@@ -369,7 +369,7 @@
     function like(id) {
       console.log($('#rt' + id).css("color"))
       if ($('#rt' + id).css("color") == "rgb(129, 132, 139)") {
-        $("#rt" + id).css("color", "blue");
+        $("#rt" + id).css("color", "#638BD4");
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 

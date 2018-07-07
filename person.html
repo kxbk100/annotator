@@ -556,10 +556,10 @@
           $('#jump').attr("href", "person.html")
         } else if (data.type == 0) {
           $('#jump').attr("href", "classlist.html")
-          localStorage.usertype = data.type;
+          localStorage.usertype = 0;
         } else if (data.type == 1) {
           $('#jump').attr("href", "classlistTeacher.html")
-          localStorage.usertype = data.type;
+          localStorage.usertype = 1;
         }
       },
       error: function () {}

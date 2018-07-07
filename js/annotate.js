@@ -290,7 +290,7 @@ $.ajax({
 
     $('#ancontent2').append(
       `    <div class="card cardcss" id="`+antype+`">
-      <blockquote class="blockquote bqcolor2">
+      <blockquote class="blockquote bqcolor`+item.type+`">
         <p>`+ item.selected +`</p>
       </blockquote>
       <div class="card-content cardct">
