@@ -93,13 +93,12 @@
       if (back) {
         back.addEventListener('touchstart', function () {
           window.history.back(-1);
-          window.history.back(-1);
         })
       };
 
       // 获取所有班级
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+        url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -108,7 +107,7 @@
                     <a href="class.html" class="link item-content external" ontouchstart="pushclass(`+ item.classId +`)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
-                        <div class="item-title-row">
+                        <div class="item-title">
                           <div class="item-title">`+ item.className +`</div>
                         </div>
                         <div class="item-subtitle">`+ item.teacher +`</div>

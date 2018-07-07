@@ -71,7 +71,7 @@
                   <img src="images/teacher.jpg" width="44"/>
                 </div>
                 <div class="item-inner">
-                  <div class="item-title-row">
+                  <div class="item-title">
                     <div class="item-title" id="classname"></div>
                   </div>
                   <div class="item-subtitle">教师：张宇宙老师</div>
@@ -125,7 +125,7 @@
             <li class="accordion-item">
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
-                  <div class="item-title">课堂笔记</div>
+                  <div class="item-title">教师讲义</div>
                   <div class="item-after">
                     <span class="badge" id="notenum">0</span>
                   </div>
@@ -222,7 +222,7 @@
 
       //获取登录者id
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+        url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
         type: 'post',
         dataType: 'jsonp',
         xhrFields: {
@@ -242,7 +242,7 @@
 
       // 获取所有作业
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
+        url: 'http://192.168.1.193/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
           localStorage.classid,
         type: "post",
         success: function (data) {
@@ -254,7 +254,8 @@
               $("ul[class=unfinish0]").append(
                 `  <li class="swipeout ">
                       <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
+                        <label class="item-content item-checkbox" ontouchstart="window.location.href='subanntator.html?id=` +
+                item.passageId + `'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
@@ -295,7 +296,8 @@
               $("ul[class=finish0]").append(
                 `  <li class="swipeout ">
                       <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
+                        <label class="item-content item-checkbox" ontouchstart="window.location.href='stucompelet.html?id=` +
+                item.id + `'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
@@ -335,7 +337,7 @@
       })
       //讲义列表
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getHandout?classId=' + localStorage.classid,
+        url: 'http://192.168.1.193/EAnnotation/getHandout?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -344,7 +346,9 @@
             $('#handout').append(
               `  <li class="swipeout ">
                       <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
+                        <label href="#" class="item-content item-checkbox" ontouchstart="window.location.href='handout.html?id=` +
+              item.id + `&teacherId=` + item.teacherId +
+              `'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
@@ -381,7 +385,7 @@
 
       //优秀作业列表
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getExcellent?classId=' + localStorage.classid,
+        url: 'http://192.168.1.193/EAnnotation/getExcellent?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -390,14 +394,15 @@
             $("ul[class=great0]").append(
               `  <li class="swipeout ">
                       <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox">
+                        <label href="#" class="item-content item-checkbox" ontouchstart="window.location.href='great.html?id=` +
+              item.passageId + `&userId=` + item.userId +
+              `&author=`+ item.userName +`'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
                                 <a href="great.html?id=` +
               item.passageId + `&userId=` + item.userId +
               `&author=`+ item.userName +`" class="link external" style="display: inline;">` + item.title +
-
               `</a>
                                 </div>
                             </div>
@@ -429,7 +434,7 @@
 
       //班级列表
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getClassById?id=' + localStorage.classid,
+        url: 'http://192.168.1.193/EAnnotation/getClassById?id=' + localStorage.classid,
         type: 'POST',
         success: function (data) {
           $('#classname').html(data.className);

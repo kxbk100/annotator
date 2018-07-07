@@ -1,430 +1,430 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar -->
-    <meta name="theme-color" content="#000">
-    <!-- Your app title -->
-    <title>个人中心</title>
-    <!-- Path to Framework7 Library CSS -->
-    <link rel="stylesheet" href="css/framework7.css">
-    <link rel="stylesheet" href="css/framework7-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-      .ios .list ul:after {
-        background-color: white;
-      }
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000">
+  <!-- Your app title -->
+  <title>个人中心</title>
+  <!-- Path to Framework7 Library CSS -->
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ios .list ul:after {
+      background-color: white;
+    }
 
-      .ios .list .list-button:after {
-        background-color: white;
-      }
+    .ios .list .list-button:after {
+      background-color: white;
+    }
 
-      .ios .list .list-button:after {
-        background-color: white;
-      }
+    .ios .list .list-button:after {
+      background-color: white;
+    }
 
-      .popup:not(.popup-tablet-fullscreen) {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        left: 0%;
-        top: 0%;
-      }
-    </style>
-  </head>
+    .popup:not(.popup-tablet-fullscreen) {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      left: 0%;
+      top: 0%;
+    }
+  </style>
+</head>
 
-  <body>
-    <div id="app">
-      <div class="view view-main view-init">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left"></div>
-            <div class="title">个人中心</div>
-            <div class="right"></div>
-          </div>
+<body>
+  <div id="app">
+    <div class="view view-main view-init">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left"></div>
+          <div class="title">个人中心</div>
+          <div class="right"></div>
         </div>
+      </div>
 
-        <!-- 工具栏标签 -->
-        <div class="toolbar tabbar-labels">
-          <div class="toolbar-inner">
-            <a href="index.html" class="tab-link an-button link external">
-              <!-- Different icons for iOS and MD themes -->
-              <i class="icon f7-icons ios-only">home_fill</i>
-              <span class="tabbar-label">首页</span>
-            </a>
-            <a href="jump.html" class="tab-link an-button link external">
-              <i class="icon f7-icons ios-only">layers_fill</i>
-              <span class="tabbar-label">班级</span>
-            </a>
-            <a href="#" class="tab-link-active an-button link external">
-              <i class="icon f7-icons ios-only">person_fill</i>
-              <span class="tabbar-label active-state">我的</span>
-            </a>
-          </div>
+      <!-- 工具栏标签 -->
+      <div class="toolbar tabbar-labels">
+        <div class="toolbar-inner">
+          <a href="index.html" class="tab-link an-button link external">
+            <!-- Different icons for iOS and MD themes -->
+            <i class="icon f7-icons ios-only">home_fill</i>
+            <span class="tabbar-label">首页</span>
+          </a>
+          <a href="#" class="tab-link an-button link external" id="jump">
+            <i class="icon f7-icons ios-only">layers_fill</i>
+            <span class="tabbar-label">班级</span>
+          </a>
+          <a href="#" class="tab-link-active an-button link external">
+            <i class="icon f7-icons ios-only">person_fill</i>
+            <span class="tabbar-label active-state">我的</span>
+          </a>
         </div>
-        <div class="page-content">
-          <div class="list media-list">
+      </div>
+      <div class="page-content">
+        <div class="list media-list">
+          <ul>
+            <li>
+              <a href="#" class="item-link item-content login-screen-open" data-login-screen=".login-screen" id="logscreen">
+                <div class="item-media">
+                  <img class="radius" src="images/weidenglu.jpg" width="80" />
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">
+                    <div class="item-title" id="identy">未登录</div>
+                  </div>
+                  <div class="item-subtitle">
+                    <p> </p>
+                  </div>
+                  <div class="item-text" id="more">登录查看更多信息</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="content">
+          <div class="block-title">系统</div>
+          <div class="list">
             <ul>
               <li>
-                <a href="#" class="item-link item-content login-screen-open" data-login-screen=".login-screen" id="logscreen">
+                <a href="#" class="item-link item-content">
                   <div class="item-media">
-                    <img class="radius" src="images/weidenglu.jpg" width="80" />
+                    <i class="icon f7-icons">gear</i>
                   </div>
                   <div class="item-inner">
-                    <div class="item-title-row">
-                      <div class="item-title" id="identy">未登录</div>
-                    </div>
-                    <div class="item-subtitle">
-                      <p> </p>
-                    </div>
-                    <div class="item-text" id="more">登录查看更多信息</div>
+                    <div class="item-title">设置</div>
                   </div>
                 </a>
               </li>
             </ul>
           </div>
-          <div id="content">
-            <div class="block-title">系统</div>
-            <div class="list">
-              <ul>
-                <li>
-                  <a href="#" class="item-link item-content">
+        </div>
+        <div class="login-screen">
+          <div class="view">
+            <div class="page">
+              <div class="page-content login-screen-content">
+                <div class="logo text-center">
+                  <img src="images/logo.png" width="75px">
+                </div>
+                <div class="login-screen-title login">用户登录</div>
+                <form id="login">
+                  <div class="list no-hairlines-md">
+                    <ul>
+                      <li class="item-content item-input">
+                        <div class="item-media">
+                          <i class="icon framework7-icons">person</i>
+                        </div>
+                        <div class="item-inner">
+                          <div class="item-title item-label">用户名</div>
+                          <div class="item-input-wrap">
+                            <input type="text" placeholder="请输入用户名" name="account" id="account">
+                            <span class="input-clear-button"></span>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item-content item-input">
+                        <div class="item-media">
+                          <i class="icon framework7-icons">lock</i>
+                        </div>
+                        <div class="item-inner">
+                          <div class="item-title item-label">密码</div>
+                          <div class="item-input-wrap">
+                            <input type="password" placeholder="请输入密码" name="password" id="password">
+                            <span class="input-clear-button"></span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="block">
+                    <p class="row">
+                      <button type="button" class="col-85 button button-big button-fill" id="logbton" style="margin-left: auto;margin-right: auto;">
+                        <a href="javascript:void(null)" class="icon external">登录</a>
+                      </button>
+                    </p>
+                    <p class="row">
+                      <button type="button" class="col-85 button button-big button-fill popup-open" style="margin-left: auto;margin-right: auto; background: #0b5670"
+                        data-popup=".popup-about">注册</button>
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <a class="link login-screen-close" href="#">取消</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup-about">
+          <div class="page-content login-screen-content">
+            <div class="logo text-center">
+              <img src="images/logo.png" width="75px">
+            </div>
+            <div class="login-screen-title login">用户注册</div>
+            <form id="register">
+              <div class="list no-hairlines-md">
+                <ul>
+                  <li class="item-content item-input">
                     <div class="item-media">
-                      <i class="icon f7-icons">gear</i>
+                      <i class="icon framework7-icons">person</i>
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">设置</div>
+                      <div class="item-title item-label">用户名</div>
+                      <div class="item-input-wrap">
+                        <input type="text" placeholder="请输入用户名">
+                        <span class="input-clear-button"></span>
+                      </div>
                     </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-media">
+                      <i class="icon framework7-icons">lock</i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">密码</div>
+                      <div class="item-input-wrap">
+                        <input type="password" placeholder="请输入密码">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="item-content item-input">
+                    <div class="item-media">
+                      <i class="icon framework7-icons">lock</i>
+                    </div>
+                    <div class="item-inner">
+                      <div class="item-title item-label">再次输入密码</div>
+                      <div class="item-input-wrap">
+                        <input type="password" placeholder="请再次输入密码">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="block">
+                <p class="row">
+                  <button type="button" class="col-85 button button-big button-fill popup-open" style="margin-left: auto;margin-right: auto;"
+                    data-popup=".popup-chose">下一步</button>
+                </p>
+              </div>
+              <div class="text-center">
+                <a class="link popup-close login-screen-close" href="#">取消</a>
+              </div>
+            </form>
           </div>
-          <div class="login-screen">
-            <div class="view">
-              <div class="page">
-                <div class="page-content login-screen-content">
-                  <div class="logo text-center">
-                    <img src="images/logo.png" width="75px">
-                  </div>
-                  <div class="login-screen-title login">用户登录</div>
-                  <form id="login">
-                    <div class="list no-hairlines-md">
-                      <ul>
-                        <li class="item-content item-input">
-                          <div class="item-media">
-                            <i class="icon framework7-icons">person</i>
-                          </div>
+        </div>
+
+        <div class="popup popup-chose">
+          <div class="page-content login-screen-content">
+            <div class="logo text-center">
+              <img src="images/logo.png" width="75px">
+            </div>
+            <div class="login-screen-title login">请选择感兴趣的内容</div>
+            <form id="ilike">
+              <div class="row">
+                <div class="col">
+                  <div class="list">
+                    <ul>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Books" />
+                          <i class="icon icon-checkbox"></i>
                           <div class="item-inner">
-                            <div class="item-title item-label">用户名</div>
-                            <div class="item-input-wrap">
-                              <input type="text" placeholder="请输入用户名" name="account" id="account">
-                              <span class="input-clear-button"></span>
-                            </div>
+                            <div class="item-title">演讲</div>
                           </div>
-                        </li>
-                        <li class="item-content item-input">
-                          <div class="item-media">
-                            <i class="icon framework7-icons">lock</i>
-                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Movies" />
+                          <i class="icon icon-checkbox"></i>
                           <div class="item-inner">
-                            <div class="item-title item-label">密码</div>
-                            <div class="item-input-wrap">
-                              <input type="password" placeholder="请输入密码" name="password" id="password">
-                              <span class="input-clear-button"></span>
-                            </div>
+                            <div class="item-title">生活</div>
                           </div>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="block">
-                      <p class="row">
-                        <button type="button" class="col-85 button button-big button-fill" id="logbton" style="margin-left: auto;margin-right: auto;">
-                          <a href="javascript:void(null)" class="icon external">登录</a>
-                        </button>
-                      </p>
-                      <p class="row">
-                        <button type="button" class="col-85 button button-big button-fill popup-open" style="margin-left: auto;margin-right: auto; background: #0b5670"
-                          data-popup=".popup-about">注册</button>
-                      </p>
-                    </div>
-                    <div class="text-center">
-                      <a class="link login-screen-close" href="#">取消</a>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="popup popup-about">
-            <div class="page-content login-screen-content">
-              <div class="logo text-center">
-                <img src="images/logo.png" width="75px">
-              </div>
-              <div class="login-screen-title login">用户注册</div>
-              <form id="register">
-                <div class="list no-hairlines-md">
-                  <ul>
-                    <li class="item-content item-input">
-                      <div class="item-media">
-                        <i class="icon framework7-icons">person</i>
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title item-label">用户名</div>
-                        <div class="item-input-wrap">
-                          <input type="text" placeholder="请输入用户名">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="item-content item-input">
-                      <div class="item-media">
-                        <i class="icon framework7-icons">lock</i>
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title item-label">密码</div>
-                        <div class="item-input-wrap">
-                          <input type="password" placeholder="请输入密码">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li class="item-content item-input">
-                      <div class="item-media">
-                        <i class="icon framework7-icons">lock</i>
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title item-label">再次输入密码</div>
-                        <div class="item-input-wrap">
-                          <input type="password" placeholder="请再次输入密码">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="block">
-                  <p class="row">
-                    <button type="button" class="col-85 button button-big button-fill popup-open" style="margin-left: auto;margin-right: auto;"
-                      data-popup=".popup-chose">下一步</button>
-                  </p>
-                </div>
-                <div class="text-center">
-                  <a class="link popup-close login-screen-close" href="#">取消</a>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div class="popup popup-chose">
-            <div class="page-content login-screen-content">
-              <div class="logo text-center">
-                <img src="images/logo.png" width="75px">
-              </div>
-              <div class="login-screen-title login">请选择感兴趣的内容</div>
-              <form id="ilike">
-                <div class="row">
-                  <div class="col">
-                    <div class="list">
-                      <ul>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Books" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">演讲</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Movies" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">生活</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Food" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">摘录</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">心理</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">金融</div>
-                            </div>
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="list">
-                      <ul>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Books" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">校园</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Movies" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">科技</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Food" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">励志</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">青春</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">传记</div>
-                            </div>
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="list">
-                      <ul>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Books" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">实事</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Movies" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">推理</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Food" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">教育</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">哲学</div>
-                            </div>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="item-checkbox item-content">
-                            <input type="checkbox" name="demo-checkbox" value="Drinks" />
-                            <i class="icon icon-checkbox"></i>
-                            <div class="item-inner">
-                              <div class="item-title">历史</div>
-                            </div>
-                          </label>
-                        </li>
-                      </ul>
-                    </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Food" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">摘录</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">心理</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">金融</div>
+                          </div>
+                        </label>
+                      </li>
+                    </ul>
                   </div>
                 </div>
+                <div class="col">
+                  <div class="list">
+                    <ul>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Books" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">校园</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Movies" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">科技</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Food" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">励志</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">青春</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">传记</div>
+                          </div>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="list">
+                    <ul>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Books" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">实事</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Movies" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">推理</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Food" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">教育</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">哲学</div>
+                          </div>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="item-checkbox item-content">
+                          <input type="checkbox" name="demo-checkbox" value="Drinks" />
+                          <i class="icon icon-checkbox"></i>
+                          <div class="item-inner">
+                            <div class="item-title">历史</div>
+                          </div>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-                <div class="block">
-                  <p class="row">
-                    <div class="text-center">
-                      <a href="person1.html" class="link external col75">
-                        <button type="button" class="button button-big button-fill text-center">完成</button>
-                      </a>
-                    </div>
-                  </p>
-                </div>
-                <div class="text-center">
-                  <a class="link popup-close" href="#">暂时跳过</a>
-                </div>
-              </form>
-            </div>
+              <div class="block">
+                <p class="row">
+                  <div class="text-center">
+                    <a href="person1.html" class="link external col75">
+                      <button type="button" class="button button-big button-fill text-center">完成</button>
+                    </a>
+                  </div>
+                </p>
+              </div>
+              <div class="text-center">
+                <a class="link popup-close" href="#">暂时跳过</a>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <script src="js/framework7.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script>
-      $(function () {
-        $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
-          type: "post",
-          dataType: "jsonp",
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
-          success: function (data) {
-            if (data != 0) {
-              $('#logscreen').attr('data-login-screen',' ');
-              var name = document.getElementById("identy");
-              var more = document.getElementById("more");
-              more.innerHTML = data.id;
-              name.innerHTML = data.account;
-              document.getElementById("content").innerHTML =
-                `
+  </div>
+  <script src="js/framework7.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
+        type: "post",
+        dataType: "jsonp",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          if (data != 0) {
+            $('#logscreen').attr('data-login-screen', ' ');
+            var name = document.getElementById("identy");
+            var more = document.getElementById("more");
+            more.innerHTML = data.id;
+            name.innerHTML = data.account;
+            document.getElementById("content").innerHTML =
+              `
           <div class="block-title">历史</div>
           <div class="list">
             <ul>
@@ -467,79 +467,106 @@
             </ul>
           </div>
           `
-            }
-          },
-          error: function () {
-
           }
-        })
+        },
+        error: function () {
+
+        }
       })
+    })
 
-      // Create toast with icon
-      var toastIcon = app.toast.create({
-        icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
-        text: '恭喜！注册成功',
-        position: 'center',
-        closeTimeout: 1500,
-      });
-      $$('.open-toast-icon').on('click', function () {
-        toastIcon.open();
-        setTimeout("window.location.href='index.html'", 1500);
-      });
+    // Create toast with icon
+    var toastIcon = app.toast.create({
+      icon: app.theme === 'ios' ? '<i class="f7-icons">star</i>' : '<i class="material-icons">star</i>',
+      text: '恭喜！注册成功',
+      position: 'center',
+      closeTimeout: 1500,
+    });
+    $$('.open-toast-icon').on('click', function () {
+      toastIcon.open();
+      setTimeout("window.location.href='index.html'", 1500);
+    });
 
-      //登录
-      $("#logbton").on('touchstart', function () {
-        var act = $("#account").val();
-        var pswd = $("#password").val();
-        $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
-          type: "post",
-          dataType: "jsonp",
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
-          success: function (data) {           
-            $('#logscreen').attr('data-login-screen',' ');
-            if (data == "-1") {
-              app.dialog.alert('帐号不存在');
-            } else if(data == "-2"){
-              app.dialog.alert('密码错误');
-            }
-            else {
-                window.history.back(-1);
-                localStorage.id = data;
-            }
-          },
-          error:function (e){
-            console.log(e);
-            console.log('错误')
+    //登录
+    $("#logbton").on('touchstart', function () {
+      var act = $("#account").val();
+      var pswd = $("#password").val();
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+        type: "post",
+        dataType: "jsonp",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          $('#logscreen').attr('data-login-screen', ' ');
+          if (data == "-1") {
+            app.dialog.alert('帐号不存在');
+          } else if (data == "-2") {
+            app.dialog.alert('密码错误');
+          } else {
+            getUserType();
+            window.history.back(-1);
+            localStorage.id = data;
           }
-        })
-      });
+        },
+        error: function (e) {
+          console.log(e);
+          console.log('错误')
+        }
+      })
+    });
 
-      // 注销
-      function logout() {
+    // 注销
+    function logout() {
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/logout',
+        type: "post",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          window.location.href = "person.html";
+          localStorage.id = null;
+          localStorage.classid = null;
+        },
+        error: function () {
+          window.location.href = "person.html";
+          localStorage.id = null;
+          localStorage.classid = null;
+        }
+      })
+    }
+
+    //获取登录者id
+    function getUserType() {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/logout',
-          type: "post",
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
-          success: function (data) {
-            window.location.href = "person.html";
-            localStorage.id=null;
-            localStorage.classid=null;
-          },
-          error: function () {
-            window.location.href = "person.html";
-            localStorage.id=null;
-            localStorage.classid=null;
-          }
-        })
-      }
-    </script>
-  </body>
+      url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
+      type: 'post',
+      dataType: 'jsonp',
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: function (data) {
+        localStorage.id = data.id;
+        if (data == 0) {
+          $('#jump').attr("href", "person.html")
+        } else if (data.type == 0) {
+          $('#jump').attr("href", "classlist.html")
+          localStorage.usertype = 0;
+        } else if (data.type == 1) {
+          $('#jump').attr("href", "classlistTeacher.html")
+          localStorage.usertype = 1;
+        }
+      },
+      error: function () {}
+    });
+    }
+  
+  </script>
+</body>
 
 </html>

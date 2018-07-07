@@ -15,7 +15,7 @@ function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;
   //ajax传递数据到后台并获得批注id
-  app.request.post('https://bitcandy.one/EAnnotation/addAnnotation', {
+  app.request.post('http://192.168.1.193/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
@@ -118,9 +118,8 @@ var ancount; //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
-    url: 'https://bitcandy.one/EAnnotation/getPassage?id=' + passageId,
+    url: 'http://192.168.1.193/EAnnotation/getPassage?id=' + passageId,
     type: "post",
-    cache: false,
     success: function (data) {
       console.log(data);
       $("#title").html(data.title);
@@ -142,7 +141,7 @@ var par, st, ed, type, anID, content, selected; //用于传递数据的参数
 
 //从数据库获得json类型数据并解析
 function getAnnotator(passageId, userId, dele) {
-  app.request.get('https://bitcandy.one/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+  app.request.get('http://192.168.1.193/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
     userId,
     function (data) {
       var result = jQuery.parseJSON(data);
@@ -221,7 +220,7 @@ function rePanel() {
 function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('https://bitcandy.one/EAnnotation/deleteAnnotation', {
+  app.request.post('http://192.168.1.193/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
     var dele = "ture";
@@ -231,18 +230,18 @@ function del(delID) {
 
 //修改批注
 function modify(modId) {
-  var x = $$('#an' + modId).text(); //获取批注的文章内容
-  var t = $$('#bq' + modId + '>p').text(); //获得原批注
-  var bqcolor = $$('#bq' + modId).attr('class'); //获得颜色样式
-  $$('#sendID').text(modId); //传递id
-  $$('#old').text(t); //传递原批注
-  $$('#mod').val(x); //传递文章内容到popup
+  var x = $$('#an' + modId).text();   //获取批注的文章内容
+  var t = $$('#bq' + modId + '>p').text();  //获得原批注
+  var bqcolor = $$('#bq' + modId).attr('class');  //获得颜色样式
+  $$('#sendID').text(modId);  //传递id
+  $$('#old').text(t);   //传递原批注
+  $$('#mod').val(x);    //传递文章内容到popup
   $$('#bqcolor').attr('class', bqcolor);
 }
 
-var ad = document.getElementById("modadd");
+var ad = document.getElementById("modadd");   //获得修改批注按钮
 ad.addEventListener('touchstart', function () {
-  add();
+  add();    //重新调用添加批注函数来实现修改批注
 });
 
 function add() {
@@ -250,7 +249,7 @@ function add() {
   var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('https://bitcandy.one/EAnnotation/updateAnnotation', {
+  app.request.post('http://192.168.1.193/EAnnotation/updateAnnotation', {
     content: nw,
     id: getID
   }, function (data) {
@@ -276,9 +275,8 @@ function rdNum() {
 // 右侧侧边栏显示所有批注
 $(function() {
 $.ajax({
-  url: 'https://bitcandy.one/EAnnotation/getAllAnnotations?passageId=' + passageId,
+  url: 'http://192.168.1.193/EAnnotation/getAllAnnotations?passageId=' + passageId,
   type: "post",
-  cache: false,
   success: function (data) {
   $.each(data,function(i,item) {
     if(item.userType == 0){
@@ -292,7 +290,7 @@ $.ajax({
 
     $('#ancontent2').append(
       `    <div class="card cardcss" id="`+antype+`">
-      <blockquote class="blockquote bqcolor2">
+      <blockquote class="blockquote bqcolor`+item.type+`">
         <p>`+ item.selected +`</p>
       </blockquote>
       <div class="card-content cardct">
@@ -303,7 +301,7 @@ $.ajax({
           item.id + `" ontouchstart="like(` +
           item.id +
           `)">
-            <i class="f7-icons size-18">heart_fill</i><span class="` + item.id +
+            <i class="f7-icons size-14">heart_fill</i><span class="` + item.id +
           `">` +
           item.likeCount +
           `</span> 喜欢
@@ -340,7 +338,7 @@ $$("input[name='student']").change(function () {
 var user;
 //获取登录者id
 $.ajax({
-  url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+  url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
   type: 'post',
   dataType: 'jsonp',
   xhrFields: {
@@ -357,11 +355,11 @@ $.ajax({
 //是否已经点赞
 function isLike(id) {
   $.ajax({
-    url: 'https://bitcandy.one/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
+    url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
     type: "POST",
     success: function (data) {
       if (data == true) {
-        $('#' + id).css("color", "blue");
+        $('#' + id).css("color", "#638BD4");
       }
     }
   })
@@ -369,9 +367,9 @@ function isLike(id) {
 
 //点赞
 function like(id) {
-  if (localStorage.id == null || !localStorage.id) {
+  if (localStorage.id == null || localStorage.id == "undefined") {  //先判断是否登录
     app.dialog.create({
-      text: '请先登录',
+      text: '请先登录',   
       buttons: [{
         text: '确定',
         onClick: function () {
@@ -380,13 +378,13 @@ function like(id) {
       }, ],
       verticalButtons: true,
     }).open();
-  } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {
-    $('#' + id).css("color", "blue");
+  } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {  //根据颜色判断是否已经点过赞，如果没有爱心变蓝调用点赞接口
+    $('#' + id).css("color", "#638BD4");
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) + 1);
 
     $.ajax({
-      url: 'https://bitcandy.one/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
+      url: 'http://192.168.1.193/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
       type: 'post',
       success: function (data) {
 
@@ -394,11 +392,11 @@ function like(id) {
       error: function () {}
     })
   } else {
-    $('#' + id).css("color", "#81848b");
+    $('#' + id).css("color", "#81848b");  //如果已经点赞了，点击后将颜色变回灰色，调用取消点赞按钮
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) - 1);
     $.ajax({
-      url: 'https://bitcandy.one/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
+      url: 'http://192.168.1.193/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id + `&annotationId=` + id,
       type: 'post',
       success: function (data) {
 
