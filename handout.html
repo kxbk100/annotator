@@ -127,7 +127,7 @@
                   <img src="images/teacher.jpg" width="44" />
                 </div>
                 <div class="item-inner">
-                  <div class="item-title-row">
+                  <div class="item-title">
                     <div class="item-title size-14" id="person">发布人：张晓飞老师</div>
                   </div>
                   <div class="item-subtitle size-14">教育工作者</div>
@@ -309,7 +309,7 @@ function panel(m) {
   var string = 'note' + m;
   var textarea = document.getElementById(string).value;  
   //ajax传递数据到后台并获得批注id
-  app.request.post('https://bitcandy.one/EAnnotation/addAnnotation', {
+  app.request.post('http://192.168.1.193/EAnnotation/addAnnotation', {
     content: textarea,
     paragraph: paragraph,
     start: start,
@@ -405,9 +405,8 @@ var ancount;  //统计批注数量，用于数量随时变化
 //获取文章id
 function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
-    url: 'https://bitcandy.one/EAnnotation/getPassage?id=' + passageId,
+    url: 'http://192.168.1.193/EAnnotation/getPassage?id=' + passageId,
     type: "post",
-    cache: false,
     success: function (data) {
       console.log(data.count);
       $("#title").html(data.title);
@@ -428,7 +427,7 @@ var par, st, ed, type, anID, content, selected; //用于传递数据的参数
 
 //从数据库获得json类型数据并解析
 function getAnnotator(passageId, userId, dele) {
-  app.request.get('https://bitcandy.one/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+  app.request.get('http://192.168.1.193/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
     userId,
     function (data) {
       var result = jQuery.parseJSON(data);
@@ -507,7 +506,7 @@ function rePanel() {
 function del(delID) {
   $$('#' + delID).remove();
   //ajax传输给后台
-  app.request.post('https://bitcandy.one/EAnnotation/deleteAnnotation', {
+  app.request.post('http://192.168.1.193/EAnnotation/deleteAnnotation', {
     id: delID
   }, function (data) {
     var dele = "ture";
@@ -536,7 +535,7 @@ function add() {
   var getID = $$('#sendID').text();
   $$('#an' + getID).text(nw);
   //ajax传输给后台
-  app.request.post('https://bitcandy.one/EAnnotation/updateAnnotation', {
+  app.request.post('http://192.168.1.193/EAnnotation/updateAnnotation', {
     content: nw,
     id: getID
   }, function (data) {
@@ -549,7 +548,7 @@ function add() {
   var user;
     //获取登录者id
     $.ajax({
-      url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+      url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
       type: 'post',
       dataType: 'jsonp',
       xhrFields: {

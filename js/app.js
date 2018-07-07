@@ -66,7 +66,7 @@ $ptrContent.on('ptr:refresh', function (e) {
     // '<li class="item-content">' +
     // '<div class="item-media"><img src="' + '" width="44"/></div>' +
     // '<div class="item-inner">' +
-    // '<div class="item-title-row">' +
+    // '<div class="item-title">' +
     // '<div class="item-title">'  + '</div>' +
     // '</div>' +
     // '<div class="item-subtitle">'  + '</div>' +
@@ -95,3 +95,14 @@ var calendarModal = app.calendar.create({
   openIn: 'customModal',
   dateFormat: 'yyyy-MM-dd',
 });
+
+//班级按钮定位
+if(localStorage.usertype == 1){
+  $$("#jump").attr("href","classlistTeacher.html");
+} 
+else if (localStorage.usertype == 0) {
+  $$("#jump").attr("href","classlist.html");
+}
+else {
+  $$("#jump").attr("href","person.html");
+}

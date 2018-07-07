@@ -80,9 +80,6 @@
           </div>
 
           <div class="right">
-            <a href="#" class="icon link panel-open" data-panel="right">
-              <i class="icon f7-icons" style="font-size: 25px">more</i>
-            </a>
           </div>
         </div>
       </div>
@@ -130,7 +127,7 @@
                   <img src="images/teacher.jpg" width="44" />
                 </div>
                 <div class="item-inner">
-                  <div class="item-title-row">
+                  <div class="item-title">
                     <div class="item-title size-14" id="person">发布人：张晓飞老师</div>
                   </div>
                   <div class="item-subtitle size-14">教育工作者</div>
@@ -302,7 +299,7 @@
 
     function submit() {
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
+        url: 'http://192.168.1.193/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
           '&classId=' + localStorage.classid + '',
         type: "POST",
         success:function () {

@@ -56,7 +56,7 @@
               <i class="icon f7-icons ios-only">home_fill</i>
               <span class="tabbar-label">首页</span>
             </a>
-            <a href="jump.html" class="tab-link an-button link external">
+            <a href="#" class="tab-link an-button link external" id="jump">
               <i class="icon f7-icons ios-only">layers_fill</i>
               <span class="tabbar-label">班级</span>
             </a>
@@ -75,7 +75,7 @@
                     <img class="radius" src="images/weidenglu.jpg" width="80" />
                   </div>
                   <div class="item-inner">
-                    <div class="item-title-row">
+                    <div class="item-title">
                       <div class="item-title" id="identy">未登录</div>
                     </div>
                     <div class="item-subtitle">
@@ -409,7 +409,7 @@
     <script>
       $(function () {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/getCurrentUser',
+          url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -492,7 +492,7 @@
         var act = $("#account").val();
         var pswd = $("#password").val();
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+          url: 'http://192.168.1.193/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
           type: "post",
           dataType: "jsonp",
           xhrFields: {
@@ -509,6 +509,7 @@
             else {
                 window.history.back(-1);
                 localStorage.id = data;
+                localStorage.usertype = data.type;
             }
           },
           error:function (e){
@@ -521,7 +522,7 @@
       // 注销
       function logout() {
         $.ajax({
-          url: 'https://bitcandy.one/EAnnotation/logout',
+          url: 'http://192.168.1.193/EAnnotation/logout',
           type: "post",
           xhrFields: {
             withCredentials: true

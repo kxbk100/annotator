@@ -55,6 +55,12 @@
         <!-- 工具栏标签 -->
         <div class="toolbar tabbar-labels">
           <div class="toolbar-inner">
+            <a href="index.html" class="tab-link an-button link external">
+              <!-- Different icons for iOS and MD themes -->
+              <i class="icon f7-icons">home_fill</i>
+              <span class="tabbar-label">首页</span>
+            </a>
+
             <a href="#" class="tab-link an-button link external">
               <!-- Different icons for iOS and MD themes -->
               <i class="icon f7-icons ios-only">book_fill</i>
@@ -96,12 +102,12 @@
     };
 
     $.ajax({
-      url: 'https://bitcandy.one/EAnnotation/getClassStudents?classId=' + localStorage.classid,
+      url: 'http://192.168.1.193/EAnnotation/getClassStudents?classId=' + localStorage.classid,
       type: "POST",
       success: function (data) {
-        $.each(data,function(i,item) {
-                  $("ul[class='classmates']").append(
-          `               <li>
+        $.each(data, function (i, item) {
+          $("ul[class='classmates']").append(
+            `               <li>
                 <a href="#" class="item-link item-content">
                   <div class="item-media">
                     <img class="radius" src="images/myrank.jpg" width="60px" />
@@ -109,12 +115,14 @@
                   <div class="item-inner">
                     <div class="item-title">
                       <div class="item-header">&nbsp;</div>
-                      `+ item.account +`
+                      ` +
+            item.account +
+            `
                       </div>
                   </div>
                 </a>
               </li>`
-        )
+          )
         })
 
       }

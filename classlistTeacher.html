@@ -92,13 +92,13 @@
       var back = document.getElementById("back");
       if (back) {
         back.addEventListener('touchstart', function () {
-          window.history.back(-2);
+          window.history.back(-1);
         })
       };
 
       // 获取所有班级
       $.ajax({
-        url: 'https://bitcandy.one/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
+        url: 'http://192.168.1.193/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -109,7 +109,7 @@
               `)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
-                        <div class="item-title-row">
+                        <div class="item-title">
                           <div class="item-title">` +
               item.className +
               `</div>

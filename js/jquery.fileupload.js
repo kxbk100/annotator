@@ -277,7 +277,6 @@
             // The following are jQuery ajax settings required for the file uploads:
             processData: false,
             contentType: false,
-            cache: false,
             timeout: 0
         },
 
