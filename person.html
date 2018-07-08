@@ -406,6 +406,7 @@
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/jquery.min.js"></script>
+  <script src="js/pan.js"></script>
   <script>
     $(function () {
       $.ajax({
@@ -507,8 +508,8 @@
             app.dialog.alert('密码错误');
           } else {
             getUserType();
-            window.history.back(-1);
             localStorage.id = data;
+            window.history.back(-1);
           }
         },
         error: function (e) {
@@ -554,13 +555,14 @@
         localStorage.id = data.id;
         if (data == 0) {
           $('#jump').attr("href", "person.html")
-        } else if (data.type == 0) {
+        } else if (data.type == "0") {
           $('#jump').attr("href", "classlist.html")
-          localStorage.usertype = 0;
-        } else if (data.type == 1) {
+          localStorage.usertype = data.type;
+        } else if (data.type == "1") {
           $('#jump').attr("href", "classlistTeacher.html")
-          localStorage.usertype = 1;
+          localStorage.usertype = data.type;
         }
+        console.log(localStorage.usertype)
       },
       error: function () {}
     });
