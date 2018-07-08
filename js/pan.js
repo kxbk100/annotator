@@ -1,4 +1,3 @@
-
 //班级按钮定位函数
 (function(){
 if(localStorage.usertype == 1){
