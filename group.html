@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000">
+  <!-- Your app title -->
+  <title>群组</title>
+  <!-- Path to Framework7 Library CSS -->
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .ios a {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="view view-main view-init">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <a href="#" class="item-link icon" id="back" style="color: white;">
+              <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+            </a>
+          </div>
+          <div class="title">我的群组</div>
+          <div class="right"></div>
+        </div>
+      </div>
+
+      <!-- 工具栏标签 -->
+      <div class="toolbar tabbar-labels">
+        <div class="toolbar-inner">
+            <a href="index.html" class="tab-link an-button link external">
+                <!-- Different icons for iOS and MD themes -->
+                <i class="icon f7-icons">home_fill</i>
+                <span class="tabbar-label">首页</span>
+              </a>
+  
+              <a href="#" class="tab-link an-button link external" id="jump">
+                <i class="icon f7-icons">layers_fill</i>
+                <span class="tabbar-label">班级</span>
+              </a>
+              <a href="#" class="tab-link-active an-button link external" id="group_btn">
+                  <i class="icon f7-icons">persons</i>
+                  <span class="tabbar-label">群组</span>
+                </a>
+                
+              <a href="person.html" class="tab-link an-button link external">
+                <i class="icon f7-icons">person_fill</i>
+                <span class="tabbar-label">我的</span>
+              </a>
+          <!-- <a href="#" class="tab-link an-button">
+            <i class="icon f7-icons ios-only">chat_fill
+              <span class="badge color-red">5</span>
+            </i>
+            <span class="tabbar-label">消息</span>
+          </a> -->
+        </div>
+      </div>
+
+      <div class=" page-content">
+        <div class="list media-list annotator">
+          <ul>
+            <li>
+              <div class="item-content class">
+                <div class="item-media">
+                  <img src="images/teacher.jpg" width="44"/>
+                </div>
+                <div class="item-inner">
+                  <div class="item-title">
+                    <div class="item-title" id="groupname"></div>
+                  </div>
+                  <div class="item-subtitle">创建人：张宇宙老师</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list class">
+          <ul>
+            <!-- 未完成作业栏 -->
+            <li class="accordion-item accordion-item-opened">
+              <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                  <div class="item-title">文章列表</div>
+                  <div class="item-after">
+                    <span class="badge color-red" id="groupnum">0</span>
+                  </div>
+                </div>
+              </a>
+              <div class="accordion-item-content">
+                <div class="list media-list">
+                  <ul class="group">
+
+
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="js/framework7.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/panpan.js"></script>
+    <script>
+      // 返回按钮
+      var back = document.getElementById("back");
+      if (back) {
+        back.addEventListener('touchstart', function () {
+          window.history.back(-2);
+        })
+      };
+
+      function getcontent(text) {
+        var html = text;
+        return html.replace(/<[^>]*>|/g, "");
+      }
+
+      function getDateDiff(dateTimeStamp) {
+        var dateTimeStamp = new Date(Date.parse(dateTimeStamp.replace(/-/gi, "-")));
+        dateTimeStamp = dateTimeStamp.getTime();
+        var result;
+        var minute = 1000 * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        var halfamonth = day * 15;
+        var month = day * 30;
+        var now = new Date().getTime();
+        var diffValue = now - dateTimeStamp;
+        if (diffValue < 0) {
+          return;
+        }
+        var monthC = diffValue / month;
+        var weekC = diffValue / (7 * day);
+        var dayC = diffValue / day;
+        var hourC = diffValue / hour;
+        var minC = diffValue / minute;
+        if (monthC >= 1) {
+          if (monthC <= 12)
+            result = "" + parseInt(monthC) + "个月前";
+          else {
+            result = "" + parseInt(monthC / 12) + "年前";
+          }
+        } else if (weekC >= 1) {
+          result = "" + parseInt(weekC) + "周前";
+        } else if (dayC >= 1) {
+          result = "" + parseInt(dayC) + "天前";
+        } else if (hourC >= 1) {
+          result = "" + parseInt(hourC) + "小时前";
+        } else if (minC >= 1) {
+          result = "" + parseInt(minC) + "分钟前";
+        } else {
+          result = "刚刚";
+        }
+        return result;
+      };
+
+      var num = 0,
+        num1 = 0,
+        num2 = 0,
+        num3 = 0;
+
+      // 获取所有文章
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getPassageByGroup?groupId=' + localStorage.groupid,
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+              num++;
+              $('#groupnum').text(num);
+
+              $("ul[class=group]").append(
+                `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label class="item-content item-checkbox" ontouchstart="window.location.href='groupAnnotate.html?id=` +
+                item.id + `'">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="groupAnnotate.html?id=` +
+                item.id + `" class="link external" style="display: inline;">` + item.title +
+                `</a>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">` +
+                item.auther + ` · ` + item.releaseTime +
+                `</div>
+                            <div class="item-text">
+                              ` +
+                getcontent(item.content) +
+                `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+              )
+            
+          })
+        },
+        error: function (e) {}
+      })
+      
+
+      //班级列表
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getGroupById?groupId=' + localStorage.groupid,
+        type: 'POST',
+        success: function (data) {
+          $('#groupname').html(data.groupName);
+        }
+      });
+    </script>
+</body>
+
+</html>

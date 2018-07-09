@@ -164,8 +164,6 @@
     </div>
     <script src="js/framework7.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
       // 返回按钮
@@ -221,19 +219,19 @@
       };
 
       //获取登录者id
-      $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
-        type: 'post',
-        dataType: 'jsonp',
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (data) {
-          localStorage.id = data.id;
-        },
-        error: function () {}
-      })
+      // $.ajax({
+      //   url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
+      //   type: 'post',
+      //   dataType: 'jsonp',
+      //   xhrFields: {
+      //     withCredentials: true
+      //   },
+      //   crossDomain: true,
+      //   success: function (data) {
+      //     localStorage.id = data.id;
+      //   },
+      //   error: function () {}
+      // })
 
       var num = 0,
         num1 = 0,

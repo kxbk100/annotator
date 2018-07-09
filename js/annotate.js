@@ -1,6 +1,10 @@
-// 选中并传递到popup
-var text;
+/*
+annotate.js保存与批注相关的js
+期中的点赞函数服务于批注页面的所有批注一栏
+*/
 
+// 选中文字并传递到popup
+var text;
 function getString(n) {
   text = rangy.getSelection().toString();
   console.log(text);
