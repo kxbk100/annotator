@@ -36,10 +36,67 @@
         </div>
       </div>
 
+
+      <div class="toolbar toolbar-bottom-md fab-morph-target tabbar-labels">
+        <div class="toolbar-inner">
+          <a class="link popup-open" href="#" data-popup=".popup-about">加入群组</a>
+          <a class="link fab-close">取消</a>
+        </div>
+      </div>
+      <div class="fab fab-right-bottom fab-morph" data-morph-to=".toolbar">
+        <a href="#">
+          <i class="icon f7-icons ios-only">add</i>
+          <i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only">add</i>
+          <i class="icon material-icons md-only">close</i>
+        </a>
+      </div>
+
+      <div class="popup popup-about">
+
+        <form class="searchbar">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap">
+              <input type="search" placeholder="搜索">
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
+            </div>
+            <span class="searchbar-disable-button">取消</span>
+          </div>
+        </form>
+
+        <div class="page-content">
+          <!-- Searchbar backdrop -->
+          <div class="searchbar-backdrop"></div>
+          <!-- hide-on-search element -->
+          <div class="block searchbar-hide-on-search">
+
+          </div>
+          <!-- search target list -->
+          <div class="list searchbar-found">
+            <ul class="group_list">
+
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">群组</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <a class="link popup-close" href="#" id="cancel">取消</a>
+          </div>
+          <!-- Nothing found message -->
+          <div class="block searchbar-not-found">
+            <div class="block-inner">找不到该群组</div>
+          </div>
+        </div>
+      </div>
+
       <div class=" page-content">
         <div class="list class">
           <ul>
-          
+
             <li class="accordion-item accordion-item-opened">
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
@@ -52,7 +109,6 @@
               <div class="accordion-item-content">
                 <div class="list media-list">
                   <ul class="course">
-
 
                   </ul>
                 </div>
@@ -78,30 +134,138 @@
 
       // 获取所有群组
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllGroup?userId=' + localStorage.id + '',
+        url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
-              $("ul[class=course]").append(
-                `<li>
-                    <a href="group.html" class="link item-content external" ontouchstart="pushgroup(`+ item.groupId +`)">
+            $("ul[class=course]").append(
+              `<li>
+                    <a href="group.html" class="link item-content external" ontouchstart="pushgroup(` +
+              item.groupId +
+              `)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
                         <div class="item-title">
-                          <div class="item-title">`+ item.groupName +`</div>
+                          <div class="item-title">` +
+              item.groupName +
+              `</div>
                         </div>
-                        <div class="item-subtitle">创建人ID：`+ item.founder +`</div>
+                        <div class="item-subtitle">创建人：` +
+              item.founder +
+              `</div>
                       </div>
                     </a>
                </li>`
-              )
+            )
           })
         },
         error: function (e) {}
-      })
+      });
+
+      //将群组id存入locastorage
       function pushgroup(id) {
         localStorage.groupid = id;
+      };
+
+
+      //获取所有的群组列在搜索页面
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getAllGroup',
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+            //遍历出所有群组
+            $("ul[class=group_list]").append(
+              ` <li>
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">persons_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">` +
+              item.groupName +
+              `</div>
+                                        <div class="item-after" id="join_btn` +
+              item.groupNumber +
+              `">
+                                            <button class="col button color-gray" onclick="join(` +
+              item.groupNumber +
+              `)">加入</button>
+                                        </div>
+                                    </div>
+                            </li>`
+            )
+          })
+        },
+        error: function (e) {
+
+        }
+      });
+
+      //判断哪些组已经加入
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
+        type: "post",
+        success: function (data) {
+          //获得已加入的群组ID，将已加入的群组的加入按钮变为已加入
+          $.each(data, function (i, item) {
+            $("#join_btn" + item.groupNumber).html("已加入")
+          })
+        },
+        error: function (e) {
+          console.log("error");
+        }
+      })
+
+      //加入群组
+      function join(groupNumber) {
+        $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/joinGroup?userId=' + localStorage.id + '&groupNumber=' + groupNumber,
+        type: "post",
+        success: function (data) {
+        console.log("success")
+        },
+        error: function (e) {
+          $("#join_btn" + groupNumber).html("已加入")
+        }
+      });
       }
+
+      //搜索页点击取消后重新获取我的群组列表
+      $("#cancel").on("touchstart",function () {
+        //清空列表防止重复
+        $("ul[class=course]").html("")
+        //重新获取群组列表
+        $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+            $("ul[class=course]").append(
+              `<li>
+                    <a href="group.html" class="link item-content external" ontouchstart="pushgroup(` +
+              item.groupId +
+              `)">
+                      <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
+                      <div class="item-inner">
+                        <div class="item-title">
+                          <div class="item-title">` +
+              item.groupName +
+              `</div>
+                        </div>
+                        <div class="item-subtitle">创建人：` +
+              item.founder +
+              `</div>
+                      </div>
+                    </a>
+               </li>`
+            )
+          })
+        },
+        error: function (e) {}
+      });
+
+      });
     </script>
 </body>
 

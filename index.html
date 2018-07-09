@@ -148,7 +148,7 @@
                 </div>
                 `
               )
-              if (localStorage.id != null && localStorage.id != "undefined") {
+              if (localStorage.id != -1) {
                 isLike(item.id);
               };
 
@@ -183,7 +183,7 @@
                   </div>
                 </div>`
               )
-              if (localStorage.id != null && localStorage.id != "undefined") {
+              if (localStorage.id != -1) {
                 isLike(item.id);
               };
             }
@@ -240,7 +240,7 @@
       return result;
     };
 
-    //判断是否已经点赞
+    //判断文章是否已经点赞
     function isLike(id) {
       $.ajax({
         url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
@@ -254,10 +254,23 @@
       })
     }
 
+    //判断批注是否已经点赞
+    function anisLike(passageId,annotationId) {
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id + '&annotationId=' + annotationId,
+        type: "POST",
+        success: function (data) {
+          if (data == true) {
+            $('#rank' + annotationId).css("color", "#638BD4");
+          }
+        }
+      })
+    }
+
     //点赞函数
     function like(id) {
       //先判断有没有登录
-      if (localStorage.id == null || localStorage.id == "undefined") {
+      if (localStorage.id == -1) {
         app.dialog.create({
           text: '请先登录',
           buttons: [{
@@ -351,11 +364,11 @@
                 </div>
                 `
                 )
-                if (localStorage.id != null && localStorage.id != "undefined") {
+                if (localStorage.id != -1) {
                   isLike(item.passageId);
                 };
 
-              } else {
+              } else if(!item.photo) {
                 $("ul[class=rank]").append(
                   `<div class="card">
                   <div class="card-header">` + item.title +
@@ -386,7 +399,7 @@
                   </div>
                 </div>`
                 )
-                if (localStorage.id != null && localStorage.id != "undefined") {
+                if (localStorage.id != -1) {
                   isLike(item.passageId);
                 };
               }
@@ -425,7 +438,7 @@
                     </div>`
               );
               if (localStorage.id != null && localStorage.id != "undefined") {
-                isLike(item.id);
+                anisLike(item.passageId,item.id);
               };
             }
           })

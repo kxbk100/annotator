@@ -36,6 +36,63 @@
         </div>
       </div>
 
+      <div class="toolbar toolbar-bottom-md fab-morph-target tabbar-labels">
+        <div class="toolbar-inner">
+          <a class="link popup-open" href="#" data-popup=".popup-about">加入班级</a>
+          <a class="link fab-close">取消</a>
+        </div>
+      </div>
+      <div class="fab fab-right-bottom fab-morph" data-morph-to=".toolbar">
+        <a href="#">
+          <i class="icon f7-icons ios-only">add</i>
+          <i class="icon f7-icons ios-only">close</i>
+          <i class="icon material-icons md-only">add</i>
+          <i class="icon material-icons md-only">close</i>
+        </a>
+      </div>
+
+      <div class="popup popup-about">
+
+        <form class="searchbar">
+          <div class="searchbar-inner">
+            <div class="searchbar-input-wrap">
+              <input type="search" placeholder="搜索">
+              <i class="searchbar-icon"></i>
+              <span class="input-clear-button"></span>
+            </div>
+            <span class="searchbar-disable-button">取消</span>
+          </div>
+        </form>
+
+        <div class="page-content">
+          <!-- Searchbar backdrop -->
+          <div class="searchbar-backdrop"></div>
+          <!-- hide-on-search element -->
+          <div class="block searchbar-hide-on-search">
+
+          </div>
+          <!-- search target list -->
+          <div class="list searchbar-found">
+            <ul class="class_list">
+
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">班级</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <a class="link popup-close" href="#" id="cancel">取消</a>
+          </div>
+          <!-- Nothing found message -->
+          <div class="block searchbar-not-found">
+            <div class="block-inner">找不到该班级</div>
+          </div>
+        </div>
+      </div>
+
+
       <div class=" page-content">
         <div class="list class">
           <ul>
@@ -58,26 +115,6 @@
                 </div>
               </div>
             </li>
-
-            <!-- 已完成作业栏 -->
-            <!-- <li class="accordion-item">
-              <a href="#" class="item-content item-link">
-                <div class="item-inner">
-                  <div class="item-title">我的群组</div>
-                  <div class="item-after">
-                    <span class="badge" id="finnum">0</span>
-                  </div>
-                </div>
-              </a>
-              <div class="accordion-item-content">
-                <div class="list media-list">
-                  <ul class="finish0">
-
-                  </ul>
-                </div>
-
-              </div>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -102,26 +139,136 @@
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
-              $("ul[class=course]").append(
-                `<li>
-                    <a href="class.html" class="link item-content external" ontouchstart="pushclass(`+ item.classId +`)">
+            $("ul[class=course]").append(
+              `<li>
+                    <a href="class.html" class="link item-content external" ontouchstart="pushclass(` +
+              item.classId +
+              `)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
                         <div class="item-title">
-                          <div class="item-title">`+ item.className +`</div>
+                          <div class="item-title">` +
+              item.className +
+              `</div>
                         </div>
-                        <div class="item-subtitle">`+ item.teacher +`</div>
+                        <div class="item-subtitle">` +
+              item.teacher +
+              `</div>
                       </div>
                     </a>
                </li>`
-              )
+            )
           })
         },
         error: function (e) {}
       })
+
       function pushclass(id) {
         localStorage.classid = id;
+      };
+
+      //获取所有的班级列在搜索页面
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getAllClasses',
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+            //遍历出所有班级
+            $("ul[class=class_list]").append(
+              ` <li>
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="icon f7-icons">layers_fill</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">` +
+              item.className +
+              `</div>
+                                        <div class="item-after" id="join_btn` +
+              item.classId +
+              `">
+                                            <button class="col button color-gray" onclick="join(` +
+              item.classId +
+              `)">加入</button>
+                                        </div>
+                                    </div>
+                            </li>`
+            )
+          })
+        },
+        error: function (e) {
+
+        }
+      });
+
+      //判断哪些班级已经加入
+      $.ajax({
+        url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+        type: "post",
+        success: function (data) {
+          //获得已加入的班级ID，将已加入的班级的加入按钮变为已加入
+          $.each(data, function (i, item) {
+            $("#join_btn" + item.classId).html("已加入")
+          })
+        },
+        error: function (e) {
+          console.log("error");
+        }
+      })
+
+      //加入班级
+      function join(id) {
+        var classId = parseInt(id);
+        classId = classId + 121245;
+        $.ajax({
+          url: 'http://192.168.1.193/EAnnotation/joinClass?userId=' + localStorage.id + '&classNumber=' + classId,
+          type: "post",
+          success: function (data) {
+            console.log("success")
+            $("#join_btn" + classId).html("已加入")
+          },
+          error: function (e) {
+            console.log("已从error加入")
+            $("#join_btn" + id).html("已加入")
+          }
+        });
       }
+
+      //搜索页点击取消后重新获取我的班级列表
+      $("#cancel").on("touchstart", function () {
+        //清空列表防止重复
+        $("ul[class=course]").html("")
+        //重新获取我的班级列表
+        $.ajax({
+          url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+          type: "post",
+          success: function (data) {
+            $.each(data, function (i, item) {
+              $("ul[class=course]").append(
+                `<li>
+                    <a href="class.html" class="link item-content external" ontouchstart="pushclass(` +
+                item.classId +
+                `)">
+                      <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
+                      <div class="item-inner">
+                        <div class="item-title">
+                          <div class="item-title">` +
+                item.className +
+                `</div>
+                        </div>
+                        <div class="item-subtitle">` +
+                item.teacher +
+                `</div>
+                      </div>
+                    </a>
+               </li>`
+              )
+            })
+          },
+          error: function (e) {}
+        });
+
+      });
     </script>
 </body>
 

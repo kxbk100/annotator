@@ -131,7 +131,7 @@ function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
       $("#allantate").text(data.count);
       ancount = data.count;
       $("#box").html(data.content);
-      $("#person").html('发布人：' + data.auth + '老师');
+      $("#person").html('发布人：' + data.auth);
       getAnnotator(passageId, userId, dele);
     },
     error: function (e) {}

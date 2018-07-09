@@ -15,8 +15,6 @@ if(localStorage.usertype == 1){
     $("#jump").attr("href","person.html");
     $("#group_btn").attr("href","person.html");
   }
-  console.log(localStorage.usertype)
-  console.log(localStorage.id)
 });
 
 //清除过期localstorage函数
@@ -31,11 +29,13 @@ $(function () {
     crossDomain: true,
     success: function (data) {
       if (data == 0) {
-        localStorage.id = null;
+        localStorage.id = -1;
         localStorage.classid = null;
         localStorage.usertype = null;
         console.log("清除localstorage")
-      } 
+      }
+      console.log(localStorage.usertype)
+      console.log(localStorage.id) 
     },
     error: function () {}
   });
