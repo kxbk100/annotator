@@ -97,20 +97,20 @@
       <div class="toolbar tabbar-labels">
         <div class="toolbar-inner">
           <!-- 工具栏标签 -->
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
+          <a href="#" class="tab-link an-button popup-open" id="button0">
             <!-- Different icons for iOS and MD themes -->
             <i class="icon f7-icons ios-only">chat_fill</i>
             <span class="tabbar-label">背景高亮</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
+          <a href="#" class="tab-link an-button popup-open" id="button1">
             <i class="icon f7-icons ios-only">help_fill</i>
             <span class="tabbar-label">文字高亮</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
+          <a href="#" class="tab-link an-button popup-open" id="button2">
             <i class="icon f7-icons ios-only">heart_fill</i>
             <span class="tabbar-label">加粗</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
+          <a href="#" class="tab-link an-button popup-open" id="button3">
             <i class="icon f7-icons ios-only">mic_fill</i>
             <span class="tabbar-label">下划线</span>
           </a>
@@ -485,7 +485,7 @@ function annotate() {
 function rePanel() {
   var string = 'note' + type;
   var textarea = content;
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
+  // $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   $$('#ancontent').append(
     '<div class="card cardcss" id="' + anID + '">' +
     '<blockquote class="blockquote bqcolor' + type + '" id="bq' + anID + '">' +
@@ -564,41 +564,57 @@ function add() {
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
 button0.addEventListener('touchstart', function () {
-  getString(0);
-  anPaint(0);
-  getLocation(0);
   if (user == 0) {
     goload();
+  } else {
+    getString(0);
+    anPaint(0);
+    getLocation(0);
+  }
+  if(text && text != null){
+    app.popup.open(".popup0")
   }
 });
 
 var botton1 = document.getElementById("button1");
 button1.addEventListener('touchstart', function () {
-  getString(1);
-  anPaint(1);
-  getLocation(1);
   if (user == 0) {
     goload();
+  } else {
+    getString(1);
+    anPaint(1);
+    getLocation(1);
+  }
+  if(text && text != null){
+    app.popup.open(".popup1")
   }
 });
 
 var botton2 = document.getElementById("button2");
 button2.addEventListener('touchstart', function () {
-  getString(2);
-  anPaint(2);
-  getLocation(2);
   if (user == 0) {
     goload();
+  } else {
+    getString(2);
+    anPaint(2);
+    getLocation(2);
+  }
+  if(text && text != null){
+    app.popup.open(".popup2")
   }
 });
 
 var botton3 = document.getElementById("button3");
 button3.addEventListener('touchstart', function () {
-  getString(3);
-  anPaint(3);
-  getLocation(3);
   if (user == 0) {
     goload();
+  } else {
+    getString(3);
+    anPaint(3);
+    getLocation(3);
+  }
+  if(text && text != null){
+    app.popup.open(".popup3")
   }
 });
 

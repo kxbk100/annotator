@@ -471,41 +471,57 @@ function like(id) {
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
 button0.addEventListener('touchstart', function () {
-  getString(0);
-  anPaint(0);
-  getLocation(0);
   if (user == 0) {
     goload();
+  } else {
+    getString(0);
+    anPaint(0);
+    getLocation(0);
+  }
+  if(text && text != null){
+    app.popup.open(".popup0")
   }
 });
 
 var botton1 = document.getElementById("button1");
 button1.addEventListener('touchstart', function () {
-  getString(1);
-  anPaint(1);
-  getLocation(1);
   if (user == 0) {
     goload();
+  } else {
+    getString(1);
+    anPaint(1);
+    getLocation(1);
+  }
+  if(text && text != null){
+    app.popup.open(".popup1")
   }
 });
 
 var botton2 = document.getElementById("button2");
 button2.addEventListener('touchstart', function () {
-  getString(2);
-  anPaint(2);
-  getLocation(2);
   if (user == 0) {
     goload();
+  } else {
+    getString(2);
+    anPaint(2);
+    getLocation(2);
+  }
+  if(text && text != null){
+    app.popup.open(".popup2")
   }
 });
 
 var botton3 = document.getElementById("button3");
 button3.addEventListener('touchstart', function () {
-  getString(3);
-  anPaint(3);
-  getLocation(3);
   if (user == 0) {
     goload();
+  } else {
+    getString(3);
+    anPaint(3);
+    getLocation(3);
+  }
+  if(text && text != null){
+    app.popup.open(".popup3")
   }
 });
 

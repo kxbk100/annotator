@@ -64,7 +64,7 @@
           </div>
         </form>
 
-        <div class="page-content">
+        <div class="page-content" style="height: 88%">
           <!-- Searchbar backdrop -->
           <div class="searchbar-backdrop"></div>
           <!-- hide-on-search element -->
@@ -82,16 +82,15 @@
               </li>
             </ul>
           </div>
-          <div class="text-center">
-            <a class="link popup-close" href="#" id="cancel">关闭</a>
-          </div>
           <!-- Nothing found message -->
           <div class="block searchbar-not-found">
             <div class="block-inner">找不到该班级</div>
           </div>
         </div>
+        <div class="text-center">
+          <a class="link popup-close" href="#" id="cancel">关闭</a>
+        </div>
       </div>
-
 
       <div class=" page-content">
         <div class="list class">
@@ -204,22 +203,22 @@
       });
 
       //判断哪些班级已经加入
-      function joined () {
-            $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
-        type: "post",
-        success: function (data) {
-          //获得已加入的班级ID，将已加入的班级的加入按钮变为已加入
-          $.each(data, function (i, item) {
-            $("#join_btn" + item.classId).html("已加入")
-          })
-        },
-        error: function (e) {
-          console.log("error");
-        }
-      })
+      function joined() {
+        $.ajax({
+          url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+          type: "post",
+          success: function (data) {
+            //获得已加入的班级ID，将已加入的班级的加入按钮变为已加入
+            $.each(data, function (i, item) {
+              $("#join_btn" + item.classId).html("已加入")
+            })
+          },
+          error: function (e) {
+            console.log("error");
+          }
+        })
       }
-  
+
       //加入班级
       function join(id) {
         var classId = parseInt(id);
