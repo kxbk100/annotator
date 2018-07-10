@@ -5,6 +5,7 @@ annotate.js保存与批注相关的js
 
 // 选中文字并传递到popup
 var text;
+
 function getString(n) {
   text = rangy.getSelection().toString();
   console.log(text);
@@ -43,7 +44,7 @@ function panel(m) {
       '</div>' +
       '</div>');
 
-    reright();//右边批注栏
+    reright(); //右边批注栏
     document.getElementById(string).value = '';
   });
 }
@@ -203,7 +204,7 @@ function annotate() {
 function rePanel() {
   var string = 'note' + type;
   var textarea = content;
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
+  // $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   $$('#ancontent').append(
     '<div class="card cardcss" id="' + anID + '">' +
     '<blockquote class="blockquote bqcolor' + type + '" id="bq' + anID + '">' +
@@ -234,18 +235,18 @@ function del(delID) {
 
 //修改批注
 function modify(modId) {
-  var x = $$('#an' + modId).text();   //获取批注的文章内容
-  var t = $$('#bq' + modId + '>p').text();  //获得原批注
-  var bqcolor = $$('#bq' + modId).attr('class');  //获得颜色样式
-  $$('#sendID').text(modId);  //传递id
-  $$('#old').text(t);   //传递原批注
-  $$('#mod').val(x);    //传递文章内容到popup
+  var x = $$('#an' + modId).text(); //获取批注的文章内容
+  var t = $$('#bq' + modId + '>p').text(); //获得原批注
+  var bqcolor = $$('#bq' + modId).attr('class'); //获得颜色样式
+  $$('#sendID').text(modId); //传递id
+  $$('#old').text(t); //传递原批注
+  $$('#mod').val(x); //传递文章内容到popup
   $$('#bqcolor').attr('class', bqcolor);
 }
 
-var ad = document.getElementById("modadd");   //获得修改批注按钮
+var ad = document.getElementById("modadd"); //获得修改批注按钮
 ad.addEventListener('touchstart', function () {
-  add();    //重新调用添加批注函数来实现修改批注
+  add(); //重新调用添加批注函数来实现修改批注
 });
 
 function add() {
@@ -277,31 +278,30 @@ function rdNum() {
 }
 
 // 右侧侧边栏显示所有批注
-$(function() {
-$.ajax({
-  url: 'http://192.168.1.193/EAnnotation/getAllAnnotations?passageId=' + passageId,
-  type: "post",
-  success: function (data) {
-  $.each(data,function(i,item) {
-    if(item.userType == 0){
-      var antator = "学生";
-      var antype = "student";
-    }
-    else {
-      antator = "教师";
-      var antype = "teacher";
-    };
+$(function () {
+  $.ajax({
+    url: 'http://192.168.1.193/EAnnotation/getAllAnnotations?passageId=' + passageId,
+    type: "post",
+    success: function (data) {
+      $.each(data, function (i, item) {
+        if (item.userType == 0) {
+          var antator = "学生";
+          var antype = "student";
+        } else {
+          antator = "教师";
+          var antype = "teacher";
+        };
 
-    $('#ancontent2').append(
-      `    <div class="card cardcss" id="`+antype+`">
-      <blockquote class="blockquote bqcolor`+item.type+`">
-        <p>`+ item.selected +`</p>
+        $('#ancontent2').append(
+          `    <div class="card cardcss" id="` + antype + `">
+      <blockquote class="blockquote bqcolor` + item.type + `">
+        <p>` + item.selected + `</p>
       </blockquote>
       <div class="card-content cardct">
         <p id="anPnode">` + item.content + `</p>
       </div>
       <div class="card-footer">
-      <a href="#" class="link"  id="` +
+      <a href="#" class="link" id="right` +
           item.id + `" ontouchstart="like(` +
           item.id +
           `)">
@@ -317,7 +317,9 @@ $.ajax({
       <p id="rparagraph" style="display: none">` + item.paragraph + `</p>
     </div>`
         )
-        isLike(item.id);
+        if (localStorage.id != -1) {
+          isLike(item.id);
+        }
       })
     },
     error: function (e) {}
@@ -371,9 +373,10 @@ function isLike(id) {
 
 //点赞
 function like(id) {
-  if (localStorage.id == null || localStorage.id == "undefined") {  //先判断是否登录
+  console.log($('#right' + id).css("color"))
+  if (localStorage.id == "-1") { //先判断是否登录
     app.dialog.create({
-      text: '请先登录',   
+      text: '请先登录',
       buttons: [{
         text: '确定',
         onClick: function () {
@@ -382,8 +385,8 @@ function like(id) {
       }, ],
       verticalButtons: true,
     }).open();
-  } else if ($('#' + id).css("color") == "rgb(129, 132, 139)") {  //根据颜色判断是否已经点过赞，如果没有爱心变蓝调用点赞接口
-    $('#' + id).css("color", "#638BD4");
+  } else if ($('#right' + id).css("color") == "rgb(129, 132, 139)") { //根据颜色判断是否已经点过赞，如果没有爱心变蓝调用点赞接口
+    $('#right' + id).css("color", "rgb(99, 139, 212)");
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) + 1);
 
@@ -395,8 +398,8 @@ function like(id) {
       },
       error: function () {}
     })
-  } else {
-    $('#' + id).css("color", "#81848b");  //如果已经点赞了，点击后将颜色变回灰色，调用取消点赞按钮
+  } else if ( $('#right' + id).css("color") == "rgb(99, 139, 212)"){
+    $('#right' + id).css("color", "rgb(129, 132, 139)"); //如果已经点赞了，点击后将颜色变回灰色，调用取消点赞按钮
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) - 1);
     $.ajax({
@@ -464,24 +467,28 @@ button3.addEventListener('touchstart', function () {
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(0);
   addNum();
 });
 
 var add1 = document.getElementById("add1");
 add1.addEventListener('touchstart', function () {
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(1);
   addNum();
 });
 
 var add2 = document.getElementById("add2");
 add2.addEventListener('touchstart', function () {
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(2);
   addNum();
 });
 
 var add3 = document.getElementById("add3");
 add3.addEventListener('touchstart', function () {
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(3);
   addNum();
 });
