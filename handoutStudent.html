@@ -93,30 +93,6 @@
         </div>
       </div>
 
-      <!-- 工具栏 -->
-      <div class="toolbar tabbar-labels">
-        <div class="toolbar-inner">
-          <!-- 工具栏标签 -->
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
-            <!-- Different icons for iOS and MD themes -->
-            <i class="icon f7-icons ios-only">chat_fill</i>
-            <span class="tabbar-label">背景高亮</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
-            <i class="icon f7-icons ios-only">help_fill</i>
-            <span class="tabbar-label">文字高亮</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
-            <i class="icon f7-icons ios-only">heart_fill</i>
-            <span class="tabbar-label">加粗</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
-            <i class="icon f7-icons ios-only">mic_fill</i>
-            <span class="tabbar-label">下划线</span>
-          </a>
-
-        </div>
-      </div>
       <!-- 内容区域 -->
       <div class="page-content">
         <div class="list media-list annotator">
@@ -614,25 +590,21 @@ button3.addEventListener('touchstart', function () {
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(0);
 });
 
 var add1 = document.getElementById("add1");
 add1.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(1);
 });
 
 var add2 = document.getElementById("add2");
 add2.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(2);
 });
 
 var add3 = document.getElementById("add3");
 add3.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(3);
 });
 

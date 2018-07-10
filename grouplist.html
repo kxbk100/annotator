@@ -196,6 +196,8 @@
                             </li>`
             )
           })
+          //调用函数判断哪些已经加入
+          joined()
         },
         error: function (e) {
 
@@ -203,7 +205,8 @@
       });
 
       //判断哪些组已经加入
-      $.ajax({
+      function joined () {
+              $.ajax({
         url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
@@ -216,6 +219,8 @@
           console.log("error");
         }
       })
+      }
+
 
       //加入群组
       function join(groupNumber) {

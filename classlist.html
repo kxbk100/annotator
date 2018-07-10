@@ -194,7 +194,9 @@
                                     </div>
                             </li>`
             )
-          })
+          });
+          //调用函数判断哪些已经加入
+          joined();
         },
         error: function (e) {
 
@@ -202,7 +204,8 @@
       });
 
       //判断哪些班级已经加入
-      $.ajax({
+      function joined () {
+            $.ajax({
         url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
@@ -215,7 +218,8 @@
           console.log("error");
         }
       })
-
+      }
+  
       //加入班级
       function join(id) {
         var classId = parseInt(id);

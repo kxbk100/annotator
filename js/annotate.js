@@ -325,6 +325,58 @@ $(function () {
     error: function (e) {}
   })
 })
+
+//添加批注后右侧同步
+function reright () {
+  //清空原来的重新获取
+  $('#ancontent2').html("");
+  $.ajax({
+    url: 'http://192.168.1.193/EAnnotation/getAllAnnotations?passageId=' + passageId,
+    type: "post",
+    success: function (data) {
+      $.each(data, function (i, item) {
+        if (item.userType == 0) {
+          var antator = "学生";
+          var antype = "student";
+        } else {
+          antator = "教师";
+          var antype = "teacher";
+        };
+
+        $('#ancontent2').append(
+          `    <div class="card cardcss" id="` + antype + `">
+      <blockquote class="blockquote bqcolor` + item.type + `">
+        <p>` + item.selected + `</p>
+      </blockquote>
+      <div class="card-content cardct">
+        <p id="anPnode">` + item.content + `</p>
+      </div>
+      <div class="card-footer">
+      <a href="#" class="link" id="right` +
+          item.id + `" ontouchstart="like(` +
+          item.id +
+          `)">
+            <i class="f7-icons size-14">heart_fill</i><span class="` + item.id +
+          `">` +
+          item.likeCount +
+          `</span> 喜欢
+          </a>
+        <a href="#" class="link" id="change">` + antator + `:` + item.userName + `</a>
+      </div>
+      <p id="rstart" style="display: none">` + item.start + `</p>
+      <p id="rend" style="display: none">` + item.end + `</p>
+      <p id="rparagraph" style="display: none">` + item.paragraph + `</p>
+    </div>`
+        )
+        if (localStorage.id != -1) {
+          isLike(item.id);
+        }
+      })
+    },
+    error: function (e) {}
+  })
+}
+
 // 批注筛选
 $$("input[name='teacher']").change(function () {
   if (!$$(this).is(':checked')) {
@@ -455,40 +507,27 @@ button3.addEventListener('touchstart', function () {
   }
 });
 
-// var botton4 = document.getElementById("button4");
-// button4.addEventListener('touchstart', function () {
-//   getString(4);
-//   anPaint(4);
-//   getLocation(4);
-//   if (user == 0) {
-//     goload();
-//   }
-// });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(0);
   addNum();
 });
 
 var add1 = document.getElementById("add1");
 add1.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(1);
   addNum();
 });
 
 var add2 = document.getElementById("add2");
 add2.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(2);
   addNum();
 });
 
 var add3 = document.getElementById("add3");
 add3.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(3);
   addNum();
 });
