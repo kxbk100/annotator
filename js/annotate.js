@@ -230,6 +230,8 @@ function del(delID) {
   }, function (data) {
     var dele = "ture";
     getPassage(dele);
+    //右侧重新加载
+    reright();
   })
 };
 

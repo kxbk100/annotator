@@ -180,7 +180,7 @@
           <textarea placeholder="请输入批注" id="note0" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -201,7 +201,7 @@
           <textarea placeholder="请输入批注" id="note1" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -222,7 +222,7 @@
           <textarea placeholder="请输入批注" id="note2" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -243,7 +243,7 @@
           <textarea placeholder="请输入批注" id="note3" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -602,37 +602,24 @@ button3.addEventListener('touchstart', function () {
   }
 });
 
-// var botton4 = document.getElementById("button4");
-// button4.addEventListener('touchstart', function () {
-//   getString(4);
-//   anPaint(4);
-//   getLocation(4);
-//   if (user == 0) {
-//     goload();
-//   }
-// });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(0);
 });
 
 var add1 = document.getElementById("add1");
 add1.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(1);
 });
 
 var add2 = document.getElementById("add2");
 add2.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(2);
 });
 
 var add3 = document.getElementById("add3");
 add3.addEventListener('touchstart', function () {
-  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   panel(3);
 });
 
