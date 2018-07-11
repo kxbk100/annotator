@@ -18,6 +18,7 @@
     .ios a {
       color: black;
     }
+
   </style>
 </head>
 
@@ -321,7 +322,8 @@
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
-                                <a href="#" class="link external" style="display: inline;">` + item.passageTitle +
+                                <a href="#" class="link external" style="display: inline;">` +
+                item.passageTitle +
                 `</a>
                                 </div>
                             </div>
@@ -459,13 +461,13 @@
                         <label href="#" class="item-content item-checkbox" ontouchstart="window.location.href='great.html?id=` +
               item.passageId + `&userId=` + item.userId +
               `&author=` + item.userName +
-              `'">
+              `'&scoreId=`+ item.id +`">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
                                 <a href="great.html?id=` +
               item.passageId + `&userId=` + item.userId +
-              `&author=` + item.userName + `" class="link external" style="display: inline;">` + item.title +
+              `&scoreId=`+ item.id +`&author=` + item.userName + `" class="link external" style="display: inline;">` + item.title +
               `</a>
                                 </div>
                             </div>

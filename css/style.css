@@ -457,3 +457,11 @@ margin-top: -30px;
 .size-16 {
     font-size: 16px!important;
 }
+
+.badge {
+    background: #597dc0e0;
+  }
+
+.marginlleft-6 {
+    margin-left: 6px!important;
+}
