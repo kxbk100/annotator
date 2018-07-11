@@ -165,7 +165,7 @@
 
       // 获取所有群组
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
+        url: 'http://212.64.11.56:8080/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -207,7 +207,7 @@
       function searchGruop() {
         $("ul[class=group_list]").html("");
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getAllGroup',
+          url: 'http://212.64.11.56:8080/EAnnotation/getAllGroup',
           type: "post",
           success: function (data) {
             $.each(data, function (i, item) {
@@ -246,7 +246,7 @@
       //判断哪些组已经加入
       function joined() {
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
             //获得已加入的群组ID，将已加入的群组的加入按钮变为已加入
@@ -264,7 +264,7 @@
       //加入群组
       function join(groupNumber) {
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/joinGroup?userId=' + localStorage.id + '&groupNumber=' +
+          url: 'http://212.64.11.56:8080/EAnnotation/joinGroup?userId=' + localStorage.id + '&groupNumber=' +
             groupNumber,
           type: "post",
           success: function (data) {
@@ -286,7 +286,7 @@
         $("ul[class=course]").html("")
         //重新获取群组列表
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
             $.each(data, function (i, item) {
@@ -323,7 +323,7 @@
       function create() {
         var name = $("input[name='groupname']").val();
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/createGroup?founderId=' + localStorage.id + '&name=' + name,
+          url: 'http://212.64.11.56:8080/EAnnotation/createGroup?founderId=' + localStorage.id + '&name=' + name,
           type: "post",
           success: function (data) {
             //重新刷新列表，让新创建的群组出现

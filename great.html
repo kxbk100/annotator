@@ -201,7 +201,7 @@
     $('#author').html('批注人：'+author);
     // 获取文章id
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getPassage?id=' + id,
+      url: 'http://212.64.11.56:8080/EAnnotation/getPassage?id=' + id,
       type: "POST",
       success: function (data) {
         $('#title').text(data.title);
@@ -212,7 +212,7 @@
 
     //从数据库获得json类型数据并解析
     function getAnnotator(passageId) {
-      app.request.get('http://192.168.1.193/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+      app.request.get('http://212.64.11.56:8080/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
         userId,
         function (data) {
           var result = jQuery.parseJSON(data);
@@ -221,7 +221,7 @@
     }
     //获取成绩
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getHomeById?id=' + userId,
+      url: 'http://212.64.11.56:8080/EAnnotation/getHomeById?id=' + userId,
       type: "POST",
       success: function (data) {
         $('#comment').text(data.remark);

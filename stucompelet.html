@@ -196,7 +196,7 @@
     var id = unescape(r[2]);
     // 获取用户id
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getFinishedHome?id=' + id,
+      url: 'http://212.64.11.56:8080/EAnnotation/getFinishedHome?id=' + id,
       type: "POST",
       success: function (data) {
         passageId(data.passageId);
@@ -213,7 +213,7 @@
     // 获取文章id
     function passageId(id) {
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getPassage?id=' + id,
+        url: 'http://212.64.11.56:8080/EAnnotation/getPassage?id=' + id,
         type: "POST",
         success: function (data) {
           $('#title').text(data.title);
@@ -226,7 +226,7 @@
 
     //从数据库获得json类型数据并解析
     function getAnnotator(passageId, userId) {
-      app.request.get('http://192.168.1.193/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
+      app.request.get('http://212.64.11.56:8080/EAnnotation/getAnnotations?passageId=' + passageId + '&userId=' +
         localStorage.id,
         function (data) {
           var result = jQuery.parseJSON(data);
@@ -238,7 +238,7 @@
       var num = 0;
 
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllAnnotations?passageId=' + id,
+        url: 'http://212.64.11.56:8080/EAnnotation/getAllAnnotations?passageId=' + id,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -354,7 +354,7 @@
     //是否已经点赞
     function isLike(id) {
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id +
+        url: 'http://212.64.11.56:8080/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id +
           `&annotationId=` + id,
         type: "POST",
         success: function (data) {
@@ -374,7 +374,7 @@
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id +
+          url: 'http://212.64.11.56:8080/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id +
             `&annotationId=` + id,
           type: 'post',
           success: function (data) {
@@ -387,7 +387,7 @@
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) - 1);
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id +
+          url: 'http://212.64.11.56:8080/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id +
             `&annotationId=` + id,
           type: 'post',
           success: function (data) {

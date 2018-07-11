@@ -168,7 +168,7 @@
 
             // 获取所有文章
             $.ajax({
-                url: 'http://192.168.1.193/EAnnotation/getPassageByGroup?groupId=' + localStorage.groupid,
+                url: 'http://212.64.11.56:8080/EAnnotation/getPassageByGroup?groupId=' + localStorage.groupid,
                 type: "post",
                 success: function (data) {
                     $.each(data, function (i, item) {
@@ -219,7 +219,7 @@
 
             //班级列表
             $.ajax({
-                url: 'http://192.168.1.193/EAnnotation/getGroupById?groupId=' + localStorage.groupid,
+                url: 'http://212.64.11.56:8080/EAnnotation/getGroupById?groupId=' + localStorage.groupid,
                 type: 'POST',
                 success: function (data) {
                     $('#groupname').html(data.groupName);

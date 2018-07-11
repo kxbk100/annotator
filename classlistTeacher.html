@@ -132,7 +132,7 @@
         $("ul[class=course]").html("");
         
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getAllClassByTech?teacherId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
             $.each(data, function (i, item) {
@@ -170,7 +170,7 @@
       function create() {
         var name = $("input[name='classname']").val();
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/createClass?teacherId=' + localStorage.id + '&name=' + name,
+          url: 'http://212.64.11.56:8080/EAnnotation/createClass?teacherId=' + localStorage.id + '&name=' + name,
           type: "post",
           success: function (data) {
             //重新刷新我的班级列表

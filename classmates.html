@@ -102,7 +102,7 @@
     };
 
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getClassStudents?classId=' + localStorage.classid,
+      url: 'http://212.64.11.56:8080/EAnnotation/getClassStudents?classId=' + localStorage.classid,
       type: "POST",
       success: function (data) {
         $.each(data, function (i, item) {

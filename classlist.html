@@ -134,7 +134,7 @@
 
       // 获取所有班级
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+        url: 'http://212.64.11.56:8080/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -168,7 +168,7 @@
 
       //获取所有的班级列在搜索页面
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllClasses',
+        url: 'http://212.64.11.56:8080/EAnnotation/getAllClasses',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -205,7 +205,7 @@
       //判断哪些班级已经加入
       function joined() {
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
             //获得已加入的班级ID，将已加入的班级的加入按钮变为已加入
@@ -224,7 +224,7 @@
         var classId = parseInt(id);
         classId = classId + 121245;
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/joinClass?userId=' + localStorage.id + '&classNumber=' + classId,
+          url: 'http://212.64.11.56:8080/EAnnotation/joinClass?userId=' + localStorage.id + '&classNumber=' + classId,
           type: "post",
           success: function (data) {
             console.log("success")
@@ -243,7 +243,7 @@
         $("ul[class=course]").html("")
         //重新获取我的班级列表
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
             $.each(data, function (i, item) {

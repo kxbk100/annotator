@@ -20,7 +20,7 @@ if(localStorage.usertype == 1){
 //清除过期localstorage函数
 $(function () {
   $.ajax({
-    url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
+    url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
     type: 'post',
     dataType: 'jsonp',
     xhrFields: {

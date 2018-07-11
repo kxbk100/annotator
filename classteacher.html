@@ -255,7 +255,7 @@
 
     // 获取所有作业
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/techGetHomeList?teacherId=' + localStorage.id + '&classId=' +
+      url: 'http://212.64.11.56:8080/EAnnotation/techGetHomeList?teacherId=' + localStorage.id + '&classId=' +
         localStorage.classid,
       type: "post",
       success: function (data) {
@@ -351,7 +351,7 @@
     })
     //讲义列表
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getHandout?classId=' + localStorage.classid,
+      url: 'http://212.64.11.56:8080/EAnnotation/getHandout?classId=' + localStorage.classid,
       type: "post",
       success: function (data) {
         $.each(data, function (i, item) {
@@ -398,7 +398,7 @@
 
     //优秀作业列表
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getExcellent?classId=' + localStorage.classid,
+      url: 'http://212.64.11.56:8080/EAnnotation/getExcellent?classId=' + localStorage.classid,
       type: "post",
       success: function (data) {
         $.each(data, function (i, item) {
@@ -446,7 +446,7 @@
 
     //班级列表
     $.ajax({
-      url:'http://192.168.1.193/EAnnotation/getClassById?id='+ localStorage.classid,
+      url:'http://212.64.11.56:8080/EAnnotation/getClassById?id='+ localStorage.classid,
       type:'POST',
       success: function (data) {
         $('#classname').html(data.className);
