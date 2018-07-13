@@ -53,8 +53,8 @@
 
       <div class="popup popup-about">
 
-        <form class="searchbar">
-          <div class="searchbar-inner">
+        <form class="searchbar" style="padding-top:10px ">
+          <div class="searchbar-inner margin-top10">
             <div class="searchbar-input-wrap">
               <input type="search" placeholder="搜索">
               <i class="searchbar-icon"></i>
@@ -224,7 +224,8 @@
         var classId = parseInt(id);
         classId = classId + 121245;
         $.ajax({
-          url: 'http://212.64.11.56:8080/EAnnotation/joinClass?userId=' + localStorage.id + '&classNumber=' + classId,
+          url: 'http://212.64.11.56:8080/EAnnotation/joinClass?userId=' + localStorage.id + '&classNumber=' +
+            classId,
           type: "post",
           success: function (data) {
             console.log("success")

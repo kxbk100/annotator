@@ -22,7 +22,7 @@
     .popup.create {
       top: unset;
       bottom: 30%;
-      height: 40%;
+      height: 50%;
     }
 
     .create_title {
@@ -69,16 +69,19 @@
           <ul>
             <li class="item-content item-input">
               <div class="item-inner">
-                <div class="item-title item-label text-center" style="font-size: 20px;">班级名</div>
-                <div class="item-input-wrap size-20">
-                  <input type="text" name="classname">
+                <!-- <div class="item-title item-label text-center" style="font-size: 20px;">班级名</div> -->
+                <div class="item-input-wrap size-20" style="width: 70%;margin-left: 25%;">
+                    <div class="name-iuput">
+                        <i class="icon f7-icons">layers_fill</i>
+                      </div>
+                  <input type="text" name="classname" placeholder="请输入班级名" style="width: 80%;margin-left: 35px;">
                 </div>
               </div>
             </li>
           </ul>
         </div>
         <div class="bottom text-center">
-          <button class="col button color-gray size-16 popup-close" id="create">创建</button>
+          <button class="col button color-white size-16 popup-close create_btn margin0-auto bgcolor " id="create">创建</button>
           <a class="link popup-close margin-top10 size-16" href="#">关闭</a>
         </div>
       </div>

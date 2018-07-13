@@ -22,7 +22,7 @@
     .popup.create {
       top: unset;
       bottom: 30%;
-      height: 40%;
+      height: 50%;
     }
 
     .create_title {
@@ -66,18 +66,16 @@
       </div>
 
       <div class="popup popup-about">
-
-        <form class="searchbar">
-          <div class="searchbar-inner">
-            <div class="searchbar-input-wrap">
-              <input type="search" placeholder="搜索">
-              <i class="searchbar-icon"></i>
-              <span class="input-clear-button"></span>
-            </div>
-            <span class="searchbar-disable-button">取消</span>
-          </div>
-        </form>
-
+              <form class="searchbar" style="padding-top:10px ">
+                <div class="searchbar-inner margin-top10">
+                  <div class="searchbar-input-wrap">
+                    <input type="search" placeholder="搜索">
+                    <i class="searchbar-icon"></i>
+                    <span class="input-clear-button"></span>
+                  </div>
+                  <span class="searchbar-disable-button">取消</span>
+                </div>
+              </form>
         <div class="page-content" style="height: 88%">
           <!-- Searchbar backdrop -->
           <div class="searchbar-backdrop"></div>
@@ -102,8 +100,8 @@
           </div>
         </div>
         <div class="text-center">
-            <a class="link popup-close" href="#" id="cancel">关闭</a>
-          </div>
+          <a class="link popup-close" href="#" id="cancel">关闭</a>
+        </div>
       </div>
 
       <div class="popup popup2 create">
@@ -112,19 +110,22 @@
           <ul>
             <li class="item-content item-input">
               <div class="item-inner">
-                <div class="item-title item-label text-center" style="font-size: 20px;">群组名</div>
-                <div class="item-input-wrap size-20">
-                  <input type="text" name="groupname">
-                </div>
+                <!-- <div class="item-title item-label text-center" style="font-size: 20px;">群组名</div> -->
+                <div class="item-input-wrap size-20" style="width: 70%;margin-left: 25%;">
+                  <div class="name-iuput">
+                      <i class="icon f7-icons">person</i>
+                    </div>
+                <input type="text" name="classname" placeholder="请输入群组名" style="width: 80%;margin-left: 35px;">
+              </div>
               </div>
             </li>
           </ul>
-      </div>
-      <div class="bottom text-center">
-          <button class="col button color-gray size-16 popup-close" id="create">创建</button>
+        </div>
+        <div class="bottom text-center">
+          <button class="col button color-white size-16 popup-close create_btn margin0-auto bgcolor" id="create">创建</button>
           <a class="link popup-close margin-top10 size-16" href="#">关闭</a>
         </div>
-</div>
+      </div>
       <div class=" page-content">
         <div class="list class">
           <ul>

@@ -465,3 +465,26 @@ margin-top: -30px;
 .marginlleft-6 {
     margin-left: 6px!important;
 }
+
+.margin-top20 {
+    margin-top: 20px;
+}
+
+.create_btn {
+    width: 70%;
+}
+
+.margin0-auto {
+    margin: 0 auto;
+}
+
+.bgcolor {
+   background-color: #638BD4;
+}
+
+.name-iuput {
+    float: left;
+    width: 25px;
+    height: 44px;
+    padding-top: 7.5px;
+}
