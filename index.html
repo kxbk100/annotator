@@ -58,10 +58,10 @@
               <span class="tabbar-label">班级</span>
             </a>
             <a href="#" class="tab-link an-button link external" id="group_btn">
-                <i class="icon f7-icons">persons</i>
-                <span class="tabbar-label">群组</span>
-              </a>
-              
+              <i class="icon f7-icons">persons</i>
+              <span class="tabbar-label">群组</span>
+            </a>
+
             <a href="person.html" class="tab-link an-button link external">
               <i class="icon f7-icons">person_fill</i>
               <span class="tabbar-label">我的</span>
@@ -105,15 +105,17 @@
   <script src="js/app.js"></script>
   <script src="js/panpan.js"></script>
   <script>
-    window.onload = index();    //index函数里的是需要加载完页面立即执行的函数
+    window.onload = index(); //index函数里的是需要加载完页面立即执行的函数
     function index() {
       // 获取文章
       $.ajax({
         url: 'http://212.64.11.56:8080/EAnnotation/getAllPassages',
         type: "post",
         success: function (data) {
+          $$("ul[class=index]").html("");
+
           $.each(data, function (i, item) {
-            if (item.photo) {               //如果有图片则添加图片card
+            if (item.photo) { //如果有图片则添加图片card
               $("ul[class=index]").append(
                 `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` +
@@ -152,7 +154,7 @@
                 isLike(item.id);
               };
 
-            } else {                      //无图片card
+            } else { //无图片card
               $("ul[class=index]").append(
                 `<div class="card">
                   <div class="card-header">` + item.title +
@@ -255,9 +257,10 @@
     }
 
     //判断批注是否已经点赞
-    function anisLike(passageId,annotationId) {
+    function anisLike(passageId, annotationId) {
       $.ajax({
-        url: 'http://212.64.11.56:8080/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id + '&annotationId=' + annotationId,
+        url: 'http://212.64.11.56:8080/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id +
+          '&annotationId=' + annotationId,
         type: "POST",
         success: function (data) {
           if (data == true) {
@@ -281,8 +284,8 @@
           }, ],
           verticalButtons: true,
         }).open();
-      } 
-        //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
+      }
+      //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
       else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
         "rgb(129, 132, 139)") {
         $('#' + id).css("color", "#638BD4");
@@ -296,7 +299,7 @@
           success: function (data) {},
           error: function () {}
         })
-      } 
+      }
       //颜色为蓝色，取消点赞调用取消点赞接口并把颜色重置为灰色
       else {
         $('#' + id).css("color", "rgb(129, 132, 139)");
@@ -316,7 +319,7 @@
 
     //获取排行
     $('#rank').on("touchstart", function () {
-      $("ul[class=rank]").html(" ");    //清空排行内容，防止重复出现
+      $("ul[class=rank]").html(" "); //清空排行内容，防止重复出现
       rank();
     });
     //排行榜渲染函数，原理同渲染推荐
@@ -325,6 +328,8 @@
         url: 'http://212.64.11.56:8080/EAnnotation/getRank',
         type: "post",
         success: function (data) {
+          $$("ul[class=rank]").html("");
+
           $.each(data, function (i, item) {
             console.log(item.type)
             if (item.type != "annotation") {
@@ -368,7 +373,7 @@
                   isLike(item.passageId);
                 };
 
-              } else if(!item.photo) {
+              } else if (!item.photo) {
                 $("ul[class=rank]").append(
                   `<div class="card">
                   <div class="card-header">` + item.title +
@@ -438,7 +443,7 @@
                     </div>`
               );
               if (localStorage.id != null && localStorage.id != "undefined") {
-                anisLike(item.passageId,item.id);
+                anisLike(item.passageId, item.id);
               };
             }
           })

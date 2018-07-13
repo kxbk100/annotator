@@ -62,10 +62,8 @@ var $ptrContent = $$('.ptr-content');
 $ptrContent.on('ptr:refresh', function (e) {
   // Emulate 2s loading
   setTimeout(function () {
-    $$("ul[class=index]").html("");
     index();
     if($$("ul[class=rank]").html() != ""){
-      $$("ul[class=rank]").html("");
       rank();
     }
     app.ptr.done(); // or e.detail();
