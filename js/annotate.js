@@ -419,7 +419,7 @@ function isLike(id) {
     type: "POST",
     success: function (data) {
       if (data == true) {
-        $('#' + id).css("color", "#638BD4");
+        $('#right' + id).css("color", "rgb(99, 139, 212)");
       }
     }
   })

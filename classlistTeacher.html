@@ -178,6 +178,7 @@
           success: function (data) {
             //重新刷新我的班级列表
             allClass();
+            $("input[name='classname']").val("");
             app.dialog.create({
               text: '创建成功',
               buttons: [{
@@ -185,7 +186,7 @@
               }, ],
               verticalButtons: true,
             }).open();
-            $("input[name='classname']").val()
+            
           },
           error: function (e) {
             app.dialog.create({

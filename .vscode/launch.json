@@ -18,7 +18,7 @@
             "remoteRoot": "${workspaceFolder}",
             "port": 3000,
             "secret": "my_secret",
-            "host": "localhost"
+            "host": "212.64.11.56:8080"
         },
         {
             "name": "Python: Terminal (integrated)",
