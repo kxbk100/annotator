@@ -329,7 +329,7 @@
           success: function (data) {
             //重新刷新列表，让新创建的群组出现
             searchGruop();
-
+            join(data);
             app.dialog.create({
               text: '创建成功',
               buttons: [{
@@ -353,7 +353,6 @@
             }).open();
           }
         });
-        join(data);
         regroup();
       }
     </script>

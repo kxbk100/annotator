@@ -120,7 +120,7 @@
                 `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` +
                 item
-                .id +
+                  .id +
                 `" class="link external black" style="width:100%;">
                     <div style="background-image:url(http://212.64.11.56:8080/` +
                 item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
@@ -191,7 +191,7 @@
             }
           })
         },
-        error: function (e) {}
+        error: function (e) { }
       })
 
     }
@@ -270,7 +270,7 @@
       })
     }
 
-    //点赞函数
+    //文章点赞函数
     function like(id) {
       //先判断有没有登录
       if (localStorage.id == -1) {
@@ -281,7 +281,7 @@
             onClick: function () {
               window.location.href = "person.html";
             }
-          }, ],
+          },],
           verticalButtons: true,
         }).open();
       }
@@ -296,8 +296,8 @@
         $.ajax({
           url: 'http://212.64.11.56:8080/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
           type: 'post',
-          success: function (data) {},
-          error: function () {}
+          success: function (data) { },
+          error: function () { }
         })
       }
       //颜色为蓝色，取消点赞调用取消点赞接口并把颜色重置为灰色
@@ -312,7 +312,54 @@
           success: function (data) {
 
           },
-          error: function () {}
+          error: function () { }
+        })
+      }
+    }
+
+    //批注点赞函数
+    function anlike(passageId,id) {
+      //先判断有没有登录
+      if (localStorage.id == -1) {
+        app.dialog.create({
+          text: '请先登录',
+          buttons: [{
+            text: '确定',
+            onClick: function () {
+              window.location.href = "person.html";
+            }
+          },],
+          verticalButtons: true,
+        }).open();
+      }
+      //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
+      else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
+        "rgb(129, 132, 139)") {
+        $('#' + id).css("color", "#638BD4");
+        $('#rank' + id).css("color", "#638BD4"); //排行榜也一起变化
+        var count = $("span[class='" + id + "']").html();
+        $("span[class='" + id + "']").html(parseInt(count) + 1);
+
+        $.ajax({
+          url: 'http://212.64.11.56:8080/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id+'&annotationId=' + id,
+          type: 'post',
+          success: function (data) { },
+          error: function () { }
+        })
+      }
+      //颜色为蓝色，取消点赞调用取消点赞接口并把颜色重置为灰色
+      else {
+        $('#' + id).css("color", "rgb(129, 132, 139)");
+        $('#rank' + id).css("color", "rgb(129, 132, 139)");
+        var count = $("span[class='" + id + "']").html();
+        $("span[class='" + id + "']").html(parseInt(count) - 1);
+        $.ajax({
+          url: 'http://212.64.11.56:8080/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id+'&annotationId=' + id,
+          type: 'post',
+          success: function (data) {
+
+          },
+          error: function () { }
         })
       }
     }
@@ -372,8 +419,8 @@
                 if (localStorage.id != -1) {
                   isLike(item.passageId);
                 };
-
-              } else if (!item.photo) {
+                //无图card
+              } else if (!item.photo && item.type == "passage") {
                 $("ul[class=rank]").append(
                   `<div class="card">
                   <div class="card-header">` + item.title +
@@ -408,7 +455,7 @@
                   isLike(item.passageId);
                 };
               }
-
+              //批注card
             } else {
               $("ul[class='rank']").append(
                 `<div class="card">
@@ -427,9 +474,9 @@
                     </div>
                     <div class="card-footer">
                       <a href="#" class="link" id="rank` +
-                item.id + `" ontouchstart="like(` +
-                item.id +
-                `)">
+                item.id + `" ontouchstart="anlike(` +
+                item.passageId +
+                `,`+ item.id +`)">
                         <i class="f7-icons size-18">heart_fill</i><span class="` +
                 item.id +
                 `">` +
@@ -448,7 +495,7 @@
             }
           })
         },
-        error: function (e) {}
+        error: function (e) { }
       })
     }
   </script>
