@@ -18,6 +18,7 @@
     .ios a {
       color: black;
     }
+
   </style>
 </head>
 
@@ -68,7 +69,7 @@
             <li>
               <div class="item-content class">
                 <div class="item-media">
-                  <img src="images/teacher.jpg" width="44"/>
+                  <img src="images/teacher.jpg" width="44" />
                 </div>
                 <div class="item-inner">
                   <div class="item-title">
@@ -153,6 +154,23 @@
                 <div class="list media-list">
                   <ul class="great0">
 
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <li class="accordion-item accordion-item">
+              <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                  <div class="item-title">未能按时完成的作业</div>
+                  <div class="item-after">
+                    <span class="badge" id="undonum">0</span>
+                  </div>
+                </div>
+              </a>
+              <div class="accordion-item-content">
+                <div class="list media-list">
+                  <ul class="undo">
 
                   </ul>
                 </div>
@@ -164,8 +182,6 @@
     </div>
     <script src="js/framework7.min.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/rangy-core.js"></script>
-    <script src="js/rangy-classapplier.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
       // 返回按钮
@@ -221,33 +237,41 @@
       };
 
       //获取登录者id
-      $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
-        type: 'post',
-        dataType: 'jsonp',
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (data) {
-          localStorage.id = data.id;
-        },
-        error: function () {}
-      })
+      // $.ajax({
+      //   url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
+      //   type: 'post',
+      //   dataType: 'jsonp',
+      //   xhrFields: {
+      //     withCredentials: true
+      //   },
+      //   crossDomain: true,
+      //   success: function (data) {
+      //     localStorage.id = data.id;
+      //   },
+      //   error: function () {}
+      // })
 
       var num = 0,
         num1 = 0,
         num2 = 0,
-        num3 = 0;
-
+        num3 = 0,
+        num4 = 0;
       // 获取所有作业
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
+        url: 'http://212.64.11.56:8080/EAnnotation/getAllHomework?studentId=' + localStorage.id + '&classId=' +
           localStorage.classid,
         type: "post",
         success: function (data) {
+          //获取现在的时间
+          var now = new Date().getTime();
+
           $.each(data, function (i, item) {
-            if (item.finish == false) {
+            //比较时间大小
+            var endtime = item.endTime;
+            endtime = new Date(Date.parse(endtime.replace(/-/gi, "-")));
+            endtime = endtime.getTime();
+
+            if (item.finish == false && now < endtime) {
               num++;
               $('#unfinnum').text(num);
 
@@ -255,12 +279,51 @@
                 `  <li class="swipeout ">
                       <div class="swipeout-content">
                         <label class="item-content item-checkbox" ontouchstart="window.location.href='subanntator.html?id=` +
-                item.passageId + `'">
+                item.passageId +
+                `'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
                                 <a href="subanntator.html?id=` +
                 item.passageId + `" class="link external" style="display: inline;">` + item.passageTitle +
+                `</a>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">` +
+                item.passageTheme + ` · ` + item.endTime +
+                `截止</div>
+                            <div class="item-text">
+                              ` +
+                getcontent(item.passageContent) +
+                `
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#" class="color-green swipeout-overswipe alert-reply">Reply</a>
+                        <a href="#" class="color-blue alert-forward">Forward</a>
+                      </div>
+                      <div class="swipeout-actions-right">
+                        <a href="#" class="color-orange alert-mark">置顶</a>
+                        <a href="#" data-confirm="您确定要删除该次作业记录吗？" class="swipeout-delete swipeout-overswipe">删除</a>
+                      </div>
+                    </li>`
+              );
+              //已经截止的但是没做完的放到未能按时完成列表
+            } else if (item.finish == false && now > endtime) {
+              num4++;
+              $('#undonum').text(num4);
+
+              $("ul[class=undo]").append(
+                `  <li class="swipeout ">
+                      <div class="swipeout-content">
+                        <label class="item-content item-checkbox" ontouchstart="window.location.href='#">
+                          <div class="item-inner">
+                            <div class="item-title-row">
+                              <div class="item-title">
+                                <a href="#" class="link external" style="display: inline;">` +
+                item.passageTitle +
                 `</a>
                                 </div>
                             </div>
@@ -297,7 +360,8 @@
                 `  <li class="swipeout ">
                       <div class="swipeout-content">
                         <label class="item-content item-checkbox" ontouchstart="window.location.href='stucompelet.html?id=` +
-                item.id + `'">
+                item.id +
+                `'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
@@ -337,7 +401,7 @@
       })
       //讲义列表
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getHandout?classId=' + localStorage.classid,
+        url: 'http://212.64.11.56:8080/EAnnotation/getHandout?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -346,13 +410,13 @@
             $('#handout').append(
               `  <li class="swipeout ">
                       <div class="swipeout-content">
-                        <label href="#" class="item-content item-checkbox" ontouchstart="window.location.href='handout.html?id=` +
+                        <label href="#" class="item-content item-checkbox" ontouchstart="window.location.href='handoutStudent.html?id=` +
               item.id + `&teacherId=` + item.teacherId +
               `'">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
-                                <a href="handout.html?id=` +
+                                <a href="handoutStudent.html?id=` +
               item.id + `&teacherId=` + item.teacherId +
               `" class="link external" style="display: inline;">` + item.title +
               `</a>
@@ -385,7 +449,7 @@
 
       //优秀作业列表
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getExcellent?classId=' + localStorage.classid,
+        url: 'http://212.64.11.56:8080/EAnnotation/getExcellent?classId=' + localStorage.classid,
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
@@ -396,20 +460,21 @@
                       <div class="swipeout-content">
                         <label href="#" class="item-content item-checkbox" ontouchstart="window.location.href='great.html?id=` +
               item.passageId + `&userId=` + item.userId +
-              `&author=`+ item.userName +`'">
+              `&author=` + item.userName +
+              `'&scoreId=`+ item.id +`">
                           <div class="item-inner">
                             <div class="item-title-row">
                               <div class="item-title">
                                 <a href="great.html?id=` +
               item.passageId + `&userId=` + item.userId +
-              `&author=`+ item.userName +`" class="link external" style="display: inline;">` + item.title +
+              `&scoreId=`+ item.id +`&author=` + item.userName + `" class="link external" style="display: inline;">` + item.title +
               `</a>
                                 </div>
                             </div>
                             <div class="item-subtitle">` +
 
-            item.theme + ` · 批注人： ` + item.userName +
-            `</div>
+              item.theme + ` · 批注人： ` + item.userName +
+              `</div>
                             <div class="item-text">
                               ` +
               getcontent(item.content) +
@@ -434,7 +499,7 @@
 
       //班级列表
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getClassById?id=' + localStorage.classid,
+        url: 'http://212.64.11.56:8080/EAnnotation/getClassById?id=' + localStorage.classid,
         type: 'POST',
         success: function (data) {
           $('#classname').html(data.className);

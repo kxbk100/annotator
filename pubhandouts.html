@@ -40,7 +40,7 @@
       <div class="navbar">
         <div class="navbar-inner">
           <div class="left">
-            <a href="classteacher.html" class="item-link icon external">
+            <a href="javascript:history.back(-1);" class="item-link icon external">
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
@@ -80,7 +80,7 @@
               <div class="item-media">
                 <i class="icon demo-list-icon"></i>
               </div>
-              <div class="item-inner">
+              <div class="item-inner marginlleft-6">
                 <div class="item-title item-label">内容</div>
                 <div class="item-input-wrap">
                   <script id="editor" type="text/plain" style="height: 300px;"></script>
@@ -314,7 +314,7 @@
     $("#submit").on('touchstart', function () {
       var form = new FormData($('#handouts')[0]);
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/addPassage',
+        url: 'http://212.64.11.56:8080/EAnnotation/addPassage',
         type: 'POST',
         data: form,
         processData: false,

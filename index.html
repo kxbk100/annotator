@@ -57,10 +57,11 @@
               <i class="icon f7-icons">layers_fill</i>
               <span class="tabbar-label">班级</span>
             </a>
-            <!-- <a href="#" class="tab-link an-button link external">
-                <i class="icon f7-icons">persons</i>
-                <span class="tabbar-label">群组</span>
-              </a> -->
+            <a href="#" class="tab-link an-button link external" id="group_btn">
+              <i class="icon f7-icons">persons</i>
+              <span class="tabbar-label">群组</span>
+            </a>
+
             <a href="person.html" class="tab-link an-button link external">
               <i class="icon f7-icons">person_fill</i>
               <span class="tabbar-label">我的</span>
@@ -77,7 +78,7 @@
                 <div class="preloader"></div>
                 <div class="ptr-arrow"></div>
               </div>
-              <div class="list media-list index">
+              <div class="list media-list index ">
                 <ul class="index">
 
                 </ul>
@@ -89,7 +90,7 @@
                 <div class="ptr-arrow"></div>
               </div>
               <div class="list media-list index">
-                <ul class="rank">
+                <ul class="rank" style="background:none;">
 
                 </ul>
               </div>
@@ -102,24 +103,26 @@
   <script src="js/framework7.min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/pan.js"></script>
+  <script src="js/panpan.js"></script>
   <script>
-    window.onload = index();    //index函数里的是需要加载完页面立即执行的函数
+    window.onload = index(); //index函数里的是需要加载完页面立即执行的函数
     function index() {
       // 获取文章
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getAllPassages',
+        url: 'http://212.64.11.56:8080/EAnnotation/getAllPassages',
         type: "post",
         success: function (data) {
+          $$("ul[class=index]").html("");
+
           $.each(data, function (i, item) {
-            if (item.photo) {               //如果有图片则添加图片card
+            if (item.photo) { //如果有图片则添加图片card
               $("ul[class=index]").append(
                 `<div class="card demo-card-header-pic">
                   <a href="anntator.html?id=` +
                 item
-                .id +
+                  .id +
                 `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.193/` +
+                    <div style="background-image:url(http://212.64.11.56:8080/` +
                 item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
                 `</div>
                   </a>
@@ -134,7 +137,7 @@
                   </p>
                 </div>
                 <div class="card-footer">
-                  <a href="#" class="link" style="color" id="` +
+                  <a href="#" class="link" id="` +
                 item.id + `" ontouchstart="like(` +
                 item.id +
                 `)">
@@ -147,11 +150,11 @@
                 </div>
                 `
               )
-              if (localStorage.id != null && localStorage.id != "undefined") {
+              if (localStorage.id != -1) {
                 isLike(item.id);
               };
 
-            } else {                      //无图片card
+            } else { //无图片card
               $("ul[class=index]").append(
                 `<div class="card">
                   <div class="card-header">` + item.title +
@@ -182,13 +185,13 @@
                   </div>
                 </div>`
               )
-              if (localStorage.id != null && localStorage.id != "undefined") {
+              if (localStorage.id != -1) {
                 isLike(item.id);
               };
             }
           })
         },
-        error: function (e) {}
+        error: function (e) { }
       })
 
     }
@@ -239,10 +242,10 @@
       return result;
     };
 
-    //判断是否已经点赞
+    //判断文章是否已经点赞
     function isLike(id) {
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
+        url: 'http://212.64.11.56:8080/EAnnotation/isLike?passageId=' + id + '&userId=' + localStorage.id,
         type: "POST",
         success: function (data) {
           if (data == true) {
@@ -253,10 +256,24 @@
       })
     }
 
-    //点赞函数
+    //判断批注是否已经点赞
+    function anisLike(passageId, annotationId) {
+      $.ajax({
+        url: 'http://212.64.11.56:8080/EAnnotation/isLike?passageId=' + passageId + '&userId=' + localStorage.id +
+          '&annotationId=' + annotationId,
+        type: "POST",
+        success: function (data) {
+          if (data == true) {
+            $('#rank' + annotationId).css("color", "#638BD4");
+          }
+        }
+      })
+    }
+
+    //文章点赞函数
     function like(id) {
       //先判断有没有登录
-      if (localStorage.id == null || localStorage.id == "undefined") {
+      if (localStorage.id == -1) {
         app.dialog.create({
           text: '请先登录',
           buttons: [{
@@ -264,11 +281,11 @@
             onClick: function () {
               window.location.href = "person.html";
             }
-          }, ],
+          },],
           verticalButtons: true,
         }).open();
-      } 
-        //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
+      }
+      //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
       else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
         "rgb(129, 132, 139)") {
         $('#' + id).css("color", "#638BD4");
@@ -277,12 +294,12 @@
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
+          url: 'http://212.64.11.56:8080/EAnnotation/setLike?passageId=' + id + '&userId=' + localStorage.id,
           type: 'post',
-          success: function (data) {},
-          error: function () {}
+          success: function (data) { },
+          error: function () { }
         })
-      } 
+      }
       //颜色为蓝色，取消点赞调用取消点赞接口并把颜色重置为灰色
       else {
         $('#' + id).css("color", "rgb(129, 132, 139)");
@@ -290,27 +307,76 @@
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) - 1);
         $.ajax({
-          url: 'http://192.168.1.193/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
+          url: 'http://212.64.11.56:8080/EAnnotation/cancelLike?passageId=' + id + '&userId=' + localStorage.id,
           type: 'post',
           success: function (data) {
 
           },
-          error: function () {}
+          error: function () { }
+        })
+      }
+    }
+
+    //批注点赞函数
+    function anlike(passageId,id) {
+      //先判断有没有登录
+      if (localStorage.id == -1) {
+        app.dialog.create({
+          text: '请先登录',
+          buttons: [{
+            text: '确定',
+            onClick: function () {
+              window.location.href = "person.html";
+            }
+          },],
+          verticalButtons: true,
+        }).open();
+      }
+      //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
+      else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
+        "rgb(129, 132, 139)") {
+        $('#' + id).css("color", "#638BD4");
+        $('#rank' + id).css("color", "#638BD4"); //排行榜也一起变化
+        var count = $("span[class='" + id + "']").html();
+        $("span[class='" + id + "']").html(parseInt(count) + 1);
+
+        $.ajax({
+          url: 'http://212.64.11.56:8080/EAnnotation/setLike?passageId=' + passageId + '&userId=' + localStorage.id+'&annotationId=' + id,
+          type: 'post',
+          success: function (data) { },
+          error: function () { }
+        })
+      }
+      //颜色为蓝色，取消点赞调用取消点赞接口并把颜色重置为灰色
+      else {
+        $('#' + id).css("color", "rgb(129, 132, 139)");
+        $('#rank' + id).css("color", "rgb(129, 132, 139)");
+        var count = $("span[class='" + id + "']").html();
+        $("span[class='" + id + "']").html(parseInt(count) - 1);
+        $.ajax({
+          url: 'http://212.64.11.56:8080/EAnnotation/cancelLike?passageId=' + passageId + '&userId=' + localStorage.id+'&annotationId=' + id,
+          type: 'post',
+          success: function (data) {
+
+          },
+          error: function () { }
         })
       }
     }
 
     //获取排行
     $('#rank').on("touchstart", function () {
-      $("ul[class=rank]").html(" ");    //清空排行内容，防止重复出现
+      $("ul[class=rank]").html(" "); //清空排行内容，防止重复出现
       rank();
     });
     //排行榜渲染函数，原理同渲染推荐
     function rank() {
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getRank',
+        url: 'http://212.64.11.56:8080/EAnnotation/getRank',
         type: "post",
         success: function (data) {
+          $$("ul[class=rank]").html("");
+
           $.each(data, function (i, item) {
             console.log(item.type)
             if (item.type != "annotation") {
@@ -320,7 +386,7 @@
                   <a href="anntator.html?id=` +
                   item.passageId +
                   `" class="link external black" style="width:100%;">
-                    <div style="background-image:url(http://192.168.1.193/` +
+                    <div style="background-image:url(http://212.64.11.56:8080/` +
                   item.photo + `); width:100%;" class="card-header align-items-flex-end">` + item.title +
                   `</div>
                   </a>
@@ -350,11 +416,11 @@
                 </div>
                 `
                 )
-                if (localStorage.id != null && localStorage.id != "undefined") {
+                if (localStorage.id != -1) {
                   isLike(item.passageId);
                 };
-
-              } else {
+                //无图card
+              } else if (!item.photo && item.type == "passage") {
                 $("ul[class=rank]").append(
                   `<div class="card">
                   <div class="card-header">` + item.title +
@@ -385,11 +451,11 @@
                   </div>
                 </div>`
                 )
-                if (localStorage.id != null && localStorage.id != "undefined") {
+                if (localStorage.id != -1) {
                   isLike(item.passageId);
                 };
               }
-
+              //批注card
             } else {
               $("ul[class='rank']").append(
                 `<div class="card">
@@ -408,9 +474,9 @@
                     </div>
                     <div class="card-footer">
                       <a href="#" class="link" id="rank` +
-                item.id + `" ontouchstart="like(` +
-                item.id +
-                `)">
+                item.id + `" ontouchstart="anlike(` +
+                item.passageId +
+                `,`+ item.id +`)">
                         <i class="f7-icons size-18">heart_fill</i><span class="` +
                 item.id +
                 `">` +
@@ -424,12 +490,12 @@
                     </div>`
               );
               if (localStorage.id != null && localStorage.id != "undefined") {
-                isLike(item.id);
+                anisLike(item.passageId, item.id);
               };
             }
           })
         },
-        error: function (e) {}
+        error: function (e) { }
       })
     }
   </script>

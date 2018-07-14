@@ -412,10 +412,6 @@ font-size: 40px;
 margin-top: -30px;
 }
 
-.margin-top10 {
-    margin-top: 10px;
-}
-
 .inline {
     display: inline;
 }
@@ -449,3 +445,46 @@ margin-top: -30px;
     overflow: hidden;
 }
 
+.ios .btn {
+    width: 20%;
+    margin: 0 auto;
+}
+
+.create_title {
+    font-size: 16px;
+}
+
+.size-16 {
+    font-size: 16px!important;
+}
+
+.badge {
+    background: #597dc0e0;
+  }
+
+.marginlleft-6 {
+    margin-left: 6px!important;
+}
+
+.margin-top20 {
+    margin-top: 20px;
+}
+
+.create_btn {
+    width: 70%;
+}
+
+.margin0-auto {
+    margin: 0 auto;
+}
+
+.bgcolor {
+   background-color: #638BD4;
+}
+
+.name-iuput {
+    float: left;
+    width: 25px;
+    height: 44px;
+    padding-top: 7.5px;
+}

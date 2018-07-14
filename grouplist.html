@@ -9,7 +9,7 @@
   <!-- Color theme for statusbar -->
   <meta name="theme-color" content="#000">
   <!-- Your app title -->
-  <title>班级</title>
+  <title>群组</title>
   <!-- Path to Framework7 Library CSS -->
   <link rel="stylesheet" href="css/framework7.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
@@ -17,6 +17,18 @@
   <style>
     .ios a {
       color: black;
+    }
+
+    .popup.create {
+      top: unset;
+      bottom: 30%;
+      height: 50%;
+    }
+
+    .create_title {
+      font-size: 25px;
+      margin: 10px auto;
+      text-align: center;
     }
   </style>
 </head>
@@ -31,14 +43,16 @@
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
-          <div class="title">班级列表</div>
+          <div class="title">群组列表</div>
           <div class="right"></div>
         </div>
       </div>
 
+
       <div class="toolbar toolbar-bottom-md fab-morph-target tabbar-labels">
         <div class="toolbar-inner">
-          <a class="link popup-open" href="#" data-popup=".popup-about">加入班级</a>
+          <a class="link popup-open" href="#" data-popup=".popup-about">加入群组</a>
+          <a class="link popup-open" href="#" data-popup=".popup2">创建群组</a>
           <a class="link fab-close">取消</a>
         </div>
       </div>
@@ -52,18 +66,16 @@
       </div>
 
       <div class="popup popup-about">
-
-        <form class="searchbar" style="padding-top:10px ">
-          <div class="searchbar-inner margin-top10">
-            <div class="searchbar-input-wrap">
-              <input type="search" placeholder="搜索">
-              <i class="searchbar-icon"></i>
-              <span class="input-clear-button"></span>
-            </div>
-            <span class="searchbar-disable-button">取消</span>
-          </div>
-        </form>
-
+              <form class="searchbar" style="padding-top:10px ">
+                <div class="searchbar-inner margin-top10">
+                  <div class="searchbar-input-wrap">
+                    <input type="search" placeholder="搜索">
+                    <i class="searchbar-icon"></i>
+                    <span class="input-clear-button"></span>
+                  </div>
+                  <span class="searchbar-disable-button">取消</span>
+                </div>
+              </form>
         <div class="page-content" style="height: 88%">
           <!-- Searchbar backdrop -->
           <div class="searchbar-backdrop"></div>
@@ -73,18 +85,18 @@
           </div>
           <!-- search target list -->
           <div class="list searchbar-found">
-            <ul class="class_list">
+            <ul class="group_list">
 
               <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title">班级</div>
+                  <div class="item-title">群组</div>
                 </div>
               </li>
             </ul>
           </div>
           <!-- Nothing found message -->
           <div class="block searchbar-not-found">
-            <div class="block-inner">找不到该班级</div>
+            <div class="block-inner">找不到该群组</div>
           </div>
         </div>
         <div class="text-center">
@@ -92,14 +104,36 @@
         </div>
       </div>
 
+      <div class="popup popup2 create">
+        <div class="create_title">创建群组</div>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <!-- <div class="item-title item-label text-center" style="font-size: 20px;">群组名</div> -->
+                <div class="item-input-wrap size-20" style="width: 70%;margin-left: 25%;">
+                  <div class="name-iuput">
+                      <i class="icon f7-icons">person</i>
+                    </div>
+                <input type="text" name="groupname" placeholder="请输入群组名" style="width: 80%;margin-left: 35px;">
+              </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom text-center">
+          <button class="col button color-white size-16 popup-close create_btn margin0-auto bgcolor" id="create">创建</button>
+          <a class="link popup-close margin-top10 size-16" href="#">关闭</a>
+        </div>
+      </div>
       <div class=" page-content">
         <div class="list class">
           <ul>
-            <!-- 未完成作业栏 -->
+
             <li class="accordion-item accordion-item-opened">
               <a href="#" class="item-content item-link">
                 <div class="item-inner">
-                  <div class="item-title">我的班级</div>
+                  <div class="item-title">我的群组</div>
                   <div class="item-after">
                     <!-- <span class="badge color-red" id="unfinnum">0</span> -->
                   </div>
@@ -108,8 +142,6 @@
               <div class="accordion-item-content">
                 <div class="list media-list">
                   <ul class="course">
-
-
                   </ul>
                 </div>
               </div>
@@ -132,26 +164,26 @@
         })
       };
 
-      // 获取所有班级
+      // 获取所有群组
       $.ajax({
-        url: 'http://212.64.11.56:8080/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+        url: 'http://212.64.11.56:8080/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
         type: "post",
         success: function (data) {
           $.each(data, function (i, item) {
             $("ul[class=course]").append(
               `<li>
-                    <a href="class.html" class="link item-content external" ontouchstart="pushclass(` +
-              item.classId +
+                    <a href="group.html" class="link item-content external" ontouchstart="pushgroup(` +
+              item.groupId +
               `)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
                         <div class="item-title">
                           <div class="item-title">` +
-              item.className +
+              item.groupName +
               `</div>
                         </div>
-                        <div class="item-subtitle">` +
-              item.teacher +
+                        <div class="item-subtitle">创建人：` +
+              item.founder +
               `</div>
                       </div>
                     </a>
@@ -160,57 +192,67 @@
           })
         },
         error: function (e) {}
-      })
+      });
 
-      function pushclass(id) {
-        localStorage.classid = id;
+      //将群组id存入locastorage
+      function pushgroup(id) {
+        localStorage.groupid = id;
       };
 
-      //获取所有的班级列在搜索页面
-      $.ajax({
-        url: 'http://212.64.11.56:8080/EAnnotation/getAllClasses',
-        type: "post",
-        success: function (data) {
-          $.each(data, function (i, item) {
-            //遍历出所有班级
-            $("ul[class=class_list]").append(
-              ` <li>
+
+      //获取所有的群组列在搜索页面
+      $(function () {
+        searchGruop();
+      });
+
+      function searchGruop() {
+        $("ul[class=group_list]").html("");
+        $.ajax({
+          url: 'http://212.64.11.56:8080/EAnnotation/getAllGroup',
+          type: "post",
+          success: function (data) {
+            $.each(data, function (i, item) {
+              //遍历出所有群组
+              $("ul[class=group_list]").append(
+                ` <li>
                                 <div class="item-content">
                                     <div class="item-media">
-                                        <i class="icon f7-icons">layers_fill</i>
+                                        <i class="icon f7-icons">persons_fill</i>
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">` +
-              item.className +
-              `</div>
+                item.groupName +
+                `</div>
                                         <div class="item-after" id="join_btn` +
-              item.classId +
-              `">
+                item.groupNumber +
+                `">
                                             <button class="col button color-gray" onclick="join(` +
-              item.classId +
-              `)">加入</button>
+                item.groupNumber +
+                `)">加入</button>
                                         </div>
                                     </div>
                             </li>`
-            )
-          });
-          //调用函数判断哪些已经加入
-          joined();
-        },
-        error: function (e) {
+              )
+            })
+            //调用函数判断哪些已经加入
+            joined()
+          },
+          error: function (e) {
 
-        }
-      });
+          }
+        });
 
-      //判断哪些班级已经加入
+      }
+
+      //判断哪些组已经加入
       function joined() {
         $.ajax({
-          url: 'http://212.64.11.56:8080/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
-            //获得已加入的班级ID，将已加入的班级的加入按钮变为已加入
+            //获得已加入的群组ID，将已加入的群组的加入按钮变为已加入
             $.each(data, function (i, item) {
-              $("#join_btn" + item.classId).html("已加入")
+              $("#join_btn" + item.groupNumber).html("已加入")
             })
           },
           error: function (e) {
@@ -219,49 +261,50 @@
         })
       }
 
-      //加入班级
-      function join(id) {
-        var classId = parseInt(id);
-        classId = classId + 121245;
+
+      //加入群组
+      function join(groupNumber) {
         $.ajax({
-          url: 'http://212.64.11.56:8080/EAnnotation/joinClass?userId=' + localStorage.id + '&classNumber=' +
-            classId,
+          url: 'http://212.64.11.56:8080/EAnnotation/joinGroup?userId=' + localStorage.id + '&groupNumber=' +
+            groupNumber,
           type: "post",
           success: function (data) {
             console.log("success")
-            $("#join_btn" + classId).html("已加入")
           },
           error: function (e) {
-            console.log("已从error加入")
-            $("#join_btn" + id).html("已加入")
+            $("#join_btn" + groupNumber).html("已加入")
           }
         });
       }
 
-      //搜索页点击取消后重新获取我的班级列表
+      //搜索页点击取消后重新获取我的群组列表
       $("#cancel").on("touchstart", function () {
+        regroup()
+      });
+
+      function regroup() {
         //清空列表防止重复
         $("ul[class=course]").html("")
-        //重新获取我的班级列表
+        //重新获取群组列表
         $.ajax({
-          url: 'http://212.64.11.56:8080/EAnnotation/getAllClass?studentId=' + localStorage.id + '',
+          url: 'http://212.64.11.56:8080/EAnnotation/getGroupsByUser?userId=' + localStorage.id + '',
           type: "post",
           success: function (data) {
             $.each(data, function (i, item) {
               $("ul[class=course]").append(
                 `<li>
-                    <a href="class.html" class="link item-content external" ontouchstart="pushclass(` +
-                item.classId +
+                    <a href="group.html" class="link item-content external" ontouchstart="pushgroup(` +
+                item.groupId +
                 `)">
                       <div class="item-media"><img src="images/teacher.jpg" width="44"/></div>
                       <div class="item-inner">
                         <div class="item-title">
                           <div class="item-title">` +
-                item.className +
+                item.groupName +
                 `</div>
                         </div>
-                        <div class="item-subtitle">` +
-                item.teacher +
+                        <div class="item-subtitle">创建人：` +
+                item.founder +
                 `</div>
                       </div>
                     </a>
@@ -271,8 +314,48 @@
           },
           error: function (e) {}
         });
+      }
 
+      //创建群组ajax
+      $("#create").on("touchstart", function () {
+        create();
       });
+
+      function create() {
+        var name = $("input[name='groupname']").val();
+        $.ajax({
+          url: 'http://212.64.11.56:8080/EAnnotation/createGroup?founderId=' + localStorage.id + '&name=' + name,
+          type: "post",
+          success: function (data) {
+            //重新刷新列表，让新创建的群组出现
+            searchGruop();
+
+            app.dialog.create({
+              text: '创建成功',
+              buttons: [{
+                text: '确定',
+                onClick: function () {
+                  join(data);
+                  regroup();
+                  $("input[name='groupname']").val("")
+                }
+              }, ],
+              verticalButtons: true,
+            }).open();
+          },
+          error: function (e) {
+            app.dialog.create({
+              text: '创建失败',
+              buttons: [{
+                text: '确定',
+              }, ],
+              verticalButtons: true,
+            }).open();
+          }
+        });
+        join(data);
+        regroup();
+      }
     </script>
 </body>
 

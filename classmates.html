@@ -61,7 +61,7 @@
               <span class="tabbar-label">首页</span>
             </a>
 
-            <a href="#" class="tab-link an-button link external">
+            <a href="class.html" class="tab-link an-button link external">
               <!-- Different icons for iOS and MD themes -->
               <i class="icon f7-icons ios-only">book_fill</i>
               <span class="tabbar-label">作业</span>
@@ -102,7 +102,7 @@
     };
 
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getClassStudents?classId=' + localStorage.classid,
+      url: 'http://212.64.11.56:8080/EAnnotation/getClassStudents?classId=' + localStorage.classid,
       type: "POST",
       success: function (data) {
         $.each(data, function (i, item) {

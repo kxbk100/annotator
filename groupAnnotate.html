@@ -9,7 +9,7 @@
   <!-- Color theme for statusbar -->
   <meta name="theme-color" content="#000">
   <!-- Your app title -->
-  <title>批注系统</title>
+  <title>悦批</title>
   <!-- Path to Framework7 Library CSS -->
   <link rel="stylesheet" href="css/framework7.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
@@ -20,7 +20,7 @@
     }
 
     .ios .card {
-      margin: 0.5rem 0 0 0;
+      margin: 8px 0 0 0;
     }
 
     .ios .navbar .left {
@@ -59,6 +59,31 @@
         </div>
       </div>
     </div>
+    <!-- 右侧侧边栏 -->
+    <div class="panel panel-right panel-cover anpanel annotator" id="anpanel">
+      <div class="block  annotator">
+      </div>
+
+      <div class="block" id="Mynote" style="margin-top: 0;padding-top: 0px;">
+        <div id="ancontent2">
+
+          <!-- <div class="card cardcss" id="teacher">
+            <blockquote class="blockquote bqcolor2">
+              <p>我们要感谢这个时代</p>
+            </blockquote>
+            <div class="card-content cardct">
+              <p id="anPnode">大家好好品品马云爸爸的演讲</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="link">
+                <i class="f7-icons size-13">heart_fill</i>428 赞
+              </a>
+              <a href="#" class="link" id="change">教师：张晓飞</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
     <!-- Statusbar overlay -->
     <!-- Your main view, should have "view-main" class -->
     <div class="view view-main">
@@ -72,7 +97,7 @@
             </a>
           </div>
           <div class="title">
-            <span id="title"></span>
+            <span id="title">可以失去一切，不能失去理想</span>
             <div class="stitle">
               <span id="count"></span>
               <i class="icon f7-icons more">right</i>
@@ -80,6 +105,7 @@
           </div>
 
           <div class="right">
+
           </div>
         </div>
       </div>
@@ -111,9 +137,11 @@
           </a> -->
 
 
-          <a href="#" class="tab-link an-button open-confirm" id="button5">
-            <i class="icon f7-icons ios-only" style="color: #638BD4">check_round_fill </i>
-            <span class="tabbar-label">提交</span>
+          <a href="#" class="tab-link an-button panel-open" data-panel="right" id="button5">
+            <i class="icon f7-icons ios-only">forward_fill
+              <span class="badge color-red" id="allantate">0</span>
+            </i>
+            <span class="tabbar-label">所有批注</span>
           </a>
         </div>
       </div>
@@ -270,25 +298,13 @@
       </div>
     </div>
   </div>
+
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/rangy-core.js"></script>
   <script src="js/rangy-classapplier.js"></script>
   <script src="js/jquery.min.js"></script>
-  <script src="js/annotate.js"></script>
   <script>
-    var user = 1;
-
-    $$('.open-confirm').on('click', function () {
-      if (ancount < 5) {
-        app.dialog.confirm('您的批注内容过少，是否提交？', function () {
-          submit();
-        });
-      } else {
-        submit();
-      }
-    });
-
     // 返回按钮
     var back = document.getElementById("back");
     if (back) {
@@ -297,26 +313,40 @@
       })
     };
 
-    function submit() {
-      $.ajax({
-        url: 'http://212.64.11.56:8080/EAnnotation/setFinish?studentId=' + localStorage.id + '&passageId=' + passageId +
-          '&classId=' + localStorage.classid + '',
-        type: "POST",
-        success:function () {
-          app.dialog.create({
-            text: '提交成功',
-            buttons: [{
-              text: '确定',
-              onClick: function () {
-                window.history.back(-1)
-              }
-            }],
-            verticalButtons: true,
-          }).open();
+    var user;//用于未登入时点击批注弹出登入提示框
+    $.ajax({
+      url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
+      type: 'post',
+      dataType: 'jsonp',
+      xhrFields: {
+        withCredentials: true
+      },
+      crossDomain: true,
+      success: function (data) {
+        if (data == 0) {
+          user = 0;
+        } else {
+          user = 1;
         }
-      })
+      },
+      error: function () {}
+    })
+
+    function goload() {
+      app.dialog.create({
+        text: '请先登录',
+        buttons: [{
+            text: '确定',
+            onClick:function () {
+              window.location.href = "person.html";
+            }
+          },    
+        ],
+        verticalButtons: true,
+      }).open();
     }
   </script>
+  <script src="js/annotate.js"></script>  
 </body>
 
 </html>

@@ -19,13 +19,17 @@
       height: 250px;
     }
 
+    .ios .list {
+      margin-bottom: 0;
+    }
+
     .ios .item-label,
     .ios .item-floating-label {
       font-size: 17px;
     }
 
     .ios .block-strong {
-      padding: 15px 0;
+      padding: 15px 0px;
     }
   </style>
 </head>
@@ -40,12 +44,12 @@
               <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
             </a>
           </div>
-          <div class="title">发布作业</div>
+          <div class="title">上传文章</div>
           <div class="right"></div>
         </div>
       </div>
       <div class="page-content">
-        <form class="list" id="homework">
+        <form class="list" id="handouts" enctype="multipart/form-data">
           <ul>
             <li>
               <div class="item-content item-input">
@@ -53,16 +57,16 @@
                   <div class="item-title item-label">标题</div>
                   <div class="item-input-wrap">
                     <input type="text" name="title" placeholder="请输入标题">
-                    <!-- 作业type为0 -->
-                    <input type="text" name="type" value="0" class="hidden">
+                    <!-- 讲义type为0 -->
                     <input type="text" name="auth" value="1" class="hidden">
                     <input type="text" name="classId" value="" class="hidden">
                     <input type="text" name="teacherId" value="" class="hidden">
+                    <input type="text" name="type" value="1" class="hidden">
                   </div>
                 </div>
               </div>
             </li>
-            <li>
+            <!-- <li>
               <div class="item-content item-input">
                 <div class="item-inner">
                   <div class="item-title item-label">标题图片</div>
@@ -71,7 +75,7 @@
                   </div>
                 </div>
               </div>
-            </li>
+            </li> -->
             <li class="item-input">
               <div class="item-media">
                 <i class="icon demo-list-icon"></i>
@@ -83,20 +87,10 @@
                 </div>
               </div>
             </li>
-            <li>
+            <!-- <li>
               <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">截止日期</div>
-                  <div class="item-input-wrap">
-                    <input type="text" placeholder="选择截止日期" name="endTime" readonly="readonly" id="demo-calendar-modal" />
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">选择主题</div>
+                <div class="item-inner"> -->
+                  <!-- <div class="item-title item-label">选择主题</div>
                   <div class="item-input-wrap">
                     <div class="block-strong">
                       <p>&nbsp;&nbsp;&nbsp;古文
@@ -172,13 +166,13 @@
                         </label>
                       </p>
                     </div>
-                  </div>
-                </div>
+                  </div> -->
+                <!-- </div>
               </div>
-            </li>
+            </li> -->
           </ul>
           <div class="block">
-            <button class="button button-big button-fill text-center" id="submit">发布</button>
+            <button class="button button-big button-fill text-center" id="submit">上传</button>
           </div>
         </form>
       </div>
@@ -191,9 +185,6 @@
   <script src="ueditor/ueditor.all.min.js"></script>
   <script src="ueditor/lang/zh-cn/zh-cn.js"></script>
   <script>
-    $("input[name='classId']").attr("value",localStorage.classid);
-    $("input[name='teacherId']").attr("value",localStorage.id);
-
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
@@ -318,22 +309,25 @@
     }
   </script>
   <script>
-    $("#submit").on('touchstart', function () {
-      var form = new FormData($('#homework')[0]);
-      $.ajax({
-        url: 'http://212.64.11.56:8080/EAnnotation/addPassage',
-        type: 'POST',
-        data: form,
-        processData: false,
-        contentType: false,
-        success: function (data) {
-          window.history.go(-1);
-          console.log(form);
-        },
-        error: function (e) { }
-      })
-      return false;
-    });
+    // $("input[name='classId']").attr("value", localStorage.classid);
+    // $("input[name='teacherId']").attr("value", localStorage.id);
+    // $("#submit").on('touchstart', function () {
+    //   var form = new FormData($('#handouts')[0]);
+    //   $.ajax({
+    //     url: 'http://212.64.11.56:8080/EAnnotation/addPassage',
+    //     type: 'POST',
+    //     data: form,
+    //     processData: false,
+    //     contentType: false,
+    //     success: function (data) {
+    //       window.history.go(-1);
+    //     },
+    //     error: function (e) {
+    //       console.log(form);
+    //     }
+    //   })
+    //   return false;
+    // });
   </script>
 </body>
 

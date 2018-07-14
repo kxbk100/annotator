@@ -93,30 +93,6 @@
         </div>
       </div>
 
-      <!-- 工具栏 -->
-      <div class="toolbar tabbar-labels">
-        <div class="toolbar-inner">
-          <!-- 工具栏标签 -->
-          <a href="#" class="tab-link an-button popup-open" id="button0">
-            <!-- Different icons for iOS and MD themes -->
-            <i class="icon f7-icons ios-only">chat_fill</i>
-            <span class="tabbar-label">背景高亮</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" id="button1">
-            <i class="icon f7-icons ios-only">help_fill</i>
-            <span class="tabbar-label">文字高亮</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" id="button2">
-            <i class="icon f7-icons ios-only">heart_fill</i>
-            <span class="tabbar-label">加粗</span>
-          </a>
-          <a href="#" class="tab-link an-button popup-open" id="button3">
-            <i class="icon f7-icons ios-only">mic_fill</i>
-            <span class="tabbar-label">下划线</span>
-          </a>
-
-        </div>
-      </div>
       <!-- 内容区域 -->
       <div class="page-content">
         <div class="list media-list annotator">
@@ -180,7 +156,7 @@
           <textarea placeholder="请输入批注" id="note0" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -201,7 +177,7 @@
           <textarea placeholder="请输入批注" id="note1" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -222,7 +198,7 @@
           <textarea placeholder="请输入批注" id="note2" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -243,7 +219,7 @@
           <textarea placeholder="请输入批注" id="note3" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
           </p>
         </div>
       </div>
@@ -485,7 +461,7 @@ function annotate() {
 function rePanel() {
   var string = 'note' + type;
   var textarea = content;
-  // $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
+  $$('#ancontent').html('<div id="ancontent"><div class="texbg">暂无批注</div></div>');
   $$('#ancontent').append(
     '<div class="card cardcss" id="' + anID + '">' +
     '<blockquote class="blockquote bqcolor' + type + '" id="bq' + anID + '">' +
@@ -494,10 +470,6 @@ function rePanel() {
     '<div class="card-content cardct ">' +
     '<p  id="an' + anID + '">' + textarea + '</p>' +
     '</div >' +
-    '<div class="card-footer">' +
-    '<a class="link popup-open" id="change" data-popup=".popup5" onclick="modify(' + anID +
-    ')">修改</a><a  class="link" id="delete" onclick="del(' + anID + ')">删除</a>' +
-    '</div>' +
     '</div>');
   document.getElementById(string).value = '';
 }
@@ -564,60 +536,53 @@ function add() {
 // 底部工具栏按钮事件
 var button0 = document.getElementById("button0");
 button0.addEventListener('touchstart', function () {
+  getString(0);
+  anPaint(0);
+  getLocation(0);
   if (user == 0) {
     goload();
-  } else {
-    getString(0);
-    anPaint(0);
-    getLocation(0);
-  }
-  if(text && text != null){
-    app.popup.open(".popup0")
   }
 });
 
 var botton1 = document.getElementById("button1");
 button1.addEventListener('touchstart', function () {
+  getString(1);
+  anPaint(1);
+  getLocation(1);
   if (user == 0) {
     goload();
-  } else {
-    getString(1);
-    anPaint(1);
-    getLocation(1);
-  }
-  if(text && text != null){
-    app.popup.open(".popup1")
   }
 });
 
 var botton2 = document.getElementById("button2");
 button2.addEventListener('touchstart', function () {
+  getString(2);
+  anPaint(2);
+  getLocation(2);
   if (user == 0) {
     goload();
-  } else {
-    getString(2);
-    anPaint(2);
-    getLocation(2);
-  }
-  if(text && text != null){
-    app.popup.open(".popup2")
   }
 });
 
 var botton3 = document.getElementById("button3");
 button3.addEventListener('touchstart', function () {
+  getString(3);
+  anPaint(3);
+  getLocation(3);
   if (user == 0) {
     goload();
-  } else {
-    getString(3);
-    anPaint(3);
-    getLocation(3);
-  }
-  if(text && text != null){
-    app.popup.open(".popup3")
   }
 });
 
+// var botton4 = document.getElementById("button4");
+// button4.addEventListener('touchstart', function () {
+//   getString(4);
+//   anPaint(4);
+//   getLocation(4);
+//   if (user == 0) {
+//     goload();
+//   }
+// });
 //添加批注按钮点击事件
 var add0 = document.getElementById("add0");
 add0.addEventListener('touchstart', function () {

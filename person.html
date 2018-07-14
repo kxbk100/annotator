@@ -56,10 +56,17 @@
             <i class="icon f7-icons ios-only">home_fill</i>
             <span class="tabbar-label">首页</span>
           </a>
+
           <a href="#" class="tab-link an-button link external" id="jump">
             <i class="icon f7-icons ios-only">layers_fill</i>
             <span class="tabbar-label">班级</span>
           </a>
+
+          <a href="#" class="tab-link an-button link external" id="group_btn">
+            <i class="icon f7-icons">persons</i>
+            <span class="tabbar-label">群组</span>
+          </a>
+
           <a href="#" class="tab-link-active an-button link external">
             <i class="icon f7-icons ios-only">person_fill</i>
             <span class="tabbar-label active-state">我的</span>
@@ -388,7 +395,7 @@
               <div class="block">
                 <p class="row">
                   <div class="text-center">
-                    <a href="person1.html" class="link external col75">
+                    <a href="#" class="link external col75 open-toast-icon">
                       <button type="button" class="button button-big button-fill text-center">完成</button>
                     </a>
                   </div>
@@ -406,11 +413,12 @@
   <script src="js/framework7.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/jquery.min.js"></script>
-  <script src="js/pan.js"></script>
+  <script src="js/panpan.js"></script>
+
   <script>
     $(function () {
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
+        url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
         type: "post",
         dataType: "jsonp",
         xhrFields: {
@@ -470,9 +478,7 @@
           `
           }
         },
-        error: function () {
-
-        }
+        error: function () {}
       })
     })
 
@@ -485,15 +491,37 @@
     });
     $$('.open-toast-icon').on('click', function () {
       toastIcon.open();
-      setTimeout("window.location.href='index.html'", 1500);
+      setTimeout("window.location.href='person.html'", 1000);
     });
+
+    // 注销
+    function logout() {
+      $.ajax({
+        url: 'http://212.64.11.56:8080/EAnnotation/logout',
+        type: "post",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        success: function (data) {
+          window.location.href = "person.html";
+          localStorage.id = null;
+          localStorage.classid = null;
+        },
+        error: function () {
+          window.location.href = "person.html";
+          localStorage.id = null;
+          localStorage.classid = null;
+        }
+      })
+    }
 
     //登录
     $("#logbton").on('touchstart', function () {
       var act = $("#account").val();
       var pswd = $("#password").val();
       $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
+        url: 'http://212.64.11.56:8080/EAnnotation/loginChk?account=' + act + '&password=' + pswd,
         type: "post",
         dataType: "jsonp",
         xhrFields: {
@@ -507,8 +535,22 @@
           } else if (data == "-2") {
             app.dialog.alert('密码错误');
           } else {
-            getUserType();
-            localStorage.id = data;
+            localStorage.id = data.id;
+            localStorage.usertype = data.type;
+            if (data == 0) {
+              $('#jump').attr("href", "person.html")
+              $("#group_btn").attr("href", "person.html");
+
+            } else if (data.type == "0") {
+              $('#jump').attr("href", "classlist.html")
+              $("#group_btn").attr("href", "grouplist.html");
+
+            } else if (data.type == "1") {
+              $('#jump').attr("href", "classlistTeacher.html")
+              $("#group_btn").attr("href", "grouplist.html");
+
+            }
+            console.log(localStorage.usertype)
             window.history.back(-1);
           }
         },
@@ -518,56 +560,6 @@
         }
       })
     });
-
-    // 注销
-    function logout() {
-      $.ajax({
-        url: 'http://192.168.1.193/EAnnotation/logout',
-        type: "post",
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
-        success: function (data) {
-          window.location.href = "person.html";
-          localStorage.id = null;
-          localStorage.classid = null;
-        },
-        error: function () {
-          window.location.href = "person.html";
-          localStorage.id = null;
-          localStorage.classid = null;
-        }
-      })
-    }
-
-    //获取登录者id
-    function getUserType() {
-        $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
-      type: 'post',
-      dataType: 'jsonp',
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
-      success: function (data) {
-        localStorage.id = data.id;
-        if (data == 0) {
-          $('#jump').attr("href", "person.html")
-        } else if (data.type == "0") {
-          $('#jump').attr("href", "classlist.html")
-          localStorage.usertype = data.type;
-        } else if (data.type == "1") {
-          $('#jump').attr("href", "classlistTeacher.html")
-          localStorage.usertype = data.type;
-        }
-        console.log(localStorage.usertype)
-      },
-      error: function () {}
-    });
-    }
-  
   </script>
 </body>
 

@@ -123,20 +123,20 @@
       <div class="toolbar tabbar-labels">
         <div class="toolbar-inner">
           <!-- 工具栏标签 -->
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup0" id="button0">
+          <a href="#" class="tab-link an-button popup-open" id="button0">
             <!-- Different icons for iOS and MD themes -->
             <i class="icon f7-icons ios-only">chat_fill</i>
             <span class="tabbar-label">背景高亮</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup1" id="button1">
+          <a href="#" class="tab-link an-button popup-open" id="button1">
             <i class="icon f7-icons ios-only">help_fill</i>
             <span class="tabbar-label">文字高亮</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup2" id="button2">
+          <a href="#" class="tab-link an-button popup-open" id="button2">
             <i class="icon f7-icons ios-only">heart_fill</i>
             <span class="tabbar-label">加粗</span>
           </a>
-          <a href="#" class="tab-link an-button popup-open" data-popup=".popup3" id="button3">
+          <a href="#" class="tab-link an-button popup-open" id="button3">
             <i class="icon f7-icons ios-only">mic_fill</i>
             <span class="tabbar-label">下划线</span>
           </a>
@@ -217,7 +217,7 @@
           <textarea placeholder="请输入批注" id="note0" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add0">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -238,7 +238,7 @@
           <textarea placeholder="请输入批注" id="note1" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add1">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -259,7 +259,7 @@
           <textarea placeholder="请输入批注" id="note2" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add2">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -280,7 +280,7 @@
           <textarea placeholder="请输入批注" id="note3" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add3">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -301,7 +301,7 @@
           <textarea placeholder="请输入批注" id="note4" cols="45" rows="6" class="textarea"></textarea>
           <p class="row">
             <button class="col-30 button button-fill panel-open popup-close" id="add4">添加批注</button>
-            <button class="button col-30  popup-close" onclick="getPassage()">取消</button>
+            <button class="button col-30  popup-close" onclick="getPassage('ture')">取消</button>
           </p>
         </div>
       </div>
@@ -324,7 +324,7 @@
 
     var user;//用于未登入时点击批注弹出登入提示框
     $.ajax({
-      url: 'http://192.168.1.193/EAnnotation/getCurrentUser',
+      url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
       type: 'post',
       dataType: 'jsonp',
       xhrFields: {
@@ -334,6 +334,7 @@
       success: function (data) {
         if (data == 0) {
           user = 0;
+          $(".texbg").html("未登录")
         } else {
           user = 1;
         }
