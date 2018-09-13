@@ -1,5 +1,5 @@
 .an-button.active-state {
-    color: #638BD4 !important;
+    color: #f08b00 !important;
 }
 
 .ios .navbar {
@@ -74,11 +74,11 @@ a.icon {
 }
 
 .ios .tabbar a.tab-link-active, .ios .tabbar-labels a.tab-link-active {
-    color: #638BD4;
+    color: #f08b00;
 }
 
 .ios .navbar {
-    background-color: #638BD4;
+    background-color: #f08b00;
 }
 
 .demo-card-header-pic .card-header {
@@ -479,7 +479,7 @@ margin-top: -30px;
 }
 
 .bgcolor {
-   background-color: #638BD4;
+   background-color: #f08b00;
 }
 
 .name-iuput {
