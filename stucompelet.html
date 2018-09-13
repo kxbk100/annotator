@@ -359,7 +359,7 @@
         type: "POST",
         success: function (data) {
           if (data == true) {
-            $('#rt' + id).css("color", "#638BD4");
+            $('#rt' + id).css("color", "#d33a32");
           }
         }
       })
@@ -369,7 +369,7 @@
     function like(id) {
       console.log($('#rt' + id).css("color"))
       if ($('#rt' + id).css("color") == "rgb(129, 132, 139)") {
-        $("#rt" + id).css("color", "#638BD4");
+        $("#rt" + id).css("color", "#f08b00");
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 

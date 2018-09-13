@@ -111,6 +111,7 @@
       $.ajax({
         url: 'http://212.64.11.56:8080/EAnnotation/getAllPassages',
         type: "post",
+        cache: true,
         success: function (data) {
           $$("ul[class=index]").html("");
 
@@ -249,8 +250,8 @@
         type: "POST",
         success: function (data) {
           if (data == true) {
-            $('#' + id).css("color", "#638BD4");
-            $('#rank' + id).css("color", "#638BD4");
+            $('#' + id).css("color", "#d33a32");
+            $('#rank' + id).css("color", "#d33a32");
           }
         }
       })
@@ -264,7 +265,7 @@
         type: "POST",
         success: function (data) {
           if (data == true) {
-            $('#rank' + annotationId).css("color", "#638BD4");
+            $('#rank' + annotationId).css("color", "#d33a32");
           }
         }
       })
@@ -288,8 +289,8 @@
       //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
       else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
         "rgb(129, 132, 139)") {
-        $('#' + id).css("color", "#638BD4");
-        $('#rank' + id).css("color", "#638BD4"); //排行榜也一起变化
+        $('#' + id).css("color", "#d33a32");
+        $('#rank' + id).css("color", "#d33a32"); //排行榜也一起变化
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 
@@ -335,8 +336,8 @@
       //用颜色判断是点赞还是取消点赞，如果已经点过赞了颜色为蓝色
       else if ($('#' + id).css("color") == "rgb(129, 132, 139)" || $('#rank' + id).css("color") ==
         "rgb(129, 132, 139)") {
-        $('#' + id).css("color", "#638BD4");
-        $('#rank' + id).css("color", "#638BD4"); //排行榜也一起变化
+        $('#' + id).css("color", "#d33a32");
+        $('#rank' + id).css("color", "#d33a32"); //排行榜也一起变化
         var count = $("span[class='" + id + "']").html();
         $("span[class='" + id + "']").html(parseInt(count) + 1);
 
@@ -369,11 +370,13 @@
       $("ul[class=rank]").html(" "); //清空排行内容，防止重复出现
       rank();
     });
+    
     //排行榜渲染函数，原理同渲染推荐
     function rank() {
       $.ajax({
         url: 'http://212.64.11.56:8080/EAnnotation/getRank',
         type: "post",
+        cache: true,
         success: function (data) {
           $$("ul[class=rank]").html("");
 

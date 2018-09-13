@@ -125,6 +125,7 @@ function getPassage(dele) { //dele用来标记是否需要重新渲染侧边栏
   $.ajax({
     url: 'http://212.64.11.56:8080/EAnnotation/getPassage?id=' + passageId,
     type: "post",
+    cache: true,
     success: function (data) {
       console.log(data);
       $("#title").html(data.title);
@@ -400,6 +401,7 @@ var user;
 $.ajax({
   url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
   type: 'post',
+  cache: true,
   dataType: 'jsonp',
   xhrFields: {
     withCredentials: true
@@ -419,7 +421,7 @@ function isLike(id) {
     type: "POST",
     success: function (data) {
       if (data == true) {
-        $('#right' + id).css("color", "rgb(99, 139, 212)");
+        $('#right' + id).css("color", "#d33a32");
       }
     }
   })
@@ -440,7 +442,7 @@ function like(id) {
       verticalButtons: true,
     }).open();
   } else if ($('#right' + id).css("color") == "rgb(129, 132, 139)") { //根据颜色判断是否已经点过赞，如果没有爱心变蓝调用点赞接口
-    $('#right' + id).css("color", "rgb(99, 139, 212)");
+    $('#right' + id).css("color", "#d33a32");
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) + 1);
 
@@ -452,7 +454,7 @@ function like(id) {
       },
       error: function () {}
     })
-  } else if ( $('#right' + id).css("color") == "rgb(99, 139, 212)"){
+  } else {
     $('#right' + id).css("color", "rgb(129, 132, 139)"); //如果已经点赞了，点击后将颜色变回灰色，调用取消点赞按钮
     var count = $("span[class='" + id + "']").html();
     $("span[class='" + id + "']").html(parseInt(count) - 1);

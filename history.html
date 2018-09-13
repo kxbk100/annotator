@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <!-- Required meta tags-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
@@ -15,45 +15,36 @@
     <link rel="stylesheet" href="css/framework7-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .ios .list {
-            margin: 0;
-        }
+      .ios .list {
+        margin: 0;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app">
-        <!-- Statusbar overlay -->
-        <div class="statusbar"></div>
-
-        <!-- Your main view, should have "view-main" class -->
-        <div class="view view-main">
-            <!-- Initial Page, "data-name" contains page name -->
-            <div class="page">
-
-                <!-- Top Navbar -->
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="left">
-                            <a href="#" class="item-link icon" id="back">
-                                <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
-                            </a>
-                        </div>
-                        <div class="title">批注历史</div>
-                        <div class="right"></div>
-                    </div>
-                </div>
-
-
-                <div class="page-content">
-                    <div class="list media-list">
-                        <ul class="history">
-
-                        </ul>
-                    </div>
-                </div>
+      <div class="view view-main view-init">
+        <!-- Top Navbar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="item-link icon" id="back">
+                <i class="icon f7-icons" style="font-size: 25px">chevron_left</i>
+              </a>
             </div>
+            <div class="title">批注历史</div>
+            <div class="right"></div>
+          </div>
         </div>
+
+        <div class="page-content">
+          <div class="list media-list">
+            <ul class="history">
+
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="js/framework7.min.js"></script>
     <script src="js/app.js"></script>
@@ -62,13 +53,13 @@
     <script src="js/annotate.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
-        // 返回按钮
-        var back = document.getElementById("back");
-        if (back) {
-            back.addEventListener('touchstart', function () {
-                window.history.back(-1);
-            })
-        };
+      // 返回按钮
+      var back = document.getElementById("back");
+      if (back) {
+        back.addEventListener('touchstart', function () {
+          window.history.back(-1);
+        })
+      };
 
       function getcontent(text) {
         var html = text;
@@ -113,7 +104,7 @@
         }
         return result;
       };
-      
+
       //获取登录者id
       $.ajax({
         url: 'http://212.64.11.56:8080/EAnnotation/getCurrentUser',
@@ -133,32 +124,32 @@
             localStorage.id = data.id;
           }
         },
-        error: function () {}
+        error: function () { }
       })
 
-        // 获取文章
-        $.ajax({
-            url: 'http://212.64.11.56:8080/EAnnotation/getHistory?userId='+ localStorage.id +'',
-            type: "post",
-            success: function (data) {
-                $.each(data, function (i, item) {
-                    if (item.photo) {
-                        $("ul[class=history]").append(
-                       `                                <a href="anntator.html?id=` + item.id + `" class="item-link item-content external">
+      // 获取文章
+      $.ajax({
+        url: 'http://212.64.11.56:8080/EAnnotation/getHistory?userId=' + localStorage.id + '',
+        type: "post",
+        success: function (data) {
+          $.each(data, function (i, item) {
+            if (item.photo) {
+              $("ul[class=history]").append(
+                `                                <a href="anntator.html?id=` + item.id + `" class="item-link item-content external">
                                     <div class="item-inner">
                                         <div class="item-title-row">
                                             <div class="item-title">` + item.title + `</div>
                                         </div>
-                                        <div class="item-subtitle">` + item.theme + ` · ` + getDateDiff(item.releaseTime) +`</div>
+                                        <div class="item-subtitle">` + item.theme + ` · ` + getDateDiff(item.releaseTime) + `</div>
                                         <div class="item-text">` + getcontent(item.content) + `</div>
                                     </div>
                                 </a>`)
-                    }
-                })
-            },
-            error: function (e) {}
-        })
+            }
+          })
+        },
+        error: function (e) { }
+      })
     </script>
-</body>
+  </body>
 
 </html>
